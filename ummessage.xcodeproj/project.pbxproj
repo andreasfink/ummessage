@@ -1,0 +1,674 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A60B32B12D76051E003A8DFA /* ummessage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60B32A62D76051E003A8DFA /* ummessage.framework */; };
+		A60B32EB2D7609B0003A8DFA /* ulib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60B32EA2D7609A3003A8DFA /* ulib.framework */; };
+		A60B32EC2D7609B0003A8DFA /* ulib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60B32EA2D7609A3003A8DFA /* ulib.framework */; };
+		A60B32EE2D7609CD003A8DFA /* ulibasn1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60B32ED2D7609CD003A8DFA /* ulibasn1.framework */; };
+		A60B32EF2D7609CD003A8DFA /* ulibasn1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60B32ED2D7609CD003A8DFA /* ulibasn1.framework */; };
+		A68863AF2D761E980079C9A5 /* UMDirtyDate.m in Sources */ = {isa = PBXBuildFile; fileRef = A68863A22D761E980079C9A5 /* UMDirtyDate.m */; };
+		A68863B02D761E980079C9A5 /* UMDirtyInteger.m in Sources */ = {isa = PBXBuildFile; fileRef = A68863A42D761E980079C9A5 /* UMDirtyInteger.m */; };
+		A68863B12D761E980079C9A5 /* UMDirtyObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A68863A62D761E980079C9A5 /* UMDirtyObject.m */; };
+		A68863B22D761E980079C9A5 /* UMDirtyString.m in Sources */ = {isa = PBXBuildFile; fileRef = A68863A82D761E980079C9A5 /* UMDirtyString.m */; };
+		A68863B32D761E980079C9A5 /* ummessage.docc in Sources */ = {isa = PBXBuildFile; fileRef = A68863A92D761E980079C9A5 /* ummessage.docc */; };
+		A68863B42D761E980079C9A5 /* UMMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A68863AB2D761E980079C9A5 /* UMMessage.m */; };
+		A68863B52D761E980079C9A5 /* Config_macroAppendConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863912D761E980079C9A5 /* Config_macroAppendConfig.h */; };
+		A68863B62D761E980079C9A5 /* Config_macroAppendDict.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863922D761E980079C9A5 /* Config_macroAppendDict.h */; };
+		A68863B72D761E980079C9A5 /* Config_macroClear.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863932D761E980079C9A5 /* Config_macroClear.h */; };
+		A68863B82D761E980079C9A5 /* Config_macroCopy.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863942D761E980079C9A5 /* Config_macroCopy.h */; };
+		A68863B92D761E980079C9A5 /* Config_macroDbFieldNames.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863952D761E980079C9A5 /* Config_macroDbFieldNames.h */; };
+		A68863BA2D761E980079C9A5 /* Config_macroDbInsertNames.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863962D761E980079C9A5 /* Config_macroDbInsertNames.h */; };
+		A68863BB2D761E980079C9A5 /* Config_macroDbInsertValues.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863972D761E980079C9A5 /* Config_macroDbInsertValues.h */; };
+		A68863BC2D761E980079C9A5 /* Config_macroDbTableDef.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863982D761E980079C9A5 /* Config_macroDbTableDef.h */; };
+		A68863BD2D761E980079C9A5 /* Config_macroObjectValue.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863992D761E980079C9A5 /* Config_macroObjectValue.h */; };
+		A68863BE2D761E980079C9A5 /* Config_macroProcessAfterDecodeWithContext.h in Headers */ = {isa = PBXBuildFile; fileRef = A688639A2D761E980079C9A5 /* Config_macroProcessAfterDecodeWithContext.h */; };
+		A68863BF2D761E980079C9A5 /* Config_macroProcessBeforeEncode.h in Headers */ = {isa = PBXBuildFile; fileRef = A688639B2D761E980079C9A5 /* Config_macroProcessBeforeEncode.h */; };
+		A68863C02D761E980079C9A5 /* Config_macroProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = A688639C2D761E980079C9A5 /* Config_macroProperties.h */; };
+		A68863C12D761E980079C9A5 /* Config_macroSetConfigFromDict.h in Headers */ = {isa = PBXBuildFile; fileRef = A688639D2D761E980079C9A5 /* Config_macroSetConfigFromDict.h */; };
+		A68863C22D761E980079C9A5 /* Config_macroSetFromDbData.h in Headers */ = {isa = PBXBuildFile; fileRef = A688639E2D761E980079C9A5 /* Config_macroSetFromDbData.h */; };
+		A68863C32D761E980079C9A5 /* Config_macroSetFromDbString.h in Headers */ = {isa = PBXBuildFile; fileRef = A688639F2D761E980079C9A5 /* Config_macroSetFromDbString.h */; };
+		A68863C42D761E980079C9A5 /* Config_macroVariables.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863A02D761E980079C9A5 /* Config_macroVariables.h */; };
+		A68863C52D761E980079C9A5 /* UMDirtyDate.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863A12D761E980079C9A5 /* UMDirtyDate.h */; };
+		A68863C62D761E980079C9A5 /* UMDirtyInteger.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863A32D761E980079C9A5 /* UMDirtyInteger.h */; };
+		A68863C72D761E980079C9A5 /* UMDirtyObject.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863A52D761E980079C9A5 /* UMDirtyObject.h */; };
+		A68863C82D761E980079C9A5 /* UMDirtyString.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863A72D761E980079C9A5 /* UMDirtyString.h */; };
+		A68863C92D761E980079C9A5 /* UMMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863AA2D761E980079C9A5 /* UMMessage.h */; };
+		A68863CA2D761E980079C9A5 /* UMMessage.def.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863AC2D761E980079C9A5 /* UMMessage.def.h */; };
+		A68863CB2D761E980079C9A5 /* UMMessageFields.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863AD2D761E980079C9A5 /* UMMessageFields.h */; };
+		A68863CE2D761EB20079C9A5 /* UMDirtyData.m in Sources */ = {isa = PBXBuildFile; fileRef = A68863CD2D761EB20079C9A5 /* UMDirtyData.m */; };
+		A68863CF2D761EB20079C9A5 /* UMDirtyData.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863CC2D761EB20079C9A5 /* UMDirtyData.h */; };
+		A68863D22D761EBD0079C9A5 /* UMDirtyReal.m in Sources */ = {isa = PBXBuildFile; fileRef = A68863D12D761EBD0079C9A5 /* UMDirtyReal.m */; };
+		A68863D32D761EBD0079C9A5 /* UMDirtyReal.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863D02D761EBD0079C9A5 /* UMDirtyReal.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A60B32B22D76051E003A8DFA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A60B329D2D76051E003A8DFA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A60B32A52D76051E003A8DFA;
+			remoteInfo = ummessage;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A60B32A62D76051E003A8DFA /* ummessage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ummessage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A60B32B02D76051E003A8DFA /* ummessageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ummessageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A60B32EA2D7609A3003A8DFA /* ulib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulib.framework; path = "/Library/Application Support/FinkTelecomServices/frameworks/ulib.framework"; sourceTree = "<absolute>"; };
+		A60B32ED2D7609CD003A8DFA /* ulibasn1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulibasn1.framework; path = "/Library/Application Support/FinkTelecomServices/frameworks/ulibasn1.framework"; sourceTree = "<absolute>"; };
+		A68863912D761E980079C9A5 /* Config_macroAppendConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config_macroAppendConfig.h; sourceTree = "<group>"; };
+		A68863922D761E980079C9A5 /* Config_macroAppendDict.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config_macroAppendDict.h; sourceTree = "<group>"; };
+		A68863932D761E980079C9A5 /* Config_macroClear.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config_macroClear.h; sourceTree = "<group>"; };
+		A68863942D761E980079C9A5 /* Config_macroCopy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config_macroCopy.h; sourceTree = "<group>"; };
+		A68863952D761E980079C9A5 /* Config_macroDbFieldNames.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config_macroDbFieldNames.h; sourceTree = "<group>"; };
+		A68863962D761E980079C9A5 /* Config_macroDbInsertNames.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config_macroDbInsertNames.h; sourceTree = "<group>"; };
+		A68863972D761E980079C9A5 /* Config_macroDbInsertValues.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config_macroDbInsertValues.h; sourceTree = "<group>"; };
+		A68863982D761E980079C9A5 /* Config_macroDbTableDef.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config_macroDbTableDef.h; sourceTree = "<group>"; };
+		A68863992D761E980079C9A5 /* Config_macroObjectValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config_macroObjectValue.h; sourceTree = "<group>"; };
+		A688639A2D761E980079C9A5 /* Config_macroProcessAfterDecodeWithContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config_macroProcessAfterDecodeWithContext.h; sourceTree = "<group>"; };
+		A688639B2D761E980079C9A5 /* Config_macroProcessBeforeEncode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config_macroProcessBeforeEncode.h; sourceTree = "<group>"; };
+		A688639C2D761E980079C9A5 /* Config_macroProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config_macroProperties.h; sourceTree = "<group>"; };
+		A688639D2D761E980079C9A5 /* Config_macroSetConfigFromDict.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config_macroSetConfigFromDict.h; sourceTree = "<group>"; };
+		A688639E2D761E980079C9A5 /* Config_macroSetFromDbData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config_macroSetFromDbData.h; sourceTree = "<group>"; };
+		A688639F2D761E980079C9A5 /* Config_macroSetFromDbString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config_macroSetFromDbString.h; sourceTree = "<group>"; };
+		A68863A02D761E980079C9A5 /* Config_macroVariables.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config_macroVariables.h; sourceTree = "<group>"; };
+		A68863A12D761E980079C9A5 /* UMDirtyDate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMDirtyDate.h; sourceTree = "<group>"; };
+		A68863A22D761E980079C9A5 /* UMDirtyDate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMDirtyDate.m; sourceTree = "<group>"; };
+		A68863A32D761E980079C9A5 /* UMDirtyInteger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMDirtyInteger.h; sourceTree = "<group>"; };
+		A68863A42D761E980079C9A5 /* UMDirtyInteger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMDirtyInteger.m; sourceTree = "<group>"; };
+		A68863A52D761E980079C9A5 /* UMDirtyObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMDirtyObject.h; sourceTree = "<group>"; };
+		A68863A62D761E980079C9A5 /* UMDirtyObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMDirtyObject.m; sourceTree = "<group>"; };
+		A68863A72D761E980079C9A5 /* UMDirtyString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMDirtyString.h; sourceTree = "<group>"; };
+		A68863A82D761E980079C9A5 /* UMDirtyString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMDirtyString.m; sourceTree = "<group>"; };
+		A68863A92D761E980079C9A5 /* ummessage.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = ummessage.docc; sourceTree = "<group>"; };
+		A68863AA2D761E980079C9A5 /* UMMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessage.h; sourceTree = "<group>"; };
+		A68863AB2D761E980079C9A5 /* UMMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMMessage.m; sourceTree = "<group>"; };
+		A68863AC2D761E980079C9A5 /* UMMessage.def.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessage.def.h; sourceTree = "<group>"; };
+		A68863AD2D761E980079C9A5 /* UMMessageFields.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessageFields.h; sourceTree = "<group>"; };
+		A68863CC2D761EB20079C9A5 /* UMDirtyData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMDirtyData.h; sourceTree = "<group>"; };
+		A68863CD2D761EB20079C9A5 /* UMDirtyData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMDirtyData.m; sourceTree = "<group>"; };
+		A68863D02D761EBD0079C9A5 /* UMDirtyReal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMDirtyReal.h; sourceTree = "<group>"; };
+		A68863D12D761EBD0079C9A5 /* UMDirtyReal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMDirtyReal.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		A60B32B42D76051E003A8DFA /* ummessageTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ummessageTests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A60B32A32D76051E003A8DFA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A60B32EB2D7609B0003A8DFA /* ulib.framework in Frameworks */,
+				A60B32EE2D7609CD003A8DFA /* ulibasn1.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A60B32AD2D76051E003A8DFA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A60B32EC2D7609B0003A8DFA /* ulib.framework in Frameworks */,
+				A60B32B12D76051E003A8DFA /* ummessage.framework in Frameworks */,
+				A60B32EF2D7609CD003A8DFA /* ulibasn1.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A60B329C2D76051E003A8DFA = {
+			isa = PBXGroup;
+			children = (
+				A60B32E92D760986003A8DFA /* Frameworks */,
+				A68863AE2D761E980079C9A5 /* ummessage */,
+				A60B32B42D76051E003A8DFA /* ummessageTests */,
+				A60B32A72D76051E003A8DFA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A60B32A72D76051E003A8DFA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A60B32A62D76051E003A8DFA /* ummessage.framework */,
+				A60B32B02D76051E003A8DFA /* ummessageTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A60B32E92D760986003A8DFA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A60B32ED2D7609CD003A8DFA /* ulibasn1.framework */,
+				A60B32EA2D7609A3003A8DFA /* ulib.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		A68863AE2D761E980079C9A5 /* ummessage */ = {
+			isa = PBXGroup;
+			children = (
+				A68863A52D761E980079C9A5 /* UMDirtyObject.h */,
+				A68863A62D761E980079C9A5 /* UMDirtyObject.m */,
+				A68863A32D761E980079C9A5 /* UMDirtyInteger.h */,
+				A68863A42D761E980079C9A5 /* UMDirtyInteger.m */,
+				A68863A12D761E980079C9A5 /* UMDirtyDate.h */,
+				A68863A22D761E980079C9A5 /* UMDirtyDate.m */,
+				A68863A72D761E980079C9A5 /* UMDirtyString.h */,
+				A68863A82D761E980079C9A5 /* UMDirtyString.m */,
+				A68863CC2D761EB20079C9A5 /* UMDirtyData.h */,
+				A68863CD2D761EB20079C9A5 /* UMDirtyData.m */,
+				A68863D02D761EBD0079C9A5 /* UMDirtyReal.h */,
+				A68863D12D761EBD0079C9A5 /* UMDirtyReal.m */,
+				A68863912D761E980079C9A5 /* Config_macroAppendConfig.h */,
+				A68863922D761E980079C9A5 /* Config_macroAppendDict.h */,
+				A68863932D761E980079C9A5 /* Config_macroClear.h */,
+				A68863942D761E980079C9A5 /* Config_macroCopy.h */,
+				A68863952D761E980079C9A5 /* Config_macroDbFieldNames.h */,
+				A68863962D761E980079C9A5 /* Config_macroDbInsertNames.h */,
+				A68863972D761E980079C9A5 /* Config_macroDbInsertValues.h */,
+				A68863982D761E980079C9A5 /* Config_macroDbTableDef.h */,
+				A68863992D761E980079C9A5 /* Config_macroObjectValue.h */,
+				A688639A2D761E980079C9A5 /* Config_macroProcessAfterDecodeWithContext.h */,
+				A688639B2D761E980079C9A5 /* Config_macroProcessBeforeEncode.h */,
+				A688639C2D761E980079C9A5 /* Config_macroProperties.h */,
+				A688639D2D761E980079C9A5 /* Config_macroSetConfigFromDict.h */,
+				A688639E2D761E980079C9A5 /* Config_macroSetFromDbData.h */,
+				A688639F2D761E980079C9A5 /* Config_macroSetFromDbString.h */,
+				A68863A02D761E980079C9A5 /* Config_macroVariables.h */,
+				A68863A92D761E980079C9A5 /* ummessage.docc */,
+				A68863AA2D761E980079C9A5 /* UMMessage.h */,
+				A68863AB2D761E980079C9A5 /* UMMessage.m */,
+				A68863AC2D761E980079C9A5 /* UMMessage.def.h */,
+				A68863AD2D761E980079C9A5 /* UMMessageFields.h */,
+			);
+			path = ummessage;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		A60B32A12D76051E003A8DFA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A68863B52D761E980079C9A5 /* Config_macroAppendConfig.h in Headers */,
+				A68863B62D761E980079C9A5 /* Config_macroAppendDict.h in Headers */,
+				A68863B72D761E980079C9A5 /* Config_macroClear.h in Headers */,
+				A68863CF2D761EB20079C9A5 /* UMDirtyData.h in Headers */,
+				A68863B82D761E980079C9A5 /* Config_macroCopy.h in Headers */,
+				A68863B92D761E980079C9A5 /* Config_macroDbFieldNames.h in Headers */,
+				A68863BA2D761E980079C9A5 /* Config_macroDbInsertNames.h in Headers */,
+				A68863BB2D761E980079C9A5 /* Config_macroDbInsertValues.h in Headers */,
+				A68863BC2D761E980079C9A5 /* Config_macroDbTableDef.h in Headers */,
+				A68863BD2D761E980079C9A5 /* Config_macroObjectValue.h in Headers */,
+				A68863BE2D761E980079C9A5 /* Config_macroProcessAfterDecodeWithContext.h in Headers */,
+				A68863BF2D761E980079C9A5 /* Config_macroProcessBeforeEncode.h in Headers */,
+				A68863C02D761E980079C9A5 /* Config_macroProperties.h in Headers */,
+				A68863C12D761E980079C9A5 /* Config_macroSetConfigFromDict.h in Headers */,
+				A68863C22D761E980079C9A5 /* Config_macroSetFromDbData.h in Headers */,
+				A68863C32D761E980079C9A5 /* Config_macroSetFromDbString.h in Headers */,
+				A68863D32D761EBD0079C9A5 /* UMDirtyReal.h in Headers */,
+				A68863C42D761E980079C9A5 /* Config_macroVariables.h in Headers */,
+				A68863C52D761E980079C9A5 /* UMDirtyDate.h in Headers */,
+				A68863C62D761E980079C9A5 /* UMDirtyInteger.h in Headers */,
+				A68863C72D761E980079C9A5 /* UMDirtyObject.h in Headers */,
+				A68863C82D761E980079C9A5 /* UMDirtyString.h in Headers */,
+				A68863C92D761E980079C9A5 /* UMMessage.h in Headers */,
+				A68863CA2D761E980079C9A5 /* UMMessage.def.h in Headers */,
+				A68863CB2D761E980079C9A5 /* UMMessageFields.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		A60B32A52D76051E003A8DFA /* ummessage */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A60B32B92D76051E003A8DFA /* Build configuration list for PBXNativeTarget "ummessage" */;
+			buildPhases = (
+				A60B32A12D76051E003A8DFA /* Headers */,
+				A60B32A22D76051E003A8DFA /* Sources */,
+				A60B32A32D76051E003A8DFA /* Frameworks */,
+				A60B32A42D76051E003A8DFA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ummessage;
+			packageProductDependencies = (
+			);
+			productName = ummessage;
+			productReference = A60B32A62D76051E003A8DFA /* ummessage.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A60B32AF2D76051E003A8DFA /* ummessageTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A60B32BE2D76051E003A8DFA /* Build configuration list for PBXNativeTarget "ummessageTests" */;
+			buildPhases = (
+				A60B32AC2D76051E003A8DFA /* Sources */,
+				A60B32AD2D76051E003A8DFA /* Frameworks */,
+				A60B32AE2D76051E003A8DFA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A60B32B32D76051E003A8DFA /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				A60B32B42D76051E003A8DFA /* ummessageTests */,
+			);
+			name = ummessageTests;
+			packageProductDependencies = (
+			);
+			productName = ummessageTests;
+			productReference = A60B32B02D76051E003A8DFA /* ummessageTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A60B329D2D76051E003A8DFA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
+				TargetAttributes = {
+					A60B32A52D76051E003A8DFA = {
+						CreatedOnToolsVersion = 16.2;
+						LastSwiftMigration = 1620;
+					};
+					A60B32AF2D76051E003A8DFA = {
+						CreatedOnToolsVersion = 16.2;
+					};
+				};
+			};
+			buildConfigurationList = A60B32A02D76051E003A8DFA /* Build configuration list for PBXProject "ummessage" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A60B329C2D76051E003A8DFA;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = A60B32A72D76051E003A8DFA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A60B32A52D76051E003A8DFA /* ummessage */,
+				A60B32AF2D76051E003A8DFA /* ummessageTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A60B32A42D76051E003A8DFA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A60B32AE2D76051E003A8DFA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A60B32A22D76051E003A8DFA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A68863AF2D761E980079C9A5 /* UMDirtyDate.m in Sources */,
+				A68863B02D761E980079C9A5 /* UMDirtyInteger.m in Sources */,
+				A68863D22D761EBD0079C9A5 /* UMDirtyReal.m in Sources */,
+				A68863B12D761E980079C9A5 /* UMDirtyObject.m in Sources */,
+				A68863B22D761E980079C9A5 /* UMDirtyString.m in Sources */,
+				A68863B32D761E980079C9A5 /* ummessage.docc in Sources */,
+				A68863B42D761E980079C9A5 /* UMMessage.m in Sources */,
+				A68863CE2D761EB20079C9A5 /* UMDirtyData.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A60B32AC2D76051E003A8DFA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A60B32B32D76051E003A8DFA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A60B32A52D76051E003A8DFA /* ummessage */;
+			targetProxy = A60B32B22D76051E003A8DFA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A60B32BA2D76051E003A8DFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = HG8655K94F;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
+					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fink-telecom.ummessage";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Debug;
+		};
+		A60B32BB2D76051E003A8DFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = HG8655K94F;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
+					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fink-telecom.ummessage";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Release;
+		};
+		A60B32BC2D76051E003A8DFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A60B32BD2D76051E003A8DFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A60B32BF2D76051E003A8DFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HG8655K94F;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
+					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fink-telecom.ummessageTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Debug;
+		};
+		A60B32C02D76051E003A8DFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HG8655K94F;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
+					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fink-telecom.ummessageTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A60B32A02D76051E003A8DFA /* Build configuration list for PBXProject "ummessage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A60B32BC2D76051E003A8DFA /* Debug */,
+				A60B32BD2D76051E003A8DFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A60B32B92D76051E003A8DFA /* Build configuration list for PBXNativeTarget "ummessage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A60B32BA2D76051E003A8DFA /* Debug */,
+				A60B32BB2D76051E003A8DFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A60B32BE2D76051E003A8DFA /* Build configuration list for PBXNativeTarget "ummessageTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A60B32BF2D76051E003A8DFA /* Debug */,
+				A60B32C02D76051E003A8DFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A60B329D2D76051E003A8DFA /* Project object */;
+}
