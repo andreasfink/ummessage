@@ -14,8 +14,6 @@
 		A60B32EF2D7609CD003A8DFA /* ulibasn1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60B32ED2D7609CD003A8DFA /* ulibasn1.framework */; };
 		A68863B32D761E980079C9A5 /* ummessage.docc in Sources */ = {isa = PBXBuildFile; fileRef = A68863A92D761E980079C9A5 /* ummessage.docc */; };
 		A68863B42D761E980079C9A5 /* UMMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A68863AB2D761E980079C9A5 /* UMMessage.m */; };
-		A68863B52D761E980079C9A5 /* Config_macroAppendConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863912D761E980079C9A5 /* Config_macroAppendConfig.h */; };
-		A68863B62D761E980079C9A5 /* Config_macroAppendDict.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863922D761E980079C9A5 /* Config_macroAppendDict.h */; };
 		A68863B72D761E980079C9A5 /* Config_macroClear.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863932D761E980079C9A5 /* Config_macroClear.h */; };
 		A68863B82D761E980079C9A5 /* Config_macroCopy.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863942D761E980079C9A5 /* Config_macroCopy.h */; };
 		A68863B92D761E980079C9A5 /* Config_macroDbFieldNames.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863952D761E980079C9A5 /* Config_macroDbFieldNames.h */; };
@@ -50,8 +48,6 @@
 		A60B32B02D76051E003A8DFA /* ummessageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ummessageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A60B32EA2D7609A3003A8DFA /* ulib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulib.framework; path = "/Library/Application Support/FinkTelecomServices/frameworks/ulib.framework"; sourceTree = "<absolute>"; };
 		A60B32ED2D7609CD003A8DFA /* ulibasn1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulibasn1.framework; path = "/Library/Application Support/FinkTelecomServices/frameworks/ulibasn1.framework"; sourceTree = "<absolute>"; };
-		A68863912D761E980079C9A5 /* Config_macroAppendConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config_macroAppendConfig.h; sourceTree = "<group>"; };
-		A68863922D761E980079C9A5 /* Config_macroAppendDict.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config_macroAppendDict.h; sourceTree = "<group>"; };
 		A68863932D761E980079C9A5 /* Config_macroClear.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config_macroClear.h; sourceTree = "<group>"; };
 		A68863942D761E980079C9A5 /* Config_macroCopy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config_macroCopy.h; sourceTree = "<group>"; };
 		A68863952D761E980079C9A5 /* Config_macroDbFieldNames.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config_macroDbFieldNames.h; sourceTree = "<group>"; };
@@ -135,8 +131,6 @@
 		A68863AE2D761E980079C9A5 /* ummessage */ = {
 			isa = PBXGroup;
 			children = (
-				A68863912D761E980079C9A5 /* Config_macroAppendConfig.h */,
-				A68863922D761E980079C9A5 /* Config_macroAppendDict.h */,
 				A68863932D761E980079C9A5 /* Config_macroClear.h */,
 				A68863942D761E980079C9A5 /* Config_macroCopy.h */,
 				A68863952D761E980079C9A5 /* Config_macroDbFieldNames.h */,
@@ -167,8 +161,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A68863B52D761E980079C9A5 /* Config_macroAppendConfig.h in Headers */,
-				A68863B62D761E980079C9A5 /* Config_macroAppendDict.h in Headers */,
 				A68863B72D761E980079C9A5 /* Config_macroClear.h in Headers */,
 				A68863B82D761E980079C9A5 /* Config_macroCopy.h in Headers */,
 				A68863B92D761E980079C9A5 /* Config_macroDbFieldNames.h in Headers */,
