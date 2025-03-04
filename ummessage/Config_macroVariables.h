@@ -17,8 +17,8 @@
 #define ARRAY_VERBOSE(o,len,tag,dictname,var,accessor,dbname,options)     NSArray<NSString *> *var;
 #define HEXDATA(o,len,tag,dictname,var,accessor,dbname,options)           NSData *var;
 
-#import <ulib/UMIntegerWithHistory.h>
-#import <ulib/UMStringWithHistory.h>
-#import <ulib/UMDoubleWithHistory.h>
-#import <ulib/UMDateWithHistory.h>
-#import <ulib/UMDataWithHistory.h>
+#import "UMDirtyInteger.h"
+#import "UMDirtyDouble.h"
+#import "UMDirtyString.h"
+#import "UMDirtyDate.h"
+#import "UMDirtyData.h"
