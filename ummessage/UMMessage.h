@@ -12,14 +12,14 @@
 @interface UMMessage : UMASN1Sequence
 {
 
-#include "Config_macroVariables.h"
+#include "UMMessage_macroVariables.h"
 #include "UMMessage.def.h"
-#include "Config_macroClear.h"
+#include "UMMessage_macroClear.h"
 
 }
 
-#include "Config_macroProperties.h"
+#include "UMMessage_macroProperties.h"
 #include "UMMessage.def.h"
-#include "Config_macroClear.h"
+#include "UMMessage_macroClear.h"
 
 @end

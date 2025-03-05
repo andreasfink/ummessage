@@ -1,29 +1,52 @@
 //
-//  Config_macroProcessAfterDecodeWithContext.h
-//  smpp-multipart-join
+//  UMMessage_macroProcessAfterDecodeWithContext.h
+//  ummessage
 //
-//  Created by Andreas Fink on 29.01.2025.
+//  Created by Andreas Fink on 05.03.2025.
 //
 
-#define STRING(o,len,tag,dictname,field,accessor,dbname,options)                                \
+
+#define BOOLEAN(o,len,tag,dictname,field,accessor,dbname,options)                               \
 case tag:                                                                                       \
 {                                                                                               \
-    UMASN1UTF8String *u = [[UMASN1UTF8String alloc]initWithASN1Object:o context:context];       \
-    field = u.stringValue;                                                                      \
+    UMASN1Integer *i = [[UMASN1Integer alloc]initWithASN1Object:o context:context];             \
+    field = [[UMDirtyBoolean alloc]initWithNumber:i.number];                                    \
+}
+
+#define DOUBLE(o,len,tag,dictname,field,accessor,dbname,options)                                \
+case tag:                                                                                       \
+{                                                                                               \
+    UMASN1Real *r = [[UMASN1Real alloc]initWithASN1Object:o context:context];                   \
+    field = [[UMDirtyDouble alloc]initWithNumber:r.number];                                     \
 }
 
 #define INTEGER(o,len,tag,dictname,field,accessor,dbname,options)                               \
 case tag:                                                                                       \
 {                                                                                               \
     UMASN1Integer *i = [[UMASN1Integer alloc]initWithASN1Object:o context:context];             \
-    field = i.number;                                                                           \
+    field = [[UMDirtyInteger alloc]initWithNumber:i.number];                                    \
 }
 
-#define DATE(o,len,tag,dictname,field,accessor,dbname,options)                                   \
+#define STRING(o,len,tag,dictname,field,accessor,dbname,options)                                \
+case tag:                                                                                       \
+{                                                                                               \
+    UMASN1UTF8String *u = [[UMASN1UTF8String alloc]initWithASN1Object:o context:context];       \
+    field = [[UMDirtyString alloc]initWithString:u.stringValue];                                \
+}
+
+#define TEXT(o,len,tag,dictname,field,accessor,dbname,options)                                  \
+case tag:                                                                                       \
+{                                                                                               \
+    UMASN1UTF8String *u = [[UMASN1UTF8String alloc]initWithASN1Object:o context:context];       \
+    field = [[UMDirtyString alloc]initWithString:u.stringValue];                                \
+}
+
+
+#define DATE(o,len,tag,dictname,field,accessor,dbname,options)                                  \
 case tag:                                                                                       \
 {                                                                                               \
     UMASN1UTF8String *s = [[UMASN1UTF8String alloc]initWithASN1Object:o context:context];       \
-    field = s.value.dateValue;                                                                  \
+    field = [[UMDirtyDate alloc]initWithDate:s.value.dateValue];                                \
 }
 
 
@@ -31,20 +54,7 @@ case tag:                                                                       
 case tag:                                                                                       \
 {                                                                                               \
     UMASN1OctetString *d = [[UMASN1OctetString alloc]initWithASN1Object:o context:context];     \
-    field = d.value;                                                                            \
+    field = [[UMDirtyData alloc]initWithData:d.value];                                          \
 }
 
 
-#define TEXT(o,len,tag,dictname,field,accessor,dbname,options)                                  \
-case tag:                                                                                       \
-{                                                                                               \
-    UMASN1UTF8String *u = [[UMASN1UTF8String alloc]initWithASN1Object:o context:context];       \
-    field = u.stringValue;                                                                      \
-}
-
-#define DOUBLE(o,len,tag,dictname,field,accessor,dbname,options)                                \
-case tag:                                                                                       \
-{                                                                                               \
-    UMASN1Real *r = [[UMASN1Real alloc]initWithASN1Object:o context:context];                   \
-    field = r.number;                                                                           \
-}

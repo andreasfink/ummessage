@@ -1,14 +1,16 @@
 //
-//  Config_macroSetFromString.h
-//  smpp-multipart-join
+//  UMMessage_macroSetFromString.h
+//  ummessage
 //
-//  Created by Andreas Fink on 29.01.2025.
+//  Created by Andreas Fink on 05.03.2025.
 //
 
 
-#define STRING(o,tag,len,dictname,var,accessor,dbname,options)     if((o) && ([fieldName isEqualToString:@(dbname)])) { o.accessor = str;                               }
-#define INTEGER(o,tag,len,dictname,var,accessor,dbname,options)    if((o) && ([fieldName isEqualToString:@(dbname)])) { o.accessor = @(str.integerValue);               }
-#define BOOLEAN(o,tag,len,dictname,var,accessor,dbname,options)    if((o) && ([fieldName isEqualToString:@(dbname)])) { o.accessor = [ConfigObject boolFromString:str]; }
-#define TEXT(o,tag,len,dictname,var,accessor,dbname,options)       if((o) && ([fieldName isEqualToString:@(dbname)])) { o.accessor = str;                               }
-#define DOUBLE(o,tag,len,dictname,var,accessor,dbname,options)     if((o) && ([fieldName isEqualToString:@(dbname)])) { o.accessor = @(str.doubleValue);                }
-#define DATA(o,tag,len,dictname,var,accessor,dbname,options)       ;
+#define BOOLEAN(o,tag,len,dictname,var,accessor,dbname,options)    if((o) && ([fieldName isEqualToString:@(dbname)])) { o.accessor = [[UMDirtyBoolean alloc]initWithString:str]]; }
+#define DOUBLE(o,tag,len,dictname,var,accessor,dbname,options)     if((o) && ([fieldName isEqualToString:@(dbname)])) { o.accessor = [[UMDirtyDouble  alloc]initWithString:str]]; }
+#define INTEGER(o,tag,len,dictname,var,accessor,dbname,options)    if((o) && ([fieldName isEqualToString:@(dbname)])) { o.accessor = [[UMDirtyInteger alloc]initWithString:str]]; }
+#define STRING(o,tag,len,dictname,var,accessor,dbname,options)     if((o) && ([fieldName isEqualToString:@(dbname)])) { o.accessor = [[UMDirtyStrig   alloc]initWithString:str]]; }
+#define DATE(o,tag,len,dictname,var,accessor,dbname,options)       if((o) && ([fieldName isEqualToString:@(dbname)])) { o.accessor = [[UMDirtyDate    alloc]initWithString:str]]; }
+/* binary data objects are set with UMMessage_macroSetFromDbData instead but if its stored as hex string, thats where it goes */
+#define DATA(o,tag,len,dictname,var,accessor,dbname,options)       if((o) && ([fieldName isEqualToString:@(dbname)])) { o.accessor = [[UMDirtyData    alloc]initWithString:str]]; }
+

@@ -1,42 +1,17 @@
 //
-//  Config_macroObjectValue.h
-//  smpp-multipart-join
+//  UMMessage_macroObjectValue.h
+//  ummessage
 //
-//  Created by Andreas Fink on 29.01.2025.
+//  Created by Andreas Fink on 05.03.2025.
 //
 
-#define STRING(o,len,tag,dictname,field,accessor,dbname,options)                                \
-if(field)                                                                                       \
-{                                                                                               \
-    o[@dbname] = field;                                                                         \
-}
-    
-#define INTEGER(o,len,tag,dictname,field,accessor,dbname,options)                               \
-if(field)                                                                                       \
-{                                                                                               \
-    o[@dbname] = field;                                                                         \
-}
 
-    
-    
-#define DATE(o,len,tag,dictname,field,accessor,dbname,options)                                  \
-if(field)                                                                                       \
-{                                                                                               \
-    o[@dbname] = field;                                                                         \
-}
 
-    
-#define DATA(o,len,tag,dictname,field,accessor,dbname,options)                                  \
+
+#define BOOLEAN(o,len,tag,dictname,field,accessor,dbname,options)                               \
 if(field)                                                                                       \
 {                                                                                               \
-    o[@dbname] = field;                                                                         \
-}
-    
-    
-#define TEXT(o,len,tag,dictname,field,accessor,dbname,options)                                  \
-if(field)                                                                                       \
-{                                                                                               \
-    o[@dbname] = field;                                                                         \
+    o[@dbname] = field.currentValue;                                                            \
 }
 
 #define DOUBLE(o,len,tag,dictname,field,accessor,dbname,options)                                \
@@ -44,3 +19,38 @@ if(field)                                                                       
 {                                                                                               \
     o[@dbname] = field;                                                                         \
 }
+
+#define INTEGER(o,len,tag,dictname,field,accessor,dbname,options)                               \
+if(field)                                                                                       \
+{                                                                                               \
+    o[@dbname] = field.currentValue;                                                            \
+}
+
+
+#define STRING(o,len,tag,dictname,field,accessor,dbname,options)                                \
+if(field)                                                                                       \
+{                                                                                               \
+    o[@dbname] = field.currentValue;                                                            \
+}
+
+#define TEXT(o,len,tag,dictname,field,accessor,dbname,options)                                  \
+if(field)                                                                                       \
+{                                                                                               \
+    o[@dbname] = field.currentValue;                                                            \
+}
+
+
+#define DATE(o,len,tag,dictname,field,accessor,dbname,options)                                  \
+if(field)                                                                                       \
+{                                                                                               \
+    o[@dbname] = field.currentValue;                                                            \
+}
+
+    
+#define DATA(o,len,tag,dictname,field,accessor,dbname,options)                                  \
+if(field)                                                                                       \
+{                                                                                               \
+    o[@dbname] = field.currentValue;                                                            \
+}
+    
+    
