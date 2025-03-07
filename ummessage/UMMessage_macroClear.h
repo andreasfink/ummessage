@@ -5,7 +5,6 @@
 //  Created by Andreas Fink on 05.03.2025.
 //
 
-
 #undef BOOLEAN
 #undef DOUBLE
 #undef INTEGER

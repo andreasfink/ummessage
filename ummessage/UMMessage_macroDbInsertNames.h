@@ -6,6 +6,7 @@
 //
 
 
+
 #define BOOLEAN(o,len,tag,dictname,var,accessor,dbname,options) [o addObject:@(dbname)];
 #define DOUBLE(o,len,tag,dictname,var,accessor,dbname,options)  [o addObject:@(dbname)];
 #define INTEGER(o,len,tag,dictname,var,accessor,dbname,options) [o addObject:@(dbname)];

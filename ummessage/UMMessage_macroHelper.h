@@ -7,10 +7,10 @@
 
 #import <ulib/ulib.h>
 
-void addFieldDefBoolean(id o,int len,const char *dbname,const char *options);
-void addFieldDefDouble(id o,int len,const char *dbname,const char *options);
-void addFieldDefInteger(id o,int len,const char *dbname,const char *options);
-void addFieldDefString(id o,int len,const char *dbname,const char *options);
-void addFieldDefText(id o,int len,const char *dbname,const char *options);
-void addFieldDefDate(id o,int len,const char *dbname,const char *options);
-void addFieldDefData(id o,int len,const char *dbname,const char *options);
+void addFieldDefBoolean(UMSynchronizedSortedDictionary *o,int len,const char *dbname,const char *options);
+void addFieldDefDouble(UMSynchronizedSortedDictionary  *o,int len,const char *dbname,const char *options);
+void addFieldDefInteger(UMSynchronizedSortedDictionary *o,int len,const char *dbname,const char *options);
+void addFieldDefString(UMSynchronizedSortedDictionary  *o,int len,const char *dbname,const char *options);
+void addFieldDefText(UMSynchronizedSortedDictionary    *o,int len,const char *dbname,const char *options);
+void addFieldDefDate(UMSynchronizedSortedDictionary    *o,int len,const char *dbname,const char *options);
+void addFieldDefData(UMSynchronizedSortedDictionary    *o,int len,const char *dbname,const char *options);

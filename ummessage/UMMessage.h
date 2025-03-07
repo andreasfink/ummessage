@@ -9,9 +9,12 @@
 
 #import <ulibasn1/ulibasn1.h>
 
+/// An object to hold a short message for use in SMS. This can be a long (multipart), concaenated message or a individual message part.
+/// Can be used in SMPP or SS7
+
+
 @interface UMMessage : UMASN1Sequence
 {
-
 #include "UMMessage_macroVariables.h"
 #include "UMMessage.def.h"
 #include "UMMessage_macroClear.h"

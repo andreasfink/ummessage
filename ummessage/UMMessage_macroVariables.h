@@ -5,8 +5,6 @@
 //  Created by Andreas Fink on 05.03.2025.
 //
 
-
-
 #define BOOLEAN(o,len,tag,dictname,var,accessor,dbname,options)           UMDirtyBoolean    *var;
 #define DOUBLE(o,len,tag,dictname,var,accessor,dbname,options)            UMDirtyDouble     *var;
 #define INTEGER(o,len,tag,dictname,var,accessor,dbname,options)           UMDirtyInteger    *var;
