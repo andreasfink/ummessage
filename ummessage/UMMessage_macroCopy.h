@@ -13,3 +13,4 @@
 #define TEXT(o,len,tag,dictname,field,accessor,dbname,options)       o.accessor = [field copy];
 #define DATE(o,len,tag,dictname,field,accessor,dbname,options)       o.accessor = [field copy];
 #define DATA(o,len,tag,dictname,field,accessor,dbname,options)       o.accessor = [field copy];
+#define BINARY(o,len,tag,dictname,field,accessor,dbname,options)       o.accessor = [field copy];

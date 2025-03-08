@@ -12,5 +12,6 @@
 #undef TEXT
 #undef DATE
 #undef DATA
+#undef BINARY
 
 

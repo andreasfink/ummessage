@@ -15,3 +15,4 @@
 #define TEXT(o,len,tag,dictname,field,accessor,dbname,options)    { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",field ? [session sqlEscapeString:field.stringValue] : @""]; }
 #define DATE(o,len,tag,dictname,field,accessor,dbname,options)    { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",field ? [session sqlEscapeString:field.stringValue] : @""]; }
 #define DATA(o,len,tag,dictname,field,accessor,dbname,options)    { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",field ? [session sqlEscapeString:field.stringValue] : @""]; }
+#define BINARY(o,len,tag,dictname,field,accessor,dbname,options)    { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",field ? [session sqlEscapeString:field.dataValue] : @""]; }

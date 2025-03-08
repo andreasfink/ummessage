@@ -12,4 +12,5 @@
 #define TEXT(o,len,tag,dictname,var,accessor,dbname,options)             @property(readwrite,strong,atomic) UMDirtyString   *accessor;
 #define DATE(o,len,tag,dictname,var,accessor,dbname,options)             @property(readwrite,strong,atomic) UMDirtyDate     *accessor;
 #define DATA(o,len,tag,dictname,var,accessor,dbname,options)             @property(readwrite,strong,atomic) UMDirtyData     *accessor;
+#define BINARY(o,len,tag,dictname,var,accessor,dbname,options)             @property(readwrite,strong,atomic) UMDirtyData     *accessor;
 

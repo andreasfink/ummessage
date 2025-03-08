@@ -12,4 +12,5 @@
 #define TEXT(o,len,tag,dictname,var,accessor,dbname,options)              UMDirtyString     *var;
 #define DATE(o,len,tag,dictname,var,accessor,dbname,options)              UMDirtyDate       *var;
 #define DATA(o,len,tag,dictname,var,accessor,dbname,options)              UMDirtyData       *var;
+#define BINARY(o,len,tag,dictname,var,accessor,dbname,options)            UMDirtyData       *var;
 

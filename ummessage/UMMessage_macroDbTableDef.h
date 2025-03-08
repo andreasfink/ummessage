@@ -15,3 +15,4 @@
 #define TEXT(o,len,tag,dictname,var,accessor,dbname,options)    addFieldDefText(o,len,dbname,options);
 #define DATE(o,len,tag,dictname,var,accessor,dbname,options)    addFieldDefDate(o,len,dbname,options);
 #define DATA(o,len,tag,dictname,var,accessor,dbname,options)    addFieldDefData(o,len,dbname,options);
+#define BINARY(o,len,tag,dictname,var,accessor,dbname,options)  addFieldDefBinary(o,len,dbname,options);

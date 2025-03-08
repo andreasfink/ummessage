@@ -25,4 +25,6 @@
 #include "UMMessage.def.h"
 #include "UMMessage_macroClear.h"
 
++ (NSString *)uniqueMessageIdWithPrefix:(NSString *)pfx;
+
 @end

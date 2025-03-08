@@ -14,3 +14,4 @@
 #define TEXT(o,len,tag,dictname,var,accessor,dbname,options)    [o addObject:@(dbname)];
 #define DATE(o,len,tag,dictname,var,accessor,dbname,options)    [o addObject:@(dbname)];
 #define DATA(o,len,tag,dictname,var,accessor,dbname,options)    [o addObject:@(dbname)];
+#define BINARY(o,len,tag,dictname,var,accessor,dbname,options)  [o addObject:@(dbname)];

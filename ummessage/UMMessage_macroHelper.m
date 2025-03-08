@@ -42,6 +42,14 @@ UMSynchronizedSortedDictionary * dbFieldWithOptions( NSString *type,int len, con
     return e;
 }
 
+void addFieldDefBoolean(UMSynchronizedSortedDictionary *o,int len,const char *dbname,const char *options)
+{
+    NSString *type;
+    type = @"smallint";
+    UMSynchronizedSortedDictionary *e = dbFieldWithOptions(type,len,dbname,options);
+    o[@(dbname)] = e;
+}
+
 void addFieldDefString(UMSynchronizedSortedDictionary *o,int len, const char *dbname,const char *options)
 {
     NSString *type  = [NSString stringWithFormat:@"varchar(%d)",len];
@@ -77,6 +85,12 @@ void addFieldDefDate(UMSynchronizedSortedDictionary *o,int len, const char *dbna
 
 void addFieldDefData(UMSynchronizedSortedDictionary *o,int len, const char *dbname,const char *options)
 {
+    UMSynchronizedSortedDictionary *e = dbFieldWithOptions(@"text",len,dbname,options);
+    o[@(dbname)] = e;
+}
+
+void addFieldDefBinary(UMSynchronizedSortedDictionary *o,int len, const char *dbname,const char *options)
+{
     UMSynchronizedSortedDictionary *e = dbFieldWithOptions(@"blob",len,dbname,options);
     o[@(dbname)] = e;
 }
@@ -100,7 +114,6 @@ void addFieldDefDouble(UMSynchronizedSortedDictionary *o,int len, const char *db
     UMSynchronizedSortedDictionary *e = dbFieldWithOptions(@"real(16,8)",len,dbname,options);
     o[@(dbname)] = e;
 }
-
 
 NSString *fieldDefsToSql(UMSynchronizedSortedDictionary *o, NSString *dbTableName)
 {

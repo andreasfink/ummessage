@@ -10,10 +10,203 @@
 #import <ulib/ulib.h>
 #import <ulibdb/ulibdb.h>
 
+#import "UMMessage_macroHelper.h"
+
 #define     MAXADDRLEN      18
 
+static      struct tm    last_msgid_time_trec;
+static      int          last_msgid_serial = 0;
+static      UMMutex      *g_messageIdLock = NULL;
 
 @implementation UMMessage
 
+- (UMMessage *)init
+{
+    self = [super init];
+    if(self)
+    {
+    }
+    return self;
+}
+
++ (NSString *)uniqueMessageIdWithPrefix:(NSString *)prefix
+{
+    int           this_msgid_serial;
+    time_t        this_msgid_time_t;
+    struct tm     this_msgid_time_trec;
+    
+    if(g_messageIdLock==NULL)
+    {
+        g_messageIdLock = [[UMMutex alloc]initWithName:@"messageIdLock"];
+    }
+    ummutex_lock(g_messageIdLock);
+    time(&this_msgid_time_t);
+    gmtime_r(&this_msgid_time_t, &this_msgid_time_trec);
+    
+    this_msgid_time_trec.tm_mon++;
+    if(      (this_msgid_time_trec.tm_year  == last_msgid_time_trec.tm_year)
+       &&    (this_msgid_time_trec.tm_mon   == last_msgid_time_trec.tm_mon)
+       &&    (this_msgid_time_trec.tm_mday  == last_msgid_time_trec.tm_mday)
+       &&    (this_msgid_time_trec.tm_hour  == last_msgid_time_trec.tm_hour)
+       &&    (this_msgid_time_trec.tm_min   == last_msgid_time_trec.tm_min)
+       &&    (this_msgid_time_trec.tm_sec   == last_msgid_time_trec.tm_sec))
+    {
+        last_msgid_serial = last_msgid_serial + 1;
+        if(last_msgid_serial > 9990)
+        {
+            usleep(1.1);
+        }
+        this_msgid_serial = last_msgid_serial;
+    }
+    else
+    {
+        this_msgid_serial = last_msgid_serial = 1;
+    }
+    NSString *s = [NSString stringWithFormat:@"%@%04d%02d%02d%02d%02d%02d%04d",
+                   prefix,
+                   this_msgid_time_trec.tm_year+1900 - 2000,
+                   this_msgid_time_trec.tm_mon,
+                   this_msgid_time_trec.tm_mday,
+                   this_msgid_time_trec.tm_hour,
+                   this_msgid_time_trec.tm_min,
+                   this_msgid_time_trec.tm_sec,
+                   this_msgid_serial];
+    last_msgid_time_trec    = this_msgid_time_trec;
+    last_msgid_serial       = this_msgid_serial;
+    ummutex_unlock(g_messageIdLock);
+    return s;
+}
+
+
+
++(NSString *)sqlTableDefForTableName:(NSString *)tableName
+{
+    UMSynchronizedSortedDictionary *o = [[UMSynchronizedSortedDictionary alloc]init];
+
+#include "UMMessage_macroDbTableDef.h"
+#include "UMMessage.def.h"
+#include "UMMessage_macroClear.h"
+        return fieldDefsToSql(o,tableName);
+}
+
++(NSArray<NSString *>*)dbFieldNames
+{
+    NSMutableArray *o = [[NSMutableArray alloc]init];
+#include "UMMessage_macroDbFieldNames.h"
+#include "UMMessage.def.h"
+#include "UMMessage_macroClear.h"
+    return o;
+}
+
+- (NSString *)insertOrUpdate:(NSString *)tableName session:(UMDbSession *)session
+{
+    NSMutableString *o = [[NSMutableString alloc]init];
+    [o appendFormat:@"INSERT INTO `%@` (",tableName];
+    int i=0;
+
+#define STRING(o,len,tag,dictname,field,accessor,dbname,options)  if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"`%s`",dbname]; };
+#define INTEGER(o,len,tag,dictname,field,accessor,dbname,options) if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"`%s`",dbname]; };
+#define DATE(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"`%s`",dbname]; };
+#define DATA(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"`%s`",dbname]; };
+#define TEXT(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"`%s`",dbname]; };
+#define DOUBLE(o,len,tag,dictname,field,accessor,dbname,options)  if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"`%s`",dbname]; };
+
+#include "UMMessage.def.h"
+#include "UMMessage_macroClear.h"
+
+    
+    [o appendString:@") VALUES("];
+    i=0;
+#define STRING(o,len,tag,dictname,field,accessor,dbname,options)  if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",[session sqlEscapeString:field.stringValue]];};
+#define INTEGER(o,len,tag,dictname,field,accessor,dbname,options) if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",[session sqlEscapeString:field.stringValue]]; };
+#define DATE(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",[session sqlEscapeString:field.stringValue]]; };
+#define DATA(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",[session sqlEscapeString:field.stringValue]]; };
+#define TEXT(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",[session sqlEscapeString:field.stringValue]]; };
+#define DOUBLE(o,len,tag,dictname,field,accessor,dbname,options)  if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",[session sqlEscapeString:field.stringValue]]; };
+    
+#include "UMMessage.def.h"
+#include "UMMessage_macroClear.h"
+
+
+    [o appendString:@") ON DUPLICATE KEY UPDATE "];
+    i=0;
+#define STRING(o,len,tag,dictname,field,accessor,dbname,options)  if(field) { if(i++) { [o appendString:@","]; }[o appendFormat:@"`%s`=\"%@\"",dbname,[session sqlEscapeString:field.stringValue]]; };
+#define INTEGER(o,len,tag,dictname,field,accessor,dbname,options) if(field) { if(i++) { [o appendString:@","]; }[o appendFormat:@"`%s`=\"%@\"",dbname,[session sqlEscapeString:field.stringValue]]; };
+#define DATE(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; }[o appendFormat:@"`%s`=\"%@\"",dbname,[session sqlEscapeString:field.stringValue]]; };
+#define DATA(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; }[o appendFormat:@"`%s`=\"%@\"",dbname,[session sqlEscapeString:field.stringValue]]; };
+#define TEXT(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; }[o appendFormat:@"`%s`=\"%@\"",dbname,[session sqlEscapeString:field.stringValue]]; };
+#define DOUBLE(o,len,tag,dictname,field,accessor,dbname,options)  if(field) { if(i++) { [o appendString:@","]; }[o appendFormat:@"`%s`=\"%@\"",dbname,[session sqlEscapeString:field.stringValue]]; };
+#include "UMMessage.def.h"
+#include "UMMessage_macroClear.h"
+    return o;
+}
+   
+
++ (UMMessage *)messageFromDbResult:(UMDbResult *)dbResult
+{
+    UMMessage *o = [[UMMessage alloc]init];
+    [o loadFromDbResult:dbResult];
+    return o;
+}
+
+- (void)loadFromDbResult:(UMDbResult *)dbResult
+{
+    if(dbResult==NULL)
+    {
+        return;
+    }
+    if(dbResult.resultArray.count < 1)
+    {
+        return;
+    }
+    NSArray *values = dbResult.resultArray[0];
+    for(NSInteger i=0;i<dbResult.columNames.count;i++)
+    {
+        id field1 = values[i];
+        if([field1 isKindOfClass:[NSNull class]])
+        {
+            continue;
+        }
+        if([field1 isKindOfClass:[NSString class]])
+        {
+            NSString *str = (NSString *)field1;
+            NSLog(@"str=%@",str);
+#define STRING(o,len,tag,dictname,field,accessor,dbname,options)     if(str) { self.accessor = [[UMDirtyString alloc]initWithString:str];    }
+#define INTEGER(o,len,tag,dictname,field,accessor,dbname,options)    if(str) { self.accessor = [[UMDirtyInteger alloc]initWithString:str];   }
+#define DATE(o,len,tag,dictname,field,accessor,dbname,options)       if(str) { self.accessor = [[UMDirtyDate alloc]initWithString:str];      }
+#define DATA(o,len,tag,dictname,field,accessor,dbname,options)       if(str) { self.accessor = [[UMDirtyData alloc]initWithString:str];      }
+#define BINARY(o,len,tag,dictname,field,accessor,dbname,options)     { ; }
+#define TEXT(o,len,tag,dictname,field,accessor,dbname,options)       if(str) { self.accessor = [[UMDirtyString alloc]initWithString:str];    }
+#define DOUBLE(o,len,tag,dictname,field,accessor,dbname,options)     if(str) { self.accessor = [[UMDirtyDouble alloc]initWithString:str];    }
+#include "UMMessage.def.h"
+#include "UMMessage_macroClear.h"
+            continue;
+        }
+        if([field1 isKindOfClass:[NSData class]])
+        {
+            NSData *data = (NSData *)field1;
+            NSLog(@"data=%@",data);
+
+#define STRING(o,len,tag,dictname,f,accessor,dbname,options)         { ; }
+#define INTEGER(o,len,tag,dictname,f,accessor,dbname,options)        { ; }
+#define DATE(o,len,tag,dictname,field,accessor,dbname,options)       { ; }
+#define DATA(o,len,tag,dictname,field,accessor,dbname,options)       { ; }
+#define BINARY(o,len,tag,dictname,field,accessor,dbname,options)     if(data) { self.accessor  = [[UMDirtyData alloc]initWithData:data];      }
+#define TEXT(o,len,tag,dictname,field,accessor,dbname,options)       { ; }
+#define DOUBLE(o,len,tag,dictname,field,accessor,dbname,options)     { ; }
+#include "UMMessage.def.h"
+#include "UMMessage_macroClear.h"
+            continue;
+        }
+    }
+    return;
+}
+
+- (NSString *)description
+{
+    return [[self objectValue]jsonString];
+}
+
 @end
+
 

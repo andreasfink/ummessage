@@ -26,8 +26,6 @@
 		A68863BE2D761E980079C9A5 /* UMMessage_macroProcessAfterDecodeWithContext.h in Headers */ = {isa = PBXBuildFile; fileRef = A688639A2D761E980079C9A5 /* UMMessage_macroProcessAfterDecodeWithContext.h */; };
 		A68863BF2D761E980079C9A5 /* UMMessage_macroProcessBeforeEncode.h in Headers */ = {isa = PBXBuildFile; fileRef = A688639B2D761E980079C9A5 /* UMMessage_macroProcessBeforeEncode.h */; };
 		A68863C02D761E980079C9A5 /* UMMessage_macroProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = A688639C2D761E980079C9A5 /* UMMessage_macroProperties.h */; };
-		A68863C22D761E980079C9A5 /* UMMessage_macroSetFromDbData.h in Headers */ = {isa = PBXBuildFile; fileRef = A688639E2D761E980079C9A5 /* UMMessage_macroSetFromDbData.h */; };
-		A68863C32D761E980079C9A5 /* UMMessage_macroSetFromDbString.h in Headers */ = {isa = PBXBuildFile; fileRef = A688639F2D761E980079C9A5 /* UMMessage_macroSetFromDbString.h */; };
 		A68863C42D761E980079C9A5 /* UMMessage_macroVariables.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863A02D761E980079C9A5 /* UMMessage_macroVariables.h */; };
 		A68863C92D761E980079C9A5 /* UMMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863AA2D761E980079C9A5 /* UMMessage.h */; };
 		A68863CA2D761E980079C9A5 /* UMMessage.def.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863AC2D761E980079C9A5 /* UMMessage.def.h */; };
@@ -61,8 +59,6 @@
 		A688639A2D761E980079C9A5 /* UMMessage_macroProcessAfterDecodeWithContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessage_macroProcessAfterDecodeWithContext.h; sourceTree = "<group>"; };
 		A688639B2D761E980079C9A5 /* UMMessage_macroProcessBeforeEncode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessage_macroProcessBeforeEncode.h; sourceTree = "<group>"; };
 		A688639C2D761E980079C9A5 /* UMMessage_macroProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessage_macroProperties.h; sourceTree = "<group>"; };
-		A688639E2D761E980079C9A5 /* UMMessage_macroSetFromDbData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessage_macroSetFromDbData.h; sourceTree = "<group>"; };
-		A688639F2D761E980079C9A5 /* UMMessage_macroSetFromDbString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessage_macroSetFromDbString.h; sourceTree = "<group>"; };
 		A68863A02D761E980079C9A5 /* UMMessage_macroVariables.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessage_macroVariables.h; sourceTree = "<group>"; };
 		A68863A92D761E980079C9A5 /* ummessage.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = ummessage.docc; sourceTree = "<group>"; };
 		A68863AA2D761E980079C9A5 /* UMMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessage.h; sourceTree = "<group>"; };
@@ -144,8 +140,6 @@
 				A68863992D761E980079C9A5 /* UMMessage_macroObjectValue.h */,
 				A688639A2D761E980079C9A5 /* UMMessage_macroProcessAfterDecodeWithContext.h */,
 				A688639B2D761E980079C9A5 /* UMMessage_macroProcessBeforeEncode.h */,
-				A688639E2D761E980079C9A5 /* UMMessage_macroSetFromDbData.h */,
-				A688639F2D761E980079C9A5 /* UMMessage_macroSetFromDbString.h */,
 				A66F7DA12D7816AF00A83193 /* UMMessage_macroHelper.h */,
 				A66F7DA22D7816AF00A83193 /* UMMessage_macroHelper.m */,
 				A68863A92D761E980079C9A5 /* ummessage.docc */,
@@ -174,8 +168,6 @@
 				A68863BE2D761E980079C9A5 /* UMMessage_macroProcessAfterDecodeWithContext.h in Headers */,
 				A68863BF2D761E980079C9A5 /* UMMessage_macroProcessBeforeEncode.h in Headers */,
 				A68863C02D761E980079C9A5 /* UMMessage_macroProperties.h in Headers */,
-				A68863C22D761E980079C9A5 /* UMMessage_macroSetFromDbData.h in Headers */,
-				A68863C32D761E980079C9A5 /* UMMessage_macroSetFromDbString.h in Headers */,
 				A68863C42D761E980079C9A5 /* UMMessage_macroVariables.h in Headers */,
 				A68863C92D761E980079C9A5 /* UMMessage.h in Headers */,
 				A68863CA2D761E980079C9A5 /* UMMessage.def.h in Headers */,
