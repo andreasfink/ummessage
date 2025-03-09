@@ -10,5 +10,5 @@
 @class UMMessageServerCommand;
 
 @protocol UMessageCommandHandlerProtocol
-- (void) processCommand:(UMMessageServerCommand *)md fromSocket:(UMSocket *)s;
+- (void) processCommand:(UMMessageServerCommand *)md;
 @end

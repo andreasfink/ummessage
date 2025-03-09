@@ -13,12 +13,12 @@
 int main(int argc, const char * argv[])
 {
     int port = 9121;
-    const char *directory = "/var/lib/ummessage-server/data";
+    const char *rootDirectory = "/var/lib/ummessage-server/dbroot";
     @autoreleasepool
     {
         if(argc>1)
         {
-            directory = argv[1];
+            rootDirectory = argv[1];
         }
         if(argc>2)
         {
@@ -30,8 +30,9 @@ int main(int argc, const char * argv[])
             return -1;
         }
         UMMessageServer *ms =  [[UMMessageServer alloc]initWithPort:port];
-        ms.directory = @(directory);
+        ms.directory = @(rootDirectory);
         [ms startBackgroundTask];
+        sleep(1); /* wait until listener is listening */
         while(ms.listener.isListening)
         {
             sleep(1);

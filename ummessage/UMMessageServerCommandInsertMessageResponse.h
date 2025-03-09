@@ -1,14 +1,13 @@
 //
-//  UMMessageServerCommandLoginResponse.h
-//  ummessage-server
+//  UMMessageServerCommandInsertMessageResponse.h
+//  ummessage
 //
 //  Created by Andreas Fink on 09.03.2025.
 //
 
 #import <ummessage/UMMessageServerCommand.h>
 
-
-@interface UMMessageServerCommandLoginResponse : UMMessageServerCommand
+@interface UMMessageServerCommandInsertMessageResponse : UMMessageServerCommand
 {
     NSInteger   _status;
     NSString    *_error;
@@ -16,5 +15,6 @@
 
 @property(readwrite,atomic,assign)   NSInteger   status;
 @property(readwrite,atomic,strong)   NSString    *error;
+
 @end
 

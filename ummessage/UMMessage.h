@@ -15,15 +15,15 @@
 
 @interface UMMessage : UMASN1Sequence
 {
-#include "UMMessage_macroVariables.h"
-#include "UMMessage.def.h"
-#include "UMMessage_macroClear.h"
+#include <ummessage/UMMessage_macroVariables.h>
+#include <ummessage/UMMessage.def.h>
+#include <ummessage/UMMessage_macroClear.h>
 
 }
 
-#include "UMMessage_macroProperties.h"
-#include "UMMessage.def.h"
-#include "UMMessage_macroClear.h"
+#include <ummessage/UMMessage_macroProperties.h>
+#include <ummessage/UMMessage.def.h>
+#include <ummessage/UMMessage_macroClear.h>
 
 + (NSString *)uniqueMessageIdWithPrefix:(NSString *)pfx;
 

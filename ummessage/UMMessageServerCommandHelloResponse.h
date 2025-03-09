@@ -5,12 +5,17 @@
 //  Created by Andreas Fink on 09.03.2025.
 //
 
-#import "UMMessageServerCommand.h"
-
-NS_ASSUME_NONNULL_BEGIN
+#import <ummessage/UMMessageServerCommand.h>
 
 @interface UMMessageServerCommandHelloResponse : UMMessageServerCommand
+{
+    NSString    *_serverName;
+    NSInteger   _apiVersion;
+}
+
+@property(readwrite,atomic,strong) NSString  *serverName;
+@property(readwrite,atomic,assign) NSInteger apiVersion;
+
 
 @end
 
-NS_ASSUME_NONNULL_END

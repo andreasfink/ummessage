@@ -49,7 +49,7 @@
 
 - (NSString *) objectName
 {
-    return @"MessageServerCommand";
+    return @"UMMessageServerCommand";
 }
 
 

@@ -1,0 +1,10 @@
+
+
+MessageServerCommandHelloRequest ::= SEQUENCE
+{
+    command         [0] INTEGER,
+    flags           [1] INTEGER,
+    sequenceNumber  [2] INTEGER,
+    clientName      [3] UTF8String,
+    apiVersion      [4] INTEGER,
+}

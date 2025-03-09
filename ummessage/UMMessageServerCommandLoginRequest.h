@@ -5,12 +5,18 @@
 //  Created by Andreas Fink on 09.03.2025.
 //
 
-#import "UMMessageServerCommand.h"
-
-NS_ASSUME_NONNULL_BEGIN
+#import <ummessage/UMMessageServerCommand.h>
 
 @interface UMMessageServerCommandLoginRequest : UMMessageServerCommand
+{
+    NSString    *_username;
+    NSString    *_password;
+    NSString    *_instance;
+}
+
+@property(readwrite,atomic,strong)   NSString    *username;
+@property(readwrite,atomic,strong)   NSString    *password;
+@property(readwrite,atomic,strong)   NSString    *instance;
 
 @end
 
-NS_ASSUME_NONNULL_END

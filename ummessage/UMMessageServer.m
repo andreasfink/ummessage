@@ -5,19 +5,22 @@
 //  Created by Andreas Fink on 08.03.2025.
 //
 
-#import "UMMessageServer.h"
-#import "UMMessageHandler.h"
+#import <ummessage/UMMessageServer.h>
+#import <ummessage/UMMessageHandler.h>
+#import <ummessage/UMMessageServerCommand.h>
+#import <ummessage/UMMessageServerCommandTypes.h>
 
 @implementation UMMessageServer
 
 - (UMMessageServer *)initWithPort:(NSInteger)port
 {
-    self = [super init];
+    self = [super initWithName:@"UMMessageServer"];
     if(self)
     {
         _port = port;
         _listener = [[UMSocket alloc] initWithType:UMSOCKET_TYPE_TCP];
         _listener.localHost = [[UMHost alloc]initWithLocalhost];
+        _listener.localPort = port;
     }
     return self;
 }
@@ -54,7 +57,7 @@
         }
         if(newSocket)
         {
-            UMMessageHandler *h = [[UMMessageHandler alloc]initWithSocket:newSocket];
+            UMMessageHandler *h = [[UMMessageHandler alloc]initWithSocket:newSocket server:self];
             [_incomingConnections addObject:h];
             [h startBackgroundTask];
         }
@@ -62,10 +65,5 @@
     return -1;
 }
 
-- (void)processCommand:(UMMessageServerCommand *)md
-            fromSocket:(UMSocket *)s
-{
-    
-}
 
 @end
