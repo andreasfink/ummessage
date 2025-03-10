@@ -7,6 +7,7 @@
 
 #import <um/UMMessageClient.h>
 #import <um/UMMessageHandler.h>
+#import <um/UMMessage.h>
 
 @implementation UMMessageClient
 
@@ -47,6 +48,11 @@
         }
     }
     return _isConnected;
+}
+
+- (BOOL)insertMessage:(UMMessage *)msg
+{
+    return NO;
 }
 
 @end

@@ -8,6 +8,7 @@
 #import <ulib/ulib.h>
 
 @class UMMessageHandler;
+@class UMMessage;
 
 @interface UMMessageClient : UMObject
 {
@@ -18,4 +19,6 @@
 
 - (UMMessageClient *)initWithHost:(UMHost *)host port:(int)port;
 - (BOOL)connect; /* returns YES if connected */
+- (BOOL)insertMessage:(UMMessage *)msg onCompletion:^(int status,NSString *error){};
+
 @end
