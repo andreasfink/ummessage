@@ -63,8 +63,10 @@
 {
     UMMessageServerCommandHelloRequest *req = [[UMMessageServerCommandHelloRequest alloc]init];
     req.sequenceNumber = [self getSequenceNumber];
-    _lastSequenceNumber++;
-
+    req.apiVersion = 1;
+    req.clientName = _clientName;
+    [self sendCommand:req];
+    _lastHandshakeRequested = [NSDate date];
 }
 
 - (int)processGenericError:(UMMessageServerCommandGenericError *)cmd
@@ -75,9 +77,26 @@
 
 - (int)processHelloRequest:(UMMessageServerCommandHelloRequest *)cmd
 {
+    _clientName         = cmd.clientName;
+    _clientApiVersion   = cmd.apiVersion;
     UMMessageServerCommandHelloResponse *res = [[UMMessageServerCommandHelloResponse alloc]init];
     res.sequenceNumber = cmd.sequenceNumber;
-    UMSocketError err = [self sendCommand:res];
+    res.serverName = _serverName;
+    res.apiVersion = _serverApiVersion;
+    
+    UMSocketError err;
+    if(_clientApiVersion != _serverApiVersion)
+    {
+        UMMessageServerCommandGenericError *ge = [[UMMessageServerCommandGenericError alloc]init];
+        ge.status = UMMessageServerCommandError_API_VERSION_MISMATCH;
+        ge.error = @"API versions are not matching";
+        err = [self sendCommand:ge];
+        return -1;
+    }
+    else
+    {
+        err = [self sendCommand:res];
+    }
     if(err != UMSocketError_no_error)
     {
         return -1;
@@ -87,7 +106,7 @@
 
 - (int)processHelloResponse:(UMMessageServerCommandHelloResponse *)cmd
 {
-    _lastHandshake = [NSDate date];
+    _lastHandshakeReceived = [NSDate date];
     return 0;
 }
 

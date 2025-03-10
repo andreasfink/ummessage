@@ -28,9 +28,12 @@
     NSDate              *_lastHandshakeResponse;
     NSDate              *_lastHandshakeReceived;
     UMTimer             *_handshakeTimer;
-    UMMMutex            *_lock;
+    UMMutex             *_lock;
     NSInteger           _lastSequenceNumber;
-    
+    NSString            *_clientName;
+    NSInteger           _clientApiVersion;
+    NSString            *_serverName;
+    NSInteger           _serverApiVersion;
 }
 
 @property(readwrite,strong,atomic)  UMSocket        *socket;
@@ -45,6 +48,10 @@
 @property(readwrite,strong,atomic)  NSDate          *lastHandshakeRequested;
 @property(readwrite,strong,atomic)  NSDate          *lastHandshakeResponse;
 @property(readwrite,strong,atomic)  NSDate          *lastHandshakeReceived;
+@property(readwrite,strong,atomic)  NSString        *clientName;
+@property(readwrite,strong,atomic)  NSString        *serverName;
+@property(readwrite,assign,atomic)  NSInteger           clientApiVersion;
+@property(readwrite,assign,atomic)  NSInteger           serverApiVersion;
 
 - (int)processCommand:(UMMessageServerCommand *)cmd; /* return error code*/
 @end

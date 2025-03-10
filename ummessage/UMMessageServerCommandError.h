@@ -19,6 +19,7 @@ typedef enum UMMessageServerCommandError
     UMMessageServerCommandError_UPDATE_FAILURE      = 7,
     UMMessageServerCommandError_NOT_FOUND           = 8,
     UMMessageServerCommandError_DELETE_FAILURE      = 9,
+    UMMessageServerCommandError_API_VERSION_MISMATCH = 10,
 } UMMessageServerCommandError;
 
 NSString *UMMessageServerCommandErrrorString(UMMessageServerCommandError err);
