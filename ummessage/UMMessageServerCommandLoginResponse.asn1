@@ -1,0 +1,10 @@
+
+
+MessageServerCommandLoginResponse ::= SEQUENCE
+{
+    command         [0] INTEGER,
+    flags           [1] INTEGER,
+    sequenceNumber  [2] INTEGER,
+    status          [103] INTEGER,
+    error           [104] UTF8String OPTIONAL,
+}

@@ -1,0 +1,10 @@
+
+MessageServerCommand ::= SEQUENCE
+{
+    command         [0] INTEGER,
+    flags           [1] INTEGER,
+    sequenceNumber  [2] INTEGER,
+    ...
+}
+
+-- data is by itself an ASN1 object depending on the command type

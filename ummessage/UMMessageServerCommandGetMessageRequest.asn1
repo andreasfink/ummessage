@@ -1,0 +1,9 @@
+
+
+UMMessageServerCommandGetMessageRequest::= SEQUENCE
+{
+    command         [0] INTEGER,
+    flags           [1] INTEGER,
+    sequenceNumber  [2] INTEGER,
+    messageId       [3] UTF8String,
+}

@@ -1,0 +1,11 @@
+
+
+MessageServerCommandLoginRequest ::= SEQUENCE
+{
+    command         [0] INTEGER,
+    flags           [1] INTEGER,
+    sequenceNumber  [2] INTEGER,
+    username        [3] UTF8String,
+    password        [4] UTF8String,
+    instance        [5] UTF8String OPTIONAL,
+}
