@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import <ulib/ulib.h>
-#import "UMMessageServer.h"
+#import <um/um.h>
 #include <stdlib.h>
 
 int main(int argc, const char * argv[])

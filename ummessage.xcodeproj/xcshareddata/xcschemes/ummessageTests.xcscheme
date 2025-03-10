@@ -20,8 +20,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A60B32AF2D76051E003A8DFA"
-               BuildableName = "ummessageTests.xctest"
-               BlueprintName = "ummessageTests"
+               BuildableName = "umTests.xctest"
+               BlueprintName = "umTests"
                ReferencedContainer = "container:ummessage.xcodeproj">
             </BuildableReference>
          </TestableReference>
