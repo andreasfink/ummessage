@@ -8,6 +8,7 @@
 #import <um/UMMessageClient.h>
 #import <um/UMMessageHandler.h>
 #import <um/UMMessage.h>
+#import <um/UMMessageSession.h>
 
 @implementation UMMessageClient
 
@@ -23,6 +24,7 @@
         if([self connect])
         {
             _handler  = [[UMMessageHandler alloc]initWithSocket:_socket client:self];
+            _session = _handler.session;
             [_handler startBackgroundTask];
         }
         else
@@ -50,9 +52,17 @@
     return _isConnected;
 }
 
+//typedef void (^UMMesssageClientInsertCompletionHandler)(int status,NSString *error)
+
+
 - (BOOL)insertMessage:(UMMessage *)msg
 {
-    return NO;
+    return [_session insertMessage:msg onCompletionCallObject:self withSelector:@selector(completionHandler:)];
+}
+
+- (void)completionHandler:(UMMessageServerCommand *)cmd
+{
+    NSLog(@"Completion of %@",cmd);
 }
 
 @end

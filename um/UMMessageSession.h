@@ -12,6 +12,7 @@
 @class UMMessageServer;
 @class UMMessageClient;
 @class UMMessageHandler;
+@class UMMessage;
 
 @interface UMMessageSession : UMObject<UMessageCommandHandlerProtocol>
 {
@@ -35,6 +36,7 @@
     NSString            *_serverName;
     NSInteger           _serverApiVersion;
     BOOL                _clientSuccessfullyLoggedIn;
+    UMSynchronizedDictionary *_pendingSequences; /* dictionary key=NSNumber(SequenceNumber) value:UMMessageSessionCompletionObject */
 }
 
 @property(readwrite,strong,atomic)  UMSocket        *socket;
@@ -56,5 +58,8 @@
 @property(readwrite,assign,atomic)  BOOL             cclientSuccessfullyLoggedIn;
 
 - (int)processCommand:(UMMessageServerCommand *)cmd; /* return error code*/
+
+- (BOOL)insertMessage:(UMMessage *)msg onCompletionCallObject:(id)obj withSelector:(SEL)selector;
+
 @end
 

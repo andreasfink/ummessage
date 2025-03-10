@@ -7,10 +7,20 @@
 
 #import <ulib/ulib.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface UMMessageSessionCompletionObject : UMObject
+{
+    id          _objectToCall;
+    SEL         _selectorToCall;
+    id          _data;
+    int         _status;
+    NSString    *_error;
+}
+
+@property(readwrite,strong,atomic)  id          objectToCall;
+@property(readwrite,assign,atomic)  SEL         selectorToCall;
+@property(readwrite,strong,atomic)  id          data;
+@property(readwrite,assign,atomic)  int         status;
+@property(readwrite,strong,atomic)  NSString    *error;
 
 @end
 
-NS_ASSUME_NONNULL_END

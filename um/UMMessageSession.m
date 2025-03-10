@@ -24,6 +24,7 @@
 #import <um/UMMessageServerCommandGetMessageResponse.h>
 #import <um/UMMessageServerCommandDeleteMessageRequest.h>
 #import <um/UMMessageServerCommandDeleteMessageResponse.h>
+#import <um/UMMessageSessionCompletionObject.h>
 #import <um/UMMessage.h>
 
 @implementation UMMessageSession
@@ -45,6 +46,7 @@
         _clientApiVersion = 1;
         _serverName = @"umserver";
         _clientName = @"umcli";
+        _pendingSequences = [[UMSynchronizedDictionary alloc]init];
         [_handshakeTimer start];
     }
     return self;
@@ -147,7 +149,7 @@
 
 - (int)processInsertMessageRequest:(UMMessageServerCommandInsertMessageRequest *)cmd
 {
-    UMMessageServerCommandError error = [self insertMessage:cmd.message];
+    UMMessageServerCommandError error = [self localInsertMessage:cmd.message];
     
     UMMessageServerCommandInsertMessageResponse *res = [[UMMessageServerCommandInsertMessageResponse alloc]init];
     res.status = error;
@@ -162,6 +164,25 @@
  
 - (int)processInsertMessageResponse:(UMMessageServerCommandInsertMessageResponse *)cmd
 {
+    NSNumber *seq = @(cmd.sequenceNumber);
+    
+    UMMessageSessionCompletionObject *co = _pendingSequences[seq];
+    if(co)
+    {
+        [_pendingSequences removeObjectForKey:seq];
+        {
+            if(co.objectToCall)
+            {
+                if([co.objectToCall respondsToSelector:co.selectorToCall])
+                {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                    [co.objectToCall performSelector:co.selectorToCall withObject:cmd];
+                }
+#pragma clang diagnostic pop
+            }
+        }
+    }
     return 0;
 }
 
@@ -352,7 +373,7 @@
         return UMMessageServerCommandError_NOT_AUTHORIZED;
     }
 }
-- (UMMessageServerCommandError) insertMessage:(UMMessage *)msg
+- (UMMessageServerCommandError) localInsertMessage:(UMMessage *)msg
 {
     if(!_authenticated)
     {
@@ -444,6 +465,27 @@
         return filename;
     }
     return NULL;
+}
+
+- (BOOL)insertMessage:(UMMessage *)msg onCompletionCallObject:(id)obj withSelector:(SEL)sel
+{
+    NSInteger seq = [self getSequenceNumber];
+    
+    UMMessageSessionCompletionObject *co = [[UMMessageSessionCompletionObject alloc]init];
+    co.objectToCall = obj;
+    co.selectorToCall = sel;
+
+    UMMessageServerCommandInsertMessageRequest *req = [[UMMessageServerCommandInsertMessageRequest alloc]init];
+    req.sequenceNumber = seq;
+    req.message = msg;
+    _pendingSequences[@(seq)] = co;
+    UMSocketError err = [self sendCommand:req];
+    if(err != UMSocketError_no_error)
+    {
+        [_pendingSequences removeObjectForKey:@(seq)];
+        return -1;
+    }
+    return 0;
 }
 
 @end
