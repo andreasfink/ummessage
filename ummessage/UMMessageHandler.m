@@ -8,6 +8,7 @@
 #import <ummessage/UMMessageHandler.h>
 #import <ummessage/UMMessageSession.h>
 #import <ummessage/UMMessageServer.h>
+#import <ummessage/UMMessageClient.h>
 #import <ummessage/UMMessageServerCommand.h>
 
 @implementation UMMessageHandler
@@ -24,7 +25,24 @@
         _session = [[UMMessageSession alloc]init];
         _session.socket = _socket;
         _session.server = _server;
-        _session.directory = _server.directory;
+        _session.rootDirectory = _server.rootDirectory;
+    }
+    return self;
+}
+
+- (UMMessageHandler *)initWithSocket:(UMSocket *)s client:(UMMessageClient *)client
+{
+    self = [super initWithName:@"UMMessageHandler"];
+
+    if(self)
+    {
+        _socket = s;
+        _client = client;
+        _maxReceiveBuffer = 10485760; /* 10MB */
+        _session = [[UMMessageSession alloc]init];
+        _session.socket = _socket;
+        _session.client = _client;
+        _session.rootDirectory = _server.rootDirectory;
     }
     return self;
 }
@@ -32,6 +50,7 @@
 - (void)backgroundInit
 {
 }
+
 - (void)backgroundExit
 {
     [_socket close];
@@ -101,6 +120,7 @@
 {
     _session.socket = NULL;
     _session.server = NULL;
+    _session.client = NULL;
     _session = NULL;
     [self shutdownBackgroundTaskFromWithin];
 }

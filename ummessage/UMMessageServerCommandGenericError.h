@@ -10,11 +10,11 @@
 
 @interface UMMessageServerCommandGenericError : UMMessageServerCommand
 {
-    int  _status;
-    NSString *_error;
+    int         _status;
+    NSString    *_error;
 }
 
-@property(readwrite,assign) int  status;
+@property(readwrite,assign) int     status;
 @property(readwrite,strong) NSString *error;
 @end
 

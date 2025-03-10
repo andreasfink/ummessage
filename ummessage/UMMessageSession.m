@@ -24,8 +24,48 @@
 #import <ummessage/UMMessageServerCommandGetMessageResponse.h>
 #import <ummessage/UMMessageServerCommandDeleteMessageRequest.h>
 #import <ummessage/UMMessageServerCommandDeleteMessageResponse.h>
+#import <ummessage/UMMessage.h>
 
 @implementation UMMessageSession
+- (UMMessageSession *)init
+{
+    self = [super init];
+    if(self)
+    {
+        _lastSequenceNumber = 0;
+        _lock = [[UMMMutex alloc]initWithName:@"ummessage-session"];
+        _handshakeTimer = [[UMTimer alloc]initWithTarget:self
+                                                selector:@(doHandshake)
+                                                  object:NULL
+                                                 seconds:10
+                                                    name:NULL
+                                                 repeats:YES
+                                         runInForeground:YES];
+        [_handshakeTimer start];
+    }
+}
+
+- (NSInteger)getSequenceNumber
+{
+    NSInteger i;
+    ummutex_lock(_lock);
+    i = _lastSequenceNumber+1;
+    if(i > 0x7FFF)
+    {
+        i=1;
+    }
+    _lastSequenceNumber = i;
+    ummutex_unlock(_lock);
+    return i;
+}
+
+- (void)doHandshake
+{
+    UMMessageServerCommandHelloRequest *req = [[UMMessageServerCommandHelloRequest alloc]init];
+    req.sequenceNumber = [self getSequenceNumber];
+    _lastSequenceNumber++;
+
+}
 
 - (int)processGenericError:(UMMessageServerCommandGenericError *)cmd
 {
@@ -47,8 +87,8 @@
 
 - (int)processHelloResponse:(UMMessageServerCommandHelloResponse *)cmd
 {
+    _lastHandshake = [NSDate date];
     return 0;
-
 }
 
 - (int)processLoginRequest:(UMMessageServerCommandLoginRequest *)cmd
@@ -113,8 +153,14 @@
 
 - (int)processGetMessageRequest:(UMMessageServerCommandGetMessageRequest *)cmd
 {
+    UMMessageServerCommandGetMessageResponse *res = [self getMessage:cmd.messageId];
+    res.sequenceNumber = cmd.sequenceNumber;
+    UMSocketError err = [self sendCommand:res];
+    if(err != UMSocketError_no_error)
+    {
+        return -1;
+    }
     return 0;
-
 }
 
 - (int)processGetMessageResponse:(UMMessageServerCommandGetMessageResponse *)cmd
@@ -261,25 +307,108 @@
       password:(NSString *)password
       instance:(NSString *)instance
 {
-    return UMMessageServerCommandError_NO_ERROR;
+    if(([username isEqualToString:_username]) &&( [password isEqualToString:_password]))
+    {
+        _authenticated = YES;
+        return UMMessageServerCommandError_NO_ERROR;
+    }
+    else
+    {
+        return UMMessageServerCommandError_NOT_AUTHORIZED;
+    }
 }
-
 - (UMMessageServerCommandError) insertMessage:(UMMessage *)msg
 {
+    if(!_authenticated)
+    {
+        return UMMessageServerCommandError_NOT_AUTHORIZED;
+    }
+    NSString *filename = [self messageIdToFileName:msg.messageId.stringValue];
+    NSData *data = [msg berEncoded];
+    if([data writeToFile:filename atomically:YES])
+    {
+        NSLog(@"write to file '%@' failed",filename);
+        return UMMessageServerCommandError_WRITE_FAILURE;
+    }
     return UMMessageServerCommandError_NO_ERROR;
 }
 
 - (UMMessageServerCommandError) updateMessage:(UMMessage *)msg
 {
+    if(!_authenticated)
+    {
+        return UMMessageServerCommandError_NOT_AUTHORIZED;
+    }
+    NSString *filename = [self messageIdToFileName:msg.messageId.stringValue];
+    NSData *data = [msg berEncoded];
+    if([data writeToFile:filename atomically:YES])
+    {
+        NSLog(@"write to file '%@' failed",filename);
+        return UMMessageServerCommandError_UPDATE_FAILURE;
+    }
     return UMMessageServerCommandError_NO_ERROR;
 }
 
 - (UMMessageServerCommandError) deleteMessage:(NSString *)messageId
 {
+    if(!_authenticated)
+    {
+        return UMMessageServerCommandError_NOT_AUTHORIZED;
+    }
+    NSString *filename = [self messageIdToFileName:messageId];
+    if([[NSFileManager defaultManager]isDeletableFileAtPath:filename] == NO)
+    {
+        return UMMessageServerCommandError_NOT_FOUND;
+        
+    }
+    NSError *err;
+    [[NSFileManager defaultManager] removeItemAtPath:filename
+                                                error:&err];
+    if(err)
+    {
+        NSLog(@"delete failed for file '%@'",filename);
+        return UMMessageServerCommandError_DELETE_FAILURE;
+    }
     return UMMessageServerCommandError_NO_ERROR;
 }
 
+- (UMMessageServerCommandGetMessageResponse *) getMessage:(NSString *)messageId
+{
+    UMMessageServerCommandGetMessageResponse *res = [[UMMessageServerCommandGetMessageResponse alloc]init];
+    if(!_authenticated)
+    {
+        res.status = UMMessageServerCommandError_NOT_AUTHORIZED;
+        return res;
+    }
+    return res;
+}
 
-
+- (NSString *)messageIdToFileName:(NSString *)msgid
+{
+    if(msgid.length == 18)
+    {
+        NSString *year          = [msgid substringWithRange:NSMakeRange(0,4)];
+        NSString *month         = [msgid substringWithRange:NSMakeRange(4,2)];
+        NSString *day           = [msgid substringWithRange:NSMakeRange(6,2)];
+        NSString *hour          = [msgid substringWithRange:NSMakeRange(8,2)];
+        //NSString *minute_second = [msgid substringWithRange:NSMakeRange(10,4)];
+        
+        NSString *path = [NSString stringWithFormat:@"%@/%@/%@/%@/%@/%@",_rootDirectory,_instance,year,month,day,hour];
+        NSString *filename = [NSString stringWithFormat:@"%@/%@",path,msgid];
+        
+        NSError *err = NULL;
+        [[NSFileManager defaultManager]createDirectoryAtPath:path
+                                 withIntermediateDirectories:YES
+                                                  attributes:NULL
+                                                       error:&err];
+        if(err)
+        {
+            NSLog(@"error while creating path %@",path);
+            return NULL;
+        }
+        return filename;
+    }
+    return NULL;
+}
 
 @end

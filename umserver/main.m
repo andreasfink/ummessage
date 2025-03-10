@@ -30,7 +30,7 @@ int main(int argc, const char * argv[])
             return -1;
         }
         UMMessageServer *ms =  [[UMMessageServer alloc]initWithPort:port];
-        ms.directory = @(rootDirectory);
+        ms.rootDirectory = @(rootDirectory);
         [ms startBackgroundTask];
         sleep(1); /* wait until listener is listening */
         while(ms.listener.isListening)

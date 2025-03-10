@@ -14,13 +14,13 @@
     NSInteger           _port;
     UMSocket            *_listener;
     UMSynchronizedArray *_incomingConnections; /* array of UMMessageHandler objects */
-    NSString            *_directory;
+    NSString            *_rootDirectory;
 }
 
 @property(readwrite,assign,atomic)  NSInteger           port;
 @property(readwrite,strong,atomic)  UMSocket            *listener;
 @property(readwrite,strong,atomic)  UMSynchronizedArray *incomingConnections;
-@property(readwrite,strong,atomic)  NSString            *directory;
+@property(readwrite,strong,atomic)  NSString            *rootDirectory;
 
 - (UMMessageServer *)initWithPort:(NSInteger)port;
 @end

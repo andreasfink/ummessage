@@ -12,6 +12,8 @@
 		A60B32EC2D7609B0003A8DFA /* ulib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60B32EA2D7609A3003A8DFA /* ulib.framework */; };
 		A60B32EE2D7609CD003A8DFA /* ulibasn1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60B32ED2D7609CD003A8DFA /* ulibasn1.framework */; };
 		A60B32EF2D7609CD003A8DFA /* ulibasn1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60B32ED2D7609CD003A8DFA /* ulibasn1.framework */; };
+		A647F9EF2D7EF9620095D8D8 /* UMMessageClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A647F9EE2D7EF9620095D8D8 /* UMMessageClient.m */; };
+		A647F9F02D7EF9620095D8D8 /* UMMessageClient.h in Headers */ = {isa = PBXBuildFile; fileRef = A647F9ED2D7EF9620095D8D8 /* UMMessageClient.h */; };
 		A66F7D9F2D7814B700A83193 /* UMMessage_macroDbInsertNames.h in Headers */ = {isa = PBXBuildFile; fileRef = A66F7D9D2D7814B700A83193 /* UMMessage_macroDbInsertNames.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A66F7DA32D7816AF00A83193 /* UMMessage_macroHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A66F7DA22D7816AF00A83193 /* UMMessage_macroHelper.m */; };
 		A66F7DA42D7816AF00A83193 /* UMMessage_macroHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = A66F7DA12D7816AF00A83193 /* UMMessage_macroHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -140,6 +142,8 @@
 		A60B32B02D76051E003A8DFA /* ummessageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ummessageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A60B32EA2D7609A3003A8DFA /* ulib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulib.framework; path = "/Library/Application Support/FinkTelecomServices/frameworks/ulib.framework"; sourceTree = "<absolute>"; };
 		A60B32ED2D7609CD003A8DFA /* ulibasn1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulibasn1.framework; path = "/Library/Application Support/FinkTelecomServices/frameworks/ulibasn1.framework"; sourceTree = "<absolute>"; };
+		A647F9ED2D7EF9620095D8D8 /* UMMessageClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessageClient.h; sourceTree = "<group>"; };
+		A647F9EE2D7EF9620095D8D8 /* UMMessageClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMMessageClient.m; sourceTree = "<group>"; };
 		A66F7D9D2D7814B700A83193 /* UMMessage_macroDbInsertNames.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessage_macroDbInsertNames.h; sourceTree = "<group>"; };
 		A66F7DA12D7816AF00A83193 /* UMMessage_macroHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessage_macroHelper.h; sourceTree = "<group>"; };
 		A66F7DA22D7816AF00A83193 /* UMMessage_macroHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMMessage_macroHelper.m; sourceTree = "<group>"; };
@@ -320,6 +324,8 @@
 				A674A8D82D7DAD6C0016B625 /* UMMessageHandler.m */,
 				A674A8D92D7DAD6C0016B625 /* UMMessageServer.h */,
 				A674A8DA2D7DAD6C0016B625 /* UMMessageServer.m */,
+				A647F9ED2D7EF9620095D8D8 /* UMMessageClient.h */,
+				A647F9EE2D7EF9620095D8D8 /* UMMessageClient.m */,
 				A674A8DC2D7DAD6C0016B625 /* UMMessageServerCommand.asn1 */,
 				A674A8DB2D7DAD6C0016B625 /* UMMessageServerCommand.h */,
 				A674A8DD2D7DAD6C0016B625 /* UMMessageServerCommand.m */,
@@ -398,6 +404,7 @@
 			files = (
 				A674A8E82D7DAD6C0016B625 /* UMessageCommandHandlerProtocol.h in Headers */,
 				A674A8E92D7DAD6C0016B625 /* UMMessageServerCommandFlags.h in Headers */,
+				A647F9F02D7EF9620095D8D8 /* UMMessageClient.h in Headers */,
 				A674A8EA2D7DAD6C0016B625 /* UMMessageServerCommandTypes.h in Headers */,
 				A6E5695F2D7DD64D0052E410 /* UMMessageServerCommandError.h in Headers */,
 				A68863B72D761E980079C9A5 /* UMMessage_macroClear.h in Headers */,
@@ -617,6 +624,7 @@
 				A6E569682D7E33BA0052E410 /* UMMessageServerCommandDeleteMessageRequest.m in Sources */,
 				A6E569242D7DB6960052E410 /* UMMessageHandler.m in Sources */,
 				A6E569252D7DB6960052E410 /* UMMessageServerCommandLoginRequest.m in Sources */,
+				A647F9EF2D7EF9620095D8D8 /* UMMessageClient.m in Sources */,
 				A6E5696C2D7E33C40052E410 /* UMMessageServerCommandDeleteMessageResponse.m in Sources */,
 				A6E569522D7DCBFA0052E410 /* UMMessageServerCommandGetMessageResponse.m in Sources */,
 				A6E569742D7E3EAF0052E410 /* UMMessageServerCommandUpdateMessageRequest.m in Sources */,

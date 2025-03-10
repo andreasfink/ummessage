@@ -23,6 +23,18 @@ NSString *UMMessageServerCommandErrrorString(UMMessageServerCommandError err)
             return @"INVALID_INSTANCE";
         case UMMessageServerCommandError_NOT_AUTHORIZED:
             return @"NOT_AUTHORIZED";
+        case UMMessageServerCommandError_WRITE_FAILURE:
+            return @"WRITE_FAILURE";
+            break;
+        case UMMessageServerCommandError_UPDATE_FAILURE:
+            return @"UPDATE_FAILURE";
+            break;
+        case UMMessageServerCommandError_NOT_FOUND:
+            return @"NOT_FOUND";
+            break;
+        case UMMessageServerCommandError_DELETE_FAILURE:
+            return @"DELETE_FAILURE";
+            break;
     }
     return NULL;
 }
