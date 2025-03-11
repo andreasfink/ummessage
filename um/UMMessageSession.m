@@ -282,7 +282,7 @@
             
         }
             break;
-            
+             
         case UMMessageServerCommandType_LOGIN_RESPONSE:
         {
             UMMessageServerCommandLoginResponse *cmd1 = [[UMMessageServerCommandLoginResponse alloc]initWithASN1Object:cmd context:NULL];
@@ -293,7 +293,8 @@
         case UMMessageServerCommandType_INSERT_MESSAGE_REQUEST:
         {
             UMMessageServerCommandInsertMessageRequest *cmd1 = [[UMMessageServerCommandInsertMessageRequest alloc]initWithASN1Object:cmd context:NULL];
-            return [self processInsertMessageRequest:cmd1];
+            int i =  [self processInsertMessageRequest:cmd1];
+            return i;
         }
             break;
             

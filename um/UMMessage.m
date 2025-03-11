@@ -9,6 +9,7 @@
 #import "UMMessage.h"
 #import <ulib/ulib.h>
 #import <ulibdb/ulibdb.h>
+#import <um/UMMessageFields.h>
 
 #import "UMMessage_macroHelper.h"
 
@@ -82,11 +83,11 @@ static      UMMutex      *g_messageIdLock = NULL;
 +(NSString *)sqlTableDefForTableName:(NSString *)tableName
 {
     UMSynchronizedSortedDictionary *o = [[UMSynchronizedSortedDictionary alloc]init];
-
+    
 #include "UMMessage_macroDbTableDef.h"
 #include "UMMessage.def.h"
 #include "UMMessage_macroClear.h"
-        return fieldDefsToSql(o,tableName);
+    return fieldDefsToSql(o,tableName);
 }
 
 +(NSArray<NSString *>*)dbFieldNames
@@ -103,17 +104,17 @@ static      UMMutex      *g_messageIdLock = NULL;
     NSMutableString *o = [[NSMutableString alloc]init];
     [o appendFormat:@"INSERT INTO `%@` (",tableName];
     int i=0;
-
+    
 #define STRING(o,len,tag,dictname,field,accessor,dbname,options)  if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"`%s`",dbname]; };
 #define INTEGER(o,len,tag,dictname,field,accessor,dbname,options) if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"`%s`",dbname]; };
 #define DATE(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"`%s`",dbname]; };
 #define DATA(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"`%s`",dbname]; };
 #define TEXT(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"`%s`",dbname]; };
 #define DOUBLE(o,len,tag,dictname,field,accessor,dbname,options)  if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"`%s`",dbname]; };
-
+    
 #include "UMMessage.def.h"
 #include "UMMessage_macroClear.h"
-
+    
     
     [o appendString:@") VALUES("];
     i=0;
@@ -126,8 +127,8 @@ static      UMMutex      *g_messageIdLock = NULL;
     
 #include "UMMessage.def.h"
 #include "UMMessage_macroClear.h"
-
-
+    
+    
     [o appendString:@") ON DUPLICATE KEY UPDATE "];
     i=0;
 #define STRING(o,len,tag,dictname,field,accessor,dbname,options)  if(field) { if(i++) { [o appendString:@","]; }[o appendFormat:@"`%s`=\"%@\"",dbname,[session sqlEscapeString:field.stringValue]]; };
@@ -140,7 +141,7 @@ static      UMMutex      *g_messageIdLock = NULL;
 #include "UMMessage_macroClear.h"
     return o;
 }
-   
+
 
 + (UMMessage *)messageFromDbResult:(UMDbResult *)dbResult
 {
@@ -186,7 +187,7 @@ static      UMMutex      *g_messageIdLock = NULL;
         {
             NSData *data = (NSData *)field1;
             NSLog(@"data=%@",data);
-
+            
 #define STRING(o,len,tag,dictname,f,accessor,dbname,options)         { ; }
 #define INTEGER(o,len,tag,dictname,f,accessor,dbname,options)        { ; }
 #define DATE(o,len,tag,dictname,field,accessor,dbname,options)       { ; }
@@ -205,6 +206,53 @@ static      UMMutex      *g_messageIdLock = NULL;
 - (NSString *)description
 {
     return [[self objectValue]jsonString];
+}
+
+- (UMSynchronizedSortedDictionary *) objectValue
+{
+    UMSynchronizedSortedDictionary *dict = [[UMSynchronizedSortedDictionary alloc]init];
+
+#define STRING(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { dict[@(dictname)] = field.stringValue; }
+#define INTEGER(o,len,tag,dictname,field,accessor,dbname,options)   if(field) { dict[@(dictname)] = field.number; }
+#define DATE(o,len,tag,dictname,field,accessor,dbname,options)      if(field) { dict[@(dictname)] = field.stringValue; }
+#define DATA(o,len,tag,dictname,field,accessor,dbname,options)      if(field) { dict[@(dictname)] = field.stringValue; }
+#define BINARY(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { dict[@(dictname)] = field.stringValue; }
+#define TEXT(o,len,tag,dictname,field,accessor,dbname,options)      if(field) { dict[@(dictname)] = field.stringValue; }
+#define DOUBLE(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { dict[@(dictname)] = field.number; }
+#include "UMMessage.def.h"
+#include "UMMessage_macroClear.h"
+    return dict;
+}
+
+- (void) processBeforeEncode
+{    
+    [super processBeforeEncode];
+#include "UMMessage_macroProcessBeforeEncode.h"
+#include "UMMessage.def.h"
+#include "UMMessage_macroClear.h"
+}
+
+
+- (UMMessage *) processAfterDecodeWithContext:(id)context
+{
+    [super processAfterDecodeWithContext:context];
+    int pos = 0;
+    UMASN1Object *o = [self getObjectAtPosition:pos++];
+    while(o)
+    {
+        if(o.asn1_tag.tagClass==UMASN1Class_ContextSpecific)
+        {
+            switch(o.asn1_tag.tagNumber)
+            {
+#include "UMMessage_macroProcessAfterDecodeWithContext.h"
+#include "UMMessage.def.h"
+#include "UMMessage_macroClear.h"
+                    break;
+            }
+        }
+        o = [self getObjectAtPosition:pos++];
+    }
+    return self;
 }
 
 @end

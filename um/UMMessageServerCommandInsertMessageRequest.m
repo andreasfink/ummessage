@@ -60,7 +60,7 @@
             switch(o.asn1_tag.tagNumber)
             {
                 case 3:
-                    _message = [[UMMessage alloc]initWithASN1Object:o context:context];;
+                    _message = [[UMMessage alloc]initWithASN1Object:o context:context];
                     break;
             }
         }

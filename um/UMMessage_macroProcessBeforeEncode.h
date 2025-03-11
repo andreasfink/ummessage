@@ -59,7 +59,7 @@ if(field)                                                                       
 #define DATE(o,len,tag,dictname,field,accessor,dbname,options)                          \
 if(field)                                                                               \
 {                                                                                       \
-    NSString *sd = [NSString stringWithStandardDate:field.date];                        \
+    NSString *sd = [NSString stringWithStandardDate:field.dateValue];                   \
     UMASN1UTF8String *u = [[UMASN1UTF8String alloc]initWithString:sd];                  \
     u.asn1_tag.tagNumber = tag;                                                         \
     u.asn1_tag.tagClass = UMASN1Class_ContextSpecific;                                  \
@@ -69,7 +69,7 @@ if(field)                                                                       
 #define DATA(o,len,tag,dictname,field,accessor,dbname,options)                          \
 if(field)                                                                               \
 {                                                                                       \
-    UMASN1OctetString *d = [[UMASN1OctetString alloc]initWithValue:field.data];         \
+    UMASN1OctetString *d = [[UMASN1OctetString alloc]initWithValue:field.data];  \
     d.asn1_tag.tagNumber = tag;                                                         \
     d.asn1_tag.tagClass = UMASN1Class_ContextSpecific;                                  \
     [_asn1_list addObject:d];                                                           \

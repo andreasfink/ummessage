@@ -15,7 +15,9 @@ int main(int argc, const char * argv[])
         UMMessage *msg = [[UMMessage alloc]init];
         msg.messageId = [[UMDirtyString alloc]init];
         msg.messageId.stringValue = [UMMessage uniqueMessageIdWithPrefix:@""];
-    
+        NSData *h = [msg berEncoded];
+        NSLog(@"encoded %@",h);
+        
         UMHost *host = [[UMHost alloc]initWithLocalhost];
         [host resolve];
         UMMessageClient *client = [[UMMessageClient alloc]initWithHost:host port:9121];
