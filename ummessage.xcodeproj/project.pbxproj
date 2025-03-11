@@ -116,6 +116,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		A69B2B782D80DE2E006EBCA1 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		A6E5692E2D7DB7BD0052E410 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -178,6 +187,7 @@
 		A68863AB2D761E980079C9A5 /* UMMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMMessage.m; sourceTree = "<group>"; };
 		A68863AC2D761E980079C9A5 /* UMMessage.def.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessage.def.h; sourceTree = "<group>"; };
 		A68863AD2D761E980079C9A5 /* UMMessageFields.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessageFields.h; sourceTree = "<group>"; };
+		A69B2B7A2D80DE2E006EBCA1 /* test-tool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "test-tool"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6E5690C2D7DB5F50052E410 /* UMMessageServerCommandHelloRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessageServerCommandHelloRequest.h; sourceTree = "<group>"; };
 		A6E5690D2D7DB5F50052E410 /* UMMessageServerCommandHelloRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMMessageServerCommandHelloRequest.m; sourceTree = "<group>"; };
 		A6E5690F2D7DB5FB0052E410 /* UMMessageServerCommandHelloResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessageServerCommandHelloResponse.h; sourceTree = "<group>"; };
@@ -230,6 +240,11 @@
 			path = ummessageTests;
 			sourceTree = "<group>";
 		};
+		A69B2B7B2D80DE2E006EBCA1 /* test-tool */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "test-tool";
+			sourceTree = "<group>";
+		};
 		A6E569352D7DC1B70052E410 /* umcli */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = umcli;
@@ -265,6 +280,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A69B2B772D80DE2E006EBCA1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A6E569312D7DC1B70052E410 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -280,6 +302,7 @@
 			children = (
 				A674A8E22D7DAD6C0016B625 /* umserver */,
 				A6E569352D7DC1B70052E410 /* umcli */,
+				A69B2B7B2D80DE2E006EBCA1 /* test-tool */,
 				A60B32E92D760986003A8DFA /* Frameworks */,
 				A68863AE2D761E980079C9A5 /* um */,
 				A60B32B42D76051E003A8DFA /* ummessageTests */,
@@ -294,6 +317,7 @@
 				A60B32B02D76051E003A8DFA /* umTests.xctest */,
 				A674A8AE2D7CB73A0016B625 /* umserver */,
 				A6E569342D7DC1B70052E410 /* umcli */,
+				A69B2B7A2D80DE2E006EBCA1 /* test-tool */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -513,6 +537,28 @@
 			productReference = A674A8AE2D7CB73A0016B625 /* umserver */;
 			productType = "com.apple.product-type.tool";
 		};
+		A69B2B792D80DE2E006EBCA1 /* test-tool */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A69B2B802D80DE2E006EBCA1 /* Build configuration list for PBXNativeTarget "test-tool" */;
+			buildPhases = (
+				A69B2B762D80DE2E006EBCA1 /* Sources */,
+				A69B2B772D80DE2E006EBCA1 /* Frameworks */,
+				A69B2B782D80DE2E006EBCA1 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				A69B2B7B2D80DE2E006EBCA1 /* test-tool */,
+			);
+			name = "test-tool";
+			packageProductDependencies = (
+			);
+			productName = "test-tool";
+			productReference = A69B2B7A2D80DE2E006EBCA1 /* test-tool */;
+			productType = "com.apple.product-type.tool";
+		};
 		A6E569332D7DC1B70052E410 /* umcli */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A6E569382D7DC1B70052E410 /* Build configuration list for PBXNativeTarget "umcli" */;
@@ -555,6 +601,9 @@
 					A674A8AD2D7CB73A0016B625 = {
 						CreatedOnToolsVersion = 16.2;
 					};
+					A69B2B792D80DE2E006EBCA1 = {
+						CreatedOnToolsVersion = 16.2;
+					};
 					A6E569332D7DC1B70052E410 = {
 						CreatedOnToolsVersion = 16.2;
 					};
@@ -578,6 +627,7 @@
 				A60B32AF2D76051E003A8DFA /* umTests */,
 				A674A8AD2D7CB73A0016B625 /* umserver */,
 				A6E569332D7DC1B70052E410 /* umcli */,
+				A69B2B792D80DE2E006EBCA1 /* test-tool */,
 			);
 		};
 /* End PBXProject section */
@@ -653,6 +703,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A674A8E32D7DAD6C0016B625 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A69B2B762D80DE2E006EBCA1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -970,6 +1027,30 @@
 			};
 			name = Release;
 		};
+		A69B2B7E2D80DE2E006EBCA1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 38L827M334;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		A69B2B7F2D80DE2E006EBCA1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 38L827M334;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		A6E569392D7DC1B70052E410 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1033,6 +1114,15 @@
 			buildConfigurations = (
 				A674A8B22D7CB73A0016B625 /* Debug */,
 				A674A8B32D7CB73A0016B625 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A69B2B802D80DE2E006EBCA1 /* Build configuration list for PBXNativeTarget "test-tool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A69B2B7E2D80DE2E006EBCA1 /* Debug */,
+				A69B2B7F2D80DE2E006EBCA1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

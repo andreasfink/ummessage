@@ -52,6 +52,7 @@
 
 - (BOOL)insertMessage:(UMMessage *)msg
 {
+    
     return NO;
 }
 
