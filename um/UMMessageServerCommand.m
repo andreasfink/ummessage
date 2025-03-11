@@ -57,6 +57,7 @@
 {
     UMSynchronizedSortedDictionary *dict = [[UMSynchronizedSortedDictionary alloc]init];
     dict[@"command"]        = @(_command);
+    dict[@"command-description"] = self.objectName;
     dict[@"flags"]          = @(_flags);
     dict[@"sequenceNumber"] = @(_sequenceNumber);
     return dict;

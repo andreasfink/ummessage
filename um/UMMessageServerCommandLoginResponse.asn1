@@ -5,6 +5,8 @@ MessageServerCommandLoginResponse ::= SEQUENCE
     command         [0] INTEGER,
     flags           [1] INTEGER,
     sequenceNumber  [2] INTEGER,
-    status          [103] INTEGER,
-    error           [104] UTF8String OPTIONAL,
+    status          [3] INTEGER,
+    error           [4] UTF8String OPTIONAL,
+    serverName      [5] UTF8String,
+    apiVersion      [6] INTEGER,
 }

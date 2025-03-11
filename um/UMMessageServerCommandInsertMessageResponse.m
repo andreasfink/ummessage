@@ -11,6 +11,17 @@
 
 @implementation UMMessageServerCommandInsertMessageResponse
 
+
+- (UMMessageServerCommandInsertMessageResponse *)init
+{
+    self = [super init];
+    if(self)
+    {
+        _command = UMMessageServerCommandType_INSERT_MESSAGE_RESPONSE;
+    }
+    return self;
+}
+
 - (void) processBeforeEncode
 {
     _command = UMMessageServerCommandType_INSERT_MESSAGE_RESPONSE;

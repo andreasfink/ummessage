@@ -47,7 +47,8 @@
         _serverName = @"umserver";
         _clientName = @"umcli";
         _pendingSequences = [[UMSynchronizedDictionary alloc]init];
-        [_handshakeTimer start];
+        _username = @"testuser";
+        _password = @"testpass";
     }
     return self;
 }
@@ -88,9 +89,6 @@
     _clientApiVersion   = cmd.apiVersion;
     UMMessageServerCommandHelloResponse *res = [[UMMessageServerCommandHelloResponse alloc]init];
     res.sequenceNumber = cmd.sequenceNumber;
-    res.serverName = _serverName;
-    res.apiVersion = _serverApiVersion;
-    
     UMSocketError err;
     if(_clientApiVersion != _serverApiVersion)
     {
@@ -114,8 +112,6 @@
 - (int)processHelloResponse:(UMMessageServerCommandHelloResponse *)cmd
 {
     _lastHandshakeReceived = [NSDate date];
-    _serverApiVersion = cmd.apiVersion;
-    _serverName = cmd.serverName;
     return 0;
 }
 
@@ -126,6 +122,8 @@
     UMMessageServerCommandLoginResponse *res = [[UMMessageServerCommandLoginResponse alloc]init];
     res.status = error;
     res.sequenceNumber = cmd.sequenceNumber;
+    res.apiVersion = _serverApiVersion;
+    res.serverName = _serverName;
     UMSocketError err = [self sendCommand:res];
     if(err != UMSocketError_no_error)
     {
@@ -136,6 +134,13 @@
 
 - (int)processLoginResponse:(UMMessageServerCommandLoginResponse *)cmd
 {
+    if(cmd.serverName)
+    {
+        _serverName = cmd.serverName;
+    }
+    
+    _serverApiVersion = cmd.apiVersion;
+
     if(cmd.status == UMMessageServerCommandError_NO_ERROR)
     {
         _clientSuccessfullyLoggedIn = YES;
@@ -161,7 +166,7 @@
     }
     return 0;
 }
- 
+
 - (int)processInsertMessageResponse:(UMMessageServerCommandInsertMessageResponse *)cmd
 {
     NSNumber *seq = @(cmd.sequenceNumber);
@@ -189,7 +194,7 @@
 - (int)processUpdateMessageRequest:(UMMessageServerCommandUpdateMessageRequest *)cmd
 {
     UMMessageServerCommandError error = [self updateMessage:cmd.message];
-
+    
     UMMessageServerCommandUpdateMessageResponse *res = [[UMMessageServerCommandUpdateMessageResponse alloc]init];
     res.status = error;
     res.sequenceNumber = cmd.sequenceNumber;
@@ -226,7 +231,7 @@
 - (int)processDeleteMessageRequest:(UMMessageServerCommandDeleteMessageRequest *)cmd
 {
     UMMessageServerCommandError error = [self deleteMessage:cmd.messageId];
-
+    
     UMMessageServerCommandDeleteMessageResponse *res = [[UMMessageServerCommandDeleteMessageResponse alloc]init];
     res.status = error;
     res.sequenceNumber = cmd.sequenceNumber;
@@ -258,54 +263,54 @@
         {
             UMMessageServerCommandHelloRequest *cmd1 = [[UMMessageServerCommandHelloRequest alloc]initWithASN1Object:cmd context:NULL];
             return [self processHelloRequest:cmd1];
-
+            
         }
             break;
-
+            
         case UMMessageServerCommandType_HELLO_RESPONSE:
         {
             UMMessageServerCommandHelloResponse *cmd1 = [[UMMessageServerCommandHelloResponse alloc]initWithASN1Object:cmd context:NULL];
             return [self processHelloResponse:cmd1];
-
+            
         }
             break;
-
+            
         case UMMessageServerCommandType_LOGIN_REQUEST:
         {
             UMMessageServerCommandLoginRequest *cmd1 = [[UMMessageServerCommandLoginRequest alloc]initWithASN1Object:cmd context:NULL];
             return [self processLoginRequest:cmd1];
-
+            
         }
             break;
-
+            
         case UMMessageServerCommandType_LOGIN_RESPONSE:
         {
             UMMessageServerCommandLoginResponse *cmd1 = [[UMMessageServerCommandLoginResponse alloc]initWithASN1Object:cmd context:NULL];
             return [self processLoginResponse:cmd1];
         }
             break;
-
+            
         case UMMessageServerCommandType_INSERT_MESSAGE_REQUEST:
         {
             UMMessageServerCommandInsertMessageRequest *cmd1 = [[UMMessageServerCommandInsertMessageRequest alloc]initWithASN1Object:cmd context:NULL];
             return [self processInsertMessageRequest:cmd1];
         }
             break;
-
+            
         case UMMessageServerCommandType_INSERT_MESSAGE_RESPONSE:
         {
             UMMessageServerCommandInsertMessageResponse *cmd1 = [[UMMessageServerCommandInsertMessageResponse alloc]initWithASN1Object:cmd context:NULL];
             return [self processInsertMessageResponse:cmd1];
         }
             break;
-
+            
         case UMMessageServerCommandType_UPDATE_MESSAGE_REQUEST:
         {
             UMMessageServerCommandUpdateMessageRequest *cmd1 = [[UMMessageServerCommandUpdateMessageRequest alloc]initWithASN1Object:cmd context:NULL];
             return [self processUpdateMessageRequest:cmd1];
         }
             break;
-
+            
         case UMMessageServerCommandType_UPDATE_MESSAGE_RESPONSE:
         {
             UMMessageServerCommandUpdateMessageResponse *cmd1 = [[UMMessageServerCommandUpdateMessageResponse alloc]initWithASN1Object:cmd context:NULL];
@@ -316,29 +321,29 @@
         {
             UMMessageServerCommandGetMessageRequest *cmd1 = [[UMMessageServerCommandGetMessageRequest alloc]initWithASN1Object:cmd context:NULL];
             return [self processGetMessageRequest:cmd1];
-
+            
         }
             break;
-
+            
         case UMMessageServerCommandType_GET_MESSAGE_RESPONSE:
         {
             UMMessageServerCommandGetMessageResponse *cmd1 = [[UMMessageServerCommandGetMessageResponse alloc]initWithASN1Object:cmd context:NULL];
             return [self processGetMessageResponse:cmd1];
         }
             break;
-
+            
         case UMMessageServerCommandType_DELETE_MESSAGE_REQUEST:
         {
             UMMessageServerCommandDeleteMessageRequest *cmd1 = [[UMMessageServerCommandDeleteMessageRequest alloc]initWithASN1Object:cmd context:NULL];
             return [self processDeleteMessageRequest:cmd1];
         }
             break;
-
+            
         case UMMessageServerCommandType_DELETE_MESSAGE_RESPONSE:
         {
             UMMessageServerCommandDeleteMessageResponse *cmd1 = [[UMMessageServerCommandDeleteMessageResponse alloc]initWithASN1Object:cmd context:NULL];
             return [self processDeleteMessageResponse:cmd1];
-
+            
         }
             break;
     }
@@ -347,6 +352,14 @@
 
 - (UMSocketError)sendCommand:(UMMessageServerCommand *)cmd
 {
+    if(_server)
+    {
+        NSLog(@"Server Sending %@",cmd.objectValue.jsonString);
+    }
+    if(_client)
+    {
+        NSLog(@"Client Sending %@",cmd.objectValue.jsonString);
+    }
     NSData *data = [cmd berEncoded];
     UMSocketError err = [_socket sendData:data];
     int count=0;
@@ -359,8 +372,8 @@
 }
 
 - (UMMessageServerCommandError) login:(NSString *)username
-      password:(NSString *)password
-      instance:(NSString *)instance
+                             password:(NSString *)password
+                             instance:(NSString *)instance
 {
     if(([username isEqualToString:_username]) &&( [password isEqualToString:_password]))
     {
@@ -419,7 +432,7 @@
     }
     NSError *err;
     [[NSFileManager defaultManager] removeItemAtPath:filename
-                                                error:&err];
+                                               error:&err];
     if(err)
     {
         NSLog(@"delete failed for file '%@'",filename);
@@ -474,7 +487,7 @@
     UMMessageSessionCompletionObject *co = [[UMMessageSessionCompletionObject alloc]init];
     co.objectToCall = obj;
     co.selectorToCall = sel;
-
+    
     UMMessageServerCommandInsertMessageRequest *req = [[UMMessageServerCommandInsertMessageRequest alloc]init];
     req.sequenceNumber = seq;
     req.message = msg;
@@ -486,6 +499,53 @@
         return -1;
     }
     return 0;
+}
+
+- (BOOL) awaitsResponses
+{
+    if(_pendingSequences.count > 0)
+    {
+        return YES;
+    }
+    return NO;
+}
+
+
+- (BOOL)            doLogin:(NSString *)username
+                   password:(NSString *)password
+                   instance:(NSString *)instance
+     onCompletionCallObject:(id)obj
+               withSelector:(SEL)sel
+{
+    NSInteger seq = [self getSequenceNumber];
+    
+    UMMessageSessionCompletionObject *co = [[UMMessageSessionCompletionObject alloc]init];
+    co.objectToCall = obj;
+    co.selectorToCall = sel;
+    
+    UMMessageServerCommandLoginRequest *req = [[UMMessageServerCommandLoginRequest alloc]init];
+    req.sequenceNumber = seq;
+    req.username = username;
+    req.password = password;
+    req.instance = instance;
+    _pendingSequences[@(seq)] = co;
+    UMSocketError err = [self sendCommand:req];
+    if(err != UMSocketError_no_error)
+    {
+        [_pendingSequences removeObjectForKey:@(seq)];
+        return -1;
+    }
+    return 0;
+}
+
+- (void)startHeartbeat
+{
+    [_handshakeTimer start];
+}
+
+- (void)stopHeartbeat
+{
+    [_handshakeTimer stop];
 }
 
 @end

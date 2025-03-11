@@ -10,6 +10,17 @@
 
 @implementation UMMessageServerCommandGetMessageRequest
 
+
+- (UMMessageServerCommandGetMessageRequest *)init
+{
+    self = [super init];
+    if(self)
+    {
+        _command = UMMessageServerCommandType_GET_MESSAGE_REQUEST;
+    }
+    return self;
+}
+
 - (void) processBeforeEncode
 {
     _command = UMMessageServerCommandType_GET_MESSAGE_REQUEST;

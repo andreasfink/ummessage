@@ -60,6 +60,15 @@
 - (int)processCommand:(UMMessageServerCommand *)cmd; /* return error code*/
 
 - (BOOL)insertMessage:(UMMessage *)msg onCompletionCallObject:(id)obj withSelector:(SEL)selector;
+- (BOOL) awaitsResponses;
+- (BOOL)            doLogin:(NSString *)username
+                   password:(NSString *)password
+                   instance:(NSString *)instance
+     onCompletionCallObject:(id)obj
+               withSelector:(SEL)sel;
+
+- (void) startHeartbeat;
+- (void) stopHeartbeat;
 
 @end
 

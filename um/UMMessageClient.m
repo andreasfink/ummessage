@@ -9,6 +9,7 @@
 #import <um/UMMessageHandler.h>
 #import <um/UMMessage.h>
 #import <um/UMMessageSession.h>
+#import <um/UMMessageServerCommandLoginResponse.h>
 
 @implementation UMMessageClient
 
@@ -63,6 +64,39 @@
 - (void)completionHandler:(UMMessageServerCommand *)cmd
 {
     NSLog(@"Completion of %@",cmd);
+}
+- (BOOL) awaitsResponses
+{
+    return [_session awaitsResponses];
+}
+
+- (BOOL) login
+{
+    _loggedIn = NO;
+    _loginComplete = NO;
+    if([_session     doLogin:_username
+                    password:_password
+                    instance:_instance
+      onCompletionCallObject:self
+                withSelector:@selector(loginResponse:)])
+    {
+        while(_loginComplete == NO)
+        {
+            sleep(1);
+        }
+    }
+    return _loggedIn;
+}
+
+- (void)loginResponse:(UMMessageServerCommandLoginResponse *)cmd
+{
+    _loginComplete = YES;
+    if(cmd.status == 0)
+    {
+        _loggedIn = YES;
+    }
+    [_session startHeartbeat];
+    NSLog(@"Login Answer %@",cmd);
 }
 
 @end

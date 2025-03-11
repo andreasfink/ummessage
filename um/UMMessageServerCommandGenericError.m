@@ -10,6 +10,16 @@
 
 @implementation UMMessageServerCommandGenericError
 
+- (UMMessageServerCommandGenericError *)init
+{
+    self = [super init];
+    if(self)
+    {
+        _command = UMMessageServerCommandType_GENERIC_ERROR_RESPONSE;
+    }
+    return self;
+}
+
 - (void) processBeforeEncode
 {
     _command = UMMessageServerCommandType_GENERIC_ERROR_RESPONSE;

@@ -12,6 +12,18 @@
 @implementation UMMessageServerCommandGetMessageResponse
 
 
+
+- (UMMessageServerCommandGetMessageResponse *)init
+{
+    self = [super init];
+    if(self)
+    {
+        _command = UMMessageServerCommandType_GET_MESSAGE_RESPONSE;
+    }
+    return self;
+}
+
+
 - (void) processBeforeEncode
 {
     _command = UMMessageServerCommandType_GET_MESSAGE_RESPONSE;

@@ -12,9 +12,14 @@
 {
     NSInteger   _status;
     NSString    *_error;
+    NSString    *_serverName;
+    NSInteger   _apiVersion;
 }
 
-@property(readwrite,atomic,assign)   NSInteger   status;
-@property(readwrite,atomic,strong)   NSString    *error;
+@property(readwrite,atomic,assign)  NSInteger   status;
+@property(readwrite,atomic,strong)  NSString    *error;
+@property(readwrite,atomic,strong)  NSString    *serverName;
+@property(readwrite,atomic,assign)  NSInteger   apiVersion;
+
 @end
 

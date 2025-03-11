@@ -10,6 +10,18 @@
 
 @implementation UMMessageServerCommandDeleteMessageResponse
 
+
+
+- (UMMessageServerCommandDeleteMessageResponse *)init
+{
+    self = [super init];
+    if(self)
+    {
+        _command = UMMessageServerCommandType_DELETE_MESSAGE_RESPONSE;
+    }
+    return self;
+}
+
 - (void) processBeforeEncode
 {
     _command = UMMessageServerCommandType_DELETE_MESSAGE_RESPONSE;
