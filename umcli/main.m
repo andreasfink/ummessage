@@ -17,7 +17,22 @@ int main(int argc, const char * argv[])
         msg.messageId.stringValue = [UMMessage uniqueMessageIdWithPrefix:@""];
         UMHost *host = [[UMHost alloc]initWithLocalhost];
         UMMessageClient *client = [[UMMessageClient alloc]initWithHost:host port:9121];
+
+        
+        UMHost *host = [[UMHost alloc]initWithLocalhost];
+        [host resolve];
+        UMMessageClient *client = [[UMMessageClient alloc]initWithHost:host port:9121];
+        client.instance = @"default-instance";
+        client.username = @"testuser";
+        client.password = @"testpass";
+        [client login];
+
         [client insertMessage:msg];
+        while([client awaitsResponses])
+        {
+            sleep(1);
+        }
+        fprintf(stderr,"completed\n");
     }
     return 0;
 }

@@ -67,7 +67,7 @@
             if( (err != UMSocketError_has_data) &&
                 (err != UMSocketError_has_data_and_hup) &&
                 (err != UMSocketError_no_error) &&
-                (err != UMSocketError_try_again) )
+                (err != UMSocketError_try_again))
             {
                 NSLog(@"error while reading %@",[UMSocket getSocketErrorString:err]);
                 hasData = NO;
@@ -75,11 +75,14 @@
             }
             else
             {
-                hasData =YES;
-            }
-            if(err == UMSocketError_has_data_and_hup)
-            {
-                [self terminateHandler];
+                if((err!=UMSocketError_has_data) || (err==UMSocketError_has_data_and_hup))
+                {
+                    hasData = YES;
+                }
+                else
+                {
+                    hasData = NO;
+                }
             }
             if(hasData)
             {
@@ -87,30 +90,37 @@
                 @try
                 {
                     NSUInteger pos = 0;
-                    
-                    UMASN1Object *o = [[UMASN1Object alloc]initWithBerData:_socket.receiveBuffer atPosition:&pos context:NULL];
-                    if(pos > 0)
+                    if(_socket.receiveBuffer.length > 0)
                     {
-                        [_socket deleteFromReceiveBuffer:pos];
-                    }
-                    if(o)
-                    {
-                        UMMessageServerCommand *cmd = [[UMMessageServerCommand alloc]initWithASN1Object:o context:NULL];
-                        if(cmd)
+                        UMASN1Object *o = [[UMASN1Object alloc]initWithBerData:_socket.receiveBuffer atPosition:&pos context:NULL];
+                        if(pos > 0)
                         {
-                            int err = [_session processCommand:cmd];
-                            if(err)
+                            [_socket deleteFromReceiveBuffer:pos];
+                        }
+                        if(o)
+                        {
+                            UMMessageServerCommand *cmd = [[UMMessageServerCommand alloc]initWithASN1Object:o context:NULL];
+                            if(cmd)
                             {
-                                [self terminateHandler];
+                                int err = [_session processCommand:cmd];
+                                if(err)
+                                {
+                                    [self terminateHandler];
+                                }
                             }
                         }
                     }
+                    
                 }
                 @catch(NSException *e)
                 {
                     
                 }
                 ummutex_unlock(_socket.dataLock);
+            }
+            if(err == UMSocketError_has_data_and_hup)
+            {
+                [self terminateHandler];
             }
         }
     }

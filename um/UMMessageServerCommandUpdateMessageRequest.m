@@ -11,6 +11,16 @@
 
 @implementation UMMessageServerCommandUpdateMessageRequest
 
+- (UMMessageServerCommandUpdateMessageRequest *)init
+{
+    self = [super init];
+    if(self)
+    {
+        _command = UMMessageServerCommandType_UPDATE_MESSAGE_REQUEST;
+    }
+    return self;
+}
+
 - (void) processBeforeEncode
 {
     _command = UMMessageServerCommandType_UPDATE_MESSAGE_REQUEST;

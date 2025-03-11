@@ -12,11 +12,15 @@
     NSString    *_username;
     NSString    *_password;
     NSString    *_instance;
+    NSString    *_clientName;
+    NSInteger   _apiVersion;
 }
 
-@property(readwrite,atomic,strong)   NSString    *username;
-@property(readwrite,atomic,strong)   NSString    *password;
-@property(readwrite,atomic,strong)   NSString    *instance;
+@property(readwrite,atomic,strong)  NSString    *username;
+@property(readwrite,atomic,strong)  NSString    *password;
+@property(readwrite,atomic,strong)  NSString    *instance;
+@property(readwrite,atomic,strong)  NSString    *clientName;
+@property(readwrite,atomic,assign)  NSInteger   apiVersion;
 
 @end
 

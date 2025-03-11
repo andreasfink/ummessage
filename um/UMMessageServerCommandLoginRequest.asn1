@@ -7,5 +7,8 @@ MessageServerCommandLoginRequest ::= SEQUENCE
     sequenceNumber  [2] INTEGER,
     username        [3] UTF8String,
     password        [4] UTF8String,
-    instance        [5] UTF8String OPTIONAL,
+    instance        [5] UTF8String,
+    clientName      [6] UTF8String,
+    apiVersion      [7] INTEGER,
+
 }

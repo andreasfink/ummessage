@@ -10,22 +10,42 @@
 
 @implementation UMMessageServerCommandLoginResponse
 
+- (UMMessageServerCommandLoginResponse *)init
+{
+    self = [super init];
+    if(self)
+    {
+        _command = UMMessageServerCommandType_LOGIN_RESPONSE;
+    }
+    return self;
+}
 
 - (void) processBeforeEncode
 {
     _command = UMMessageServerCommandType_LOGIN_RESPONSE;
     [super processBeforeEncode];
-    UMASN1Integer *i103= [[UMASN1Integer alloc]initWithValue:_status];
-    i103.asn1_tag.tagNumber = 103;
-    i103.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
-    [_asn1_list addObject:i103];
+    UMASN1Integer *i3= [[UMASN1Integer alloc]initWithValue:_status];
+    i3.asn1_tag.tagNumber = 3;
+    i3.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
+    [_asn1_list addObject:i3];
     if(_error)
     {
-        UMASN1UTF8String *s104= [[UMASN1UTF8String alloc]initWithValue:_error];
-        s104.asn1_tag.tagNumber = 104;
-        s104.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
-        [_asn1_list addObject:s104];
+        UMASN1UTF8String *s4= [[UMASN1UTF8String alloc]initWithValue:_error];
+        s4.asn1_tag.tagNumber = 4;
+        s4.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
+        [_asn1_list addObject:s4];
     }
+    if(_serverName)
+    {
+        UMASN1UTF8String *s5= [[UMASN1UTF8String alloc]initWithValue:_serverName];
+        s5.asn1_tag.tagNumber = 5;
+        s5.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
+        [_asn1_list addObject:s5];
+    }
+    UMASN1Integer *i= [[UMASN1Integer alloc]initWithValue:_apiVersion];
+    i.asn1_tag.tagNumber = 6;
+    i.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
+    [_asn1_list addObject:i];
 }
 
 - (NSString *) objectName
@@ -41,6 +61,11 @@
     {
         dict[@"error"] = _error;
     }
+    if(_serverName)
+    {
+        dict[@"server-name"] = _error;
+    }
+    dict[@"api-version"] = @(_apiVersion);
     return dict;
 }
 
@@ -65,6 +90,18 @@
                 {
                     UMASN1UTF8String *s = [[UMASN1UTF8String alloc]initWithASN1Object:o context:context];
                     _error = s.stringValue;
+                    break;
+                }
+                case 5:
+                {
+                    UMASN1UTF8String *s = [[UMASN1UTF8String alloc]initWithASN1Object:o context:context];
+                    _serverName = s.stringValue;
+                    break;
+                }
+                case 6:
+                {
+                    UMASN1Integer *i = [[UMASN1Integer alloc]initWithASN1Object:o context:context];
+                    _apiVersion = i.value;
                     break;
                 }
             }

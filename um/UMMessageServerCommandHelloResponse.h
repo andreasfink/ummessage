@@ -9,13 +9,7 @@
 
 @interface UMMessageServerCommandHelloResponse : UMMessageServerCommand
 {
-    NSString    *_serverName;
-    NSInteger   _apiVersion;
 }
-
-@property(readwrite,atomic,strong) NSString  *serverName;
-@property(readwrite,atomic,assign) NSInteger apiVersion;
-
 
 @end
 

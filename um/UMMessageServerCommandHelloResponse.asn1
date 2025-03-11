@@ -5,6 +5,4 @@ MessageServerCommandHelloResponse ::= SEQUENCE
     command         [0] INTEGER,
     flags           [1] INTEGER,
     sequenceNumber  [2] INTEGER,
-    serverName      [101] UTF8String,
-    apiVersion      [102] INTEGER,
 }

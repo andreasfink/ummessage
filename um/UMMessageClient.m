@@ -8,6 +8,8 @@
 #import <um/UMMessageClient.h>
 #import <um/UMMessageHandler.h>
 #import <um/UMMessage.h>
+#import <um/UMMessageSession.h>
+#import <um/UMMessageServerCommandLoginResponse.h>
 
 @implementation UMMessageClient
 
@@ -23,6 +25,7 @@
         if([self connect])
         {
             _handler  = [[UMMessageHandler alloc]initWithSocket:_socket client:self];
+            _session = _handler.session;
             [_handler startBackgroundTask];
         }
         else
@@ -50,10 +53,51 @@
     return _isConnected;
 }
 
+//typedef void (^UMMesssageClientInsertCompletionHandler)(int status,NSString *error)
+
+
 - (BOOL)insertMessage:(UMMessage *)msg
 {
-    
-    return NO;
+    return [_session insertMessage:msg onCompletionCallObject:self withSelector:@selector(completionHandler:)];
+}
+
+- (void)completionHandler:(UMMessageServerCommand *)cmd
+{
+    NSLog(@"Completion of %@",cmd);
+}
+- (BOOL) awaitsResponses
+{
+    return [_session awaitsResponses];
+}
+
+- (BOOL) login
+{
+    _loggedIn = NO;
+    _loginComplete = NO;
+    if([_session     doLogin:_username
+                    password:_password
+                    instance:_instance
+      onCompletionCallObject:self
+                withSelector:@selector(loginResponse:)])
+    {
+        while(_loginComplete == NO)
+        {
+            sleep(1);
+        }
+    }
+    return _loggedIn;
+}
+
+- (void)loginResponse:(UMMessageServerCommandLoginResponse *)cmd
+{
+    _loginComplete = YES;
+    if(cmd.status == 0)
+    {
+        _loggedIn = YES;
+    }
+    [_session startHeartbeat];
+    NSLog(@"Login Answer %@",cmd);
+>>>>>>> 0d78bc34faece91a03b24fa1a99ee9ecc9fd364c
 }
 
 @end
