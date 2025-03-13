@@ -17,7 +17,6 @@ if(field)                                                                       
     [_asn1_list addObject:i];                                                       \
 }
 
-
 #define DOUBLE(o,len,tag,dictname,field,accessor,dbname,options)                    \
 if(field)                                                                           \
 {                                                                                   \
