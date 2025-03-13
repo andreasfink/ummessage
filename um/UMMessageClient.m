@@ -97,7 +97,6 @@
     }
     [_session startHeartbeat];
     NSLog(@"Login Answer %@",cmd);
->>>>>>> 0d78bc34faece91a03b24fa1a99ee9ecc9fd364c
 }
 
 @end

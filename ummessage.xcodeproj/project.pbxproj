@@ -39,6 +39,7 @@
 		A68863C92D761E980079C9A5 /* UMMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863AA2D761E980079C9A5 /* UMMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A68863CA2D761E980079C9A5 /* UMMessage.def.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863AC2D761E980079C9A5 /* UMMessage.def.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A68863CB2D761E980079C9A5 /* UMMessageFields.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863AD2D761E980079C9A5 /* UMMessageFields.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A69B2B902D80E2B4006EBCA1 /* um.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60B32A62D76051E003A8DFA /* um.framework */; };
 		A6E569182D7DB68F0052E410 /* UMMessageHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = A674A8D72D7DAD6C0016B625 /* UMMessageHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6E569192D7DB6960052E410 /* UMMessageServerCommandGenericError.h in Headers */ = {isa = PBXBuildFile; fileRef = A674A8DF2D7DAD6C0016B625 /* UMMessageServerCommandGenericError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6E5691A2D7DB6960052E410 /* UMMessageServerCommandHelloResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = A6E5690F2D7DB5FB0052E410 /* UMMessageServerCommandHelloResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -289,6 +290,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A69B2B902D80E2B4006EBCA1 /* um.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1040,10 +1042,12 @@
 		A69B2B7E2D80DE2E006EBCA1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "test-tool/test-tool.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 38L827M334;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = "com.fink-telecom.test-tool";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -1052,10 +1056,12 @@
 		A69B2B7F2D80DE2E006EBCA1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "test-tool/test-tool.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 38L827M334;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = "com.fink-telecom.test-tool";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
