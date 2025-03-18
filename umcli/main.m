@@ -16,17 +16,18 @@ int main(int argc, const char * argv[])
         msg.messageId = [[UMDirtyString alloc]init];
         msg.messageId.stringValue = [UMMessage uniqueMessageIdWithPrefix:@""];
         UMHost *host = [[UMHost alloc]initWithLocalhost];
-        UMMessageClient *client = [[UMMessageClient alloc]initWithHost:host port:9121];
-
-        
-        UMHost *host = [[UMHost alloc]initWithLocalhost];
         [host resolve];
-        UMMessageClient *client = [[UMMessageClient alloc]initWithHost:host port:9121];
+
+        UMMessageClient *client = [[UMMessageClient alloc]initWithHost:host port:9121];        
         client.instance = @"default-instance";
         client.username = @"testuser";
         client.password = @"testpass";
         [client login];
-
+        while(client.loggedIn==NO)
+        {
+            sleep(1);
+        }
+        NSLog(@"Login completed. inserting now");
         [client insertMessage:msg];
         while([client awaitsResponses])
         {
