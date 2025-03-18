@@ -1,6 +1,6 @@
 # File: Makefile
-# Project "ulibasn1"
-# Copyright © 2017 Andreas Fink (andreas@fink.org). All rights reserved.
+# Project @PROJECT_NAME@
+# Copyright © 2025 Andreas Fink (andreas@fink.org). All rights reserved.
 # Create: Andreas Fink (andreas@fink.org)
 #
 #
@@ -18,8 +18,8 @@ SLIB=lib@PROJECT_NAME@.a
 
 PKGCONFIGFILE=@PROJECT_NAME@.pc
 
-MFILES = $(wildcard Classes/*.m) $(wildcard ulibasn1/*.m)
-HFILES = version.h $(wildcard Classes/*.h) $(wildcard ulibasn1/*.h)
+MFILES = $(wildcard um/*.m)
+HFILES = version.h $(wildcard um/*.h)
 MOFILES  = $(MFILES:.m=.m.o)
 OFILES = $(MOFILES)
 
@@ -46,8 +46,8 @@ install: ${LIB} ${SLIB}
 	ln -s "${LIB}.${MAJORVER}.${MINORVER}"             "${DESTDIR}/usr/local/lib/${LIB}.${MAJORVER}"
 	ln -s "${LIB}.${MAJORVER}"                         "${DESTDIR}/usr/local/lib/${LIB}"
 	-install -b -g bin -o root -m 644 ${PKGCONFIGFILE} ${DESTDIR}/usr/local/lib/pkgconfig/
-	-mkdir -p ${DESTDIR}/usr/local/include/ulibasn1
-	cp $(HFILES) ${DESTDIR}/usr/local/include/ulibasn1
+	-mkdir -p ${DESTDIR}/usr/local/include/um
+	cp $(HFILES) ${DESTDIR}/usr/local/include/um
 	ldconfig
 
 clean:
