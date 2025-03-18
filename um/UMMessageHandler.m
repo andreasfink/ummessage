@@ -75,7 +75,7 @@
             }
             else
             {
-                if((err!=UMSocketError_has_data) || (err==UMSocketError_has_data_and_hup))
+                if((err==UMSocketError_has_data) || (err==UMSocketError_has_data_and_hup))
                 {
                     hasData = YES;
                 }
@@ -114,7 +114,7 @@
                 }
                 @catch(NSException *e)
                 {
-                    
+                    NSLog(@"e=%@",e);
                 }
                 ummutex_unlock(_socket.dataLock);
             }
