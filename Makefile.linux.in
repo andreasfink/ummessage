@@ -18,10 +18,20 @@ SLIB=lib@PROJECT_NAME@.a
 
 PKGCONFIGFILE=@PROJECT_NAME@.pc
 
+UMCLI_MFILES = $(wildcard umcli/*.m)
+UMCLI_MOFILES  = $(UMCLI_MFILES:.m=.m.o)
+UMCLI_OFILES  = $(UMCLI_MOFILES)
+
+UMSERVER_MFILES = $(wildcard umserver/*.m)
+UMSERVER_MOFILES  = $(UMSERVER_MFILES:.m=.m.o)
+UMSERVER_OFILES  = $(UMSERVER_MOFILES)
+
 MFILES = $(wildcard um/*.m)
 HFILES = version.h $(wildcard um/*.h)
 MOFILES  = $(MFILES:.m=.m.o)
 OFILES = $(MOFILES)
+
+HEADERDIR=um
 
 INCLUDEDIRS = -I Classes
 DEBUG_RELEASE = -DCONFIGURATION_${CONFIGURATION}=1 -DCONFIGURATION=${CONFIGURATION}
@@ -33,6 +43,14 @@ ${LIB}: ${OFILES}
 ${SLIB}: ${OFILES}
 	ar rcs ${SLIB} ${OFILES}
 	ranlib ${SLIB}
+	
+build/umcli: ${UMCLI_OFILES} ${LIB}
+	-mkdir -p build/
+	${CC} -o build/umcli  ${LDFLAGS} ${OFILES} ${LIB} ${LIBS} ${STATIC_LIBS}
+
+build/umserver: ${UMSERVER_OFILES}  ${LIB}
+	-mkdir -p build/
+	${CC} -o build/umserver  ${LDFLAGS} ${OFILES} ${LIB} ${LIBS} ${STATIC_LIBS}
 
 install: ${LIB} ${SLIB}
 	-mkdir -p ${DESTDIR}/usr/local/lib/pkgconfig
@@ -42,16 +60,19 @@ install: ${LIB} ${SLIB}
 	rm -f "${DESTDIR}/usr/local/lib/${LIB}"
 	install -b -g bin -o root -m 644 "${LIB}" "${DESTDIR}/usr/local/lib/${LIB}.${MAJORVER}.${MINORVER}.${REVISION}"
 	install -b -g bin -o root -m 644 "${SLIB}" "${DESTDIR}/usr/local/lib/${SLIB}"
+	install -b -g bin -o root -m 755 build/umserver "${DESTDIR}/usr/local/bin/umserver"
+	install -b -g bin -o root -m 755 build/umcli "${DESTDIR}/usr/local/bin/umcli"
 	ln -s "${LIB}.${MAJORVER}.${MINORVER}.${REVISION}" "${DESTDIR}/usr/local/lib/${LIB}.${MAJORVER}.${MINORVER}"
 	ln -s "${LIB}.${MAJORVER}.${MINORVER}"             "${DESTDIR}/usr/local/lib/${LIB}.${MAJORVER}"
 	ln -s "${LIB}.${MAJORVER}"                         "${DESTDIR}/usr/local/lib/${LIB}"
 	-install -b -g bin -o root -m 644 ${PKGCONFIGFILE} ${DESTDIR}/usr/local/lib/pkgconfig/
-	-mkdir -p ${DESTDIR}/usr/local/include/um
-	cp $(HFILES) ${DESTDIR}/usr/local/include/um
+	-mkdir -p ${DESTDIR}/usr/local/include/${HEADERDIR}
+	cp $(HFILES) ${DESTDIR}/usr/local/include/${HEADERDIR}
 	ldconfig
 
 clean:
 	rm -f $(LIB) $(OFILES) $(SLIB)
+	rm -rf build/
 
 .SUFFIXES: .m.o .o .m .c
 
