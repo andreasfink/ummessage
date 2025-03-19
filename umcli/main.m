@@ -23,10 +23,6 @@ int main(int argc, const char * argv[])
         client.username = @"testuser";
         client.password = @"testpass";
         [client login];
-        while(client.loggedIn==NO)
-        {
-            sleep(1);
-        }
         NSLog(@"Login completed. inserting now");
         [client insertMessage:msg];
         while([client awaitsResponses])

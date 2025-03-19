@@ -72,7 +72,6 @@
 
 - (BOOL) login
 {
-    _loggedIn = NO;
     _loginComplete = NO;
     if([_session     doLogin:_username
                     password:_password
@@ -85,15 +84,18 @@
             sleep(1);
         }
     }
-    return _loggedIn;
+    return _loginComplete;
 }
 
 - (void)loginResponse:(UMMessageServerCommandLoginResponse *)cmd
 {
-    _loginComplete = YES;
     if(cmd.status == 0)
     {
-        _loggedIn = YES;
+        _loginComplete = YES;
+    }
+    else
+    {
+        _loginComplete = NO;
     }
     [_session startHeartbeat];
     NSLog(@"Login Answer %@",cmd);

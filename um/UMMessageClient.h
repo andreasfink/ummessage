@@ -22,14 +22,13 @@ typedef void (^UMMesssageClientInsertCompletionHandler)(int status,NSString *err
     NSString *_username;
     NSString *_password;
     NSString *_instance;
-    BOOL _loggedIn;
     BOOL _loginComplete;
 }
 
 @property(readwrite,strong,atomic)  NSString *username;
 @property(readwrite,strong,atomic)  NSString *password;
 @property(readwrite,strong,atomic)  NSString *instance;
-@property(readwrite,assign,atomic)  BOOL loggedIn;
+@property(readwrite,assign,atomic)  BOOL loginComplete;
 
 - (UMMessageClient *)initWithHost:(UMHost *)host port:(int)port;
 - (BOOL)connect; /* returns YES if connected */
