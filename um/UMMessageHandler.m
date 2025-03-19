@@ -61,6 +61,8 @@
     BOOL hasData = YES;
     while(hasData)
     {
+        fprintf(stderr,".");
+        fflush(stderr);
         @autoreleasepool
         {
             UMSocketError err =  [_socket receiveToBufferWithBufferLimit:_maxReceiveBuffer];
