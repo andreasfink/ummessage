@@ -142,6 +142,69 @@ static      UMMutex      *g_messageIdLock = NULL;
     return o;
 }
 
++ (void)asn1DefAppendString:(NSMutableString *)o
+                              len:(NSInteger)len
+                              tag:(NSInteger)tag
+                         dictname:(const char *)dictname
+                          options:(const char *)options
+                             type:(const char *)type
+{
+    [o appendFormat:@"\t%s\t[%ld] %s\n",dictname,tag,type];
+}
+
++ (NSString *)asn1Def
+{
+    NSMutableString *o = [[NSMutableString alloc]init];
+    [o appendFormat:@"UMMessage ::= SEQUENCE\n{\n"];
+        
+#define STRING(o,len1,tag1,dictname1,field1,accessor1,dbname1,options1) \
+[UMMessage asn1DefAppendString:o len:len1 \
+                           tag:tag1 \
+                      dictname:dictname1 \
+                       options:options1 \
+                       type:"UTF8String"];
+
+#define INTEGER(o,len1,tag1,dictname1,field1,accessor1,dbname1,options1) \
+[UMMessage asn1DefAppendString:o len:len1 \
+                           tag:tag1 \
+                      dictname:dictname1 \
+                       options:options1 \
+                       type:"INTEGER"];
+    
+#define DATE(o,len1,tag1,dictname1,field1,accessor1,dbname1,options1) \
+[UMMessage asn1DefAppendString:o len:len1 \
+                           tag:tag1 \
+                      dictname:dictname1 \
+                       options:options1 \
+                           type:"UTF8String"];
+#define DATA(o,len1,tag1,dictname1,field1,accessor1,dbname1,options1) \
+[UMMessage asn1DefAppendString:o len:len1 \
+                           tag:tag1 \
+                      dictname:dictname1 \
+                       options:options1 \
+                           type:"OCTETSTRING"];
+
+#define TEXT(o,len1,tag1,dictname1,field1,accessor1,dbname1,options1) \
+[UMMessage asn1DefAppendString:o len:len1 \
+                           tag:tag1 \
+                      dictname:dictname1 \
+                       options:options1 \
+                       type:"UTF8String"];
+
+#define DOUBLE(o,len1,tag1,dictname1,field1,accessor1,dbname1,options1) \
+    [UMMessage asn1DefAppendString:o len:len1 \
+                               tag:tag1 \
+                          dictname:dictname1 \
+                           options:options1 \
+                           type:"REAL"];
+#include "UMMessage.def.h"
+#include "UMMessage_macroClear.h"
+
+    [o appendFormat:@"}\n"];
+    return o;
+}
+
+
 
 + (UMMessage *)messageFromDbResult:(UMDbResult *)dbResult
 {

@@ -59,8 +59,6 @@
 - (int)work
 {
     int processedData = 0;
-    fprintf(stderr,".");
-    fflush(stderr);
     @autoreleasepool
     {
         UMSocketError err =  [_socket receiveToBufferWithBufferLimit:_maxReceiveBuffer];
@@ -114,8 +112,6 @@
             [self terminateHandler];
         }
     }
-    fprintf(stderr,"(%d)",processedData);
-    fflush(stderr);
     return processedData;
 }
 
