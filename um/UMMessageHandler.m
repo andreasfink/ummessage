@@ -58,76 +58,67 @@
 
 - (int)work
 {
-    BOOL hasData = YES;
-    while(hasData)
+    int processedData = 0;
+    fprintf(stderr,".");
+    fflush(stderr);
+    @autoreleasepool
     {
-        fprintf(stderr,".");
-        fflush(stderr);
-        @autoreleasepool
+        UMSocketError err =  [_socket receiveToBufferWithBufferLimit:_maxReceiveBuffer];
+        if( (err != UMSocketError_has_data) &&
+            (err != UMSocketError_has_data_and_hup) &&
+            (err != UMSocketError_no_error) &&
+            (err != UMSocketError_try_again))
         {
-            UMSocketError err =  [_socket receiveToBufferWithBufferLimit:_maxReceiveBuffer];
-            if( (err != UMSocketError_has_data) &&
-                (err != UMSocketError_has_data_and_hup) &&
-                (err != UMSocketError_no_error) &&
-                (err != UMSocketError_try_again))
+            /* some unexpected error occured */
+            NSLog(@"error while reading %@",[UMSocket getSocketErrorString:err]);
+            [self shutdownBackgroundTaskFromWithin];
+            return processedData;
+        }
+        ummutex_lock(_socket.dataLock);
+        @try
+        {
+            NSUInteger pos = 0;
+            if(_socket.receiveBuffer.length > 0)
             {
-                NSLog(@"error while reading %@",[UMSocket getSocketErrorString:err]);
-                hasData = NO;
-                [self shutdownBackgroundTaskFromWithin];
-            }
-            else
-            {
-                if((err==UMSocketError_has_data) || (err==UMSocketError_has_data_and_hup))
+                UMASN1Object *o = [[UMASN1Object alloc]initWithBerData:_socket.receiveBuffer atPosition:&pos context:NULL];
+                if(pos > 0)
                 {
-                    hasData = YES;
+                    [_socket deleteFromReceiveBuffer:pos];
+                    processedData++;
                 }
-                else
+                if(o)
                 {
-                    hasData = NO;
-                }
-            }
-            if(hasData)
-            {
-                ummutex_lock(_socket.dataLock);
-                @try
-                {
-                    NSUInteger pos = 0;
-                    if(_socket.receiveBuffer.length > 0)
+                    UMMessageServerCommand *cmd = [[UMMessageServerCommand alloc]initWithASN1Object:o context:NULL];
+                    if(cmd)
                     {
-                        UMASN1Object *o = [[UMASN1Object alloc]initWithBerData:_socket.receiveBuffer atPosition:&pos context:NULL];
-                        if(pos > 0)
+                        int err = [_session processCommand:cmd];
+                        if(err)
                         {
-                            [_socket deleteFromReceiveBuffer:pos];
+                            [self terminateHandler];
                         }
-                        if(o)
+                        else
                         {
-                            UMMessageServerCommand *cmd = [[UMMessageServerCommand alloc]initWithASN1Object:o context:NULL];
-                            if(cmd)
-                            {
-                                int err = [_session processCommand:cmd];
-                                if(err)
-                                {
-                                    [self terminateHandler];
-                                }
-                            }
+                            processedData++;
                         }
                     }
-                    
                 }
-                @catch(NSException *e)
-                {
-                    NSLog(@"e=%@",e);
-                }
-                ummutex_unlock(_socket.dataLock);
-            }
-            if(err == UMSocketError_has_data_and_hup)
-            {
-                [self terminateHandler];
             }
         }
+        @catch(NSException *e)
+        {
+            NSLog(@"e=%@",e);
+        }
+        ummutex_unlock(_socket.dataLock);
+        if(err == UMSocketError_has_data_and_hup)
+        {
+            [self terminateHandler];
+        }
     }
-    return 0;
+    fprintf(stderr,"(%d)",processedData);
+    fflush(stderr);
+    return processedData;
 }
+
 - (void) terminateHandler
 {
     _session.socket = NULL;
