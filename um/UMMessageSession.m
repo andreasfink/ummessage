@@ -347,8 +347,16 @@
             
         }
             break;
+        default:
+        {
+            UMMessageServerCommandGenericError *cmd1 = [[UMMessageServerCommandGenericError alloc]initWithASN1Object:cmd context:NULL];
+            cmd1.status = UMMessageServerCommandError_UNSUPPORTED_COMMAND;
+            cmd1.error = @"Unknown command";
+            [self sendCommand:cmd1];
+            return -1;
+        }
     }
-    return -1;
+    return 0;
 }
 
 - (UMSocketError)sendCommand:(UMMessageServerCommand *)cmd
