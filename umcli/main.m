@@ -15,7 +15,7 @@ int main(int argc, const char * argv[])
         UMMessage *msg = [[UMMessage alloc]init];
         msg.messageId = [[UMDirtyString alloc]init];
         msg.messageId.stringValue = [UMMessage uniqueMessageIdWithPrefix:@""];
-        UMHost *host = [[UMHost alloc]initWithLocalhost];
+        UMHost *host = [[UMHost alloc]initWithName:@"debian12a.fink.org"];
         [host resolve];
 
         UMMessageClient *client = [[UMMessageClient alloc]initWithHost:host port:9121];        

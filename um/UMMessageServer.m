@@ -62,7 +62,7 @@
             [h startBackgroundTask];
         }
     }
-    return -1;
+    return 0;
 }
 
 
