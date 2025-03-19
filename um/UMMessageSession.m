@@ -251,6 +251,7 @@
 - (int)processCommand:(UMMessageServerCommand *)cmd /* return error code*/
 {
     UMMessageServerCommandType cid = (UMMessageServerCommandType)cmd.command;
+    NSLog(@"CMD (%ld/%ld/%ld)",cmd.command,cmd.flags,cmd.sequenceNumber);
     switch(cid)
     {
         case UMMessageServerCommandType_GENERIC_ERROR_RESPONSE:
