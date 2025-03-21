@@ -24,6 +24,9 @@ UMCLI_OFILES  = $(UMCLI_MFILES:.m=.m.o)
 UMSERVER_MFILES = $(wildcard umserver/*.m)
 UMSERVER_OFILES  = $(UMSERVER_MFILES:.m=.m.o)
 
+UMDBSERVER_MFILES = $(wildcard umdbserver/*.m)
+UMDBSERVER_OFILES  = $(UMDBSERVER_MFILES:.m=.m.o)
+
 MFILES = $(wildcard um/*.m)
 HFILES = version.h $(wildcard um/*.h)
 MOFILES  = $(MFILES:.m=.m.o)
@@ -34,7 +37,7 @@ HEADERDIR=um
 INCLUDEDIRS = -I Classes
 DEBUG_RELEASE = -DCONFIGURATION_${CONFIGURATION}=1 -DCONFIGURATION=${CONFIGURATION}
 
-all:	${LIB} build/umcli build/umserver
+all:	${LIB} build/umcli build/umserver build/umdbserver
 
 ${LIB}: ${OFILES}
 	./make_version
@@ -52,6 +55,10 @@ build/umserver: ${UMSERVER_OFILES}  ${LIB}
 	-mkdir -p build/
 	${CC} -o build/umserver  ${LDFLAGS} ${UMSERVER_OFILES} ${LIB} ${LIBS} ${STATIC_LIBS}
 
+build/umdbserver: ${UMDBSERVER_OFILES}  ${LIB}
+	-mkdir -p build/
+	${CC} -o build/umdbserver  ${LDFLAGS} ${UMDBSERVER_OFILES} ${LIB} ${LIBS} ${STATIC_LIBS}
+
 install: ${LIB} ${SLIB} build/umserver build/umcli
 	-mkdir -p ${DESTDIR}/usr/local/lib/pkgconfig
 	rm -f "${DESTDIR}/usr/local/lib/${LIB}.${MAJORVER}.${MINORVER}.${REVISION}"
@@ -61,6 +68,7 @@ install: ${LIB} ${SLIB} build/umserver build/umcli
 	install -b -g bin -o root -m 644 "${LIB}" "${DESTDIR}/usr/local/lib/${LIB}.${MAJORVER}.${MINORVER}.${REVISION}"
 	install -b -g bin -o root -m 644 "${SLIB}" "${DESTDIR}/usr/local/lib/${SLIB}"
 	install -b -g bin -o root -m 755 build/umserver "${DESTDIR}/usr/local/bin/umserver"
+	install -b -g bin -o root -m 755 build/umdbserver "${DESTDIR}/usr/local/bin/umdbserver"
 	install -b -g bin -o root -m 755 build/umcli "${DESTDIR}/usr/local/bin/umcli"
 	ln -s "${LIB}.${MAJORVER}.${MINORVER}.${REVISION}" "${DESTDIR}/usr/local/lib/${LIB}.${MAJORVER}.${MINORVER}"
 	ln -s "${LIB}.${MAJORVER}.${MINORVER}"             "${DESTDIR}/usr/local/lib/${LIB}.${MAJORVER}"
