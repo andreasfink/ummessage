@@ -19,7 +19,7 @@ MAJORVER=`echo $VERSION | cut -f1 -d.`
 MINORVER=`echo $VERSION | cut -f2 -d.`
 REVISION=`echo $VERSION | cut -f3 -d.`
 CONFIG_HEADER=um/ummessage_config.h
-DEPENDENT_PKGCONFIGS="ulib ulibasn1"
+DEPENDENT_PKGCONFIGS="ulib ulibasn1 ulibdb"
 PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"
 export PKG_CONFIG_PATH
 
