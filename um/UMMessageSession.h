@@ -8,11 +8,13 @@
 #import <ulib/ulib.h>
 
 #import <um/UMessageCommandHandlerProtocol.h>
+#import <um/UMMessageSessionAuthenticationDelegate.h>
 
 @class UMMessageServer;
 @class UMMessageClient;
 @class UMMessageHandler;
 @class UMMessage;
+
 
 @interface UMMessageSession : UMObject<UMessageCommandHandlerProtocol>
 {
@@ -36,6 +38,7 @@
     NSString            *_serverName;
     NSInteger           _serverApiVersion;
     BOOL                _clientSuccessfullyLoggedIn;
+    id<UMMessageSessionAuthenticationDelegate> _authenticationDelegate;
     UMSynchronizedDictionary *_pendingSequences; /* dictionary key=NSNumber(SequenceNumber) value:UMMessageSessionCompletionObject */
 }
 
@@ -56,6 +59,7 @@
 @property(readwrite,assign,atomic)  NSInteger        clientApiVersion;
 @property(readwrite,assign,atomic)  NSInteger        serverApiVersion;
 @property(readwrite,assign,atomic)  BOOL             cclientSuccessfullyLoggedIn;
+@property(readwrite,strong,atomic)  id<UMMessageSessionAuthenticationDelegate> authenticationDelegate;
 
 - (int)processCommand:(UMMessageServerCommand *)cmd; /* return error code*/
 

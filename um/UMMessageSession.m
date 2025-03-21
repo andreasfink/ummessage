@@ -117,9 +117,16 @@
 
 - (int)processLoginRequest:(UMMessageServerCommandLoginRequest *)cmd
 {
-    UMMessageServerCommandError error = [self login:cmd.username password:cmd.password instance:cmd.instance];
-    
+    UMMessageServerCommandError error = [_authenticationDelegate login:cmd.username
+                                                              password:cmd.password
+                                                                  host:_socket.connectedRemoteAddress
+                                                              instance:cmd.instance];
     UMMessageServerCommandLoginResponse *res = [[UMMessageServerCommandLoginResponse alloc]init];
+    if(error ==UMMessageServerCommandError_NO_ERROR)
+    {
+        _authenticated = YES;
+        _instance = cmd.instance;
+    }
     res.status = error;
     res.sequenceNumber = cmd.sequenceNumber;
     res.apiVersion = _serverApiVersion;
@@ -381,21 +388,7 @@
     return err;
 }
 
-- (UMMessageServerCommandError) login:(NSString *)username
-                             password:(NSString *)password
-                             instance:(NSString *)instance
-{
-    if(([username isEqualToString:_username]) &&( [password isEqualToString:_password]))
-    {
-        _authenticated = YES;
-        _instance = instance;
-        return UMMessageServerCommandError_NO_ERROR;
-    }
-    else
-    {
-        return UMMessageServerCommandError_NOT_AUTHORIZED;
-    }
-}
+
 - (UMMessageServerCommandError) localInsertMessage:(UMMessage *)msg
 {
     if(!_authenticated)

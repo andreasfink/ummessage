@@ -11,6 +11,8 @@ NSString *UMMessageServerCommandErrrorString(UMMessageServerCommandError err)
 {
     switch(err)
     {
+        case UMMessageServerCommandError_UNDEFINED:
+            return @"(undefined)";
         case UMMessageServerCommandError_NO_ERROR:
             return @"NO_ERROR";
         case UMMessageServerCommandError_UNSUPPORTED_COMMAND:
