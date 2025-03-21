@@ -26,6 +26,7 @@
         _session.socket = _socket;
         _session.server = _server;
         _session.rootDirectory = _server.rootDirectory;
+        _session.authenticationDelegate = _server.authenticationDelegate;
     }
     return self;
 }
@@ -59,8 +60,6 @@
 - (int)work
 {
     int processedData = 0;
-    fprintf(stderr,".");
-    fflush(stderr);
     @autoreleasepool
     {
         UMSocketError err =  [_socket receiveToBufferWithBufferLimit:_maxReceiveBuffer];
@@ -114,8 +113,6 @@
             [self terminateHandler];
         }
     }
-    fprintf(stderr,"(%d)",processedData);
-    fflush(stderr);
     return processedData;
 }
 

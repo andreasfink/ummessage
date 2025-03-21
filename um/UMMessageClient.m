@@ -10,6 +10,7 @@
 #import <um/UMMessage.h>
 #import <um/UMMessageSession.h>
 #import <um/UMMessageServerCommandLoginResponse.h>
+#import <um/UMMessageServerCommandError.h>
 
 @implementation UMMessageClient
 
@@ -22,16 +23,6 @@
         _socket = [[UMSocket alloc]initWithType:UMSOCKET_TYPE_TCP];
         _socket.remoteHost = host;
         _socket.requestedRemotePort = port;
-        if([self connect])
-        {
-            _handler  = [[UMMessageHandler alloc]initWithSocket:_socket client:self];
-            _session = _handler.session;
-            [_handler startBackgroundTask];
-        }
-        else
-        {
-            return NULL;
-        }
     }
     return self;
 }
@@ -44,6 +35,9 @@
         if(err==UMSocketError_no_error)
         {
             _isConnected = YES;
+            _handler  = [[UMMessageHandler alloc]initWithSocket:_socket client:self];
+            _session = _handler.session;
+            [_handler startBackgroundTask];
         }
         else
         {
@@ -70,35 +64,40 @@
     return [_session awaitsResponses];
 }
 
-- (BOOL) login
+- (NSInteger) login
 {
     _loginComplete = NO;
+    _loginStatus = UMMessageServerCommandError_UNDEFINED;
     if([_session     doLogin:_username
                     password:_password
                     instance:_instance
       onCompletionCallObject:self
                 withSelector:@selector(loginResponse:)])
     {
-        while(_loginComplete == NO)
+        while(_loginStatus == UMMessageServerCommandError_UNDEFINED)
         {
-            sleep(1);
+            usleep(100000);
         }
     }
-    return _loginComplete;
+    return _loginStatus;
 }
 
 - (void)loginResponse:(UMMessageServerCommandLoginResponse *)cmd
 {
-    if(cmd.status == 0)
+    _loginStatus = cmd.status;
+    _loginComplete = YES;
+    if(_loginStatus == 0)
     {
-        _loginComplete = YES;
+        [_session startHeartbeat];
     }
-    else
-    {
-        _loginComplete = NO;
-    }
-    [_session startHeartbeat];
-    NSLog(@"Login Answer %@",cmd);
 }
 
+- (void)close
+{
+    [_handler shutdownBackgroundTask];
+    [_handler.session.socket close];
+    _handler.session = NULL;
+    _session = NULL;
+    _handler = NULL;
+}
 @end

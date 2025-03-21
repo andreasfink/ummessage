@@ -117,9 +117,16 @@
 
 - (int)processLoginRequest:(UMMessageServerCommandLoginRequest *)cmd
 {
-    UMMessageServerCommandError error = [self login:cmd.username password:cmd.password instance:cmd.instance];
-    
+    UMMessageServerCommandError error = [_authenticationDelegate login:cmd.username
+                                                              password:cmd.password
+                                                                  host:_socket.connectedRemoteAddress
+                                                              instance:cmd.instance];
     UMMessageServerCommandLoginResponse *res = [[UMMessageServerCommandLoginResponse alloc]init];
+    if(error ==UMMessageServerCommandError_NO_ERROR)
+    {
+        _authenticated = YES;
+        _instance = cmd.instance;
+    }
     res.status = error;
     res.sequenceNumber = cmd.sequenceNumber;
     res.apiVersion = _serverApiVersion;
@@ -251,7 +258,7 @@
 - (int)processCommand:(UMMessageServerCommand *)cmd /* return error code*/
 {
     UMMessageServerCommandType cid = (UMMessageServerCommandType)cmd.command;
-    NSLog(@"CMD (%ld/%ld/%ld)",cmd.command,cmd.flags,cmd.sequenceNumber);
+    //NSLog(@"CMD (%ld/%ld/%ld)",cmd.command,cmd.flags,cmd.sequenceNumber);
     switch(cid)
     {
         case UMMessageServerCommandType_GENERIC_ERROR_RESPONSE:
@@ -381,21 +388,7 @@
     return err;
 }
 
-- (UMMessageServerCommandError) login:(NSString *)username
-                             password:(NSString *)password
-                             instance:(NSString *)instance
-{
-    if(([username isEqualToString:_username]) &&( [password isEqualToString:_password]))
-    {
-        _authenticated = YES;
-        _instance = instance;
-        return UMMessageServerCommandError_NO_ERROR;
-    }
-    else
-    {
-        return UMMessageServerCommandError_NOT_AUTHORIZED;
-    }
-}
+
 - (UMMessageServerCommandError) localInsertMessage:(UMMessage *)msg
 {
     if(!_authenticated)
@@ -403,10 +396,22 @@
         return UMMessageServerCommandError_NOT_AUTHORIZED;
     }
     NSString *filename = [self messageIdToFileName:msg.messageId.stringValue];
+    NSString *filename1 = [NSString stringWithFormat:@"%@.json",filename];
+    NSString *filename2 = [NSString stringWithFormat:@"%@.ber",filename];
+    NSString *s = [[msg objectValue]jsonString];
     NSData *data = [msg berEncoded];
-    if([data writeToFile:filename atomically:YES])
+    NSError *err1=NULL;
+    NSError *err2=NULL;
+
+    [s writeToFile:filename1 atomically:YES encoding:NSUTF8StringEncoding  error:&err1];
+    if(err1)
     {
-        NSLog(@"write to file '%@' failed",filename);
+        NSLog(@"write to file '%@' failed.\n%@\n",filename1,err1);
+    }
+    [data writeToFile:filename2 options:NSDataWritingAtomic error:&err2];
+    if(err2)
+    {
+        NSLog(@"write to file '%@' failed.\n%@\n",filename2,err2);
         return UMMessageServerCommandError_WRITE_FAILURE;
     }
     return UMMessageServerCommandError_NO_ERROR;
@@ -470,10 +475,13 @@
         NSString *month         = [msgid substringWithRange:NSMakeRange(4,2)];
         NSString *day           = [msgid substringWithRange:NSMakeRange(6,2)];
         NSString *hour          = [msgid substringWithRange:NSMakeRange(8,2)];
-        //NSString *minute_second = [msgid substringWithRange:NSMakeRange(10,4)];
-        
-        NSString *path = [NSString stringWithFormat:@"%@/%@/%@/%@/%@/%@",_rootDirectory,_instance,year,month,day,hour];
-        NSString *filename = [NSString stringWithFormat:@"%@/%@",path,msgid];
+        NSString *min           = [msgid substringWithRange:NSMakeRange(10,2)];
+        NSString *sec           = [msgid substringWithRange:NSMakeRange(12,2)];
+        NSString *micro         = [msgid substringWithRange:NSMakeRange(14,4)];
+        NSString *hour_tenmin   = [msgid substringWithRange:NSMakeRange(8,3)];
+
+        NSString *path = [NSString stringWithFormat:@"%@/%@/%@/%@/%@/%@",_rootDirectory,_instance,year,month,day,hour_tenmin];
+        NSString *filename = [NSString stringWithFormat:@"%@/%@-%@-%@_%@:%@:%@.%@",path,year,month,day,hour,min,sec,micro];
         
         NSError *err = NULL;
         [[NSFileManager defaultManager]createDirectoryAtPath:path

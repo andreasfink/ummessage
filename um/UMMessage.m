@@ -142,6 +142,79 @@ static      UMMutex      *g_messageIdLock = NULL;
     return o;
 }
 
++ (void)asn1DefAppendString:(NSMutableString *)o
+                              len:(NSInteger)len
+                              tag:(NSInteger)tag
+                         dictname:(const char *)dictname
+                          options:(const char *)options
+                             type:(const char *)type
+{
+    NSMutableString *s = [[NSMutableString alloc]init];
+    [s appendFormat:@"    %s",dictname];
+    while(s.length < 34)
+    {
+        [s appendString:@" "];
+    }
+    [s appendFormat:@"[%ld] %s,\n",tag,type];
+    [o appendFormat:@"%@",s];
+}
+
++ (NSString *)asn1Def
+{
+    NSMutableString *o = [[NSMutableString alloc]init];
+    [o appendFormat:@"UMMessage ::= SEQUENCE\n{\n"];
+        
+#define STRING(o,len1,tag1,dictname1,field1,accessor1,dbname1,options1) \
+[UMMessage asn1DefAppendString:o len:len1 \
+                           tag:tag1 \
+                      dictname:dictname1 \
+                       options:options1 \
+                       type:"UTF8String"];
+
+#define INTEGER(o,len1,tag1,dictname1,field1,accessor1,dbname1,options1) \
+[UMMessage asn1DefAppendString:o len:len1 \
+                           tag:tag1 \
+                      dictname:dictname1 \
+                       options:options1 \
+                       type:"INTEGER"];
+    
+#define DATE(o,len1,tag1,dictname1,field1,accessor1,dbname1,options1) \
+[UMMessage asn1DefAppendString:o len:len1 \
+                           tag:tag1 \
+                      dictname:dictname1 \
+                       options:options1 \
+                           type:"UTF8String"];
+#define DATA(o,len1,tag1,dictname1,field1,accessor1,dbname1,options1) \
+[UMMessage asn1DefAppendString:o len:len1 \
+                           tag:tag1 \
+                      dictname:dictname1 \
+                       options:options1 \
+                           type:"OCTETSTRING"];
+
+#define TEXT(o,len1,tag1,dictname1,field1,accessor1,dbname1,options1) \
+[UMMessage asn1DefAppendString:o len:len1 \
+                           tag:tag1 \
+                      dictname:dictname1 \
+                       options:options1 \
+                       type:"UTF8String"];
+
+#define DOUBLE(o,len1,tag1,dictname1,field1,accessor1,dbname1,options1) \
+    [UMMessage asn1DefAppendString:o len:len1 \
+                               tag:tag1 \
+                          dictname:dictname1 \
+                           options:options1 \
+                           type:"REAL"];
+#include "UMMessage.def.h"
+#include "UMMessage_macroClear.h"
+
+    /* remove the last , before the \n */
+    NSInteger n = [o length];
+    o = [[o substringWithRange:NSMakeRange(0,n-2)] mutableCopy];
+    [o appendString:@"\n}\n"];
+    return o;
+}
+
+
 
 + (UMMessage *)messageFromDbResult:(UMDbResult *)dbResult
 {
@@ -255,6 +328,44 @@ static      UMMutex      *g_messageIdLock = NULL;
     return self;
 }
 
+- (BOOL)isDirty
+{
+#define STRING(o,len,tag,dictname,field,accessor,dbname,options)     if(field.isDirty) return YES;
+#define INTEGER(o,len,tag,dictname,field,accessor,dbname,options)    if(field.isDirty) return YES;
+#define DATE(o,len,tag,dictname,field,accessor,dbname,options)       if(field.isDirty) return YES;
+#define DATA(o,len,tag,dictname,field,accessor,dbname,options)       if(field.isDirty) return YES;
+#define BINARY(o,len,tag,dictname,field,accessor,dbname,options)     if(field.isDirty) return YES;
+#define TEXT(o,len,tag,dictname,field,accessor,dbname,options)       if(field.isDirty) return YES;
+#define DOUBLE(o,len,tag,dictname,field,accessor,dbname,options)     if(field.isDirty) return YES;
+#include "UMMessage.def.h"
+#include "UMMessage_macroClear.h"
+    return NO;
+}
+- (void)setIsDirty:(BOOL) dirt
+{
+#define STRING(o,len,tag,dictname,field,accessor,dbname,options)     field.isDirty=dirt;
+#define INTEGER(o,len,tag,dictname,field,accessor,dbname,options)    field.isDirty=dirt;
+#define DATE(o,len,tag,dictname,field,accessor,dbname,options)       field.isDirty=dirt;
+#define DATA(o,len,tag,dictname,field,accessor,dbname,options)       field.isDirty=dirt;
+#define BINARY(o,len,tag,dictname,field,accessor,dbname,options)     field.isDirty=dirt;
+#define TEXT(o,len,tag,dictname,field,accessor,dbname,options)       field.isDirty=dirt;
+#define DOUBLE(o,len,tag,dictname,field,accessor,dbname,options)     field.isDirty=dirt;
+#include "UMMessage.def.h"
+#include "UMMessage_macroClear.h"
+}
+
+- (void)clearDirty
+{
+#define STRING(o,len,tag,dictname,field,accessor,dbname,options)     [field clearDirty];
+#define INTEGER(o,len,tag,dictname,field,accessor,dbname,options)    [field clearDirty];
+#define DATE(o,len,tag,dictname,field,accessor,dbname,options)       [field clearDirty];
+#define DATA(o,len,tag,dictname,field,accessor,dbname,options)       [field clearDirty];
+#define BINARY(o,len,tag,dictname,field,accessor,dbname,options)     [field clearDirty];
+#define TEXT(o,len,tag,dictname,field,accessor,dbname,options)       [field clearDirty];
+#define DOUBLE(o,len,tag,dictname,field,accessor,dbname,options)     [field clearDirty];
+#include "UMMessage.def.h"
+#include "UMMessage_macroClear.h"
+}
 @end
 
 

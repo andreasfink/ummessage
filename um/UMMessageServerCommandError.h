@@ -9,6 +9,7 @@
 
 typedef enum UMMessageServerCommandError
 {
+    UMMessageServerCommandError_UNDEFINED           = -1,
     UMMessageServerCommandError_NO_ERROR            = 0,
     UMMessageServerCommandError_UNSUPPORTED_COMMAND = 1,
     UMMessageServerCommandError_PARAMETER_ERROR     = 2,

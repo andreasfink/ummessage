@@ -61,6 +61,7 @@
             {
                 case 3:
                     _message = [[UMMessage alloc]initWithASN1Object:o context:context];
+                    NSLog(@"Message: %@",_message);
                     break;
             }
         }
