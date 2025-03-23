@@ -117,10 +117,10 @@
 
 - (int)processLoginRequest:(UMMessageServerCommandLoginRequest *)cmd
 {
-    UMMessageServerCommandError error = [_authenticationDelegate login:cmd.username
-                                                              password:cmd.password
-                                                                  host:_socket.connectedRemoteAddress
-                                                              instance:cmd.instance];
+    UMMessageServerCommandError error = [_server.authenticationDelegate login:cmd.username
+                                                                     password:cmd.password
+                                                                         host:_socket.connectedRemoteAddress
+                                                                     instance:cmd.instance];
     UMMessageServerCommandLoginResponse *res = [[UMMessageServerCommandLoginResponse alloc]init];
     if(error ==UMMessageServerCommandError_NO_ERROR)
     {
@@ -161,8 +161,15 @@
 
 - (int)processInsertMessageRequest:(UMMessageServerCommandInsertMessageRequest *)cmd
 {
-    UMMessageServerCommandError error = [self localInsertMessage:cmd.message];
-    
+    UMMessageServerCommandError error;
+    if(_server.insertOrUpdateDelegate)
+    {
+        error = [_server.insertOrUpdateDelegate insertOrUpdateMessage:cmd.message];
+    }
+    else
+    {
+        error = [self localInsertMessage:cmd.message];
+    }
     UMMessageServerCommandInsertMessageResponse *res = [[UMMessageServerCommandInsertMessageResponse alloc]init];
     res.status = error;
     res.sequenceNumber = cmd.sequenceNumber;
@@ -200,8 +207,15 @@
 
 - (int)processUpdateMessageRequest:(UMMessageServerCommandUpdateMessageRequest *)cmd
 {
-    UMMessageServerCommandError error = [self updateMessage:cmd.message];
-    
+    UMMessageServerCommandError error;
+    if(_server.insertOrUpdateDelegate)
+    {
+        error = [_server.insertOrUpdateDelegate insertOrUpdateMessage:cmd.message];
+    }
+    else
+    {
+        error = [self updateMessage:cmd.message];
+    }
     UMMessageServerCommandUpdateMessageResponse *res = [[UMMessageServerCommandUpdateMessageResponse alloc]init];
     res.status = error;
     res.sequenceNumber = cmd.sequenceNumber;
@@ -220,7 +234,30 @@
 
 - (int)processGetMessageRequest:(UMMessageServerCommandGetMessageRequest *)cmd
 {
-    UMMessageServerCommandGetMessageResponse *res = [self getMessage:cmd.messageId];
+    UMMessageServerCommandGetMessageResponse *res = [[UMMessageServerCommandGetMessageResponse alloc]init];
+    if(!_authenticated)
+    {
+        res.status = UMMessageServerCommandError_NOT_AUTHORIZED;
+        res.sequenceNumber = cmd.sequenceNumber;
+    }
+    else
+    {
+        UMMessage *msg;
+        UMMessageServerCommandError err = UMMessageServerCommandError_NO_ERROR;
+        if(_server.loadDelegate)
+        {
+            msg = [_server.loadDelegate loadMessage:cmd.messageId error:&err];
+        }
+        else
+        {
+            msg = [self getMessage:cmd.messageId error:&err];
+        }
+        res.status = err;
+        if(err==UMMessageServerCommandError_NO_ERROR)
+        {
+            res.message = msg;
+        }
+    }
     res.sequenceNumber = cmd.sequenceNumber;
     UMSocketError err = [self sendCommand:res];
     if(err != UMSocketError_no_error)
@@ -237,8 +274,15 @@
 
 - (int)processDeleteMessageRequest:(UMMessageServerCommandDeleteMessageRequest *)cmd
 {
-    UMMessageServerCommandError error = [self deleteMessage:cmd.messageId];
-    
+    UMMessageServerCommandError error = UMMessageServerCommandError_NO_ERROR;
+    if(_server.deleteDelegate)
+    {
+        error = [_server.deleteDelegate deleteMessage:cmd.messageId];
+    }
+    else
+    {
+        error = [self deleteMessage:cmd.messageId];
+    }
     UMMessageServerCommandDeleteMessageResponse *res = [[UMMessageServerCommandDeleteMessageResponse alloc]init];
     res.status = error;
     res.sequenceNumber = cmd.sequenceNumber;
@@ -456,15 +500,10 @@
     return UMMessageServerCommandError_NO_ERROR;
 }
 
-- (UMMessageServerCommandGetMessageResponse *) getMessage:(NSString *)messageId
+- (UMMessage *) getMessage:(NSString *)messageId error:(UMMessageServerCommandError *)err
 {
-    UMMessageServerCommandGetMessageResponse *res = [[UMMessageServerCommandGetMessageResponse alloc]init];
-    if(!_authenticated)
-    {
-        res.status = UMMessageServerCommandError_NOT_AUTHORIZED;
-        return res;
-    }
-    return res;
+    *err = UMMessageServerCommandError_NOT_FOUND;
+    return NULL;
 }
 
 - (NSString *)messageIdToFileName:(NSString *)msgid
