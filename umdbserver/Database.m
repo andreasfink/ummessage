@@ -159,18 +159,8 @@
     UMDbSession *session = [_dbPool grabSession:FLF];
     if(session)
     {
-        UMDbQuery *query;
-        query = [UMDbQuery queryForFile:__FILE__ line: __LINE__];
-        if(![query isInCache])
-        {
-            [query setType:UMDBQUERYTYPE_DELETE_BY_KEY];
-            [query setTable:_messagesTable];
-            [query setPrimaryKeyName:@"archive_id"];
-        }
-        BOOL success = [session cachedQueryWithNoResult:query
-                                             parameters:@[]
-                                              allowFail:NO
-                                        primaryKeyValue:archiveId];
+        NSArray *sqlCommands = @[[NSString stringWithFormat:@"DELETE FROM `%@` WHERE archive_id=`%@` ",_msgTableName,[session sqlEscapeString:archiveId.stringValue]]];
+        BOOL success = [session queriesWithNoResult:sqlCommands allowFail:YES];
         if(success==NO)
         {
             err = UMMessageServerCommandError_DELETE_FAILURE;

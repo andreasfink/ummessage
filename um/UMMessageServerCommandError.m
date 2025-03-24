@@ -28,8 +28,14 @@ NSString *UMMessageServerCommandErrrorString(UMMessageServerCommandError err)
         case UMMessageServerCommandError_WRITE_FAILURE:
             return @"WRITE_FAILURE";
             break;
+        case UMMessageServerCommandError_INSERT_FAILURE:
+            return @"INSERT_FAILURE";
+            break;
         case UMMessageServerCommandError_UPDATE_FAILURE:
             return @"UPDATE_FAILURE";
+            break;
+        case UMMessageServerCommandError_LOAD_FAILURE:
+            return @"LOAD_FAILURE";
             break;
         case UMMessageServerCommandError_NOT_FOUND:
             return @"NOT_FOUND";
@@ -39,6 +45,9 @@ NSString *UMMessageServerCommandErrrorString(UMMessageServerCommandError err)
             break;
         case UMMessageServerCommandError_API_VERSION_MISMATCH:
             return @"API_VERSION_MISMATCH";
+            break;
+        case UMMessageServerCommandError_NO_DB_SESSIONS_AVAILABLE:
+            return @"NO_DB_SESSIONS_AVAILABLE";
             break;
     }
     return NULL;
