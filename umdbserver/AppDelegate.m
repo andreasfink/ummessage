@@ -382,10 +382,11 @@ static void signalHandler(int signum)
                                 host:(NSString *)host
                             instance:(NSString *)instance
 {
+    NSLog(@"Login(username %@ password %@ host %@ instance %@)",username,password, host,instance);
     ConfigUser *cu = [_config getUser:username];
     if(cu==NULL)
     {
-        return UMMessageServerCommandError_NOT_AUTHORIZED;
+        return UMMessageServerCommandError_NOT_FOUND;
     }
     if(![cu.password isEqualToString:password])
     {

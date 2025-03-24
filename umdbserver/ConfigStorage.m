@@ -96,6 +96,7 @@
             _users_dict[e.name] = e;
         }
     }
+    NSLog(@"Users=%@",_users_dict);
 }
 
 

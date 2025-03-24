@@ -248,8 +248,6 @@ static void signalHandler(int signum)
         fflush(stderr);
         exit(-1);
     }
- 
-    
     UMMessage *msg = [[UMMessage alloc]init];
     msg.messageId = [[UMDirtyString alloc]init];
     msg.messageId.stringValue = [UMMessage uniqueMessageIdWithPrefix:@""];
