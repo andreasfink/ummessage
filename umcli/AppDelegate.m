@@ -163,6 +163,9 @@ static void signalHandler(int signum)
                                                                      argc:argc
                                                                      argv:argv];
         [_commandLine handleStandardArguments];
+        /*  _config = [[ConfigStorage alloc]initWithCommandLine:_commandLine
+                                      defaultConfigFileName:[self defaultConfigFile]];
+       */
         NSDictionary *params = _commandLine.params;
 
         if(params[@"asn1"])
@@ -317,25 +320,25 @@ static void signalHandler(int signum)
 
 - (void)signal_SIGHUP
 {
-    NSLog(@"SIGUP received\n");
-    NSLog(@"Quitting\n");
+    fprintf(stderr,"SIGUP received\n");
+    fprintf(stderr,"Quitting\n");
     _must_quit=1;
 }
 
 - (void)signal_SIGINT
 {
-    NSLog(@"SIGINT received\n");
+    fprintf(stderr,"SIGINT received\n");
 }
 
 - (void)signal_SIGUSR1
 {
-    NSLog(@"SIGUSR1 received\n");
+    fprintf(stderr,"SIGUSR1 received\n");
 }
 
 
 -(void)signal_SIGUSR2
 {
-    NSLog(@"SIGUSR2 received\n");
+    fprintf(stderr,"SIGUSR2 received\n");
 }
 
 - (void) setupSignalHandlers

@@ -8,7 +8,7 @@
 #import "ConfigObject.h"
 #import "ConfigObject.h"
 #import "ConfigMacroHelper.h"
-
+#include <stdio.h>
 @implementation ConfigObject
 
 - (BOOL) isDirty
@@ -132,6 +132,7 @@ else
     /* names can only be filtered names */
     NSString *group =  o[@"group"];
     id n = o[@"name"];
+    NSString *nstr=@"(null)";
     BOOL mustHaveName = ![self canHaveNoName];
     if(n==NULL)
        {
@@ -143,6 +144,7 @@ else
     }
     else if([n isKindOfClass:[NSString class]])
     {
+        nstr = n;
         NSString *n2 = [ConfigObject filterName:(NSString *)n];
         if(n2.length > 0)
         {
@@ -151,7 +153,8 @@ else
     }
     else
     {
-        NSLog(@"Warning: Not a string for an object name. Probably misconfiguration: %@ in group %@",n,group);
+        nstr = [NSString stringWithFormat:@"%@",n];
+        fprintf(stderr,"Warning: Not a string for an object name. Probably misconfiguration: %s in group %s",nstr.UTF8String,group.UTF8String);
     }
 
     NSString *newName = [ConfigObject filterName:o[@"newname"]];

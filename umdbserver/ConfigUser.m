@@ -43,6 +43,7 @@
 - (UMSynchronizedSortedDictionary *)config
 {
     UMSynchronizedSortedDictionary *o = [super config];
+
 #include "Config_macroAppendDict.h"
 #include "ConfigUser.def.h"
 #include <um/UMMessage_macroClear.h>

@@ -32,8 +32,6 @@
         if([field1 isKindOfClass:[NSString class]])
         {
             NSString *str = (NSString *)field1;
-
-            NSLog(@"str=%@",str);
 #define STRING(o,len,tag,dictname,field,accessor,dbname,options)     if(str) { o.accessor = [[UMDirtyString alloc]initWithString:str]; }
 #define INTEGER(o,len,tag,dictname,field,accessor,dbname,options)    if(str) { o.accessor = [[UMDirtyInteger alloc]initWithString:str]; }
 #define DATE(o,len,tag,dictname,field,accessor,dbname,options)       if(str) { o.accessor = [[UMDirtyDate alloc]initWithString:str]; }

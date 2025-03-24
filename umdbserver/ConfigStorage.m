@@ -42,14 +42,15 @@
 - (void)generalInitialisation
 {
     _database_pool_dict     = [[UMSynchronizedSortedDictionary alloc]init];
+    _users_dict             = [[UMSynchronizedSortedDictionary alloc]init];
 }
 
 - (void)loadFromFile:(NSString *)filename
 {
     UMConfig* cfg = [[UMConfig alloc]initWithFileName:filename];
     [cfg allowSingleGroup:[ConfigGeneral type]];
-    [cfg allowMultiGroup:[ConfigUser type]];
     [cfg allowSingleGroup:[ConfigDatabasePool type]];
+    [cfg allowMultiGroup:[ConfigUser type]];
     [cfg read];
     [self processConfig:cfg];
 }
@@ -96,7 +97,6 @@
             _users_dict[e.name] = e;
         }
     }
-    NSLog(@"Users=%@",_users_dict);
 }
 
 

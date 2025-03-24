@@ -79,7 +79,8 @@
 
 - (int)processGenericError:(UMMessageServerCommandGenericError *)cmd
 {
-    NSLog(@"GENERIC_ERROR %@",cmd.objectValue);
+    NSString *s = [NSString stringWithFormat:@"%@",cmd.objectValue];
+    fprintf(stderr,"GENERIC_ERROR %s",s.UTF8String);
     return cmd.status;
 }
 
@@ -302,7 +303,6 @@
 - (int)processCommand:(UMMessageServerCommand *)cmd /* return error code*/
 {
     UMMessageServerCommandType cid = (UMMessageServerCommandType)cmd.command;
-    //NSLog(@"CMD (%ld/%ld/%ld)",cmd.command,cmd.flags,cmd.sequenceNumber);
     switch(cid)
     {
         case UMMessageServerCommandType_GENERIC_ERROR_RESPONSE:
