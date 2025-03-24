@@ -37,5 +37,6 @@
 - (NSString *)insertOrUpdate:(NSString *)tableName session:(UMDbSession *)session;
 - (NSString *)insert:(NSString *)tableName session:(UMDbSession *)session;
 - (NSString *)update:(NSString *)tableName session:(UMDbSession *)session;
+- (NSString *)delete:(NSString *)tableName session:(UMDbSession *)session;
 
 @end

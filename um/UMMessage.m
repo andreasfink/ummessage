@@ -145,9 +145,16 @@ static      UMMutex      *g_messageIdLock = NULL;
 #define DOUBLE(o,len,tag,dictname,field,accessor,dbname,options)  if(field) { if(i++) { [o appendString:@","]; }[o appendFormat:@"`%s`=\"%@\"",dbname,[session sqlEscapeString:field.stringValue]]; };
 #include "UMMessage.def.h"
 #include "UMMessage_macroClear.h"
-    [o appendFormat:@"WHERE archive_id=`%@` ",[session sqlEscapeString:_archiveId]];
+    [o appendFormat:@"WHERE archive_id=`%@` ",[session sqlEscapeString:_archiveId.stringValue]];
     return o;
 }
+
+- (NSString *)delete:(NSString *)tableName session:(UMDbSession *)session
+{
+    return [NSString stringWithFormat:@"DELETE FROM `%@` WHERE archive_id=`%@` ",tableName,[session sqlEscapeString:_archiveId.stringValue]];
+}
+
+
 - (NSString *)insertOrUpdate:(NSString *)tableName session:(UMDbSession *)session
 {
     NSMutableString *o = [[NSMutableString alloc]init];
