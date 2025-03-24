@@ -19,13 +19,16 @@ SLIB=lib@PROJECT_NAME@.a
 PKGCONFIGFILE=@PROJECT_NAME@.pc
 
 UMCLI_MFILES = $(wildcard umcli/*.m)
-UMCLI_OFILES  = $(UMCLI_MFILES:.m=.m.o)
+UMCLI_MOFILES  = $(UMCLI_MFILES:.m=.m.o)
+UMCLI_OFILES  = $(UMCLI_MOFILES)
 
 UMSERVER_MFILES = $(wildcard umserver/*.m)
-UMSERVER_OFILES  = $(UMSERVER_MFILES:.m=.m.o)
+UMSERVER_MOFILES  = $(UMSERVER_MFILES:.m=.m.o)
+UMSERVER_OFILES  = $(UMSERVER_MOFILES)
 
 UMDBSERVER_MFILES = $(wildcard umdbserver/*.m)
-UMDBSERVER_OFILES  = $(UMDBSERVER_MFILES:.m=.m.o)
+UMDBSERVER_MOFILES  = $(UMDBSERVER_MFILES:.m=.m.o)
+UMDBSERVER_OFILES  = $(UMDBSERVER_MOFILES)
 
 MFILES = $(wildcard um/*.m)
 HFILES = version.h $(wildcard um/*.h)
@@ -59,7 +62,7 @@ build/umdbserver: ${UMDBSERVER_OFILES}  ${LIB}
 	-mkdir -p build/
 	${CC} -o build/umdbserver  ${LDFLAGS} ${UMDBSERVER_OFILES} ${LIB} ${LIBS} ${STATIC_LIBS}
 
-install: ${LIB} ${SLIB} build/umserver build/umcli
+install: ${LIB} ${SLIB} build/umcli build/umserver build/umdbserver
 	-mkdir -p ${DESTDIR}/usr/local/lib/pkgconfig
 	rm -f "${DESTDIR}/usr/local/lib/${LIB}.${MAJORVER}.${MINORVER}.${REVISION}"
 	rm -f "${DESTDIR}/usr/local/lib/${LIB}.${MAJORVER}.${MINORVER}"
