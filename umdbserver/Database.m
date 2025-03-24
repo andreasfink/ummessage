@@ -10,6 +10,8 @@
 #import "DatabaseCacheEntry.h"
 #import "UMMessage+db.h"
 
+static UMSynchronizedSortedDictionary * dbFieldWithOptions( NSString *type,int len, char *dbname,char *options);
+
 @implementation Database
 
 - (Database *)init
@@ -338,7 +340,7 @@ void addTableDefDouble(NSMutableString *o,int len, char *dbname)
 
 
 
-UMSynchronizedSortedDictionary * dbFieldWithOptions( NSString *type,int len, char *dbname,char *options)
+static UMSynchronizedSortedDictionary * dbFieldWithOptions( NSString *type,int len, char *dbname,char *options)
 {
     UMSynchronizedSortedDictionary *e = [[UMSynchronizedSortedDictionary alloc]init];
     e[@"name"]  = @(dbname);
