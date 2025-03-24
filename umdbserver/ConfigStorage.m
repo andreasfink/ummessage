@@ -86,6 +86,16 @@
     {
         _database_pool_dict[e.name] = e;
     }
+    
+    NSArray *array = [cfg getMultiGroups:[ConfigUser type]];
+    for(NSDictionary *user_config in array)
+    {
+        ConfigUser *e = [[ConfigUser alloc]initWithConfig:user_config];
+        if(e.name.length  > 0)
+        {
+            _users_dict[e.name] = e;
+        }
+    }
 }
 
 
