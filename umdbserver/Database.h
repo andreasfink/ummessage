@@ -8,11 +8,12 @@
 #import <ulib/ulib.h>
 #import <ulibdb/ulibdb.h>
 #import <ulibsmpp/ulibsmpp.h>
+#import <um/UMMessageSessionDelegates.h>
 
 @class ConfigUser;
 @class UMMessage;
 
-@interface Database : UMObject
+@interface Database : UMObject<UMMessageSessionDatabaseDelegate>
 {
     UMSynchronizedDictionary *_msgCache;            /* contains DatabaseCacheEntry objects which contain Message objects */
     UMSynchronizedDictionary *_msgInboundCache;     /* contains DatabaseCacheEntry objects which contain Message objects */
@@ -34,9 +35,12 @@
 
 - (BOOL)autocreateTables; /* returns YES on success */
 
-- (UMMessage *)loadMessage:(NSString *)messageId;
-- (UMMessage *)loadMessage:(NSString *)messageId table:(UMDbTable *)dbTable;
-- (BOOL)insertOrUpdateMessage:(UMMessage *)msg;  /* returns YES on success */
+- (UMMessage *)loadMessage:(NSString *)messageId error:(UMMessageServerCommandError *)err;
+- (UMMessageServerCommandError)insertOrUpdateMessage:(UMMessage *)msg;
+- (UMMessageServerCommandError)insertMessage:(UMMessage *)msg;
+- (UMMessageServerCommandError)updateMessage:(UMMessage *)msg;
+- (UMMessageServerCommandError)deleteMessage:(NSString *)messageId;
+
 
 @end
 

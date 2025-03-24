@@ -17,10 +17,13 @@ typedef enum UMMessageServerCommandError
     UMMessageServerCommandError_INVALID_INSTANCE    = 4,
     UMMessageServerCommandError_NOT_AUTHORIZED      = 5,
     UMMessageServerCommandError_WRITE_FAILURE       = 6,
-    UMMessageServerCommandError_UPDATE_FAILURE      = 7,
-    UMMessageServerCommandError_NOT_FOUND           = 8,
-    UMMessageServerCommandError_DELETE_FAILURE      = 9,
-    UMMessageServerCommandError_API_VERSION_MISMATCH = 10,
+    UMMessageServerCommandError_INSERT_FAILURE      = 7,
+    UMMessageServerCommandError_UPDATE_FAILURE      = 8,
+    UMMessageServerCommandError_LOAD_FAILURE        = 9,
+    UMMessageServerCommandError_NOT_FOUND           = 10,
+    UMMessageServerCommandError_DELETE_FAILURE      = 11,
+    UMMessageServerCommandError_API_VERSION_MISMATCH = 12,
+    UMMessageServerCommandError_NO_DB_SESSIONS_AVAILABLE = 13,
 } UMMessageServerCommandError;
 
 NSString *UMMessageServerCommandErrrorString(UMMessageServerCommandError err);

@@ -37,7 +37,7 @@
     [super appendConfigToString:o];
 #include "Config_macroAppendConfig.h"
 #include "ConfigUser.def.h"
-#include <um/UMMessage_macroClear.h>
+#include "Config_macroClear.h"
 }
 
 - (UMSynchronizedSortedDictionary *)config
@@ -55,7 +55,7 @@
 #include "Config_macroSetConfigFromDict.h"
 #include "ConfigUser.def.h"
 #include "ConfigUser.def.h"
-#include <um/UMMessage_macroClear.h>
+#include "Config_macroClear.h"
 }
 
 - (ConfigUser *)copyWithZone:(NSZone *)zone
@@ -91,7 +91,7 @@
 #include "Config_macroSetFromDbData.h"
 #include "ConfigObject.def.h"
 #include "ConfigUser.def.h"
-#include <um/UMMessage_macroClear.h>
+#include "Config_macroClear.h"
             }
             else if([v isKindOfClass:[NSString class]])
             {
@@ -99,7 +99,7 @@
 #include "Config_macroSetFromDbString.h"
 #include "ConfigObject.def.h"
 #include "ConfigUser.def.h"
-#include <um/UMMessage_macroClear.h>
+#include "Config_macroClear.h"
             }
         }
         [arr addObject:o];

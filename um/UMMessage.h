@@ -35,5 +35,7 @@
 + (NSString *)asn1Def;
 + (NSString *)sqlTableDefForTableName:(NSString *)table;
 - (NSString *)insertOrUpdate:(NSString *)tableName session:(UMDbSession *)session;
+- (NSString *)insert:(NSString *)tableName session:(UMDbSession *)session;
+- (NSString *)update:(NSString *)tableName session:(UMDbSession *)session;
 
 @end

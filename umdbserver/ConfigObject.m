@@ -63,14 +63,14 @@
 #define IGNORE_NAME_COLUM 1
 #include "Config_macroAppendConfig.h"
 #include "ConfigObject.def.h"
-#include <um/UMMessage_macroClear.h>
+#include "Config_macroClear.h"
     }
     else
     {
 #define IGNORE_NAME_COLUM 1
 #include "Config_macroAppendConfig.h"
 #include "ConfigObject.def.h"
-#include <um/UMMessage_macroClear.h>
+#include "Config_macroClear.h"
     }
 }
 
