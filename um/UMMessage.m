@@ -26,10 +26,26 @@ static      UMMutex      *g_messageIdLock = NULL;
     self = [super init];
     if(self)
     {
+#include <um/UMMessage_macroInit.h>
+#include <um/UMMessage.def.h>
+#include <um/UMMessage_macroClear.h>
     }
     return self;
 }
 
+
+- (UMMessage *)initWithNewIdAndInstance:(NSString *)instance
+{
+    self = [self init];
+    if(self)
+    {
+        _instance.stringValue = instance;
+        _messageId.stringValue = [UMMessage uniqueMessageIdWithPrefix:@""];
+        
+    }
+    return self;
+}
+    
 + (NSString *)uniqueMessageIdWithPrefix:(NSString *)prefix
 {
     int           this_msgid_serial;

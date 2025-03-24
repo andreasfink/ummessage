@@ -44,6 +44,7 @@
 		A68863CA2D761E980079C9A5 /* UMMessage.def.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863AC2D761E980079C9A5 /* UMMessage.def.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A68863CB2D761E980079C9A5 /* UMMessageFields.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863AD2D761E980079C9A5 /* UMMessageFields.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A69B2B902D80E2B4006EBCA1 /* um.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60B32A62D76051E003A8DFA /* um.framework */; };
+		A6BFCA242D913BB2002F6796 /* UMMessage_macroInit.h in Headers */ = {isa = PBXBuildFile; fileRef = A6BFCA222D913BB2002F6796 /* UMMessage_macroInit.h */; };
 		A6E569182D7DB68F0052E410 /* UMMessageHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = A674A8D72D7DAD6C0016B625 /* UMMessageHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6E569192D7DB6960052E410 /* UMMessageServerCommandGenericError.h in Headers */ = {isa = PBXBuildFile; fileRef = A674A8DF2D7DAD6C0016B625 /* UMMessageServerCommandGenericError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6E5691A2D7DB6960052E410 /* UMMessageServerCommandHeartbeatResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = A6E5690F2D7DB5FB0052E410 /* UMMessageServerCommandHeartbeatResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -229,6 +230,7 @@
 		A68863AC2D761E980079C9A5 /* UMMessage.def.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessage.def.h; sourceTree = "<group>"; };
 		A68863AD2D761E980079C9A5 /* UMMessageFields.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessageFields.h; sourceTree = "<group>"; };
 		A69B2B7A2D80DE2E006EBCA1 /* test-tool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "test-tool"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6BFCA222D913BB2002F6796 /* UMMessage_macroInit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessage_macroInit.h; sourceTree = "<group>"; };
 		A6E5690C2D7DB5F50052E410 /* UMMessageServerCommandHeartbeatRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessageServerCommandHeartbeatRequest.h; sourceTree = "<group>"; };
 		A6E5690D2D7DB5F50052E410 /* UMMessageServerCommandHeartbeatRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMMessageServerCommandHeartbeatRequest.m; sourceTree = "<group>"; };
 		A6E5690F2D7DB5FB0052E410 /* UMMessageServerCommandHeartbeatResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessageServerCommandHeartbeatResponse.h; sourceTree = "<group>"; };
@@ -501,6 +503,7 @@
 				A6E5696A2D7E33C40052E410 /* UMMessageServerCommandDeleteMessageResponse.h */,
 				A6E5696B2D7E33C40052E410 /* UMMessageServerCommandDeleteMessageResponse.m */,
 				A68863A02D761E980079C9A5 /* UMMessage_macroVariables.h */,
+				A6BFCA222D913BB2002F6796 /* UMMessage_macroInit.h */,
 				A688639C2D761E980079C9A5 /* UMMessage_macroProperties.h */,
 				A68863932D761E980079C9A5 /* UMMessage_macroClear.h */,
 				A68863942D761E980079C9A5 /* UMMessage_macroCopy.h */,
@@ -600,6 +603,7 @@
 				A66F7D9F2D7814B700A83193 /* UMMessage_macroDbInsertNames.h in Headers */,
 				A68863BC2D761E980079C9A5 /* UMMessage_macroDbTableDef.h in Headers */,
 				A6E569752D7E3EAF0052E410 /* UMMessageServerCommandUpdateMessageRequest.h in Headers */,
+				A6BFCA242D913BB2002F6796 /* UMMessage_macroInit.h in Headers */,
 				A68863BD2D761E980079C9A5 /* UMMessage_macroObjectValue.h in Headers */,
 				A6E5696D2D7E33C40052E410 /* UMMessageServerCommandDeleteMessageResponse.h in Headers */,
 				A68863BE2D761E980079C9A5 /* UMMessage_macroProcessAfterDecodeWithContext.h in Headers */,

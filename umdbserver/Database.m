@@ -244,7 +244,7 @@ static UMSynchronizedSortedDictionary * dbFieldWithOptions( NSString *type,int l
                                                   key:key];
     }
     _msgInboundCache[key] = e;
-    ummutex_lock(_cacheLock);
+    ummutex_unlock(_cacheLock);
 }
 
 - (id)getObjectFromCache:(UMSynchronizedDictionary *)cache
@@ -257,7 +257,7 @@ static UMSynchronizedSortedDictionary * dbFieldWithOptions( NSString *type,int l
     {
         cachedObject = e.cachedObject;
     }
-    ummutex_lock(_cacheLock);
+    ummutex_unlock(_cacheLock);
     return cachedObject;
 }
 

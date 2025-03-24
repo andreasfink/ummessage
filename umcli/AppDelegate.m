@@ -43,6 +43,7 @@ static void signalHandler(int signum)
     self = [super init];
     if(self)
     {
+        _instance                       = @"default";
         _applicationStart               = [NSDate new];
         _logHandler                     = [[UMLogHandler alloc]initWithConsole];
         self.logFeed                    = [[UMLogFeed alloc]initWithHandler:_logHandler section:@"main"];
@@ -251,10 +252,13 @@ static void signalHandler(int signum)
         fflush(stderr);
         exit(-1);
     }
-    UMMessage *msg = [[UMMessage alloc]init];
+    NSString *msgid=[UMMessage uniqueMessageIdWithPrefix:@""];
+    UMMessage *msg = [[UMMessage alloc]initWithNewIdAndInstance:_instance];
     msg.messageId = [[UMDirtyString alloc]init];
-    msg.messageId.stringValue = [UMMessage uniqueMessageIdWithPrefix:@""];
-    
+    msg.messageId.stringValue = msgid;
+    msg.archiveId = [[UMDirtyString alloc]init];
+    msg.archiveId.stringValue = [NSString stringWithFormat:@"%@:%@",_instance,msgid];
+
     [_client insertMessage:msg];
     
     while([_client awaitsResponses])

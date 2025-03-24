@@ -14,7 +14,7 @@
     UMMessageClient                 *_client;
     int                             _port;
     NSString                        *_hostname;
-
+    NSString                        *_instance;
     BOOL                            _must_quit;
     NSDate                          *_applicationStart;
     UMLogLevel                      _logLevel;

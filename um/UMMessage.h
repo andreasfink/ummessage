@@ -31,6 +31,7 @@
 @property(readwrite,atomic,assign)      BOOL hasBeenInserted;
 @property(readwrite,atomic,assign)      BOOL isDirty;
 
+- (UMMessage *)initWithNewIdAndInstance:(NSString *)instance;
 + (NSString *)uniqueMessageIdWithPrefix:(NSString *)pfx;
 + (NSString *)asn1Def;
 + (NSString *)sqlTableDefForTableName:(NSString *)table;

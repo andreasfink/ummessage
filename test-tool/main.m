@@ -26,10 +26,7 @@ int main(int argc, const char * argv[])
         NSLog(@"r2=%@",r2);
         NSLog(@"r2.value=%lf",r2.value);
 
-        UMMessage *msg = [[UMMessage alloc]init];
-        msg.messageId = [[UMDirtyString alloc]init];
-        msg.messageId.stringValue = [UMMessage uniqueMessageIdWithPrefix:@""];
-        
+        UMMessage *msg = [[UMMessage alloc]initWithNewIdAndInstance:@"default"];
         UMSynchronizedSortedDictionary *dict = msg.objectValue;
         NSLog(@"Message1: %@",dict.jsonString);
         NSData *data =[msg berEncoded];
