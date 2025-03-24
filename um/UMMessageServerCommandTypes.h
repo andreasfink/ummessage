@@ -10,8 +10,8 @@
 typedef enum UMMessageServerCommandType
 {
     UMMessageServerCommandType_GENERIC_ERROR_RESPONSE   = 1,
-    UMMessageServerCommandType_HELLO_REQUEST            = 2,
-    UMMessageServerCommandType_HELLO_RESPONSE           = 3,
+    UMMessageServerCommandType_HEARTBEAT_REQUEST            = 2,
+    UMMessageServerCommandType_HEARTBEAT_RESPONSE           = 3,
     UMMessageServerCommandType_LOGIN_REQUEST            = 4,
     UMMessageServerCommandType_LOGIN_RESPONSE           = 5,
     UMMessageServerCommandType_INSERT_MESSAGE_REQUEST   = 6,

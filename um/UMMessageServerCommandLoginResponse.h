@@ -6,17 +6,18 @@
 //
 
 #import <um/UMMessageServerCommand.h>
+#import <um/UMMessageServerCommandError.h>
 
 
 @interface UMMessageServerCommandLoginResponse : UMMessageServerCommand
 {
-    NSInteger   _status;
+    UMMessageServerCommandError   _status;
     NSString    *_error;
     NSString    *_serverName;
     NSInteger   _apiVersion;
 }
 
-@property(readwrite,atomic,assign)  NSInteger   status;
+@property(readwrite,atomic,assign)  UMMessageServerCommandError   status;
 @property(readwrite,atomic,strong)  NSString    *error;
 @property(readwrite,atomic,strong)  NSString    *serverName;
 @property(readwrite,atomic,assign)  NSInteger   apiVersion;

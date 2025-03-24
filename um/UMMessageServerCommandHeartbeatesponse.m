@@ -1,35 +1,35 @@
 //
-//  UMMessageServerCommandHelloResponse.m
+//  UMMessageServerCommandHeartbeatResponse.m
 //  ummessage-server
 //
 //  Created by Andreas Fink on 09.03.2025.
 //
 
-#import <um/UMMessageServerCommandHelloResponse.h>
+#import <um/UMMessageServerCommandHeartbeatResponse.h>
 #import <um/UMMessageServerCommandTypes.h>
 
-@implementation UMMessageServerCommandHelloResponse
+@implementation UMMessageServerCommandHeartbeatResponse
 
-- (UMMessageServerCommandHelloResponse *)init
+- (UMMessageServerCommandHeartbeatResponse *)init
 {
     self = [super init];
     if(self)
     {
-        _command = UMMessageServerCommandType_HELLO_RESPONSE;
+        _command = UMMessageServerCommandType_HEARTBEAT_RESPONSE;
     }
     return self;
 }
 
 - (void) processBeforeEncode
 {
-    _command = UMMessageServerCommandType_HELLO_RESPONSE;
+    _command = UMMessageServerCommandType_HEARTBEAT_RESPONSE;
     
     [super processBeforeEncode];
 }
 
 - (NSString *) objectName
 {
-    return @"UMMessageServerCommandHelloResponse";
+    return @"UMMessageServerCommandHeartbeatResponse";
 }
 
 - (id) objectValue
@@ -38,7 +38,7 @@
     return dict;
 }
 
-- (UMMessageServerCommandHelloResponse *) processAfterDecodeWithContext:(id)context
+- (UMMessageServerCommandHeartbeatResponse *) processAfterDecodeWithContext:(id)context
 {
     [super processAfterDecodeWithContext:context];
     int pos = 0;

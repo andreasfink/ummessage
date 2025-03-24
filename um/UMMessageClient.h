@@ -6,6 +6,7 @@
 //
 
 #import <ulib/ulib.h>
+#import <um/UMMessageServerCommandError.h>
 
 @class UMMessageHandler;
 @class UMMessage;
@@ -23,14 +24,14 @@ typedef void (^UMMesssageClientInsertCompletionHandler)(int status,NSString *err
     NSString            *_password;
     NSString            *_instance;
     BOOL                _loginComplete;
-    NSInteger           _loginStatus;
+    UMMessageServerCommandError _loginStatus;
 }
 
 @property(readwrite,strong,atomic)  NSString *username;
 @property(readwrite,strong,atomic)  NSString *password;
 @property(readwrite,strong,atomic)  NSString *instance;
 @property(readwrite,assign,atomic)  BOOL loginComplete;
-@property(readwrite,assign,atomic)  NSInteger loginStatus;
+@property(readwrite,assign,atomic)  UMMessageServerCommandError loginStatus;
 
 - (UMMessageClient *)initWithHost:(UMHost *)host port:(int)port;
 - (BOOL)connect; /* returns YES if connected */

@@ -19,8 +19,8 @@
 #import <um/UMMessageServerCommandGenericError.h>
 #import <um/UMMessageServerCommandGetMessageRequest.h>
 #import <um/UMMessageServerCommandGetMessageResponse.h>
-#import <um/UMMessageServerCommandHelloRequest.h>
-#import <um/UMMessageServerCommandHelloResponse.h>
+#import <um/UMMessageServerCommandHeartbeatRequest.h>
+#import <um/UMMessageServerCommandHeartbeatResponse.h>
 #import <um/UMMessageServerCommandInsertMessageRequest.h>
 #import <um/UMMessageServerCommandInsertMessageResponse.h>
 #import <um/UMMessageServerCommandLoginRequest.h>

@@ -72,8 +72,10 @@
                     password:_password
                     instance:_instance
       onCompletionCallObject:self
-                withSelector:@selector(loginResponse:)])
+                withSelector:@selector(loginResponse:)]==0)
     {
+        
+
         while(_loginStatus == UMMessageServerCommandError_UNDEFINED)
         {
             usleep(100000);
@@ -86,7 +88,7 @@
 {
     _loginStatus = cmd.status;
     _loginComplete = YES;
-    if(_loginStatus == 0)
+    if(_loginStatus == UMMessageServerCommandError_NO_ERROR)
     {
         [_session startHeartbeat];
     }

@@ -13,10 +13,10 @@ NSString *UMMessageServerCommandTypeString(UMMessageServerCommandType t)
     {
         case UMMessageServerCommandType_GENERIC_ERROR_RESPONSE:
             return @"GENERIC_ERROR_RESPONSE";
-        case UMMessageServerCommandType_HELLO_REQUEST:
-            return @"HELLO_REQUEST";
-        case UMMessageServerCommandType_HELLO_RESPONSE:
-            return @"HELLO_RESPONSE";
+        case UMMessageServerCommandType_HEARTBEAT_REQUEST:
+            return @"HEARTBEAT_REQUEST";
+        case UMMessageServerCommandType_HEARTBEAT_RESPONSE:
+            return @"HEARTBEAT_RESPONSE";
         case UMMessageServerCommandType_LOGIN_REQUEST:
             return @"LOGIN_REQUEST";
         case UMMessageServerCommandType_LOGIN_RESPONSE:

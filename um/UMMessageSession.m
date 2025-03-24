@@ -12,8 +12,8 @@
 #import <um/UMMessageServerCommand.h>
 #import <um/UMMessageServerCommandError.h>
 #import <um/UMMessageServerCommandGenericError.h>
-#import <um/UMMessageServerCommandHelloRequest.h>
-#import <um/UMMessageServerCommandHelloResponse.h>
+#import <um/UMMessageServerCommandHeartbeatRequest.h>
+#import <um/UMMessageServerCommandHeartbeatResponse.h>
 #import <um/UMMessageServerCommandLoginRequest.h>
 #import <um/UMMessageServerCommandLoginResponse.h>
 #import <um/UMMessageServerCommandInsertMessageRequest.h>
@@ -69,10 +69,8 @@
 
 - (void)doHandshake
 {
-    UMMessageServerCommandHelloRequest *req = [[UMMessageServerCommandHelloRequest alloc]init];
+    UMMessageServerCommandHeartbeatRequest *req = [[UMMessageServerCommandHeartbeatRequest alloc]init];
     req.sequenceNumber = [self getSequenceNumber];
-    req.apiVersion = 1;
-    req.clientName = _clientName;
     [self sendCommand:req];
     _lastHandshakeRequested = [NSDate date];
 }
@@ -84,25 +82,12 @@
     return cmd.status;
 }
 
-- (int)processHelloRequest:(UMMessageServerCommandHelloRequest *)cmd
+- (int)processHeartbeatRequest:(UMMessageServerCommandHeartbeatRequest *)cmd
 {
-    _clientName         = cmd.clientName;
-    _clientApiVersion   = cmd.apiVersion;
-    UMMessageServerCommandHelloResponse *res = [[UMMessageServerCommandHelloResponse alloc]init];
+    UMMessageServerCommandHeartbeatResponse *res = [[UMMessageServerCommandHeartbeatResponse alloc]init];
     res.sequenceNumber = cmd.sequenceNumber;
     UMSocketError err;
-    if(_clientApiVersion != _serverApiVersion)
-    {
-        UMMessageServerCommandGenericError *ge = [[UMMessageServerCommandGenericError alloc]init];
-        ge.status = UMMessageServerCommandError_API_VERSION_MISMATCH;
-        ge.error = @"API versions are not matching";
-        err = [self sendCommand:ge];
-        return -1;
-    }
-    else
-    {
-        err = [self sendCommand:res];
-    }
+    err = [self sendCommand:res];
     if(err != UMSocketError_no_error)
     {
         return -1;
@@ -110,7 +95,7 @@
     return 0;
 }
 
-- (int)processHelloResponse:(UMMessageServerCommandHelloResponse *)cmd
+- (int)processHeartbeatResponse:(UMMessageServerCommandHeartbeatResponse *)cmd
 {
     _lastHandshakeReceived = [NSDate date];
     return 0;
@@ -142,13 +127,12 @@
 
 - (int)processLoginResponse:(UMMessageServerCommandLoginResponse *)cmd
 {
+    NSNumber *seq = @(cmd.sequenceNumber);
     if(cmd.serverName)
     {
         _serverName = cmd.serverName;
     }
-    
     _serverApiVersion = cmd.apiVersion;
-
     if(cmd.status == UMMessageServerCommandError_NO_ERROR)
     {
         _clientSuccessfullyLoggedIn = YES;
@@ -157,6 +141,13 @@
     {
         _clientSuccessfullyLoggedIn = NO;
     }
+    
+    UMMessageSessionCompletionObject *co =_pendingSequences[seq];
+    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        [co.objectToCall performSelector:co.selectorToCall withObject:cmd];
+#pragma clang diagnostic pop
     return 0;
 }
 
@@ -311,18 +302,18 @@
             return [self processGenericError:cmd1];
         }
             break;
-        case UMMessageServerCommandType_HELLO_REQUEST:
+        case UMMessageServerCommandType_HEARTBEAT_REQUEST:
         {
-            UMMessageServerCommandHelloRequest *cmd1 = [[UMMessageServerCommandHelloRequest alloc]initWithASN1Object:cmd context:NULL];
-            return [self processHelloRequest:cmd1];
+            UMMessageServerCommandHeartbeatRequest *cmd1 = [[UMMessageServerCommandHeartbeatRequest alloc]initWithASN1Object:cmd context:NULL];
+            return [self processHeartbeatRequest:cmd1];
             
         }
             break;
             
-        case UMMessageServerCommandType_HELLO_RESPONSE:
+        case UMMessageServerCommandType_HEARTBEAT_RESPONSE:
         {
-            UMMessageServerCommandHelloResponse *cmd1 = [[UMMessageServerCommandHelloResponse alloc]initWithASN1Object:cmd context:NULL];
-            return [self processHelloResponse:cmd1];
+            UMMessageServerCommandHeartbeatResponse *cmd1 = [[UMMessageServerCommandHeartbeatResponse alloc]initWithASN1Object:cmd context:NULL];
+            return [self processHeartbeatResponse:cmd1];
             
         }
             break;
@@ -574,6 +565,13 @@
      onCompletionCallObject:(id)obj
                withSelector:(SEL)sel
 {
+    if((obj) && (sel))
+    {
+        if(![obj respondsToSelector:sel])
+        {
+            UMAssert(0,@"Object does not respond to selector");
+        }
+    }
     NSInteger seq = [self getSequenceNumber];
     
     UMMessageSessionCompletionObject *co = [[UMMessageSessionCompletionObject alloc]init];
@@ -585,6 +583,7 @@
     req.username = username;
     req.password = password;
     req.instance = instance;
+    req.apiVersion = 1;
     _pendingSequences[@(seq)] = co;
     UMSocketError err = [self sendCommand:req];
     if(err != UMSocketError_no_error)

@@ -7,6 +7,7 @@
 
 #import "UMMessageServerCommandLoginResponse.h"
 #import "UMMessageServerCommandTypes.h"
+#import "UMMessageServerCommandError.h"
 
 @implementation UMMessageServerCommandLoginResponse
 
@@ -57,6 +58,7 @@
 {
     UMSynchronizedSortedDictionary *dict = [super objectValue];
     dict[@"status"] = @(_status);
+    
     if(_error)
     {
         dict[@"error"] = _error;
@@ -83,7 +85,7 @@
                 case 3:
                 {
                     UMASN1Integer *i = [[UMASN1Integer alloc]initWithASN1Object:o context:context];
-                    _status = i.value;
+                    _status = (UMMessageServerCommandError)i.value;
                     break;
                 }
                 case 4:

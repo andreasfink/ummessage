@@ -1,6 +1,6 @@
 
 
-MessageServerCommandHelloResponse ::= SEQUENCE
+MessageServerCommandHeartbeatRequest ::= SEQUENCE
 {
     command         [0] INTEGER,
     flags           [1] INTEGER,
