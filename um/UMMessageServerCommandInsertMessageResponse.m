@@ -69,7 +69,7 @@
                 case 3:
                 {
                     UMASN1Integer *i = [[UMASN1Integer alloc]initWithASN1Object:o context:context];
-                    _status = i.value;
+                    _status = (UMMessageServerCommandError)i.value;
                     break;
                 }
                 case 4:

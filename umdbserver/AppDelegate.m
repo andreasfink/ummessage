@@ -221,10 +221,11 @@ static void signalHandler(int signum)
     }
     Database *db = [[Database alloc]init];
     _db = db;
-    _server.insertDelegate = _db;
-    _server.insertOrUpdateDelegate= _db;
-    _server.deleteDelegate= _db;
-    _server.loadDelegate = _db;
+    _server.insertOrUpdateMessageDelegate= _db;
+    _server.insertMessageDelegate = _db;
+    _server.updateMessageDelegate = _db;
+    _server.deleteMessageDelegate= _db;
+    _server.getMessageDelegate = _db;
     [_db setDbPool:_dbPool];
 }
 

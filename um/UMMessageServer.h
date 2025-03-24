@@ -16,12 +16,13 @@
     UMSocket            *_listener;
     UMSynchronizedArray *_incomingConnections; /* array of UMMessageHandler objects */
     NSString            *_rootDirectory;
+    
     id<UMMessageSessionAuthenticationDelegate> _authenticationDelegate;
-    id<UMMessageSessionDatabaseDelegate>        _insertOrUpdateMessageDelegate;
-    id<UMMessageSessionDatabaseDelegate>        _insertMessageDelegate;
-    id<UMMessageSessionDatabaseDelegate>        _updateMessageDelegate;
-    id<UMMessageSessionDatabaseDelegate>        _getMessageDelegate;
-    id<UMMessageSessionDatabaseDelegate>        _deleteMessageDelegate;
+    id<UMMessageSessionDatabaseDelegate>       _insertOrUpdateMessageDelegate;
+    id<UMMessageSessionDatabaseDelegate>       _insertMessageDelegate;
+    id<UMMessageSessionDatabaseDelegate>       _updateMessageDelegate;
+    id<UMMessageSessionDatabaseDelegate>       _getMessageDelegate;
+    id<UMMessageSessionDatabaseDelegate>       _deleteMessageDelegate;
 }
 
 @property(readwrite,assign,atomic)  NSInteger           port;

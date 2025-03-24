@@ -543,8 +543,7 @@
     NSString *instance = a[0];
     NSString *messageId = a[1];
     
-    NSString *filename = [self messageIdToFileName:archiveId instance:instance];
-    NSString *filename1 = [NSString stringWithFormat:@"%@.json",filename];
+    NSString *filename = [self messageIdToFileName:messageId instance:instance];
     NSString *filename2 = [NSString stringWithFormat:@"%@.ber",filename];
 
     NSData *data = [NSData dataWithContentsOfFile:filename];
