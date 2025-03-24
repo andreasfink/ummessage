@@ -261,11 +261,9 @@ static void signalHandler(int signum)
 
     [_client insertMessage:msg];
     
-    while([_client awaitsResponses])
-    {
-        sleep(1);
-    }
-    fprintf(stderr,"completed\n");
+    UMMessageServerCommandError err = UMMessageServerCommandError_UNDEFINED;
+    UMMessage *m = [_client getMessage:@"default:002503240915090001" error:&err];
+    NSLog(@"Message loaded: %@",m);
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification

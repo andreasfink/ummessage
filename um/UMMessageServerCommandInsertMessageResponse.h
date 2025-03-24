@@ -6,14 +6,15 @@
 //
 
 #import <um/UMMessageServerCommand.h>
+#import <um/UMMessageServerCommandError.h>
 
 @interface UMMessageServerCommandInsertMessageResponse : UMMessageServerCommand
 {
-    NSInteger   _status;
+    UMMessageServerCommandError   _status;
     NSString    *_error;
 }
 
-@property(readwrite,atomic,assign)   NSInteger   status;
+@property(readwrite,atomic,assign)   UMMessageServerCommandError   status;
 @property(readwrite,atomic,strong)   NSString    *error;
 
 @end

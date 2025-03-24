@@ -25,6 +25,10 @@ typedef void (^UMMesssageClientInsertCompletionHandler)(int status,NSString *err
     NSString            *_instance;
     BOOL                _loginComplete;
     UMMessageServerCommandError _loginStatus;
+    BOOL                _callComplete;
+    UMMessageServerCommandError _callResult;
+    id                  _callResultObject;
+
 }
 
 @property(readwrite,strong,atomic)  NSString *username;
@@ -35,8 +39,10 @@ typedef void (^UMMesssageClientInsertCompletionHandler)(int status,NSString *err
 
 - (UMMessageClient *)initWithHost:(UMHost *)host port:(int)port;
 - (BOOL)connect; /* returns YES if connected */
-- (NSInteger)login; /* returns UMMessageServerCommandError_NO_ERROR if logged in */
-- (BOOL)insertMessage:(UMMessage *)msg;
+- (UMMessageServerCommandError)login; /* returns UMMessageServerCommandError_NO_ERROR if logged in */
+- (UMMessageServerCommandError)insertMessage:(UMMessage *)msg;
+- (UMMessage *) getMessage:(NSString *)archiveId
+                     error:(UMMessageServerCommandError *)err;
 - (BOOL) awaitsResponses;
 - (void)close;
 

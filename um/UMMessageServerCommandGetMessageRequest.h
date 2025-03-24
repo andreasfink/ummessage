@@ -10,9 +10,9 @@
 
 @interface UMMessageServerCommandGetMessageRequest : UMMessageServerCommand
 {
-    NSString *_messageId;
+    NSString *_archiveId;
 }
-@property(readwrite,atomic,strong)  NSString *messageId;
+@property(readwrite,atomic,strong)  NSString *archiveId;
 
 @end
 

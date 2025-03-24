@@ -26,7 +26,7 @@
 {
     _command = UMMessageServerCommandType_INSERT_MESSAGE_RESPONSE;
     [super processBeforeEncode];
-    UMASN1Integer *i= [[UMASN1Integer alloc]initWithValue:_status];
+    UMASN1Integer *i= [[UMASN1Integer alloc]initWithValue:(int64_t)_status];
     i.asn1_tag.tagNumber = 3;
     i.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
     [_asn1_list addObject:i];
@@ -47,7 +47,7 @@
 - (id) objectValue
 {
     UMSynchronizedSortedDictionary *dict = [super objectValue];
-    dict[@"status"] = @(_status);
+    dict[@"status"] = @((int)_status);
     if(_error)
     {
         dict[@"error"] = _error;

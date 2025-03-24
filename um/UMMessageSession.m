@@ -154,9 +154,9 @@
 - (int)processInsertMessageRequest:(UMMessageServerCommandInsertMessageRequest *)cmd
 {
     UMMessageServerCommandError error;
-    if(_server.insertOrUpdateDelegate)
+    if(_server.insertOrUpdateMessageDelegate)
     {
-        error = [_server.insertOrUpdateDelegate insertOrUpdateMessage:cmd.message];
+        error = [_server.insertOrUpdateMessageDelegate insertOrUpdateMessage:cmd.message];
     }
     else
     {
@@ -200,13 +200,17 @@
 - (int)processUpdateMessageRequest:(UMMessageServerCommandUpdateMessageRequest *)cmd
 {
     UMMessageServerCommandError error;
-    if(_server.insertOrUpdateDelegate)
+    if(_server.updateMessageDelegate)
     {
-        error = [_server.insertOrUpdateDelegate insertOrUpdateMessage:cmd.message];
+        error = [_server.updateMessageDelegate updateMessage:cmd.message];
+    }
+    else if (_server.insertOrUpdateMessageDelegate)
+    {
+        error = [_server.insertOrUpdateMessageDelegate insertOrUpdateMessage:cmd.message];
     }
     else
     {
-        error = [self updateMessage:cmd.message];
+        error = [self localUpdateMessage:cmd.message];
     }
     UMMessageServerCommandUpdateMessageResponse *res = [[UMMessageServerCommandUpdateMessageResponse alloc]init];
     res.status = error;
@@ -236,13 +240,13 @@
     {
         UMMessage *msg;
         UMMessageServerCommandError err = UMMessageServerCommandError_NO_ERROR;
-        if(_server.loadDelegate)
+        if(_server.getMessageDelegate)
         {
-            msg = [_server.loadDelegate loadMessage:cmd.messageId error:&err];
+            msg = [_server.getMessageDelegate loadMessage:cmd.archiveId error:&err];
         }
         else
         {
-            msg = [self getMessage:cmd.messageId error:&err];
+            msg = [self localGetMessage:cmd.archiveId error:&err];
         }
         res.status = err;
         if(err==UMMessageServerCommandError_NO_ERROR)
@@ -267,13 +271,13 @@
 - (int)processDeleteMessageRequest:(UMMessageServerCommandDeleteMessageRequest *)cmd
 {
     UMMessageServerCommandError error = UMMessageServerCommandError_NO_ERROR;
-    if(_server.deleteDelegate)
+    if(_server.deleteMessageDelegate)
     {
-        error = [_server.deleteDelegate deleteMessage:cmd.messageId];
+        error = [_server.deleteMessageDelegate deleteMessage:cmd.messageId];
     }
     else
     {
-        error = [self deleteMessage:cmd.messageId];
+        error = [self localDeleteMessage:cmd.messageId];
     }
     UMMessageServerCommandDeleteMessageResponse *res = [[UMMessageServerCommandDeleteMessageResponse alloc]init];
     res.status = error;
@@ -452,7 +456,7 @@
     return UMMessageServerCommandError_NO_ERROR;
 }
 
-- (UMMessageServerCommandError) updateMessage:(UMMessage *)msg
+- (UMMessageServerCommandError) localUpdateMessage:(UMMessage *)msg
 {
     if(!_authenticated)
     {
@@ -468,7 +472,7 @@
     return UMMessageServerCommandError_NO_ERROR;
 }
 
-- (UMMessageServerCommandError) deleteMessage:(NSString *)messageId
+- (UMMessageServerCommandError) localDeleteMessage:(NSString *)messageId
 {
     if(!_authenticated)
     {
@@ -491,13 +495,86 @@
     return UMMessageServerCommandError_NO_ERROR;
 }
 
-- (UMMessage *) getMessage:(NSString *)messageId error:(UMMessageServerCommandError *)err
+
+- (UMMessageServerCommandError) doGetMessage:(NSString *)archiveId
+                      onCompletionCallObject:(id)obj
+                                withSelector:(SEL)sel
 {
-    *err = UMMessageServerCommandError_NOT_FOUND;
+    if((obj) && (sel))
+    {
+        if(![obj respondsToSelector:sel])
+        {
+            UMAssert(0,@"Object does not respond to selector");
+        }
+    }
+    NSInteger seq = [self getSequenceNumber];
+    
+    UMMessageSessionCompletionObject *co = [[UMMessageSessionCompletionObject alloc]init];
+    co.objectToCall = obj;
+    co.selectorToCall = sel;
+    
+    UMMessageServerCommandGetMessageRequest *req = [[UMMessageServerCommandGetMessageRequest alloc]init];
+    req.sequenceNumber = seq;
+    req.archiveId = archiveId;
+    _pendingSequences[@(seq)] = co;
+    UMSocketError err = [self sendCommand:req];
+    if(err != UMSocketError_no_error)
+    {
+        [_pendingSequences removeObjectForKey:@(seq)];
+        return UMMessageServerCommandError_INVALID_STATE;
+    }
+    return UMMessageServerCommandError_NO_ERROR;
+}
+
+- (UMMessage *)localGetMessage:(NSString *)archiveId error:(UMMessageServerCommandError *)e
+{
+    if(!_authenticated)
+    {
+        *e = UMMessageServerCommandError_NOT_AUTHORIZED;
+        return NULL;
+    }
+    NSArray *a = [archiveId componentsSeparatedByString:@":"];
+    if(a.count!=2)
+    {
+        *e = UMMessageServerCommandError_NOT_FOUND;
+        return NULL;
+    }
+    
+    NSString *instance = a[0];
+    NSString *messageId = a[1];
+    
+    NSString *filename = [self messageIdToFileName:archiveId instance:instance];
+    NSString *filename1 = [NSString stringWithFormat:@"%@.json",filename];
+    NSString *filename2 = [NSString stringWithFormat:@"%@.ber",filename];
+
+    NSData *data = [NSData dataWithContentsOfFile:filename];
+    if(data)
+    {
+        UMMessage *msg;
+        @try
+        {
+            msg = [[UMMessage alloc]initWithBerData:data];
+        }
+        @catch(NSException *ex)
+        {
+            NSLog(@"exception while loading %@: %@",filename2,ex);
+        }
+        if(msg)
+        {
+            *e = UMMessageServerCommandError_NO_ERROR;
+            return msg;
+        }
+    }
+    *e = UMMessageServerCommandError_LOAD_FAILURE;
     return NULL;
 }
 
 - (NSString *)messageIdToFileName:(NSString *)msgid
+{
+    return [self messageIdToFileName:(NSString *)msgid instance:_instance];
+}
+
+- (NSString *)messageIdToFileName:(NSString *)msgid instance:(NSString *)instance
 {
     if(msgid.length == 18)
     {
@@ -510,7 +587,7 @@
         NSString *micro         = [msgid substringWithRange:NSMakeRange(14,4)];
         NSString *hour_tenmin   = [msgid substringWithRange:NSMakeRange(8,3)];
 
-        NSString *path = [NSString stringWithFormat:@"%@/%@/%@/%@/%@/%@",_rootDirectory,_instance,year,month,day,hour_tenmin];
+        NSString *path = [NSString stringWithFormat:@"%@/%@/%@/%@/%@/%@",_rootDirectory,instance,year,month,day,hour_tenmin];
         NSString *filename = [NSString stringWithFormat:@"%@/%@-%@-%@_%@:%@:%@.%@",path,year,month,day,hour,min,sec,micro];
         
         NSError *err = NULL;
@@ -528,7 +605,9 @@
     return NULL;
 }
 
-- (BOOL)insertMessage:(UMMessage *)msg onCompletionCallObject:(id)obj withSelector:(SEL)sel
+- (UMMessageServerCommandError)insertMessage:(UMMessage *)msg
+                      onCompletionCallObject:(id)obj
+                                withSelector:(SEL)sel
 {
     NSInteger seq = [self getSequenceNumber];
     
@@ -544,9 +623,9 @@
     if(err != UMSocketError_no_error)
     {
         [_pendingSequences removeObjectForKey:@(seq)];
-        return -1;
+        return UMMessageServerCommandError_INVALID_STATE;
     }
-    return 0;
+    return UMMessageServerCommandError_NO_ERROR;
 }
 
 - (BOOL) awaitsResponses
@@ -559,11 +638,11 @@
 }
 
 
-- (BOOL)            doLogin:(NSString *)username
-                   password:(NSString *)password
-                   instance:(NSString *)instance
-     onCompletionCallObject:(id)obj
-               withSelector:(SEL)sel
+- (UMMessageServerCommandError) doLogin:(NSString *)username
+                               password:(NSString *)password
+                               instance:(NSString *)instance
+                 onCompletionCallObject:(id)obj
+                           withSelector:(SEL)sel
 {
     if((obj) && (sel))
     {
@@ -589,9 +668,9 @@
     if(err != UMSocketError_no_error)
     {
         [_pendingSequences removeObjectForKey:@(seq)];
-        return -1;
+        return UMMessageServerCommandError_INVALID_STATE;
     }
-    return 0;
+    return UMMessageServerCommandError_NO_ERROR;
 }
 
 - (void)startHeartbeat

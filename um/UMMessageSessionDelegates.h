@@ -17,6 +17,8 @@
 
 - (UMMessage *)loadMessage:(NSString *)messageId error:(UMMessageServerCommandError *)err;
 - (UMMessageServerCommandError)insertOrUpdateMessage:(UMMessage *)msg;
+- (UMMessageServerCommandError)updateMessage:(UMMessage *)msg;
+- (UMMessageServerCommandError)insertMessage:(UMMessage *)msg;
 - (UMMessageServerCommandError)deleteMessage:(NSString *)messageId;
 
 @end

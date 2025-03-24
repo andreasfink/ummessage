@@ -17,9 +17,11 @@
     UMSynchronizedArray *_incomingConnections; /* array of UMMessageHandler objects */
     NSString            *_rootDirectory;
     id<UMMessageSessionAuthenticationDelegate> _authenticationDelegate;
-    id<UMMessageSessionDatabaseDelegate>        _insertOrUpdateDelegate;
-    id<UMMessageSessionDatabaseDelegate>        _loadDelegate;
-    id<UMMessageSessionDatabaseDelegate>        _deleteDelegate;
+    id<UMMessageSessionDatabaseDelegate>        _insertOrUpdateMessageDelegate;
+    id<UMMessageSessionDatabaseDelegate>        _insertMessageDelegate;
+    id<UMMessageSessionDatabaseDelegate>        _updateMessageDelegate;
+    id<UMMessageSessionDatabaseDelegate>        _getMessageDelegate;
+    id<UMMessageSessionDatabaseDelegate>        _deleteMessageDelegate;
 }
 
 @property(readwrite,assign,atomic)  NSInteger           port;
@@ -27,10 +29,11 @@
 @property(readwrite,strong,atomic)  UMSynchronizedArray *incomingConnections;
 @property(readwrite,strong,atomic)  NSString            *rootDirectory;
 @property(readwrite,strong,atomic)  id<UMMessageSessionAuthenticationDelegate> authenticationDelegate;
-@property(readwrite,strong,atomic)  id<UMMessageSessionDatabaseDelegate>       insertDelegate;
-@property(readwrite,strong,atomic)  id<UMMessageSessionDatabaseDelegate>       insertOrUpdateDelegate;
-@property(readwrite,strong,atomic)  id<UMMessageSessionDatabaseDelegate>       loadDelegate;
-@property(readwrite,strong,atomic)  id<UMMessageSessionDatabaseDelegate>       deleteDelegate;
+@property(readwrite,strong,atomic)  id<UMMessageSessionDatabaseDelegate>       insertOrUpdateMessageDelegate;
+@property(readwrite,strong,atomic)  id<UMMessageSessionDatabaseDelegate>       insertMessageDelegate;
+@property(readwrite,strong,atomic)  id<UMMessageSessionDatabaseDelegate>       updateMessageDelegate;
+@property(readwrite,strong,atomic)  id<UMMessageSessionDatabaseDelegate>       getMessageDelegate;
+@property(readwrite,strong,atomic)  id<UMMessageSessionDatabaseDelegate>       deleteMessageDelegate;
 
 - (UMMessageServer *)initWithPort:(NSInteger)port;
 @end

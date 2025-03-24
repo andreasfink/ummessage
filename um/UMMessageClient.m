@@ -10,6 +10,8 @@
 #import <um/UMMessage.h>
 #import <um/UMMessageSession.h>
 #import <um/UMMessageServerCommandLoginResponse.h>
+#import <um/UMMessageServerCommandInsertMessageResponse.h>
+#import <um/UMMessageServerCommandGetMessageResponse.h>
 #import <um/UMMessageServerCommandError.h>
 
 @implementation UMMessageClient
@@ -47,47 +49,93 @@
     return _isConnected;
 }
 
-//typedef void (^UMMesssageClientInsertCompletionHandler)(int status,NSString *error)
-
-
-- (BOOL)insertMessage:(UMMessage *)msg
+- (UMMessageServerCommandError)insertMessage:(UMMessage *)msg
 {
-    return [_session insertMessage:msg onCompletionCallObject:self withSelector:@selector(completionHandler:)];
+    _callComplete = NO;
+    UMMessageServerCommandError e = [_session insertMessage:msg
+                                     onCompletionCallObject:self
+                                               withSelector:@selector(insertCompletionHandler:)];
+    if(e)
+    {
+        return e;
+    }
+    while(_callComplete==NO)
+    {
+        usleep(1000);
+    }
+    return _callResult;
 }
 
-- (void)completionHandler:(UMMessageServerCommand *)cmd
+- (void)insertCompletionHandler:(UMMessageServerCommandInsertMessageResponse *)cmd
 {
-    NSLog(@"Completion of %@",cmd);
+    _callResult = cmd.status;
+    _callComplete = YES;
 }
+
+
+
+- (UMMessage *) getMessage:(NSString *)archiveId
+                     error:(UMMessageServerCommandError *)err
+{
+    _callComplete = NO;
+    UMMessageServerCommandError e = [_session doGetMessage:archiveId
+                                    onCompletionCallObject:self
+                                              withSelector:@selector(getMessageCompletionHandler:)];
+    if(e)
+    {
+        *err = e;
+        return NULL;
+    }
+    while(_callComplete==NO)
+    {
+        usleep(1000);
+    }
+    *err = _callResult;
+    return _callResultObject;
+}
+
+- (void)getMessageCompletionHandler:(UMMessageServerCommandGetMessageResponse *)cmd
+{
+    _callResult = cmd.status;
+    _callResultObject = cmd.message;
+    _callComplete = YES;
+}
+
+
+
 - (BOOL) awaitsResponses
 {
     return [_session awaitsResponses];
 }
 
-- (NSInteger) login
+- (UMMessageServerCommandError) login
 {
     _loginComplete = NO;
     _loginStatus = UMMessageServerCommandError_UNDEFINED;
-    if([_session     doLogin:_username
-                    password:_password
-                    instance:_instance
-      onCompletionCallObject:self
-                withSelector:@selector(loginResponse:)]==0)
+    UMMessageServerCommandError e = [_session     doLogin:_username
+                                                 password:_password
+                                                 instance:_instance
+                                   onCompletionCallObject:self
+                                             withSelector:@selector(loginResponse:)];
+    if(e)
     {
-        
-
-        while(_loginStatus == UMMessageServerCommandError_UNDEFINED)
-        {
-            usleep(100000);
-        }
+        return e;
     }
-    return _loginStatus;
+    while(_callComplete==NO)
+    {
+        usleep(1000);
+    }
+    return _callResult;
 }
 
 - (void)loginResponse:(UMMessageServerCommandLoginResponse *)cmd
 {
-    _loginStatus = cmd.status;
+    _callComplete = YES;
+    _callResult = cmd.status;
+
     _loginComplete = YES;
+    _loginStatus = cmd.status;
+
     if(_loginStatus == UMMessageServerCommandError_NO_ERROR)
     {
         [_session startHeartbeat];

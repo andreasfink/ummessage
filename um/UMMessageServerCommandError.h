@@ -24,6 +24,7 @@ typedef enum UMMessageServerCommandError
     UMMessageServerCommandError_DELETE_FAILURE      = 11,
     UMMessageServerCommandError_API_VERSION_MISMATCH = 12,
     UMMessageServerCommandError_NO_DB_SESSIONS_AVAILABLE = 13,
+
 } UMMessageServerCommandError;
 
 NSString *UMMessageServerCommandErrrorString(UMMessageServerCommandError err);

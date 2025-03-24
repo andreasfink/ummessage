@@ -27,7 +27,7 @@
     
     [super processBeforeEncode];
 
-    UMASN1UTF8String *s  = [[UMASN1UTF8String alloc]initWithValue:_messageId];
+    UMASN1UTF8String *s  = [[UMASN1UTF8String alloc]initWithValue:_archiveId];
     s.asn1_tag.tagNumber = 3;
     s.asn1_tag.tagClass  = UMASN1Class_ContextSpecific;
     [_asn1_list addObject:s];
@@ -41,7 +41,7 @@
 - (id) objectValue
 {
     UMSynchronizedSortedDictionary *dict = [super objectValue];
-    dict[@"messageId"] = _messageId;
+    dict[@"messageId"] = _archiveId;
     return dict;
 }
 
@@ -59,7 +59,7 @@
                 case 3:
                 {
                     UMASN1UTF8String *s = [[UMASN1UTF8String alloc]initWithASN1Object:o context:context];
-                    _messageId = s.stringValue;
+                    _archiveId = s.stringValue;
                     break;
                 }
             }
