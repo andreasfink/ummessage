@@ -41,7 +41,8 @@ typedef void (^UMMesssageClientInsertCompletionHandler)(int status,NSString *err
 - (BOOL)connect; /* returns YES if connected */
 - (UMMessageServerCommandError)login; /* returns UMMessageServerCommandError_NO_ERROR if logged in */
 - (UMMessageServerCommandError)insertMessage:(UMMessage *)msg;
-- (UMMessage *) getMessage:(NSString *)archiveId
+- (UMMessage *) getMessage:(NSString *)messageId
+                  instance:(NSString *)instance
                      error:(UMMessageServerCommandError *)err;
 - (BOOL) awaitsResponses;
 - (void)close;

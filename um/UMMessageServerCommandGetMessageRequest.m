@@ -26,11 +26,16 @@
     _command = UMMessageServerCommandType_GET_MESSAGE_REQUEST;
     
     [super processBeforeEncode];
-
-    UMASN1UTF8String *s  = [[UMASN1UTF8String alloc]initWithValue:_archiveId];
-    s.asn1_tag.tagNumber = 3;
-    s.asn1_tag.tagClass  = UMASN1Class_ContextSpecific;
-    [_asn1_list addObject:s];
+    
+    UMASN1UTF8String *s3  = [[UMASN1UTF8String alloc]initWithValue:_instance];
+    s3.asn1_tag.tagNumber = 3;
+    s3.asn1_tag.tagClass  = UMASN1Class_ContextSpecific;
+    [_asn1_list addObject:s3];
+    
+    UMASN1UTF8String *s4  = [[UMASN1UTF8String alloc]initWithValue:_messageId];
+    s4.asn1_tag.tagNumber = 4;
+    s4.asn1_tag.tagClass  = UMASN1Class_ContextSpecific;
+    [_asn1_list addObject:s4];
 }
 
 - (NSString *) objectName
@@ -41,7 +46,14 @@
 - (id) objectValue
 {
     UMSynchronizedSortedDictionary *dict = [super objectValue];
-    dict[@"messageId"] = _archiveId;
+    if(_instance)
+    {
+        dict[@"instance"] = _instance;
+    }
+    if(_messageId)
+    {
+        dict[@"message-id"] = _messageId;
+    }
     return dict;
 }
 
@@ -59,7 +71,13 @@
                 case 3:
                 {
                     UMASN1UTF8String *s = [[UMASN1UTF8String alloc]initWithASN1Object:o context:context];
-                    _archiveId = s.stringValue;
+                    _instance = s.stringValue;
+                    break;
+                }
+                case 4:
+                {
+                    UMASN1UTF8String *s = [[UMASN1UTF8String alloc]initWithASN1Object:o context:context];
+                    _messageId = s.stringValue;
                     break;
                 }
             }

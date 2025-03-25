@@ -177,7 +177,7 @@ static UMSynchronizedSortedDictionary * dbFieldWithOptions( NSString *type,int l
 }
 
 
-- (UMMessage *)loadMessage:(NSString *)messageId error:(UMMessageServerCommandError *)err
+- (UMMessage *)getMessage:(NSString *)messageId instance:(NSString *)instance error:(UMMessageServerCommandError *)err
 {
     UMMessage *m = [self getObjectFromCache:_msgCache forKey:messageId];
     if(m==NULL)

@@ -74,11 +74,13 @@
 
 
 
-- (UMMessage *) getMessage:(NSString *)archiveId
+- (UMMessage *) getMessage:(NSString *)messageId
+                  instance:(NSString *)instance
                      error:(UMMessageServerCommandError *)err
 {
     _callComplete = NO;
-    UMMessageServerCommandError e = [_session doGetMessage:archiveId
+    UMMessageServerCommandError e = [_session doGetMessage:messageId
+                                                  instance:instance
                                     onCompletionCallObject:self
                                               withSelector:@selector(getMessageCompletionHandler:)];
     if(e)

@@ -242,11 +242,11 @@
         UMMessageServerCommandError err = UMMessageServerCommandError_NO_ERROR;
         if(_server.getMessageDelegate)
         {
-            msg = [_server.getMessageDelegate loadMessage:cmd.archiveId error:&err];
+            msg = [_server.getMessageDelegate getMessage:cmd.messageId instance:cmd.instance error:&err];
         }
         else
         {
-            msg = [self localGetMessage:cmd.archiveId error:&err];
+            msg = [self localGetMessage:cmd.messageId instance:cmd.instance error:&err];
         }
         res.status = err;
         if(err==UMMessageServerCommandError_NO_ERROR)
@@ -496,7 +496,8 @@
 }
 
 
-- (UMMessageServerCommandError) doGetMessage:(NSString *)archiveId
+- (UMMessageServerCommandError) doGetMessage:(NSString *)messageId
+                                    instance:(NSString *)instance
                       onCompletionCallObject:(id)obj
                                 withSelector:(SEL)sel
 {
@@ -515,7 +516,8 @@
     
     UMMessageServerCommandGetMessageRequest *req = [[UMMessageServerCommandGetMessageRequest alloc]init];
     req.sequenceNumber = seq;
-    req.archiveId = archiveId;
+    req.messageId = messageId;
+    req.instance = instance;
     _pendingSequences[@(seq)] = co;
     UMSocketError err = [self sendCommand:req];
     if(err != UMSocketError_no_error)
@@ -526,22 +528,13 @@
     return UMMessageServerCommandError_NO_ERROR;
 }
 
-- (UMMessage *)localGetMessage:(NSString *)archiveId error:(UMMessageServerCommandError *)e
+- (UMMessage *)localGetMessage:(NSString *)messageId instance:(NSString *)instance error:(UMMessageServerCommandError *)e
 {
     if(!_authenticated)
     {
         *e = UMMessageServerCommandError_NOT_AUTHORIZED;
         return NULL;
     }
-    NSArray *a = [archiveId componentsSeparatedByString:@":"];
-    if(a.count!=2)
-    {
-        *e = UMMessageServerCommandError_NOT_FOUND;
-        return NULL;
-    }
-    
-    NSString *instance = a[0];
-    NSString *messageId = a[1];
     
     NSString *filename = [self messageIdToFileName:messageId instance:instance];
     NSString *filename2 = [NSString stringWithFormat:@"%@.ber",filename];

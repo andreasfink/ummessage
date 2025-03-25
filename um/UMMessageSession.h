@@ -71,7 +71,8 @@
                  onCompletionCallObject:(id)obj
                            withSelector:(SEL)sel;
 
-- (UMMessageServerCommandError) doGetMessage:(NSString *)archiveId
+- (UMMessageServerCommandError) doGetMessage:(NSString *)messageId
+                                    instance:(NSString *)instance
                       onCompletionCallObject:(id)obj
                                 withSelector:(SEL)sel;
 

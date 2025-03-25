@@ -262,7 +262,7 @@ static void signalHandler(int signum)
     [_client insertMessage:msg];
     
     UMMessageServerCommandError err = UMMessageServerCommandError_UNDEFINED;
-    UMMessage *m = [_client getMessage:@"default:002503240915090001" error:&err];
+    UMMessage *m = [_client getMessage:@"002503240915090001" instance:@"default" error:&err];
     NSLog(@"Message loaded: %@",m);
 }
 

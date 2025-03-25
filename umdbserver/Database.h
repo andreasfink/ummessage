@@ -35,7 +35,8 @@
 
 - (BOOL)autocreateTables; /* returns YES on success */
 
-- (UMMessage *)loadMessage:(NSString *)messageId error:(UMMessageServerCommandError *)err;
+- (UMMessage *)getMessage:(NSString *)messageId instance:(NSString *)instance error:(UMMessageServerCommandError *)err;
+
 - (UMMessageServerCommandError)insertOrUpdateMessage:(UMMessage *)msg;
 - (UMMessageServerCommandError)insertMessage:(UMMessage *)msg;
 - (UMMessageServerCommandError)updateMessage:(UMMessage *)msg;
