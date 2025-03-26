@@ -9,27 +9,38 @@
 
 #import <ulib/ulib.h>
 #import <ulibasn1/ulibasn1.h>
-
+#import <um/UMMessageState.h>
 /// An object to hold a short message for use in SMS. This can be a long (multipart), concaenated message or a individual message part.
 /// Can be used in SMPP or SS7
 
 @class UMDbSession;
+@class UMReport;
+@class UMDbResult;
 
 @interface UMMessage : UMASN1Sequence
 {
-
+    
+/* variables */
 #include <um/UMMessage_macroVariables.h>
 #include <um/UMMessage.def.h>
 #include <um/UMMessage_macroClear.h>
 
+    UMSynchronizedArray *_udhs; /* Unpacked UDHs, not stored in DB */
+    UMReport            *_lastReport; /* helper */
+    id                  _user;
 }
 
+/* properties */
 #include <um/UMMessage_macroProperties.h>
 #include <um/UMMessage.def.h>
 #include <um/UMMessage_macroClear.h>
 
+
 @property(readwrite,atomic,assign)      BOOL hasBeenInserted;
 @property(readwrite,atomic,assign)      BOOL isDirty;
+@property(readwrite,atomic,strong)      UMSynchronizedArray *udhs; /* Unpacked UDHs, not stored in DB directly */
+@property(readwrite,atomic,strong)      UMReport            *lastReport; /* helper */
+@property(readwrite,atomic,strong)      id      user;
 
 - (UMMessage *)initWithNewIdAndInstance:(NSString *)instance;
 + (NSString *)uniqueMessageIdWithPrefix:(NSString *)pfx;
@@ -39,5 +50,13 @@
 - (NSString *)insert:(NSString *)tableName session:(UMDbSession *)session;
 - (NSString *)update:(NSString *)tableName session:(UMDbSession *)session;
 - (NSString *)delete:(NSString *)tableName session:(UMDbSession *)session;
+
+
+- (void) expandUdh;
+- (void) packUdh;
+
+@property(readwrite,atomic,assign)  UMMessageState  messageStateCode;
+
++ (UMMessage *)messageFromDbResult:(UMDbResult *)dbResult;
 
 @end

@@ -10,7 +10,9 @@
 #import <ulib/ulib.h>
 #import <ulibdb/ulibdb.h>
 #import <um/UMMessageFields.h>
-
+#import <um/UMMessageUdh.h>
+#import <um/UMMessageUdhConcatenated.h>
+#import <um/UMMessageUdhConcatenated16bitRef.h>
 #import "UMMessage_macroHelper.h"
 
 #define     MAXADDRLEN      18
@@ -438,6 +440,69 @@ static      UMMutex      *g_messageIdLock = NULL;
 #include "UMMessage.def.h"
 #include "UMMessage_macroClear.h"
 }
+
+- (void) expandUdh
+{
+    if(_pduUdh==NULL)
+    {
+        return;
+    }
+    /* position 0 is the length of the UDH data. */
+    int pos = 1;
+    _udhs = [[UMSynchronizedArray alloc]init];
+    NSData *d = _pduUdh.data;
+    UMMessageUdh *u = [[UMMessageUdh alloc] initWithData:d atPosition:&pos];
+    while(u)
+    {
+        if(u.iei==UdhIEI_concatenated)
+        {
+            u = [[UMMessageUdhConcatenated alloc]initWithUdh:u];
+        }
+        else if(u.iei==UdhIEI_concatenated16bitRef)
+        {
+            u = [[UMMessageUdhConcatenated16BitRef alloc]initWithUdh:u];
+        }
+        [_udhs addObject:u];
+        u = [[UMMessageUdh alloc] initWithData:d atPosition:&pos];
+    }
+}
+
+- (void) packUdh
+{
+    NSMutableData *d = [[NSMutableData alloc]init];
+    
+    for(UMMessageUdh *u in _udhs)
+    {
+        [d appendData:u.encode];
+    }
+    if(d.length == 0)
+    {
+        _pduUdh=NULL;
+        _pduUdhIndicator=[[UMDirtyInteger alloc]initWithInteger:0];
+    }
+    else
+    {
+        NSMutableData *udh = [[NSMutableData alloc]init];
+        [udh appendByte:d.length];
+        [udh appendData:d];
+        _pduUdh = [[UMDirtyData alloc]initWithData:udh];
+        _pduUdhIndicator=[[UMDirtyInteger alloc]initWithInteger:1];
+
+    }
+}
+
+
+- (void)setMessageStateCode:(UMMessageState)ms
+{
+    _messageStatus = [[UMDirtyString alloc]initWithString:stringFromMessageState(ms)];
+}
+
+- (UMMessageState)messageStateCode
+{
+    return messageStateFromString(_messageStatus.stringValue);
+
+}
+
 @end
 
 

@@ -28,3 +28,5 @@
 #import <um/UMMessageServerCommandTypes.h>
 #import <um/UMMessageServerCommandUpdateMessageRequest.h>
 #import <um/UMMessageServerCommandUpdateMessageResponse.h>
+#import <um/UMReport.h>
+#import <um/UMMessageServerCommandUpdateMessageResponse.h>

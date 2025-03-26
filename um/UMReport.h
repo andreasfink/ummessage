@@ -1,0 +1,67 @@
+//
+//  UMReport.h
+//  um
+//
+//  Created by Andreas Fink on 26.03.2025.
+//
+
+#import <ulibasn1/ulibasn1.h>
+#import <um/UMMessage.h>
+#import <um/UMMessageState.h>
+
+@class UMDbResult;
+
+@interface UMReport : UMASN1Sequence
+{
+    BOOL                                _isDirty;
+    BOOL                                _hasBeenInserted;
+    id                                  _currentTransaction;
+    id                                  _originalSendingObject;
+    UMMessageState                      _reportType;
+    NSNumber                            *_error;
+    int                                 _priority;
+    int                                 _responseCode;
+    UMMessage                           *_reportToMsg;
+    
+#define INTEGER(o,len,tag,dictname,var,accessor,dbname,options)           NSNumber *var;
+#define STRING(o,len,tag,dictname,var,accessor,dbname,options)            NSString *var;
+#define TEXT(o,len,tag,dictname,var,accessor,dbname,options)              NSString *var;
+#define DATE(o,len,tag,dictname,var,accessor,dbname,options)              NSDate   *var;
+    
+#include <um/UMReport.def.h>
+
+#undef INTEGER
+#undef STRING
+#undef TEXT
+#undef DATE
+
+
+}
+
+@property(readwrite,assign,atomic)  BOOL                isDirty;
+@property(readwrite,assign,atomic)  BOOL                hasBeenInserted;
+@property(readwrite,strong,atomic)  id                  currentTransaction;
+@property(readwrite,strong,atomic)  id                  originalSendingObject;
+@property(readwrite,assign,atomic)  UMMessageState      reportType;
+@property(readwrite,strong,atomic)  NSNumber            *error;
+@property(readwrite,assign,atomic)  int                 priority;
+@property(readwrite,assign,atomic)  int                 responseCode;
+@property(readwrite,strong,atomic)  UMMessage           *reportToMsg;
+
+#define INTEGER(o,len,tag,dictname,var,accessor,dbname,options)          @property(readwrite,strong,atomic) NSNumber *accessor;
+#define STRING(o,len,tag,dictname,var,accessor,dbname,options)           @property(readwrite,strong,atomic) NSString *accessor;
+#define TEXT(o,len,tag,dictname,var,accessor,dbname,options)             @property(readwrite,strong,atomic) NSString *accessor;
+#define DATE(o,len,tag,dictname,var,accessor,dbname,options)             @property(readwrite,strong,atomic) NSDate *accessor;
+
+#include <um/UMReport.def.h>
+
+#undef INTEGER
+#undef STRING
+#undef TEXT
+#undef DATE
+
+- (NSString *)insertOrUpdate:(NSString *)tableName session:(UMDbSession *)session;
++ (UMReport *)reportFromDbResult:(UMDbResult *)dbResult;
+
+@end
+
