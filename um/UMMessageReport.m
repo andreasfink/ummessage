@@ -16,39 +16,34 @@
     [o appendFormat:@"INSERT INTO `%@` (",tableName];
     int i=0;
 
-#define STRING(o,len,tag,dictname,field,accessor,dbname,options)  if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"`%s`",dbname]; };
 #define INTEGER(o,len,tag,dictname,field,accessor,dbname,options) if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"`%s`",dbname]; };
-#define DATE(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"`%s`",dbname]; };
-#define DATA(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"`%s`",dbname]; };
+#define STRING(o,len,tag,dictname,field,accessor,dbname,options)  if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"`%s`",dbname]; };
 #define TEXT(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"`%s`",dbname]; };
-#define DOUBLE(o,len,tag,dictname,field,accessor,dbname,options)  if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"`%s`",dbname]; };
+#define DATE(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"`%s`",dbname]; };
 
 #include "UMMessageReport.def.h"
-#include "Config_macroClear.h"
+#include "UMMessage_macroClear.h"
 
     
     [o appendString:@") VALUES("];
     i=0;
-#define STRING(o,len,tag,dictname,field,accessor,dbname,options)  if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",[session sqlEscapeString:field.stringValue]];};
 #define INTEGER(o,len,tag,dictname,field,accessor,dbname,options) if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",[session sqlEscapeString:field.stringValue]]; };
-#define DATE(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",[session sqlEscapeString:field.stringValue]]; };
-#define DATA(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",[session sqlEscapeString:field.stringValue]]; };
+#define STRING(o,len,tag,dictname,field,accessor,dbname,options)  if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",[session sqlEscapeString:field.stringValue]];};
 #define TEXT(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",[session sqlEscapeString:field.stringValue]]; };
-#define DOUBLE(o,len,tag,dictname,field,accessor,dbname,options)  if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",[session sqlEscapeString:field.stringValue]]; };
+#define DATE(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",[session sqlEscapeString:field.stringValue]]; };
 #include "UMMessageReport.def.h"
-#include "Config_macroClear.h"
+#include "UMMessage_macroClear.h"
 
 
     [o appendString:@") ON DUPLICATE KEY UPDATE "];
     i=0;
-#define STRING(o,len,tag,dictname,field,accessor,dbname,options)  if(field) { if(i++) { [o appendString:@","]; }[o appendFormat:@"`%s`=\"%@\"",dbname,[session sqlEscapeString:field.stringValue]]; };
 #define INTEGER(o,len,tag,dictname,field,accessor,dbname,options) if(field) { if(i++) { [o appendString:@","]; }[o appendFormat:@"`%s`=\"%@\"",dbname,[session sqlEscapeString:field.stringValue]]; };
-#define DATE(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; }[o appendFormat:@"`%s`=\"%@\"",dbname,[session sqlEscapeString:field.stringValue]]; };
-#define DATA(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; }[o appendFormat:@"`%s`=\"%@\"",dbname,[session sqlEscapeString:field.stringValue]]; };
+#define STRING(o,len,tag,dictname,field,accessor,dbname,options)  if(field) { if(i++) { [o appendString:@","]; }[o appendFormat:@"`%s`=\"%@\"",dbname,[session sqlEscapeString:field.stringValue]]; };
 #define TEXT(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; }[o appendFormat:@"`%s`=\"%@\"",dbname,[session sqlEscapeString:field.stringValue]]; };
-#define DOUBLE(o,len,tag,dictname,field,accessor,dbname,options)  if(field) { if(i++) { [o appendString:@","]; }[o appendFormat:@"`%s`=\"%@\"",dbname,[session sqlEscapeString:field.stringValue]]; };
+#define DATE(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; }[o appendFormat:@"`%s`=\"%@\"",dbname,[session sqlEscapeString:field.stringValue]]; };
 #include "UMMessageReport.def.h"
-#include "Config_macroClear.h"
+#include "UMMessage_macroClear.h"
+
     return o;
 }
    
@@ -75,14 +70,12 @@
         {
             NSString *str = (NSString *)field1;
             NSLog(@"str=%@",str);
-#define STRING(o,len,tag,dictname,field,accessor,dbname,options)     if(str) { o.accessor = str;                 }
 #define INTEGER(o,len,tag,dictname,field,accessor,dbname,options)    if(str) { o.accessor = @(str.integerValue); }
-#define DATE(o,len,tag,dictname,field,accessor,dbname,options)       if(str) { o.accessor = str.dateValue;       }
-#define DATA(o,len,tag,dictname,field,accessor,dbname,options)       if(str) { o.accessor = str.unhexedData;     }
+#define STRING(o,len,tag,dictname,field,accessor,dbname,options)     if(str) { o.accessor = str;                 }
 #define TEXT(o,len,tag,dictname,field,accessor,dbname,options)       if(str) { o.accessor = str;                 }
-#define DOUBLE(o,len,tag,dictname,field,accessor,dbname,options)     if(str) { o.accessor = @(str.doubleValue);  }
+#define DATE(o,len,tag,dictname,field,accessor,dbname,options)       if(str) { o.accessor = str.dateValue;       }
 #include "UMMessageReport.def.h"
-#include "Config_macroClear.h"
+#include "UMMessage_macroClear.h"
             continue;
         }
         if([field1 isKindOfClass:[NSData class]])
@@ -90,14 +83,12 @@
             NSData *data = (NSData *)field1;
             NSLog(@"data=%@",data);
 
-#define STRING(o,len,tag,dictname,f,accessor,dbname,options)         { ; }
 #define INTEGER(o,len,tag,dictname,f,accessor,dbname,options)        { ; }
-#define DATE(o,len,tag,dictname,field,accessor,dbname,options)       { ; }
-#define DATA(o,len,tag,dictname,field,accessor,dbname,options)       if(data) { o.accessor = data; }
+#define STRING(o,len,tag,dictname,f,accessor,dbname,options)         { ; }
 #define TEXT(o,len,tag,dictname,field,accessor,dbname,options)       { ; }
-#define DOUBLE(o,len,tag,dictname,field,accessor,dbname,options)     { ; }
+#define DATE(o,len,tag,dictname,field,accessor,dbname,options)       { ; }
 #include "UMMessageReport.def.h"
-#include "Config_macroClear.h"
+#include "UMMessage_macroClear.h"
             continue;
         }
     }
@@ -114,9 +105,9 @@
     [super processBeforeEncode];
     [_asn1_tag setTagIsConstructed];
     _asn1_list = [[NSMutableArray alloc]init];
-#include "Config_macroProcessBeforeEncode.h"
+#include "UMMessage_macroProcessBeforeEncode.h"
 #include "UMMessageReport.def.h"
-#include "Config_macroClear.h"
+#include "UMMessage_macroClear.h"
 }
 
 
@@ -131,9 +122,9 @@
         {
             switch(o.asn1_tag.tagNumber)
             {
-#include "Config_macroProcessAfterDecodeWithContext.h"
+#include "UMMessage_macroProcessAfterDecodeWithContext.h"
 #include "UMMessageReport.def.h"
-#include "Config_macroClear.h"
+#include "UMMessage_macroClear.h"
             } /* end switch */
             o = [self getObjectAtPosition:p++];
         }
@@ -144,9 +135,9 @@
 - (id) objectValue
 {
     UMSynchronizedSortedDictionary *o = [[UMSynchronizedSortedDictionary alloc]init];
-#include "Config_macroObjectValue.h"
+#include "UMMessage_macroObjectValue.h"
 #include "UMMessageReport.def.h"
-#include "Config_macroClear.h"
+#include "UMMessage_macroClear.h"
     return o;
 }
 
