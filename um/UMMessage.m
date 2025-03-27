@@ -12,7 +12,7 @@
 #import <um/UMMessageFields.h>
 #import <um/UMMessageUdh.h>
 #import <um/UMMessageUdhConcatenated.h>
-#import <um/UMMessageUdhConcatenated16bitRef.h>
+#import <um/UMMessageUdhConcatenated16BitRef.h>
 #import "UMMessage_macroHelper.h"
 
 #define     MAXADDRLEN      18
