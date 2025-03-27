@@ -47,7 +47,12 @@ static      UMMutex      *g_messageIdLock = NULL;
     }
     return self;
 }
-    
+
++ (NSString *)uniqueMessageId
+{
+    return [UMMessage uniqueMessageIdWithPrefix:@""];
+}
+
 + (NSString *)uniqueMessageIdWithPrefix:(NSString *)prefix
 {
     int           this_msgid_serial;

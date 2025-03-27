@@ -1,14 +1,14 @@
 //
-//  UMReport.m
+//  UMMessageReport *.m
 //  um
 //
 //  Created by Andreas Fink on 26.03.2025.
 //
 
-#import "UMReport.h"
+#import "UMMessageReport.h"
 #import <ulibdb/ulibdb.h>
 
-@implementation UMReport
+@implementation UMMessageReport
 
 - (NSString *)insertOrUpdate:(NSString *)tableName session:(UMDbSession *)session
 {
@@ -23,7 +23,7 @@
 #define TEXT(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"`%s`",dbname]; };
 #define DOUBLE(o,len,tag,dictname,field,accessor,dbname,options)  if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"`%s`",dbname]; };
 
-#include "UMReport.def.h"
+#include "UMMessageReport.def.h"
 #include "Config_macroClear.h"
 
     
@@ -35,7 +35,7 @@
 #define DATA(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",[session sqlEscapeString:field.stringValue]]; };
 #define TEXT(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",[session sqlEscapeString:field.stringValue]]; };
 #define DOUBLE(o,len,tag,dictname,field,accessor,dbname,options)  if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",[session sqlEscapeString:field.stringValue]]; };
-#include "UMReport.def.h"
+#include "UMMessageReport.def.h"
 #include "Config_macroClear.h"
 
 
@@ -47,12 +47,12 @@
 #define DATA(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; }[o appendFormat:@"`%s`=\"%@\"",dbname,[session sqlEscapeString:field.stringValue]]; };
 #define TEXT(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; }[o appendFormat:@"`%s`=\"%@\"",dbname,[session sqlEscapeString:field.stringValue]]; };
 #define DOUBLE(o,len,tag,dictname,field,accessor,dbname,options)  if(field) { if(i++) { [o appendString:@","]; }[o appendFormat:@"`%s`=\"%@\"",dbname,[session sqlEscapeString:field.stringValue]]; };
-#include "UMReport.def.h"
+#include "UMMessageReport.def.h"
 #include "Config_macroClear.h"
     return o;
 }
    
-+ (UMReport *)reportFromDbResult:(UMDbResult *)dbResult
++ (UMMessageReport *)reportFromDbResult:(UMDbResult *)dbResult
 {
     if(dbResult==NULL)
     {
@@ -63,7 +63,7 @@
         return NULL;
     }
     NSArray *values = dbResult.resultArray[0];
-    UMReport *o = [[UMReport alloc]init];
+    UMMessageReport *o = [[UMMessageReport alloc]init];
     for(NSInteger i=0;i<dbResult.columNames.count;i++)
     {
         id field1 = values[i];
@@ -81,7 +81,7 @@
 #define DATA(o,len,tag,dictname,field,accessor,dbname,options)       if(str) { o.accessor = str.unhexedData;     }
 #define TEXT(o,len,tag,dictname,field,accessor,dbname,options)       if(str) { o.accessor = str;                 }
 #define DOUBLE(o,len,tag,dictname,field,accessor,dbname,options)     if(str) { o.accessor = @(str.doubleValue);  }
-#include "UMReport.def.h"
+#include "UMMessageReport.def.h"
 #include "Config_macroClear.h"
             continue;
         }
@@ -96,7 +96,7 @@
 #define DATA(o,len,tag,dictname,field,accessor,dbname,options)       if(data) { o.accessor = data; }
 #define TEXT(o,len,tag,dictname,field,accessor,dbname,options)       { ; }
 #define DOUBLE(o,len,tag,dictname,field,accessor,dbname,options)     { ; }
-#include "UMReport.def.h"
+#include "UMMessageReport.def.h"
 #include "Config_macroClear.h"
             continue;
         }
@@ -115,12 +115,12 @@
     [_asn1_tag setTagIsConstructed];
     _asn1_list = [[NSMutableArray alloc]init];
 #include "Config_macroProcessBeforeEncode.h"
-#include "UMReport.def.h"
+#include "UMMessageReport.def.h"
 #include "Config_macroClear.h"
 }
 
 
-- (UMReport *) processAfterDecodeWithContext:(id)context
+- (UMMessageReport *) processAfterDecodeWithContext:(id)context
 {
     int p=0;
     UMASN1Object *o = [self getObjectAtPosition:p++];
@@ -132,7 +132,7 @@
             switch(o.asn1_tag.tagNumber)
             {
 #include "Config_macroProcessAfterDecodeWithContext.h"
-#include "UMReport.def.h"
+#include "UMMessageReport.def.h"
 #include "Config_macroClear.h"
             } /* end switch */
             o = [self getObjectAtPosition:p++];
@@ -145,7 +145,7 @@
 {
     UMSynchronizedSortedDictionary *o = [[UMSynchronizedSortedDictionary alloc]init];
 #include "Config_macroObjectValue.h"
-#include "UMReport.def.h"
+#include "UMMessageReport.def.h"
 #include "Config_macroClear.h"
     return o;
 }

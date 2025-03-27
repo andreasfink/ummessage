@@ -14,8 +14,9 @@
 /// Can be used in SMPP or SS7
 
 @class UMDbSession;
-@class UMReport;
+@class UMMessageReport;
 @class UMDbResult;
+@class UMMessageUser;
 
 @interface UMMessage : UMASN1Sequence
 {
@@ -26,8 +27,12 @@
 #include <um/UMMessage_macroClear.h>
 
     UMSynchronizedArray *_udhs; /* Unpacked UDHs, not stored in DB */
-    UMReport            *_lastReport; /* helper */
-    id                  _user;
+    NSMutableDictionary *_tlvs; /* not stored in DB directly */
+    UMMessageReport     *_lastReport; /* helper */
+    UMMessageUser       *_user;
+    id                  _originalSendingObject;
+    id                  _routerTransaction;
+    id                  _userTransaction;
 }
 
 /* properties */
@@ -39,10 +44,15 @@
 @property(readwrite,atomic,assign)      BOOL hasBeenInserted;
 @property(readwrite,atomic,assign)      BOOL isDirty;
 @property(readwrite,atomic,strong)      UMSynchronizedArray *udhs; /* Unpacked UDHs, not stored in DB directly */
-@property(readwrite,atomic,strong)      UMReport            *lastReport; /* helper */
-@property(readwrite,atomic,strong)      id      user;
+@property(readwrite,atomic,strong)      UMMessageReport            *lastReport; /* helper */
+@property(readwrite,atomic,strong)      UMMessageUser       *user;
+@property(readwrite,atomic,strong)      id                  originalSendingObject;
+@property(readwrite,atomic,strong)      id                  routerTransaction;
+@property(readwrite,atomic,strong)      id                  userTransaction;
+@property(readwrite,strong)             NSMutableDictionary *tlvs;
 
 - (UMMessage *)initWithNewIdAndInstance:(NSString *)instance;
++ (NSString *)uniqueMessageId;
 + (NSString *)uniqueMessageIdWithPrefix:(NSString *)pfx;
 + (NSString *)asn1Def;
 + (NSString *)sqlTableDefForTableName:(NSString *)table;

@@ -1,5 +1,5 @@
 //
-//  UMReport.h
+//  UMMessageReport *.h
 //  um
 //
 //  Created by Andreas Fink on 26.03.2025.
@@ -11,7 +11,7 @@
 
 @class UMDbResult;
 
-@interface UMReport : UMASN1Sequence
+@interface UMMessageReport : UMASN1Sequence
 {
     BOOL                                _isDirty;
     BOOL                                _hasBeenInserted;
@@ -22,13 +22,15 @@
     int                                 _priority;
     int                                 _responseCode;
     UMMessage                           *_reportToMsg;
+    NSDictionary                         *_tlvs; /* not stored in DB directly */
+
     
 #define INTEGER(o,len,tag,dictname,var,accessor,dbname,options)           NSNumber *var;
 #define STRING(o,len,tag,dictname,var,accessor,dbname,options)            NSString *var;
 #define TEXT(o,len,tag,dictname,var,accessor,dbname,options)              NSString *var;
 #define DATE(o,len,tag,dictname,var,accessor,dbname,options)              NSDate   *var;
     
-#include <um/UMReport.def.h>
+#include <um/UMMessageReport.def.h>
 
 #undef INTEGER
 #undef STRING
@@ -47,13 +49,14 @@
 @property(readwrite,assign,atomic)  int                 priority;
 @property(readwrite,assign,atomic)  int                 responseCode;
 @property(readwrite,strong,atomic)  UMMessage           *reportToMsg;
+@property(readwrite,strong,atomic)  NSDictionary         *tlvs; /* not stored in DB directly */
 
 #define INTEGER(o,len,tag,dictname,var,accessor,dbname,options)          @property(readwrite,strong,atomic) NSNumber *accessor;
 #define STRING(o,len,tag,dictname,var,accessor,dbname,options)           @property(readwrite,strong,atomic) NSString *accessor;
 #define TEXT(o,len,tag,dictname,var,accessor,dbname,options)             @property(readwrite,strong,atomic) NSString *accessor;
 #define DATE(o,len,tag,dictname,var,accessor,dbname,options)             @property(readwrite,strong,atomic) NSDate *accessor;
 
-#include <um/UMReport.def.h>
+#include <um/UMMessageReport.def.h>
 
 #undef INTEGER
 #undef STRING
@@ -61,7 +64,7 @@
 #undef DATE
 
 - (NSString *)insertOrUpdate:(NSString *)tableName session:(UMDbSession *)session;
-+ (UMReport *)reportFromDbResult:(UMDbResult *)dbResult;
++ (UMMessageReport *)reportFromDbResult:(UMDbResult *)dbResult;
 
 @end
 

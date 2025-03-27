@@ -16,6 +16,7 @@ STRING(o ,   18,UMMESSAGE_CODETAG_MESSAGEID                 ,"message-id"       
 STRING(o ,   18,UMMESSAGE_CODETAG_USERID                    ,"username"                        ,_userName                 ,userName                 ,"user_name"                   ,"indexed,optional")
 STRING(o ,   18,UMMESSAGE_CODETAG_GROUPID                   ,"groupname"                       ,_groupName                ,groupName                ,"group_name"                  ,"indexed,optional")
 STRING(o ,   18,UMMESSAGE_CODETAG_DELIVERYMETHOD            ,"delivery-method"                 ,_deliveryMethod           ,deliveryMethod           ,"delivery_method"             ,"optional")
+STRING(o ,   18,UMMESSAGE_CODETAG_SUBMISSIONMETHOD          ,"submission-method"               ,_submissionMethod         ,submissionMethod         ,"submission_method"             ,"optional")
 STRING(o ,   18,UMMESSAGE_CODETAG_SUBMISSIONTYPE            ,"submission-type"                 ,_submissionType           ,submissionType           ,"submission_type"             ,"optional")
 INTEGER(o,    1,UMMESSAGE_CODETAG_PURGEFLAG                 ,"purge-flag"                      ,_purgeFlag                ,purgeFlag                ,"purge_flag"                  ,"indexed,optional")
 INTEGER(o,    2,UMMESSAGE_CODETAG_USERFLAGS                 ,"user-flags"                      ,_userFlags                ,userFlags                ,"user_flags"                  ,"optional")
@@ -45,6 +46,8 @@ STRING(o ,   40,UMMESSAGE_CODETAG_TOIP                      ,"to-ip"            
 STRING(o ,   18,UMMESSAGE_CODETAG_TOCOUNTRY                 ,"to-country"                      ,_toCountry                ,toCountry                ,"to_country"                  ,"optional")
 STRING(o ,   18,UMMESSAGE_CODETAG_TOOPERATORCODE            ,"to-operator-code"                ,_toOperatorCode           ,toOperatorCode           ,"to_operator_code"            ,"optional")
 STRING(o ,   18,UMMESSAGE_CODETAG_TOOPERATORNAME            ,"to-operator-name"                ,_toOperatorName           ,toOperatorName           ,"to_operator_name"            ,"optional")
+STRING(o ,   18,UMMESSAGE_CODETAG_MCC                       ,"mcc"                             ,_mcc                      ,mcc                      ,"mcc"                         ,"optional")
+STRING(o ,   18,UMMESSAGE_CODETAG_MNC                       ,"mnc"                             ,_mnc                      ,mnc                      ,"mnc"                         ,"optional")
 
 /* report related fields */
 
@@ -72,7 +75,7 @@ STRING(o ,   32,UMMESSAGE_CODETAG_SMSC_FSM_MAP              ,"smsc-fsm-map"     
 STRING(o ,   32,UMMESSAGE_CODETAG_HLR                       ,"hlr"                             ,_hlr                      ,hlr                      ,"hlr"                         ,"optional")
 INTEGER(o ,   1,UMMESSAGE_CODETAG_TT_SRISM                  ,"tt-srism"                        ,_tt_srism                 ,tt_srism                 ,"tt_srism"                    ,"optional")
 INTEGER(o ,   1,UMMESSAGE_CODETAG_TT_FSM                    ,"tt-fsm"                          ,_tt_fsm                   ,tt_fsm                   ,"tt_fsmm"                     ,"optional")
-STRING(o ,   18,UMMESSAGE_CODETAG_HLR_OVERRIDE              ,"hlr-override"                    ,_hlr_override             ,hlr_override             ,"hlr_override"                ,"optional")
+STRING(o ,   18,UMMESSAGE_CODETAG_HLR_OVERRIDE              ,"hlr-override"                    ,_hlrOverride             ,hlrOverride             ,"hlr_override"                ,"optional")
 
 /* timestamps and message delivery */
 DATE(o   ,   14,UMMESSAGE_CODETAG_CREATED                   ,"created"                         ,_created                  ,created                  ,"created"                     ,"optional")
