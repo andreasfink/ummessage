@@ -105,7 +105,46 @@
     [super processBeforeEncode];
     [_asn1_tag setTagIsConstructed];
     _asn1_list = [[NSMutableArray alloc]init];
-#include "Config_macroProcessBeforeEncode.h"
+
+    
+#define INTEGER(o,len,tag,dictname,field,accessor,dbname,options)           \
+if(field)                                                                   \
+{                                                                           \
+    UMASN1Integer *i = [[UMASN1Integer alloc]initWithNumber:field];         \
+    i.asn1_tag.tagNumber = tag;                                             \
+    i.asn1_tag.tagClass = UMASN1Class_ContextSpecific;                      \
+    [_asn1_list addObject:i];                                               \
+}
+
+
+#define STRING(o,len,tag,dictname,field,accessor,dbname,options)            \
+if(field)                                                                   \
+{                                                                           \
+    UMASN1UTF8String *u = [[UMASN1UTF8String alloc]initWithString:field];   \
+    u.asn1_tag.tagNumber = tag;                                             \
+    u.asn1_tag.tagClass = UMASN1Class_ContextSpecific;                      \
+    [_asn1_list addObject:u];                                               \
+}
+
+#define TEXT(o,len,tag,dictname,field,accessor,dbname,options)              \
+if(field)                                                                   \
+{                                                                           \
+    UMASN1UTF8String *u = [[UMASN1UTF8String alloc]initWithString:field];   \
+    u.asn1_tag.tagNumber = tag;                                             \
+    u.asn1_tag.tagClass = UMASN1Class_ContextSpecific;                      \
+    [_asn1_list addObject:u];                                               \
+}
+    
+#define DATE(o,len,tag,dictname,field,accessor,dbname,options)              \
+if(field)                                                                   \
+{                                                                           \
+    NSString *sd = [NSString stringWithStandardDate:field];                 \
+    UMASN1UTF8String *u = [[UMASN1UTF8String alloc]initWithString:sd];      \
+    u.asn1_tag.tagNumber = tag;                                             \
+    u.asn1_tag.tagClass = UMASN1Class_ContextSpecific;                      \
+    [_asn1_list addObject:u];                                               \
+}
+
 #include "UMMessageReport.def.h"
 #include "Config_macroClear.h"
 }
@@ -122,9 +161,35 @@
         {
             switch(o.asn1_tag.tagNumber)
             {
-#include "Config_macroProcessAfterDecodeWithContext.h"
+#define INTEGER(o,len,tag,dictname,field,accessor,dbname,options)                               \
+case tag:                                                                                       \
+{                                                                                               \
+    UMASN1Integer *i = [[UMASN1Integer alloc]initWithASN1Object:o context:context];             \
+    field = i.number;                                                                           \
+}
+
+#define STRING(o,len,tag,dictname,field,accessor,dbname,options)                                \
+case tag:                                                                                       \
+{                                                                                               \
+    UMASN1UTF8String *u = [[UMASN1UTF8String alloc]initWithASN1Object:o context:context];       \
+    field = u.stringValue;                                                                      \
+}
+
+#define TEXT(o,len,tag,dictname,field,accessor,dbname,options)                                  \
+case tag:                                                                                       \
+{                                                                                               \
+    UMASN1UTF8String *u = [[UMASN1UTF8String alloc]initWithASN1Object:o context:context];       \
+    field = u.stringValue;                                                                      \
+}
+
+#define DATE(o,len,tag,dictname,field,accessor,dbname,options)                                  \
+case tag:                                                                                       \
+{                                                                                               \
+    UMASN1UTF8String *s = [[UMASN1UTF8String alloc]initWithASN1Object:o context:context];       \
+    field = s.value.dateValue;                                                                  \
+}
 #include "UMMessageReport.def.h"
-#include "Config_macroClear.h"
+#include "UMMessage_macroClear.h"
             } /* end switch */
             o = [self getObjectAtPosition:p++];
         }
@@ -135,9 +200,14 @@
 - (id) objectValue
 {
     UMSynchronizedSortedDictionary *o = [[UMSynchronizedSortedDictionary alloc]init];
-#include "Config_macroObjectValue.h"
+    
+#define INTEGER(o,len,tag,dictname,field,accessor,dbname,options)   if(field) { o[@dbname] = field;  }
+#define STRING(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { o[@dbname] = field;  }
+#define TEXT(o,len,tag,dictname,field,accessor,dbname,options)      if(field) { o[@dbname] = field;  }
+#define DATE(o,len,tag,dictname,field,accessor,dbname,options)      if(field) { o[@dbname] = field;  }
+
 #include "UMMessageReport.def.h"
-#include "Config_macroClear.h"
+#include "UMMessage_macroClear.h"
     return o;
 }
 

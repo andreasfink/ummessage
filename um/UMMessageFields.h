@@ -26,6 +26,7 @@ typedef enum    UMMessageFields
     UMMESSAGE_CODETAG_VAS_IP                    = 16,
     UMMESSAGE_CODETAG_EXPORTED                  = 17,
     UMMESSAGE_CODETAG_OPTIONS                   = 18,
+    UMMESSAGE_CODETAG_TLVS                      = 19,
 
     /* source related fields */
     UMMESSAGE_CODETAG_FROMNUMBER                = 20,

@@ -18,7 +18,6 @@
     id                                  _currentTransaction;
     id                                  _originalSendingObject;
     UMMessageState                      _reportType;
-    NSNumber                            *_error;
     int                                 _priority;
     int                                 _responseCode;
     UMMessage                           *_reportToMsg;
@@ -45,11 +44,9 @@
 @property(readwrite,strong,atomic)  id                  currentTransaction;
 @property(readwrite,strong,atomic)  id                  originalSendingObject;
 @property(readwrite,assign,atomic)  UMMessageState      reportType;
-@property(readwrite,strong,atomic)  NSNumber            *error;
 @property(readwrite,assign,atomic)  int                 priority;
 @property(readwrite,assign,atomic)  int                 responseCode;
 @property(readwrite,strong,atomic)  UMMessage           *reportToMsg;
-@property(readwrite,strong,atomic)  NSDictionary         *tlvs; /* not stored in DB directly */
 
 #define INTEGER(o,len,tag,dictname,var,accessor,dbname,options)          @property(readwrite,strong,atomic) NSNumber *accessor;
 #define STRING(o,len,tag,dictname,var,accessor,dbname,options)           @property(readwrite,strong,atomic) NSString *accessor;

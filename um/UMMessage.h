@@ -27,7 +27,6 @@
 #include <um/UMMessage_macroClear.h>
 
     UMSynchronizedArray *_udhs; /* Unpacked UDHs, not stored in DB */
-    NSMutableDictionary *_tlvs; /* not stored in DB directly */
     UMMessageReport     *_lastReport; /* helper */
     UMMessageUser       *_user;
     id                  _originalSendingObject;
@@ -68,5 +67,6 @@
 @property(readwrite,atomic,assign)  UMMessageState  messageStateCode;
 
 + (UMMessage *)messageFromDbResult:(UMDbResult *)dbResult;
+
 
 @end

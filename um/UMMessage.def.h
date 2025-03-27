@@ -27,6 +27,7 @@ STRING(o ,   18,UMMESSAGE_CODETAG_VAS_ESME                  ,"vas-esme"         
 STRING(o ,   18,UMMESSAGE_CODETAG_VAS_IP                    ,"vas-ip"                          ,_vas_ip                   ,vas_ip                   ,"vas_ip"                      ,"optional")
 INTEGER(o,    1,UMMESSAGE_CODETAG_EXPORTED                  ,"exported"                        ,_exported                 ,exported                 ,"exported"                    ,"optional")
 TEXT(o ,      0,UMMESSAGE_CODETAG_OPTIONS                   ,"options"                         ,_options                  ,options                  ,"options"                     ,"optional")
+TEXT(o ,      0,UMMESSAGE_CODETAG_TLVS                      ,"tlvs"                            ,_tlvsText                 ,tlvsText                 ,"tlvs"                        ,"optional")
 
 
 /* source related fields */
