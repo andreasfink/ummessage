@@ -105,9 +105,9 @@
     [super processBeforeEncode];
     [_asn1_tag setTagIsConstructed];
     _asn1_list = [[NSMutableArray alloc]init];
-#include "UMMessage_macroProcessBeforeEncode.h"
+#include "Config_macroProcessBeforeEncode.h"
 #include "UMMessageReport.def.h"
-#include "UMMessage_macroClear.h"
+#include "Config_macroClear.h"
 }
 
 
@@ -122,9 +122,9 @@
         {
             switch(o.asn1_tag.tagNumber)
             {
-#include "UMMessage_macroProcessAfterDecodeWithContext.h"
+#include "Config_macroProcessAfterDecodeWithContext.h"
 #include "UMMessageReport.def.h"
-#include "UMMessage_macroClear.h"
+#include "Config_macroClear.h"
             } /* end switch */
             o = [self getObjectAtPosition:p++];
         }
@@ -135,9 +135,9 @@
 - (id) objectValue
 {
     UMSynchronizedSortedDictionary *o = [[UMSynchronizedSortedDictionary alloc]init];
-#include "UMMessage_macroObjectValue.h"
+#include "Config_macroObjectValue.h"
 #include "UMMessageReport.def.h"
-#include "UMMessage_macroClear.h"
+#include "Config_macroClear.h"
     return o;
 }
 
