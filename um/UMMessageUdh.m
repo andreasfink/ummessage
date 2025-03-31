@@ -13,7 +13,6 @@
 
 - (UMMessageUdh *)initWithData:(NSData *)d atPosition:(int *)pos1
 {
-    UMMessageUdh * returnValue;
     self = [super init];
     int len = (int)d.length;
     int pos = *pos1;

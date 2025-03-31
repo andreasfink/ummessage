@@ -36,7 +36,7 @@
         {
             return NULL;
         }
-        _ref = (bytes[0] << 8) || bytes[1];
+        _ref = (bytes[0] << 8) | bytes[1];
         _maxParts = bytes[1];
         _currentPart = bytes[0];
     }
