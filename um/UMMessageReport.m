@@ -146,7 +146,7 @@ if(field)                                                                   \
 }
 
 #include "UMMessageReport.def.h"
-#include "Config_macroClear.h"
+#include "UMMessage_macroClear.h"
 }
 
 
