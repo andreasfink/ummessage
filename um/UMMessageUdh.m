@@ -44,7 +44,7 @@
             returnValue = self;
     }
     *pos1 = pos;
-    return self;
+    return returnValue;
 }
 
 - (NSData *)encode
