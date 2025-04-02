@@ -15,11 +15,13 @@
     NSArray                         *_commandLineArguments;
     UMCommandLine                   *_commandLine;
     UMSynchronizedSortedDictionary  *_database_pool_dict;
+    UMSynchronizedSortedDictionary  *_umdbservers_dict;
     UMSynchronizedSortedDictionary  *_users_dict;
     ConfigGeneral                   *_generalConfig;
 }
 
 @property(readwrite,strong,atomic)  UMSynchronizedSortedDictionary  *database_pool_dict;
+@property(readwrite,strong,atomic)  UMSynchronizedSortedDictionary  *umdbservers_dict;
 @property(readwrite,strong,atomic)  UMSynchronizedSortedDictionary  *users_dict;
 
 @property(readwrite,strong,atomic)  ConfigGeneral                   *generalConfig;
