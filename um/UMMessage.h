@@ -20,7 +20,6 @@
 
 @interface UMMessage : UMASN1Sequence
 {
-    
 /* variables */
 #include <um/UMMessage_macroVariables.h>
 #include <um/UMMessage.def.h>
@@ -29,6 +28,7 @@
     UMSynchronizedArray *_udhs; /* Unpacked UDHs, not stored in DB */
     UMMessageReport     *_lastReport; /* helper */
     UMMessageUser       *_user;
+    BOOL                _hasBeenInserted;
     id                  _originalSendingObject;
     id                  _routerTransaction;
     id                  _userTransaction;
