@@ -58,6 +58,7 @@
 - (NSString *)insertOrUpdate:(NSString *)tableName session:(UMDbSession *)session;
 - (NSString *)insert:(NSString *)tableName session:(UMDbSession *)session;
 - (NSString *)update:(NSString *)tableName session:(UMDbSession *)session;
+- (NSString *)updateIfDirty:(NSString *)tableName session:(UMDbSession *)session;
 - (NSString *)delete:(NSString *)tableName session:(UMDbSession *)session;
 
 
@@ -68,5 +69,10 @@
 
 + (UMMessage *)messageFromDbResult:(UMDbResult *)dbResult;
 
+ /* glue code for legacy */
+- (int)uid;
+- (void)setUid:(int)uid;
+- (int)gid;
+- (void)setGid:(int)gid;
 
 @end

@@ -94,7 +94,7 @@ STRING(o ,   18,UMMESSAGE_CODETAG_MESSAGESTATUS             ,"message-status"   
 INTEGER(o,    2,UMMESSAGE_CODETAG_MESSAGEERROR              ,"message-error"                   ,_messageError             ,messageError             ,"message_error"               ,"indexed,optional")
 DATE(o   ,   14,UMMESSAGE_CODETAG_MESSAGEDELIVERED          ,"message-delivered"               ,_messageDelivered         ,messageDelivered         ,"delivered"                   ,"indexed,optional")
 DATE(o   ,   14,UMMESSAGE_CODETAG_MESSAGEFAILED             ,"failed"                          ,_messageFailed            ,messageFailed            ,"failed"                      ,"indexed,optional")
-DATE(o   ,   14,UMMESSAGE_CODETAG_MESSAGEATTEMPTED          ,"attempted"                       ,_messageAttemptedTimestamp,messageAttemptedTimestamp,"attempted"                   ,"indexed,optional")
+DATE(o   ,   14,UMMESSAGE_CODETAG_MESSAGEATTEMPTED          ,"attempted"                       ,_messageAttempted,messageAttempted,"attempted"                   ,"indexed,optional")
 DATE(o   ,   14,UMMESSAGE_CODETAG_MESSAGEEXPIRY             ,"validity"                        ,_validity                 ,validity                 ,"validity"                    ,"indexed,optional")
 DATE(o   ,   14,UMMESSAGE_CODETAG_MESSAGENEXTATTEMPT        ,"next-attempt"                    ,_messageNextAttempt       ,messageNextAttemp        ,"next_attempt"                ,"indexed,optional")
 INTEGER(o,    2,UMMESSAGE_CODETAG_MESSAGEATTEMPTS           ,"attempts"                        ,_messageAttempts          ,messageAttempts          ,"attempts"                    ,"optional")

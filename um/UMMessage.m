@@ -150,7 +150,7 @@ static      UMMutex      *g_messageIdLock = NULL;
     
 #include "UMMessage.def.h"
 #include "UMMessage_macroClear.h"
-
+    
     [o appendString:@")"];
     return o;
 }
@@ -171,6 +171,24 @@ static      UMMutex      *g_messageIdLock = NULL;
     [o appendFormat:@"WHERE archive_id=`%@` ",[session sqlEscapeString:_archiveId.stringValue]];
     return o;
 }
+
+- (NSString *)updateIfDirty:(NSString *)tableName session:(UMDbSession *)session
+{
+    NSMutableString *o = [[NSMutableString alloc]init];
+    [o appendFormat:@"UPDATE `%@` SET ",tableName];
+    int i=0;
+#define STRING(o,len,tag,dictname,field,accessor,dbname,options)  if(field.isDirty) { if(i++) { [o appendString:@","]; }[o appendFormat:@"`%s`=\"%@\"",dbname,[session sqlEscapeString:field.stringValue]]; };
+#define INTEGER(o,len,tag,dictname,field,accessor,dbname,options) if(field.isDirty) { if(i++) { [o appendString:@","]; }[o appendFormat:@"`%s`=\"%@\"",dbname,[session sqlEscapeString:field.stringValue]]; };
+#define DATE(o,len,tag,dictname,field,accessor,dbname,options)    if(field.isDirty) { if(i++) { [o appendString:@","]; }[o appendFormat:@"`%s`=\"%@\"",dbname,[session sqlEscapeString:field.stringValue]]; };
+#define DATA(o,len,tag,dictname,field,accessor,dbname,options)    if(field.isDirty) { if(i++) { [o appendString:@","]; }[o appendFormat:@"`%s`=\"%@\"",dbname,[session sqlEscapeString:field.stringValue]]; };
+#define TEXT(o,len,tag,dictname,field,accessor,dbname,options)    if(field.isDirty) { if(i++) { [o appendString:@","]; }[o appendFormat:@"`%s`=\"%@\"",dbname,[session sqlEscapeString:field.stringValue]]; };
+#define DOUBLE(o,len,tag,dictname,field,accessor,dbname,options)  if(field.isDirty) { if(i++) { [o appendString:@","]; }[o appendFormat:@"`%s`=\"%@\"",dbname,[session sqlEscapeString:field.stringValue]]; };
+#include "UMMessage.def.h"
+#include "UMMessage_macroClear.h"
+    [o appendFormat:@"WHERE archive_id=`%@` ",[session sqlEscapeString:_archiveId.stringValue]];
+    return o;
+}
+
 
 - (NSString *)delete:(NSString *)tableName session:(UMDbSession *)session
 {
@@ -222,11 +240,11 @@ static      UMMutex      *g_messageIdLock = NULL;
 }
 
 + (void)asn1DefAppendString:(NSMutableString *)o
-                              len:(NSInteger)len
-                              tag:(NSInteger)tag
-                         dictname:(const char *)dictname
-                          options:(const char *)options
-                             type:(const char *)type
+                        len:(NSInteger)len
+                        tag:(NSInteger)tag
+                   dictname:(const char *)dictname
+                    options:(const char *)options
+                       type:(const char *)type
 {
     NSMutableString *s = [[NSMutableString alloc]init];
     [s appendFormat:@"    %s",dictname];
@@ -242,50 +260,50 @@ static      UMMutex      *g_messageIdLock = NULL;
 {
     NSMutableString *o = [[NSMutableString alloc]init];
     [o appendFormat:@"UMMessage ::= SEQUENCE\n{\n"];
-        
+    
 #define STRING(o,len1,tag1,dictname1,field1,accessor1,dbname1,options1) \
 [UMMessage asn1DefAppendString:o len:len1 \
-                           tag:tag1 \
-                      dictname:dictname1 \
-                       options:options1 \
-                       type:"UTF8String"];
-
+tag:tag1 \
+dictname:dictname1 \
+options:options1 \
+type:"UTF8String"];
+    
 #define INTEGER(o,len1,tag1,dictname1,field1,accessor1,dbname1,options1) \
 [UMMessage asn1DefAppendString:o len:len1 \
-                           tag:tag1 \
-                      dictname:dictname1 \
-                       options:options1 \
-                       type:"INTEGER"];
+tag:tag1 \
+dictname:dictname1 \
+options:options1 \
+type:"INTEGER"];
     
 #define DATE(o,len1,tag1,dictname1,field1,accessor1,dbname1,options1) \
 [UMMessage asn1DefAppendString:o len:len1 \
-                           tag:tag1 \
-                      dictname:dictname1 \
-                       options:options1 \
-                           type:"UTF8String"];
+tag:tag1 \
+dictname:dictname1 \
+options:options1 \
+type:"UTF8String"];
 #define DATA(o,len1,tag1,dictname1,field1,accessor1,dbname1,options1) \
 [UMMessage asn1DefAppendString:o len:len1 \
-                           tag:tag1 \
-                      dictname:dictname1 \
-                       options:options1 \
-                           type:"OCTETSTRING"];
-
+tag:tag1 \
+dictname:dictname1 \
+options:options1 \
+type:"OCTETSTRING"];
+    
 #define TEXT(o,len1,tag1,dictname1,field1,accessor1,dbname1,options1) \
 [UMMessage asn1DefAppendString:o len:len1 \
-                           tag:tag1 \
-                      dictname:dictname1 \
-                       options:options1 \
-                       type:"UTF8String"];
-
+tag:tag1 \
+dictname:dictname1 \
+options:options1 \
+type:"UTF8String"];
+    
 #define DOUBLE(o,len1,tag1,dictname1,field1,accessor1,dbname1,options1) \
-    [UMMessage asn1DefAppendString:o len:len1 \
-                               tag:tag1 \
-                          dictname:dictname1 \
-                           options:options1 \
-                           type:"REAL"];
+[UMMessage asn1DefAppendString:o len:len1 \
+tag:tag1 \
+dictname:dictname1 \
+options:options1 \
+type:"REAL"];
 #include "UMMessage.def.h"
 #include "UMMessage_macroClear.h"
-
+    
     /* remove the last , before the \n */
     NSInteger n = [o length];
     o = [[o substringWithRange:NSMakeRange(0,n-2)] mutableCopy];
@@ -363,7 +381,7 @@ static      UMMutex      *g_messageIdLock = NULL;
 - (UMSynchronizedSortedDictionary *) objectValue
 {
     UMSynchronizedSortedDictionary *dict = [[UMSynchronizedSortedDictionary alloc]init];
-
+    
 #define STRING(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { dict[@(dictname)] = field.stringValue; }
 #define INTEGER(o,len,tag,dictname,field,accessor,dbname,options)   if(field) { dict[@(dictname)] = field.number; }
 #define DATE(o,len,tag,dictname,field,accessor,dbname,options)      if(field) { dict[@(dictname)] = field.stringValue; }
@@ -377,7 +395,7 @@ static      UMMutex      *g_messageIdLock = NULL;
 }
 
 - (void) processBeforeEncode
-{    
+{
     [super processBeforeEncode];
 #include "UMMessage_macroProcessBeforeEncode.h"
 #include "UMMessage.def.h"
@@ -492,7 +510,7 @@ static      UMMutex      *g_messageIdLock = NULL;
         [udh appendData:d];
         _pduUdh = [[UMDirtyData alloc]initWithData:udh];
         _pduUdhIndicator=[[UMDirtyInteger alloc]initWithInteger:1];
-
+        
     }
 }
 
@@ -505,8 +523,39 @@ static      UMMutex      *g_messageIdLock = NULL;
 - (UMMessageState)messageStateCode
 {
     return messageStateFromString(_messageStatus.stringValue);
-
+    
 }
+
+- (int)uid
+{
+    if(_userName)
+    {
+        return atoi(_userName.stringValue.UTF8String);
+    }
+    return 0;
+}
+
+- (void)setUid:(int)uid
+{
+    NSString *s = [NSString stringWithFormat:@"%d",uid];
+    _userName = UMDIRTY_STRING(s);
+}
+
+- (int)gid
+{
+    if(_groupName)
+    {
+        return atoi(_groupName.stringValue.UTF8String);
+    }
+    return 0;
+}
+
+- (void)setGid:(int)gid
+{
+    NSString *s = [NSString stringWithFormat:@"%d",gid];
+    _groupName = UMDIRTY_STRING(s);
+}
+
 
 @end
 
