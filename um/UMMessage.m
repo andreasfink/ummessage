@@ -523,7 +523,6 @@ type:"REAL"];
 - (UMMessageState)messageStateCode
 {
     return messageStateFromString(_messageStatus.stringValue);
-    
 }
 
 - (int)uid

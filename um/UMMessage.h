@@ -74,5 +74,4 @@
 - (void)setUid:(int)uid;
 - (int)gid;
 - (void)setGid:(int)gid;
-
 @end

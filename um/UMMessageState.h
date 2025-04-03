@@ -19,6 +19,8 @@ typedef    enum UMMessageState
     UMMESSAGE_STATE_UNKNOWN         = 7,
     UMMESSAGE_STATE_REJECTED        = 8,
     UMMESSAGE_STATE_SUBMITTED       = 9,
+    
+    
 } UMMessageState;
 
 

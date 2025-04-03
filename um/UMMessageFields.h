@@ -87,7 +87,8 @@ typedef enum    UMMessageFields
     UMMESSAGE_CODETAG_DEFERRED                  = 78,
     
     /* message status related fields */
-    UMMESSAGE_CODETAG_MESSAGESTATUS             = 80,
+    UMMESSAGE_CODETAG_INTERNALSTATE             = 79, /* internal SMSC status */
+    UMMESSAGE_CODETAG_MESSAGESTATUS             = 80, /* status as viewed by SMPP */
     UMMESSAGE_CODETAG_MESSAGEERROR              = 81,
     UMMESSAGE_CODETAG_MESSAGEDELIVERED          = 82,
     UMMESSAGE_CODETAG_MESSAGEFAILED             = 83,

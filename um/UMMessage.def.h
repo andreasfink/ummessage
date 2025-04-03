@@ -90,7 +90,8 @@ INTEGER(o,    1,UMMESSAGE_CODETAG_TESTFLAG                  ,"test-flag"        
 DATE(o   ,   14,UMMESSAGE_CODETAG_DEFERRED                  ,"deferred"                        ,_deferred                 ,deferred                 ,"deferred"                    ,"optional")
 
 /* message status related fields */
-STRING(o ,   18,UMMESSAGE_CODETAG_MESSAGESTATUS             ,"message-status"                  ,_messageStatus            ,messageStatus            ,"message_status"              ,"indexed,optional")
+STRING(o ,   18,UMMESSAGE_CODETAG_MESSAGESTATUS             ,"message-status"                  ,_messageStatus            ,messageStatus           ,"message_status"              ,"indexed,optional")
+STRING(o ,   18,UMMESSAGE_CODETAG_INTERNALSTATE              ,"internal-state"                 ,_internalStatus           ,internalStatus          ,"internal_state"              ,"indexed,optional")
 INTEGER(o,    2,UMMESSAGE_CODETAG_MESSAGEERROR              ,"message-error"                   ,_messageError             ,messageError             ,"message_error"               ,"indexed,optional")
 DATE(o   ,   14,UMMESSAGE_CODETAG_MESSAGEDELIVERED          ,"message-delivered"               ,_messageDelivered         ,messageDelivered         ,"delivered"                   ,"indexed,optional")
 DATE(o   ,   14,UMMESSAGE_CODETAG_MESSAGEFAILED             ,"failed"                          ,_messageFailed            ,messageFailed            ,"failed"                      ,"indexed,optional")
@@ -138,7 +139,7 @@ DATA(o   ,    0,UMMESSAGE_CODETAG_UDH                       ,"udh"              
 DATA(o   ,    0,UMMESSAGE_CODETAG_CONTENT                   ,"content"                         ,_pduContent               ,pduContent               ,"content"                     ,"optional")
 TEXT(o   ,    0,UMMESSAGE_CODETAG_PLAINTEXTCONTENT          ,"plaintext-content"               ,_plaintextContent         ,plaintextContent         ,"plaintext_content"           ,"optional")
 INTEGER(o,    1,UMMESSAGE_CODETAG_MESSAGECLASS              ,"message-class"                   ,_messageClass             ,messageClass             ,"message_class"               ,"optional")
-STRING(o,    18,UMMESSAGE_CODETAG_CODING                    ,"coding"                          ,_pduCoding                ,pduCoding                ,"coding"                      ,"optional")
+INTEGER(o,    1,UMMESSAGE_CODETAG_CODING                    ,"coding"                          ,_pduCoding                ,pduCoding                ,"coding"                      ,"optional")
 TEXT(o,       0,UMMESSAGE_CODETAG_EXTENSIONDATA             ,"extension-data"                  ,_extensionData            ,extensionData            ,"extension_data"              ,"optional")
 INTEGER(o,    1,UMMESSAGE_CODETAG_ESMCLASS                  ,"esm-class"                       ,_esmClass                 ,esmClass                 ,"esm_class"                   ,"optional")
 
