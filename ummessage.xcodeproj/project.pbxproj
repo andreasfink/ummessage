@@ -57,8 +57,8 @@
 		A6DA32FD2D93F27200B7027F /* UMMessageUdh.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DA32FC2D93F27200B7027F /* UMMessageUdh.m */; };
 		A6DA33002D93FA6600B7027F /* UMMessageReport.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DA32FF2D93FA6600B7027F /* UMMessageReport.m */; };
 		A6DA33012D93FA6600B7027F /* UMMessageReport.h in Headers */ = {isa = PBXBuildFile; fileRef = A6DA32FE2D93FA6600B7027F /* UMMessageReport.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A6DA33032D93FAE000B7027F /* UMMessageState.h in Headers */ = {isa = PBXBuildFile; fileRef = A6DA33022D93FAE000B7027F /* UMMessageState.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A6DA33052D93FB1A00B7027F /* UMMessageState.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DA33042D93FB1A00B7027F /* UMMessageState.m */; };
+		A6DA33032D93FAE000B7027F /* UMMessageStatusCode.h in Headers */ = {isa = PBXBuildFile; fileRef = A6DA33022D93FAE000B7027F /* UMMessageStatusCode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A6DA33052D93FB1A00B7027F /* UMMessageStatusCode.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DA33042D93FB1A00B7027F /* UMMessageStatusCode.m */; };
 		A6DA33092D93FF1D00B7027F /* UMMessageReport.def.h in Headers */ = {isa = PBXBuildFile; fileRef = A6DA33082D93FF1D00B7027F /* UMMessageReport.def.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6DA330F2D943C6D00B7027F /* UMMessageUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DA330E2D943C6D00B7027F /* UMMessageUser.m */; };
 		A6DA33112D943C8500B7027F /* UMMessageUser.h in Headers */ = {isa = PBXBuildFile; fileRef = A6DA33102D943C8500B7027F /* UMMessageUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -264,8 +264,8 @@
 		A6DA32FC2D93F27200B7027F /* UMMessageUdh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMMessageUdh.m; sourceTree = "<group>"; };
 		A6DA32FE2D93FA6600B7027F /* UMMessageReport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessageReport.h; sourceTree = "<group>"; };
 		A6DA32FF2D93FA6600B7027F /* UMMessageReport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMMessageReport.m; sourceTree = "<group>"; };
-		A6DA33022D93FAE000B7027F /* UMMessageState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessageState.h; sourceTree = "<group>"; };
-		A6DA33042D93FB1A00B7027F /* UMMessageState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMMessageState.m; sourceTree = "<group>"; };
+		A6DA33022D93FAE000B7027F /* UMMessageStatusCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessageStatusCode.h; sourceTree = "<group>"; };
+		A6DA33042D93FB1A00B7027F /* UMMessageStatusCode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMMessageStatusCode.m; sourceTree = "<group>"; };
 		A6DA33082D93FF1D00B7027F /* UMMessageReport.def.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessageReport.def.h; sourceTree = "<group>"; };
 		A6DA330E2D943C6D00B7027F /* UMMessageUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMMessageUser.m; sourceTree = "<group>"; };
 		A6DA33102D943C8500B7027F /* UMMessageUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessageUser.h; sourceTree = "<group>"; };
@@ -540,8 +540,8 @@
 				A6DA33102D943C8500B7027F /* UMMessageUser.h */,
 				A6DA330E2D943C6D00B7027F /* UMMessageUser.m */,
 				A68863A92D761E980079C9A5 /* ummessage.docc */,
-				A6DA33022D93FAE000B7027F /* UMMessageState.h */,
-				A6DA33042D93FB1A00B7027F /* UMMessageState.m */,
+				A6DA33022D93FAE000B7027F /* UMMessageStatusCode.h */,
+				A6DA33042D93FB1A00B7027F /* UMMessageStatusCode.m */,
 				A6111D6E2D8C006C0000D5BA /* UMMessage.asn1 */,
 				A68863AA2D761E980079C9A5 /* UMMessage.h */,
 				A68863AB2D761E980079C9A5 /* UMMessage.m */,
@@ -659,7 +659,7 @@
 				A6E5691A2D7DB6960052E410 /* UMMessageServerCommandHeartbeatResponse.h in Headers */,
 				A6E5691B2D7DB6960052E410 /* UMMessageServer.h in Headers */,
 				A6E5691C2D7DB6960052E410 /* UMMessageServerCommandLoginResponse.h in Headers */,
-				A6DA33032D93FAE000B7027F /* UMMessageState.h in Headers */,
+				A6DA33032D93FAE000B7027F /* UMMessageStatusCode.h in Headers */,
 				A6E5691D2D7DB6960052E410 /* UMMessageServerCommandHeartbeatRequest.h in Headers */,
 				A6E5691E2D7DB6960052E410 /* UMMessageServerCommand.h in Headers */,
 				A6E5691F2D7DB6960052E410 /* UMMessageServerCommandLoginRequest.h in Headers */,
@@ -910,7 +910,7 @@
 			files = (
 				A68863B32D761E980079C9A5 /* ummessage.docc in Sources */,
 				A6E5695E2D7DD64D0052E410 /* UMMessageServerCommandError.m in Sources */,
-				A6DA33052D93FB1A00B7027F /* UMMessageState.m in Sources */,
+				A6DA33052D93FB1A00B7027F /* UMMessageStatusCode.m in Sources */,
 				A6E569642D7DE6480052E410 /* UMMessageSession.m in Sources */,
 				A6E5694E2D7DCB220052E410 /* UMMessageServerCommandInsertMessageResponse.m in Sources */,
 				A66F7DA32D7816AF00A83193 /* UMMessage_macroHelper.m in Sources */,

@@ -514,17 +514,6 @@ type:"REAL"];
     }
 }
 
-
-- (void)setMessageStateCode:(UMMessageState)ms
-{
-    _messageStatus = [[UMDirtyString alloc]initWithString:stringFromMessageState(ms)];
-}
-
-- (UMMessageState)messageStateCode
-{
-    return messageStateFromString(_messageStatus.stringValue);
-}
-
 - (int)uid
 {
     if(_userName)
@@ -553,6 +542,53 @@ type:"REAL"];
 {
     NSString *s = [NSString stringWithFormat:@"%d",gid];
     _groupName = UMDIRTY_STRING(s);
+}
+
+
+- (UMMessageStatusCode)internalStateCode
+{
+    return messageStateFromString(_internalState.stringValue);
+}
+
+- (void)setInternalStateCode:(UMMessageStatusCode)state
+{
+    _internalState = [[UMDirtyString alloc]initWithString:stringFromMessageState(state)];
+}
+
+- (UMMessageStatusCode)smppStateCode
+{
+    return messageStateFromString(_smppState.stringValue);
+}
+
+- (void)setSmppStateCode:(UMMessageStatusCode)state
+{
+    _smppState = [[UMDirtyString alloc]initWithString:stringFromMessageState(state)];
+}
+
+- (UMMessageStatusCode)deliveryReportStateCode
+{
+    return messageStateFromString(self.deliveryReportState.stringValue);
+}
+
+- (void)setDeliveryReportStateCode:(UMMessageStatusCode)state
+{
+    _deliveryReportState = [[UMDirtyString alloc]initWithString:stringFromMessageState(state)];
+}
+
+
+- (void)enableHistoryLog
+{
+    _messageHistory = [[UMHistoryLog alloc]initWithMaxLines:10000];
+}
+
+- (void) setMessageStatus:(UMMessageStatusCode)mstat
+{
+    self.internalStateCode = mstat;
+}
+
+- (UMMessageStatusCode) messageStatus
+{
+    return self.internalStateCode;
 }
 
 

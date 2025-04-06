@@ -59,7 +59,7 @@ STRING(o ,   32,UMMESSAGE_CODETAG_DELIVERYREPORTIP          ,"delivery-report-ip
 
 INTEGER(o,    2,UMMESSAGE_CODETAG_DELIVERYREPORTMASK        ,"delivery-report-mask"            ,_deliveryReportMask       ,deliveryReportMask       ,"delivery_report_mask"        ,"optional")
 STRING(o ,   18,UMMESSAGE_CODETAG_ALERTINGADDRESS           ,"alerting-address"                ,_alertingAddress          ,alertingAddress          ,"alerting_address"            ,"optional")
-STRING(o ,   18,UMMESSAGE_CODETAG_DLR_TEXT                  ,"dlr-text"                        ,_dlr_text                 ,dlr_text                 ,"dlr_text"                    ,"optional")
+STRING(o ,   18,UMMESSAGE_CODETAG_DLR_TEXT                  ,"dlr-text"                        ,_dlrText                 ,dlrText                 ,"dlr_text"                    ,"optional")
 INTEGER(o ,   1,UMMESSAGE_CODETAG_REPLACE_IF_PRESENT        ,"replace-if-present"              ,_replaceIfPresentFlag     ,replaceIfPresentFlag     ,"replace_if_present"          ,"optional")
 
 /* MTP3 */
@@ -81,7 +81,7 @@ STRING(o ,   18,UMMESSAGE_CODETAG_HLR_OVERRIDE              ,"hlr-override"     
 /* timestamps and message delivery */
 DATE(o   ,   14,UMMESSAGE_CODETAG_CREATED                   ,"created"                         ,_created                  ,created                  ,"created"                     ,"optional")
 DATE(o   ,   14,UMMESSAGE_CODETAG_SCTS                      ,"scts"                            ,_scts                     ,scts                     ,"scts"                        ,"optional")
-STRING(o ,   18,UMMESSAGE_CODETAG_SCTS_TZ                   ,"scts-tz"                         ,_scts_tz                  ,scts_tz                  ,"scts_tz"                     ,"optional")
+INTEGER(o ,   18,UMMESSAGE_CODETAG_SCTS_TZ                   ,"scts-tz"                         ,_scts_tz                  ,scts_tz                  ,"scts_tz"                     ,"optional")
 INTEGER(o,    2,UMMESSAGE_CODETAG_QPRIORITY                 ,"qpriority"                       ,_qpriority                ,qpriority                ,"qpriority"                   ,"optional")
 INTEGER(o,    2,UMMESSAGE_CODETAG_UPRIORITY                 ,"upriority"                       ,_upriority                ,upriority                ,"upriority"                   ,"optional")
 INTEGER(o,    2,UMMESSAGE_CODETAG_MESSAGEPRIORITY           ,"message-priority"                ,_messagePriority          ,messagePriority          ,"mpriority"                   ,"optional")
@@ -90,8 +90,8 @@ INTEGER(o,    1,UMMESSAGE_CODETAG_TESTFLAG                  ,"test-flag"        
 DATE(o   ,   14,UMMESSAGE_CODETAG_DEFERRED                  ,"deferred"                        ,_deferred                 ,deferred                 ,"deferred"                    ,"optional")
 
 /* message status related fields */
-STRING(o ,   18,UMMESSAGE_CODETAG_MESSAGESTATUS             ,"message-status"                  ,_messageStatus            ,messageStatus           ,"message_status"              ,"indexed,optional")
-STRING(o ,   18,UMMESSAGE_CODETAG_INTERNALSTATE              ,"internal-state"                 ,_internalStatus           ,internalStatus          ,"internal_state"              ,"indexed,optional")
+STRING(o ,   18,UMMESSAGE_CODETAG_INTERNALSTATE             ,"internal-state"                 ,_internalState           ,internalState          ,"internal_state"              ,"indexed,optional")
+STRING(o ,   18,UMMESSAGE_CODETAG_SMPPSTATE                 ,"smpp-state"                     ,_smppState               ,_smppState           ,"smpp_state"              ,"indexed,optional")
 INTEGER(o,    2,UMMESSAGE_CODETAG_MESSAGEERROR              ,"message-error"                   ,_messageError             ,messageError             ,"message_error"               ,"indexed,optional")
 DATE(o   ,   14,UMMESSAGE_CODETAG_MESSAGEDELIVERED          ,"message-delivered"               ,_messageDelivered         ,messageDelivered         ,"delivered"                   ,"indexed,optional")
 DATE(o   ,   14,UMMESSAGE_CODETAG_MESSAGEFAILED             ,"failed"                          ,_messageFailed            ,messageFailed            ,"failed"                      ,"indexed,optional")
@@ -104,7 +104,7 @@ INTEGER(o,    2,UMMESSAGE_CODETAG_MESSAGEWAITINGSET         ,"message-waiting-se
 
 /* report status related fields */
 
-STRING(o ,   18,UMMESSAGE_CODETAG_DELIVERYREPORTSTATUS      ,"delivery-report-status"          ,_deliveryReportStatus     ,deliveryReportStatus     ,"delivery_report_status"      ,"optional")
+STRING(o ,   18,UMMESSAGE_CODETAG_DELIVERYREPORTSTATE       ,"delivery-report-state"          ,_deliveryReportState     ,deliveryReportState     ,"delivery_report_state"      ,"optional")
 INTEGER(o,    2,UMMESSAGE_CODETAG_DELIVERYREPORTERROR       ,"delivery-report-error"           ,_deliveryReportError      ,deliveryReportError      ,"delivery_report_error"      ,"optional")
 DATE(o   ,   14,UMMESSAGE_CODETAG_DELIVERYREPORTDELIVERED   ,"delivery-report-delivered"       ,_deliveryReportDelivered  ,deliveryReportDelivered  ,"delivery_report_delivered"   ,"optional")
 DATE(o   ,   14,UMMESSAGE_CODETAG_DELIVERYREPORTFAILED      ,"delivery-report-failed"          ,_deliveryReportFailed     ,deliveryReportFailed     ,"delivery_report_failed"      ,"optional")

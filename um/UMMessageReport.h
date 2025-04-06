@@ -7,7 +7,7 @@
 
 #import <ulibasn1/ulibasn1.h>
 #import <um/UMMessage.h>
-#import <um/UMMessageState.h>
+#import <um/UMMessageStatusCode.h>
 
 @class UMDbResult;
 
@@ -17,7 +17,7 @@
     BOOL                                _hasBeenInserted;
     id                                  _currentTransaction;
     id                                  _originalSendingObject;
-    UMMessageState                      _reportType;
+    UMMessageStatusCode                      _reportType;
     int                                 _priority;
     int                                 _responseCode;
     UMMessage                           *_reportToMsg;
@@ -43,7 +43,7 @@
 @property(readwrite,assign,atomic)  BOOL                hasBeenInserted;
 @property(readwrite,strong,atomic)  id                  currentTransaction;
 @property(readwrite,strong,atomic)  id                  originalSendingObject;
-@property(readwrite,assign,atomic)  UMMessageState      reportType;
+@property(readwrite,assign,atomic)  UMMessageStatusCode      reportType;
 @property(readwrite,assign,atomic)  int                 priority;
 @property(readwrite,assign,atomic)  int                 responseCode;
 @property(readwrite,strong,atomic)  UMMessage           *reportToMsg;
