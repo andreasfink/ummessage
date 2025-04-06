@@ -182,7 +182,7 @@ DATE(o   ,   14,UMMESSAGE_CODETAG_SUBMIT_ERROR_TIMESTAMP    ,"submit-err-timesta
 STRING(o ,   18,UMMESSAGE_CODETAG_SUBMIT_STRING             ,"submit-string"                   ,_submitString             ,submitString             ,"submit_string"               ,"optional")
 INTEGER(o,    1,UMMESSAGE_CODETAG_SUBMIT_ERROR_CODE         ,"submit-error-code"               ,_submitErrorCode          ,submitErrorCode          ,"submit_error_code"           ,"optional")
 /* routing fields */
-STRING(o ,   18,UMMESSAGE_CODETAG_AUTOROUTED                ,"auto-routed"                     ,_autoRouted               ,autoRouted               ,"auto_routed"                 ,"optional")
+INTEGER(o ,   4,UMMESSAGE_CODETAG_AUTOROUTED                ,"auto-routed"                     ,_autoRouted               ,autoRouted               ,"auto_routed"                 ,"optional")
 STRING(o ,   18,UMMESSAGE_CODETAG_ROUTEID                   ,"route-id"                        ,_routeId                  ,routeId                  ,"route_id"                    ,"optional")
 STRING(o ,   18,UMMESSAGE_CODETAG_SUBROUTEID                ,"subroute-id"                     ,_subrouteId               ,subrouteId               ,"subroute_id"                 ,"optional")
 STRING(o ,   18,UMMESSAGE_CODETAG_ROUTEDONPREFIX            ,"routed-on-prefix"                ,_routedOnPrefix           ,routedOnPrefix           ,"routed_on_prefix"            ,"optional")
