@@ -1,0 +1,12 @@
+
+
+MessageHistory ::= SEQUENCE
+{
+    archiveId       [1] UTF8String,
+    instance        [2] UTF8String,
+    messageId       [3] UTF8String,
+    msisdn          [4] UTF8String,
+    created         [5] UTF8String,
+    updated         [6] UTF8String,
+    entries         [7] SEQUENCE OF MessageHistoryEntry,
+}

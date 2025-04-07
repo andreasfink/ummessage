@@ -32,3 +32,6 @@
 #import <um/UMMessageReport.h>
 #import <um/UMMessageServerCommandUpdateMessageResponse.h>
 #import <um/UMMessageReportMask.h>
+#import <um/UMMessageHistory.h>
+#import <um/UMMessageHistoryEntry.h>
+
