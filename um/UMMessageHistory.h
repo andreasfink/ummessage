@@ -24,6 +24,7 @@
 #include <um/UMMessageHistory.def.h>
 #undef STRING
 #undef DATE
+
 @property(readwrite,strong,atomic) UMSynchronizedArray *entries;
 
 + (NSString *)sqlTableDefForTableName:(NSString *)tableName;
@@ -33,5 +34,15 @@
 - (UMSynchronizedSortedDictionary *) objectValue;
 - (void) processBeforeEncode;
 - (UMMessageHistory *) processAfterDecodeWithContext:(id)context;
+
+
+- (void)addEntryWithArchiveId:(NSString *)archive
+                     instance:(NSString *)instance
+                    messageId:(NSString *)messageId
+                       msisdn:(NSString *)msisdn
+                           ts:(NSDate *)ts
+                        delay:(double)delay
+                         text:(NSString *)text;
+
 
 @end

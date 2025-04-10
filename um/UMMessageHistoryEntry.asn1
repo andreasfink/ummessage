@@ -8,5 +8,6 @@ MessageHistoryEntry ::= SEQUENCE
     messageId       [3] UTF8String,
     msisdn          [4] UTF8String,
     ts              [5] UTF8String,
-    text            [6] UTF8String,
+    delay           [6] REAL,
+    text            [7] UTF8String,
 }

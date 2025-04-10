@@ -14,19 +14,23 @@
 {
     
 #define STRING(o,len,tag,dictname,field,accessor,dbname,options)  NSString *field;
-#define DATE(o,len,tag,dictname,field,accessor,dbname,options)    NSDate *date;
+#define DATE(o,len,tag,dictname,field,accessor,dbname,options)    NSDate *field;
+#define REAL(o,len,tag,dictname,field,accessor,dbname,options)    double field;
 #include <um/UMMessageHistoryEntry.def.h>
 #undef STRING
 #undef DATE
-    
+#undef REAL
+
     BOOL _insertedIntoDb;
 }
 
 #define STRING(o,len,tag,dictname,field,accessor,dbname,options)  @property(readwrite,atomic,strong) NSString *accessor;
 #define DATE(o,len,tag,dictname,field,accessor,dbname,options)    @property(readwrite,atomic,strong) NSDate *accessor;
+#define REAL(o,len,tag,dictname,field,accessor,dbname,options)    @property(readwrite,atomic,assign) double accessor;
 #include <um/UMMessageHistoryEntry.def.h>
 #undef STRING
 #undef DATE
+#undef REAL
 
 @property(readwrite,assign,atomic) BOOL insertedIntoDb;
 
@@ -38,6 +42,15 @@
 - (UMSynchronizedSortedDictionary *) objectValue;
 - (void) processBeforeEncode;
 - (UMMessageHistoryEntry *) processAfterDecodeWithContext:(id)context;
+
+- (UMMessageHistoryEntry *)initWithArchiveId:(NSString *)archive
+                                    instance:(NSString *)instance
+                                   messageId:(NSString *)messageId
+                                      msisdn:(NSString *)msisdn
+                                          ts:(NSDate *)date
+                                       delay:(double)delay
+                                        text:(NSString *)text;
+
 @end
 
 

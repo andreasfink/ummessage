@@ -177,6 +177,25 @@ break;
     return self;
 }
 
+- (void)addEntryWithArchiveId:(NSString *)archive
+                     instance:(NSString *)instance
+                    messageId:(NSString *)messageId
+                       msisdn:(NSString *)msisdn
+                           ts:(NSDate *)ts
+                        delay:(double)delay
+                         text:(NSString *)text
+{
+    UMMessageHistoryEntry *entry = [[UMMessageHistoryEntry alloc]initWithArchiveId:archive
+                                                                          instance:instance
+                                                                         messageId:messageId
+                                                                            msisdn:msisdn
+                                                                                ts:ts
+                                                                             delay:delay
+                                                                              text:text];
+    [_entries addObject:entry];
+}
+
+
 @end
 
 
