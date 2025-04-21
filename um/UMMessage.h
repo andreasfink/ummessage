@@ -10,6 +10,8 @@
 #import <ulib/ulib.h>
 #import <ulibasn1/ulibasn1.h>
 #import <um/UMMessageStatusCode.h>
+#import <um/UMMessageHistory.h>
+
 /// An object to hold a short message for use in SMS. This can be a long (multipart), concaenated message or a individual message part.
 /// Can be used in SMPP or SS7
 
@@ -33,9 +35,9 @@
     id                  _originalSendingObject;
     id                  _routerTransaction;
     id                  _userTransaction;
-    UMHistoryLog        *_messageHistory;
     BOOL                _finalDlrSent;
     UMHTTPRequest       *_deliveryReportAddressHttp; /* a waiting web request */
+    UMMessageHistory    *_messageHistory;
 }
 
 /* properties */
@@ -54,7 +56,7 @@
 @property(readwrite,atomic,strong)      id                  routerTransaction;
 @property(readwrite,atomic,strong)      id                  userTransaction;
 @property(readwrite,strong)             NSMutableDictionary *tlvs;
-@property(readwrite,strong,atomic)      UMHistoryLog        *messageHistory;
+@property(readwrite,strong,atomic)      UMMessageHistory    *messageHistory;
 @property(readwrite,atomic,atomic)      BOOL                finalDlrSent;
 @property(readwrite,atomic,atomic)      UMHTTPRequest       *deliveryReportAddressHttp; /* a waiting web request */
 
@@ -76,10 +78,10 @@
 + (UMMessage *)messageFromDbResult:(UMDbResult *)dbResult;
 
 /* glue code for legacy */
-- (int)uid;
-- (void)setUid:(int)uid;
-- (int)gid;
-- (void)setGid:(int)gid;
+- (long)uid;
+- (void)setUid:(long)uid;
+- (long)gid;
+- (void)setGid:(long)gid;
 
 
 - (UMMessageStatusCode)internalStateCode;
@@ -95,6 +97,10 @@
 
 - (void) setMessageStatus:(UMMessageStatusCode)mstat;
 - (UMMessageStatusCode) messageStatus;
+
+- (void)logToMessage:(NSString *)text;
+- (void)logEvent:(NSString *)text inState:(NSString *)state;
+- (void)logStateChange:(NSString *)oldstate newState:(NSString *)newState;
 
 
 @end

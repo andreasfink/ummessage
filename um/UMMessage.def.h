@@ -55,11 +55,11 @@ STRING(o ,   18,UMMESSAGE_CODETAG_MNC                       ,"mnc"              
 STRING(o ,   18,UMMESSAGE_CODETAG_DELIVERYREPORTADDRESS     ,"delivery-report-address"         ,_deliveryReportAddress    ,deliveryReportAddress    ,"delivery_report_address"     ,"optional")
 STRING(o ,   32,UMMESSAGE_CODETAG_DELIVERYREPORTMSC         ,"delivery-report-msc"             ,_deliveryReportMsc        ,deliveryReportMsc        ,"delivery_report_msc"         ,"optional")
 STRING(o ,   32,UMMESSAGE_CODETAG_DELIVERYREPORTIMSI        ,"delivery-report-imsi"            ,_deliveryReportImsi       ,deliveryReportImsi       ,"delivery_report_imsi"        ,"optional")
-STRING(o ,   32,UMMESSAGE_CODETAG_DELIVERYREPORTIP          ,"delivery-report-ip"              ,_deliveryReportIp       ,deliveryReportIp           ,"delivery_report_ip"          ,"optional")
+STRING(o ,   32,UMMESSAGE_CODETAG_DELIVERYREPORTIP          ,"delivery-report-ip"              ,_deliveryReportIp         ,deliveryReportIp         ,"delivery_report_ip"          ,"optional")
 
 INTEGER(o,    2,UMMESSAGE_CODETAG_DELIVERYREPORTMASK        ,"delivery-report-mask"            ,_deliveryReportMask       ,deliveryReportMask       ,"delivery_report_mask"        ,"optional")
 STRING(o ,   18,UMMESSAGE_CODETAG_ALERTINGADDRESS           ,"alerting-address"                ,_alertingAddress          ,alertingAddress          ,"alerting_address"            ,"optional")
-STRING(o ,   18,UMMESSAGE_CODETAG_DLR_TEXT                  ,"dlr-text"                        ,_dlrText                 ,dlrText                 ,"dlr_text"                    ,"optional")
+STRING(o ,   18,UMMESSAGE_CODETAG_DLR_TEXT                  ,"dlr-text"                        ,_dlrText                  ,dlrText                 ,"dlr_text"                    ,"optional")
 INTEGER(o ,   1,UMMESSAGE_CODETAG_REPLACE_IF_PRESENT        ,"replace-if-present"              ,_replaceIfPresentFlag     ,replaceIfPresentFlag     ,"replace_if_present"          ,"optional")
 
 /* MTP3 */
@@ -76,7 +76,7 @@ STRING(o ,   32,UMMESSAGE_CODETAG_SMSC_FSM_MAP              ,"smsc-fsm-map"     
 STRING(o ,   32,UMMESSAGE_CODETAG_HLR                       ,"hlr"                             ,_hlr                      ,hlr                      ,"hlr"                         ,"optional")
 INTEGER(o ,   1,UMMESSAGE_CODETAG_TT_SRISM                  ,"tt-srism"                        ,_tt_srism                 ,tt_srism                 ,"tt_srism"                    ,"optional")
 INTEGER(o ,   1,UMMESSAGE_CODETAG_TT_FSM                    ,"tt-fsm"                          ,_tt_fsm                   ,tt_fsm                   ,"tt_fsmm"                     ,"optional")
-STRING(o ,   18,UMMESSAGE_CODETAG_HLR_OVERRIDE              ,"hlr-override"                    ,_hlrOverride             ,hlrOverride             ,"hlr_override"                ,"optional")
+STRING(o ,   18,UMMESSAGE_CODETAG_HLR_OVERRIDE              ,"hlr-override"                    ,_hlrOverride              ,hlrOverride             ,"hlr_override"                ,"optional")
 
 /* timestamps and message delivery */
 DATE(o   ,   14,UMMESSAGE_CODETAG_CREATED                   ,"created"                         ,_created                  ,created                  ,"created"                     ,"optional")
@@ -90,12 +90,12 @@ INTEGER(o,    1,UMMESSAGE_CODETAG_TESTFLAG                  ,"test-flag"        
 DATE(o   ,   14,UMMESSAGE_CODETAG_DEFERRED                  ,"deferred"                        ,_deferred                 ,deferred                 ,"deferred"                    ,"optional")
 
 /* message status related fields */
-STRING(o ,   18,UMMESSAGE_CODETAG_INTERNALSTATE             ,"internal-state"                 ,_internalState           ,internalState          ,"internal_state"              ,"indexed,optional")
-STRING(o ,   18,UMMESSAGE_CODETAG_SMPPSTATE                 ,"smpp-state"                     ,_smppState               ,_smppState           ,"smpp_state"              ,"indexed,optional")
+STRING(o ,   18,UMMESSAGE_CODETAG_INTERNALSTATE             ,"internal-state"                 ,_internalState             ,internalState            ,"internal_state"              ,"indexed,optional")
+STRING(o ,   18,UMMESSAGE_CODETAG_SMPPSTATE                 ,"smpp-state"                     ,_smppState                 ,smppState                ,"smpp_state"                  ,"indexed,optional")
 INTEGER(o,    2,UMMESSAGE_CODETAG_MESSAGEERROR              ,"message-error"                   ,_messageError             ,messageError             ,"message_error"               ,"indexed,optional")
 DATE(o   ,   14,UMMESSAGE_CODETAG_MESSAGEDELIVERED          ,"message-delivered"               ,_messageDelivered         ,messageDelivered         ,"delivered"                   ,"indexed,optional")
 DATE(o   ,   14,UMMESSAGE_CODETAG_MESSAGEFAILED             ,"failed"                          ,_messageFailed            ,messageFailed            ,"failed"                      ,"indexed,optional")
-DATE(o   ,   14,UMMESSAGE_CODETAG_MESSAGEATTEMPTED          ,"attempted"                       ,_messageAttempted,messageAttempted,"attempted"                   ,"indexed,optional")
+DATE(o   ,   14,UMMESSAGE_CODETAG_MESSAGEATTEMPTED          ,"attempted"                       ,_messageAttempted         ,messageAttempted         ,"attempted"                    ,"indexed,optional")
 DATE(o   ,   14,UMMESSAGE_CODETAG_MESSAGEEXPIRY             ,"validity"                        ,_validity                 ,validity                 ,"validity"                    ,"indexed,optional")
 DATE(o   ,   14,UMMESSAGE_CODETAG_MESSAGENEXTATTEMPT        ,"next-attempt"                    ,_messageNextAttempt       ,messageNextAttemp        ,"next_attempt"                ,"indexed,optional")
 INTEGER(o,    2,UMMESSAGE_CODETAG_MESSAGEATTEMPTS           ,"attempts"                        ,_messageAttempts          ,messageAttempts          ,"attempts"                    ,"optional")
@@ -104,7 +104,7 @@ INTEGER(o,    2,UMMESSAGE_CODETAG_MESSAGEWAITINGSET         ,"message-waiting-se
 
 /* report status related fields */
 
-STRING(o ,   18,UMMESSAGE_CODETAG_DELIVERYREPORTSTATE       ,"delivery-report-state"          ,_deliveryReportState     ,deliveryReportState     ,"delivery_report_state"      ,"optional")
+STRING(o ,   18,UMMESSAGE_CODETAG_DELIVERYREPORTSTATE       ,"delivery-report-state"          ,_deliveryReportState       ,deliveryReportState     ,"delivery_report_state"      ,"optional")
 INTEGER(o,    2,UMMESSAGE_CODETAG_DELIVERYREPORTERROR       ,"delivery-report-error"           ,_deliveryReportError      ,deliveryReportError      ,"delivery_report_error"      ,"optional")
 DATE(o   ,   14,UMMESSAGE_CODETAG_DELIVERYREPORTDELIVERED   ,"delivery-report-delivered"       ,_deliveryReportDelivered  ,deliveryReportDelivered  ,"delivery_report_delivered"   ,"optional")
 DATE(o   ,   14,UMMESSAGE_CODETAG_DELIVERYREPORTFAILED      ,"delivery-report-failed"          ,_deliveryReportFailed     ,deliveryReportFailed     ,"delivery_report_failed"      ,"optional")
@@ -172,7 +172,7 @@ INTEGER(o,    1,UMMESSAGE_CODETAG_CURRENT_PART              ,"current-part"     
 INTEGER(o,    1,UMMESSAGE_CODETAG_MAX_PARTS                 ,"max-parts"                       ,_maxParts                 ,maxParts                 ,"max_parts"                   ,"optional")
 STRING(o ,   18,UMMESSAGE_CODETAG_LINKED_MESSAGE_ID         ,"linked-message-id"               ,_linkedMessageId          ,linkedMessageId          ,"linked_message_id"           ,"indexed,optional")
 TEXT(o ,      0,UMMESSAGE_CODETAG_INBOUND_MESSAGE_IDS       ,"inbound-message-ids"             ,_inboundMessageIds        ,inboundMessageIds        ,"inbound_message_ids"         ,"optional")
-TEXT(o ,      0,UMMESSAGE_CODETAG_OUTBOUND_MESSAGE_IDS      ,"outbound-message-ids"            ,_outboundMessageIds      ,outboundMessageIds        ,"outbound_message_ids"        ,"optional")
+TEXT(o ,      0,UMMESSAGE_CODETAG_OUTBOUND_MESSAGE_IDS      ,"outbound-message-ids"            ,_outboundMessageIds       ,outboundMessageIds        ,"outbound_message_ids"       ,"optional")
 
 /* smpp specific fields */
 

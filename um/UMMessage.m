@@ -43,7 +43,7 @@ static      UMMutex      *g_messageIdLock = NULL;
     {
         _instance.stringValue = instance;
         _messageId.stringValue = [UMMessage uniqueMessageIdWithPrefix:@""];
-        
+        _messageHistory = [[UMMessageHistory alloc]init];
     }
     return self;
 }
@@ -514,33 +514,33 @@ type:"REAL"];
     }
 }
 
-- (int)uid
+- (long)uid
 {
     if(_userName)
     {
-        return atoi(_userName.stringValue.UTF8String);
+        return atol(_userName.stringValue.UTF8String);
     }
     return 0;
 }
 
-- (void)setUid:(int)uid
+- (void)setUid:(long)uid
 {
-    NSString *s = [NSString stringWithFormat:@"%d",uid];
+    NSString *s = [NSString stringWithFormat:@"%ld",uid];
     _userName = UMDIRTY_STRING(s);
 }
 
-- (int)gid
+- (long)gid
 {
     if(_groupName)
     {
-        return atoi(_groupName.stringValue.UTF8String);
+        return atol(_groupName.stringValue.UTF8String);
     }
-    return 0;
+    return 0L;
 }
 
-- (void)setGid:(int)gid
+- (void)setGid:(long)gid
 {
-    NSString *s = [NSString stringWithFormat:@"%d",gid];
+    NSString *s = [NSString stringWithFormat:@"%ld",gid];
     _groupName = UMDIRTY_STRING(s);
 }
 
@@ -554,6 +554,7 @@ type:"REAL"];
 {
     _internalState = [[UMDirtyString alloc]initWithString:stringFromMessageState(state)];
 }
+
 
 - (UMMessageStatusCode)smppStateCode
 {
@@ -578,7 +579,7 @@ type:"REAL"];
 
 - (void)enableHistoryLog
 {
-    _messageHistory = [[UMHistoryLog alloc]initWithMaxLines:10000];
+    _messageHistory = [[UMMessageHistory alloc]init];
 }
 
 - (void) setMessageStatus:(UMMessageStatusCode)mstat
@@ -589,6 +590,31 @@ type:"REAL"];
 - (UMMessageStatusCode) messageStatus
 {
     return self.internalStateCode;
+}
+
+- (void)logToMessage:(NSString *)text
+{
+    NSDate *now = [NSDate date];
+    NSTimeInterval delay = [now timeIntervalSinceDate:_created.dateValue];
+    [_messageHistory addEntryWithArchiveId:_archiveId.stringValue
+                                  instance:_instance.stringValue
+                                 messageId:_messageId.stringValue
+                                    msisdn:_toNumber.stringValue
+                                        ts:[NSDate date]
+                                     delay:delay
+                                      text:[text printable]];
+}
+
+- (void)logEvent:(NSString *)event inState:(NSString *)state
+{
+    NSString *s = [NSString stringWithFormat:@"%@: %@",state,event];
+    [self logToMessage:s];
+}
+
+- (void)logStateChange:(NSString *)oldstate newState:(NSString *)newState
+{
+    NSString *s = [NSString stringWithFormat:@"%@ -> %@",oldstate,newState];
+    [self logToMessage:s];
 }
 
 
