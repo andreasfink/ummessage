@@ -17,7 +17,7 @@
     {
 #define STRING(o,len,tag,dictname,field,accessor,dbname,options)  field = @"";
 #define DATE(o,len,tag,dictname,field,accessor,dbname,options)    field = [NSDate date];
-#define DEAL(o,len,tag,dictname,field,accessor,dbname,options)    field = 0.0;
+#define REAL(o,len,tag,dictname,field,accessor,dbname,options)    field = 0.0;
 #include <um/UMMessageHistoryEntry.def.h>
 #undef STRING
 #undef DATE
@@ -75,7 +75,7 @@
     i=0;
 #define STRING(o,len,tag,dictname,field,accessor,dbname,options)  if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",[session sqlEscapeString:field]];};
 #define DATE(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",[session sqlEscapeString:field.stringValue]]; };
-#define REAL(o,len,tag,dictname,field,accessor,dbname,options)    if(1) { if(i++)     { [o appendString:@","]; } [o appendFormat:@"\"%lf\"",field] };
+#define REAL(o,len,tag,dictname,field,accessor,dbname,options)    if(1)     { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%lf\"",field]; };
 #include <um/UMMessageHistoryEntry.def.h>
 #undef STRING
 #undef DATE
