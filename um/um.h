@@ -34,4 +34,4 @@
 #import <um/UMMessageReportMask.h>
 #import <um/UMMessageHistory.h>
 #import <um/UMMessageHistoryEntry.h>
-
+#import <um/UMMessage_macroHelper.h>
