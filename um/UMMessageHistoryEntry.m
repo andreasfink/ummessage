@@ -17,7 +17,7 @@
     {
 #define STRING(o,len,tag,dictname,field,accessor,dbname,options)  field = @"";
 #define DATE(o,len,tag,dictname,field,accessor,dbname,options)    field = [NSDate date];
-#define DEAL(o,len,tag,dictname,field,accessor,dbname,options)    field = 0.0;
+#define REAL(o,len,tag,dictname,field,accessor,dbname,options)    field = 0.0;
 #include <um/UMMessageHistoryEntry.def.h>
 #undef STRING
 #undef DATE
@@ -75,7 +75,7 @@
     i=0;
 #define STRING(o,len,tag,dictname,field,accessor,dbname,options)  if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",[session sqlEscapeString:field]];};
 #define DATE(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",[session sqlEscapeString:field.stringValue]]; };
-#define REAL(o,len,tag,dictname,field,accessor,dbname,options)    if(1) { if(i++)     { [o appendString:@","]; } [o appendFormat:@"\"%lf\"",field] };
+#define REAL(o,len,tag,dictname,field,accessor,dbname,options)    if(1) { if(i++)     { [o appendString:@","]; } [o appendFormat:@"\"%lf\"",field]; };
 #include <um/UMMessageHistoryEntry.def.h>
 #undef STRING
 #undef DATE
@@ -96,7 +96,7 @@
     
 #define STRING(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { dict[@(dictname)] = field; }
 #define DATE(o,len,tag,dictname,field,accessor,dbname,options)      if(field) { dict[@(dictname)] = field; }
-#define REAL(o,len,tag,dictname,field,accessor,dbname,options)      { dict[@(dictname)] = @(field); }
+#define REAL(o,len,tag,dictname,field,accessor,dbname,options)      if(1)     { dict[@(dictname)] = @(field); }
 #include <um/UMMessageHistoryEntry.def.h>
 #undef STRING
 #undef DATE
@@ -120,7 +120,7 @@ if(field)                                                                       
 #define DATE(o,len,tag,dictname,field,accessor,dbname,options)                          \
 if(field)                                                                               \
 {                                                                                       \
-    NSString *sd = [NSString stringWithStandardDate:field.stringValue];                 \
+    NSString *sd = [NSString stringWithStandardDate:field.dateValue];                   \
     UMASN1UTF8String *u = [[UMASN1UTF8String alloc]initWithString:sd];                  \
     u.asn1_tag.tagNumber = tag;                                                         \
     u.asn1_tag.tagClass = UMASN1Class_ContextSpecific;                                  \
@@ -203,12 +203,12 @@ break;
     self = [super init];
     if(self)
     {
-        _archiveId = archive;
-        _instance = instance;
-        _messageId = messageId;
-        _msisdn = msisdn;
-        _ts = ts;
-        _delaySinceStart = delay;
+        _archiveId          = archive;
+        _instance           = instance;
+        _messageId          = messageId;
+        _msisdn             = msisdn;
+        _ts                 = ts;
+        _delaySinceStart    = delay;
         _text = text;
     }
     return self;

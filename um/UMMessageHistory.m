@@ -109,7 +109,7 @@ if(field)                                                                       
 #define DATE(o,len,tag,dictname,field,accessor,dbname,options)                          \
 if(field)                                                                               \
 {                                                                                       \
-    NSString *sd = [NSString stringWithStandardDate:field.stringValue];                 \
+    NSString *sd = [NSString stringWithStandardDate:field.dateValue]  ;                 \
     UMASN1UTF8String *u = [[UMASN1UTF8String alloc]initWithString:sd];                  \
     u.asn1_tag.tagNumber = tag;                                                         \
     u.asn1_tag.tagClass = UMASN1Class_ContextSpecific;                                  \
