@@ -101,6 +101,6 @@
 - (void)logToMessage:(NSString *)text;
 - (void)logEvent:(NSString *)text inState:(NSString *)state;
 - (void)logStateChange:(NSString *)oldstate newState:(NSString *)newState;
-
+- (void)saveOldValues;
 
 @end
