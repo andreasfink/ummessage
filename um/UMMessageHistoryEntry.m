@@ -75,11 +75,7 @@
     i=0;
 #define STRING(o,len,tag,dictname,field,accessor,dbname,options)  if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",[session sqlEscapeString:field]];};
 #define DATE(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",[session sqlEscapeString:field.stringValue]]; };
-<<<<<<< HEAD
-#define REAL(o,len,tag,dictname,field,accessor,dbname,options)    if(1) { if(i++)     { [o appendString:@","]; } [o appendFormat:@"\"%lf\"",field]; };
-=======
 #define REAL(o,len,tag,dictname,field,accessor,dbname,options)    if(1)     { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%lf\"",field]; };
->>>>>>> 7bf6a4ae5008f715bbcbbc70ce76b4468b7a3841
 #include <um/UMMessageHistoryEntry.def.h>
 #undef STRING
 #undef DATE
