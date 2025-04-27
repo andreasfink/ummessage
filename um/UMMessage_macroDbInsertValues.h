@@ -7,12 +7,11 @@
 
 
 // Prerequisites:   i & session
-
-#define BOOLEAN(o,len,tag,dictname,field,accessor,dbname,options) { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",field ? [session sqlEscapeString:field.stringValue] : @""]; }
-#define DOUBLE(o,len,tag,dictname,field,accessor,dbname,options)  { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",field ? [session sqlEscapeString:field.stringValue] : @""]; }
-#define INTEGER(o,len,tag,dictname,field,accessor,dbname,options) { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",field ? [session sqlEscapeString:field.stringValue] : @""]; }
 #define STRING(o,len,tag,dictname,field,accessor,dbname,options)  { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",field ? [session sqlEscapeString:field.stringValue] : @""]; }
 #define TEXT(o,len,tag,dictname,field,accessor,dbname,options)    { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",field ? [session sqlEscapeString:field.stringValue] : @""]; }
+#define INTEGER(o,len,tag,dictname,field,accessor,dbname,options) { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",field ? [session sqlEscapeString:field.stringValue] : @""]; }
+#define REAL(o,len,tag,dictname,field,accessor,dbname,options)    { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",field ? [session sqlEscapeString:field.stringValue] : @""]; }
+#define BOOLEAN(o,len,tag,dictname,field,accessor,dbname,options) { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",field ? [session sqlEscapeString:field.stringValue] : @""]; }
 #define DATE(o,len,tag,dictname,field,accessor,dbname,options)    { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",field ? [session sqlEscapeString:field.stringValue] : @""]; }
 #define DATA(o,len,tag,dictname,field,accessor,dbname,options)    { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",field ? [session sqlEscapeString:field.stringValue] : @""]; }
-#define BINARY(o,len,tag,dictname,field,accessor,dbname,options)    { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",field ? [session sqlEscapeString:field.dataValue] : @""]; }
+#define BINARY(o,len,tag,dictname,field,accessor,dbname,options)  { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",field ? [session sqlEscapeString:field.dataValue] : @""]; }

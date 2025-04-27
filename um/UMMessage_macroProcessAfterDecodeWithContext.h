@@ -6,29 +6,6 @@
 //
 
 
-#define BOOLEAN(o,len,tag,dictname,field,accessor,dbname,options)                               \
-case tag:                                                                                       \
-{                                                                                               \
-    UMASN1Integer *i = [[UMASN1Integer alloc]initWithASN1Object:o context:context];             \
-    field = [[UMDirtyBoolean alloc]initWithNumber:i.number];                                    \
-}
-
-#define DOUBLE(o,len,tag,dictname,field,accessor,dbname,options)                                \
-case tag:                                                                                       \
-{                                                                                               \
-    UMASN1Real *r = [[UMASN1Real alloc]initWithASN1Object:o context:context];                   \
-    field = [[UMDirtyDouble alloc]initWithNumber:r.number];                                     \
-}\
-break;
-
-#define INTEGER(o,len,tag,dictname,field,accessor,dbname,options)                               \
-case tag:                                                                                       \
-{                                                                                               \
-    UMASN1Integer *i = [[UMASN1Integer alloc]initWithASN1Object:o context:context];             \
-    field = [[UMDirtyInteger alloc]initWithNumber:i.number];                                    \
-}\
-break;
-
 #define STRING(o,len,tag,dictname,field,accessor,dbname,options)                                \
 case tag:                                                                                       \
 {                                                                                               \
@@ -45,6 +22,28 @@ case tag:                                                                       
 }\
 break;
 
+#define INTEGER(o,len,tag,dictname,field,accessor,dbname,options)                               \
+case tag:                                                                                       \
+{                                                                                               \
+    UMASN1Integer *i = [[UMASN1Integer alloc]initWithASN1Object:o context:context];             \
+    field = [[UMDirtyInteger alloc]initWithNumber:i.number];                                    \
+}\
+break;
+
+#define BOOLEAN(o,len,tag,dictname,field,accessor,dbname,options)                               \
+case tag:                                                                                       \
+{                                                                                               \
+    UMASN1Integer *i = [[UMASN1Integer alloc]initWithASN1Object:o context:context];             \
+    field = [[UMDirtyBoolean alloc]initWithNumber:i.number];                                    \
+}
+
+#define REAL(o,len,tag,dictname,field,accessor,dbname,options)                                \
+case tag:                                                                                       \
+{                                                                                               \
+    UMASN1Real *r = [[UMASN1Real alloc]initWithASN1Object:o context:context];                   \
+    field = [[UMDirtyDouble alloc]initWithNumber:r.number];                                     \
+}\
+break;
 
 #define DATE(o,len,tag,dictname,field,accessor,dbname,options)                                  \
 case tag:                                                                                       \
