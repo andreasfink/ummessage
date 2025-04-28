@@ -88,7 +88,7 @@
 		A6E569262D7DB6960052E410 /* UMMessageServerCommandLoginResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E569162D7DB60F0052E410 /* UMMessageServerCommandLoginResponse.m */; };
 		A6E569272D7DB6960052E410 /* UMMessageServerCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = A674A8DD2D7DAD6C0016B625 /* UMMessageServerCommand.m */; };
 		A6E569282D7DB6960052E410 /* UMMessageServer.m in Sources */ = {isa = PBXBuildFile; fileRef = A674A8DA2D7DAD6C0016B625 /* UMMessageServer.m */; };
-		A6E569292D7DB6960052E410 /* UMMessageServerCommandHeartbeatesponse.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E569102D7DB5FB0052E410 /* UMMessageServerCommandHeartbeatesponse.m */; };
+		A6E569292D7DB6960052E410 /* UMMessageServerCommandHeartbeatResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E569102D7DB5FB0052E410 /* UMMessageServerCommandHeartbeatResponse.m */; };
 		A6E5692A2D7DB7BD0052E410 /* um.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60B32A62D76051E003A8DFA /* um.framework */; };
 		A6E5692B2D7DB7BD0052E410 /* um.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A60B32A62D76051E003A8DFA /* um.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A6E5693D2D7DC2CF0052E410 /* UMMessageServerCommandHeartbeatRequest.asn1 in Resources */ = {isa = PBXBuildFile; fileRef = A6E5693C2D7DC2C40052E410 /* UMMessageServerCommandHeartbeatRequest.asn1 */; };
@@ -293,7 +293,7 @@
 		A6E5690C2D7DB5F50052E410 /* UMMessageServerCommandHeartbeatRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessageServerCommandHeartbeatRequest.h; sourceTree = "<group>"; };
 		A6E5690D2D7DB5F50052E410 /* UMMessageServerCommandHeartbeatRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMMessageServerCommandHeartbeatRequest.m; sourceTree = "<group>"; };
 		A6E5690F2D7DB5FB0052E410 /* UMMessageServerCommandHeartbeatResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessageServerCommandHeartbeatResponse.h; sourceTree = "<group>"; };
-		A6E569102D7DB5FB0052E410 /* UMMessageServerCommandHeartbeatesponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMMessageServerCommandHeartbeatesponse.m; sourceTree = "<group>"; };
+		A6E569102D7DB5FB0052E410 /* UMMessageServerCommandHeartbeatResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMMessageServerCommandHeartbeatResponse.m; sourceTree = "<group>"; };
 		A6E569122D7DB6090052E410 /* UMMessageServerCommandLoginRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessageServerCommandLoginRequest.h; sourceTree = "<group>"; };
 		A6E569132D7DB6090052E410 /* UMMessageServerCommandLoginRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMMessageServerCommandLoginRequest.m; sourceTree = "<group>"; };
 		A6E569152D7DB60F0052E410 /* UMMessageServerCommandLoginResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessageServerCommandLoginResponse.h; sourceTree = "<group>"; };
@@ -512,7 +512,7 @@
 				A6E5690D2D7DB5F50052E410 /* UMMessageServerCommandHeartbeatRequest.m */,
 				A6E5693E2D7DC4AE0052E410 /* UMMessageServerCommandHeartbeatResponse.asn1 */,
 				A6E5690F2D7DB5FB0052E410 /* UMMessageServerCommandHeartbeatResponse.h */,
-				A6E569102D7DB5FB0052E410 /* UMMessageServerCommandHeartbeatesponse.m */,
+				A6E569102D7DB5FB0052E410 /* UMMessageServerCommandHeartbeatResponse.m */,
 				A6E569402D7DC5C20052E410 /* UMMessageServerCommandLoginRequest.asn1 */,
 				A6E569122D7DB6090052E410 /* UMMessageServerCommandLoginRequest.h */,
 				A6E569132D7DB6090052E410 /* UMMessageServerCommandLoginRequest.m */,
@@ -976,7 +976,7 @@
 				A6705B8A2D7F556A00F36A69 /* UMMessageSessionCompletionObject.m in Sources */,
 				A6E569562D7DCC010052E410 /* UMMessageServerCommandGetMessageRequest.m in Sources */,
 				A601EDBA2DA3ECE10013F440 /* UMMessageHistoryEntry.m in Sources */,
-				A6E569292D7DB6960052E410 /* UMMessageServerCommandHeartbeatesponse.m in Sources */,
+				A6E569292D7DB6960052E410 /* UMMessageServerCommandHeartbeatResponse.m in Sources */,
 				A6DA32FA2D93F25E00B7027F /* UMMessageUdhConcatenated16BitRef.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
