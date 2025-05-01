@@ -10,5 +10,5 @@
 #define INTEGER(o,tag,len,dictname,var,accessor,dbname,options)    if((o) && ([fieldName isEqualToString:@(dbname)])) { o.accessor = @(str.integerValue);               }
 #define BOOLEAN(o,tag,len,dictname,var,accessor,dbname,options)    if((o) && ([fieldName isEqualToString:@(dbname)])) { o.accessor = [ConfigObject boolFromString:str]; }
 #define TEXT(o,tag,len,dictname,var,accessor,dbname,options)       if((o) && ([fieldName isEqualToString:@(dbname)])) { o.accessor = str;                               }
-#define DOUBLE(o,tag,len,dictname,var,accessor,dbname,options)     if((o) && ([fieldName isEqualToString:@(dbname)])) { o.accessor = @(str.doubleValue);                }
+#define REAL(o,tag,len,dictname,var,accessor,dbname,options)     if((o) && ([fieldName isEqualToString:@(dbname)])) { o.accessor = @(str.doubleValue);                }
 #define DATA(o,tag,len,dictname,var,accessor,dbname,options)       ;

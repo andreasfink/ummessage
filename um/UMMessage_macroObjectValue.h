@@ -5,26 +5,6 @@
 //  Created by Andreas Fink on 05.03.2025.
 //
 
-
-
-#define INTEGER(o,len,tag,dictname,field,accessor,dbname,options)                               \
-if(field)                                                                                       \
-{                                                                                               \
-    o[@dbname] = field.currentValue;                                                            \
-}
-
-#define BOOLEAN(o,len,tag,dictname,field,accessor,dbname,options)                               \
-if(field)                                                                                       \
-{                                                                                               \
-    o[@dbname] = field.currentValue;                                                            \
-}
-
-#define REAL(o,len,tag,dictname,field,accessor,dbname,options)                                  \
-if(field)                                                                                       \
-{                                                                                               \
-    o[@dbname] = field;                                                                         \
-}
-
 #define STRING(o,len,tag,dictname,field,accessor,dbname,options)                                \
 if(field)                                                                                       \
 {                                                                                               \
@@ -37,6 +17,26 @@ if(field)                                                                       
     o[@dbname] = field.currentValue;                                                            \
 }
 
+
+#define INTEGER(o,len,tag,dictname,field,accessor,dbname,options)                               \
+if(field)                                                                                       \
+{                                                                                               \
+    o[@dbname] = field.currentValue;                                                            \
+}
+
+#define REAL(o,len,tag,dictname,field,accessor,dbname,options)                                  \
+if(field)                                                                                       \
+{                                                                                               \
+    o[@dbname] = field;                                                                         \
+}
+
+#define BOOLEAN(o,len,tag,dictname,field,accessor,dbname,options)                               \
+if(field)                                                                                       \
+{                                                                                               \
+    o[@dbname] = field.currentValue;                                                            \
+}
+
+
 #define DATE(o,len,tag,dictname,field,accessor,dbname,options)                                  \
 if(field)                                                                                       \
 {                                                                                               \
@@ -44,6 +44,12 @@ if(field)                                                                       
 }
 
 #define DATA(o,len,tag,dictname,field,accessor,dbname,options)                                  \
+if(field)                                                                                       \
+{                                                                                               \
+    o[@dbname] = field.currentValue;                                                            \
+}
+    
+#define BINARY(o,len,tag,dictname,field,accessor,dbname,options)                                \
 if(field)                                                                                       \
 {                                                                                               \
     o[@dbname] = field.currentValue;                                                            \

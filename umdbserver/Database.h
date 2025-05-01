@@ -53,7 +53,7 @@ void addTableDefData(NSMutableString *o,int len, char *dbname);
 void addTableDefText(NSMutableString *o,int len, char *dbname);
 void addTableDefArray(NSMutableString *o,int len, char *dbname);
 void addTableDefDouble(NSMutableString *o,int len, char *dbname);
-
+/*
 void addFieldDefString(UMSynchronizedSortedDictionary *o,int len, char *dbname,char *options);
 void addFieldDefInteger(UMSynchronizedSortedDictionary *o,int len, char *dbname,char *options);
 void addFieldDefDate(UMSynchronizedSortedDictionary *o,int len, char *dbname,char *options);
@@ -62,3 +62,5 @@ void addFieldDefText(UMSynchronizedSortedDictionary *o,int len, char *dbname,cha
 void addFieldDefArray(UMSynchronizedSortedDictionary *o,int len, char *dbname,char *options);
 void addFieldDefDouble(UMSynchronizedSortedDictionary *o,int len, char *dbname,char *options);
 NSString *fieldDefsToSql(UMSynchronizedSortedDictionary *o, NSString *dbTableName);
+*/
+

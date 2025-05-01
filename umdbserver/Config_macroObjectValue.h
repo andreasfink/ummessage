@@ -39,7 +39,7 @@ if(field)                                                                       
     o[@dbname] = field;                                                                         \
 }
 
-#define DOUBLE(o,len,tag,dictname,field,accessor,dbname,options)                                \
+#define REAL(o,len,tag,dictname,field,accessor,dbname,options)                                \
 if(field)                                                                                       \
 {                                                                                               \
     o[@dbname] = field;                                                                         \

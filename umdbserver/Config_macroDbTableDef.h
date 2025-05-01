@@ -11,4 +11,4 @@
 #define DATE(o,len,tag,dictname,var,accessor,dbname,options)    addFieldDefDate(o,len,dbname,options);
 #define DATA(o,len,tag,dictname,var,accessor,dbname,options)    addFieldDefData(o,len,dbname,options);
 #define TEXT(o,len,tag,dictname,var,accessor,dbname,options)    addFieldDefText(o,len,dbname,options);
-#define DOUBLE(o,len,tag,dictname,var,accessor,dbname,options)  addFieldDefDouble(o,len,dbname,options);
+#define REAL(o,len,tag,dictname,var,accessor,dbname,options)  addFieldDefDouble(o,len,dbname,options);

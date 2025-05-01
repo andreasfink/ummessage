@@ -11,6 +11,7 @@
 #import <ulibasn1/ulibasn1.h>
 #import <um/UMMessageStatusCode.h>
 #import <um/UMMessageHistory.h>
+#import <um/UMMessageFields.h>
 
 /// An object to hold a short message for use in SMS. This can be a long (multipart), concaenated message or a individual message part.
 /// Can be used in SMPP or SS7
@@ -19,6 +20,9 @@
 @class UMMessageReport;
 @class UMDbResult;
 @class UMMessageUser;
+
+
+
 
 @interface UMMessage : UMASN1Sequence
 {
@@ -39,6 +43,7 @@
     UMHTTPRequest       *_deliveryReportAddressHttp; /* a waiting web request */
     UMMessageHistory    *_messageHistory;
 }
+
 
 /* properties */
 #include <um/UMMessage_macroProperties.h>

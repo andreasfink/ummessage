@@ -17,7 +17,7 @@ if(field)                                                                       
     [_asn1_list addObject:i];                                                       \
 }
 
-#define DOUBLE(o,len,tag,dictname,field,accessor,dbname,options)                    \
+#define REAL(o,len,tag,dictname,field,accessor,dbname,options)                      \
 if(field)                                                                           \
 {                                                                                   \
     UMASN1Real *r = [[UMASN1Real alloc]initWithNumber:field.number];                \
@@ -68,7 +68,16 @@ if(field)                                                                       
 #define DATA(o,len,tag,dictname,field,accessor,dbname,options)                          \
 if(field)                                                                               \
 {                                                                                       \
-    UMASN1OctetString *d = [[UMASN1OctetString alloc]initWithValue:field.data];  \
+    UMASN1OctetString *d = [[UMASN1OctetString alloc]initWithValue:field.data];         \
+    d.asn1_tag.tagNumber = tag;                                                         \
+    d.asn1_tag.tagClass = UMASN1Class_ContextSpecific;                                  \
+    [_asn1_list addObject:d];                                                           \
+}
+
+#define BINARY(o,len,tag,dictname,field,accessor,dbname,options)                        \
+if(field)                                                                               \
+{                                                                                       \
+    UMASN1OctetString *d = [[UMASN1OctetString alloc]initWithValue:field.data];         \
     d.asn1_tag.tagNumber = tag;                                                         \
     d.asn1_tag.tagClass = UMASN1Class_ContextSpecific;                                  \
     [_asn1_list addObject:d];                                                           \

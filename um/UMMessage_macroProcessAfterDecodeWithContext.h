@@ -62,4 +62,13 @@ case tag:                                                                       
 }\
 break;
 
+#define BINARY(o,len,tag,dictname,field,accessor,dbname,options)                                \
+case tag:                                                                                       \
+{                                                                                               \
+    UMASN1OctetString *d = [[UMASN1OctetString alloc]initWithASN1Object:o context:context];     \
+    field = [[UMDirtyData alloc]initWithData:d.value];                                          \
+}\
+break;
+
+
 

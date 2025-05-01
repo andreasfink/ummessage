@@ -6,7 +6,7 @@
 //
 
 #define BOOLEAN(o,len,tag,dictname,var,accessor,dbname,options)            { NSNumber *v = setConfigFromDict_BOOLEAN(o,dictname,dbname,tag,options);         if(v) { var=v;}}
-#define DOUBLE(o,len,tag,dictname,var,accessor,dbname,options)             { NSNumber *v = setConfigFromDict_DOUBLE(o,dictname,dbname,tag,options);          if(v) { var=v;}}
+#define REAL(o,len,tag,dictname,var,accessor,dbname,options)             { NSNumber *v = setConfigFromDict_DOUBLE(o,dictname,dbname,tag,options);          if(v) { var=v;}}
 #define INTEGER(o,len,tag,dictname,var,accessor,dbname,options)            { NSNumber *v = setConfigFromDict_INTEGER(o,dictname,dbname,tag,options);         if(v) { var=v;}}
 #define STRING(o,len,tag,dictname,var,accessor,dbname,options)             { NSString *v = setConfigFromDict_STRING(o,dictname,dbname,tag,options);          if(v) { var=v;}}
 #define TEXT(o,len,tag,dictname,var,accessor,dbname,options)               { NSString *v = setConfigFromDict_TEXT(o,dictname,dbname,tag,options);            if(v) { var=v;}}

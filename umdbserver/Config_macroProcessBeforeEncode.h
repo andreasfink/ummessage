@@ -55,7 +55,7 @@ if(field)                                                                   \
     [_asn1_list addObject:u];                                               \
 }
 
-#define DOUBLE(o,len,tag,dictname,field,accessor,dbname,options)            \
+#define REAL(o,len,tag,dictname,field,accessor,dbname,options)            \
 if(field)                                                                   \
 {                                                                           \
     UMASN1Real *r = [[UMASN1Real alloc]initWithNumber:field];               \

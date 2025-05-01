@@ -6,7 +6,7 @@
 //
 
 #define BOOLEAN(o,len,tag,dictname,var,accessor,dbname,options)           NSNumber *var;
-#define DOUBLE(o,len,tag,dictname,var,accessor,dbname,options)            NSNumber *var;
+#define REAL(o,len,tag,dictname,var,accessor,dbname,options)            NSNumber *var;
 #define INTEGER(o,len,tag,dictname,var,accessor,dbname,options)           NSNumber *var;
 #define STRING(o,len,tag,dictname,var,accessor,dbname,options)            NSString *var;
 #define TEXT(o,len,tag,dictname,var,accessor,dbname,options)              NSString *var;

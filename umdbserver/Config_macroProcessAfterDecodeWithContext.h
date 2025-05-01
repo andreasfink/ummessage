@@ -42,7 +42,7 @@ case tag:                                                                       
     field = u.stringValue;                                                                      \
 }
 
-#define DOUBLE(o,len,tag,dictname,field,accessor,dbname,options)                                \
+#define REAL(o,len,tag,dictname,field,accessor,dbname,options)                                \
 case tag:                                                                                       \
 {                                                                                               \
     UMASN1Real *r = [[UMASN1Real alloc]initWithASN1Object:o context:context];                   \

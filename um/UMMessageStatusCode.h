@@ -55,7 +55,7 @@ typedef    enum UMMessageStatusCode
 } UMMessageStatusCode;
 
 
-NSString        *stringFromMessageState(UMMessageStatusCode ms);
-UMMessageStatusCode  messageStateFromString(NSString *str);
+NSString            *stringFromMessageState(UMMessageStatusCode ms);
+UMMessageStatusCode messageStateFromString(NSString *str);
 
 

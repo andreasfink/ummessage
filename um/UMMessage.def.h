@@ -145,20 +145,20 @@ INTEGER(o,    1,UMMESSAGE_CODETAG_ESMCLASS                  ,"esm-class"        
 
 /* costing table fields */
 STRING(o ,   18,UMMESSAGE_CODETAG_COSTTABLE                 ,"cost-table"                      ,_costTable                ,costTable                ,"cost_table"                  ,"optional")
-DOUBLE(o ,    0,UMMESSAGE_CODETAG_MSUCOSTTX                 ,"msu-cost-tx"                     ,_msuCostTx                ,msuCostTx                ,"msu_cost_tx"                 ,"optional")
-DOUBLE(o ,    0,UMMESSAGE_CODETAG_MSUCOSTRX                 ,"msu-cost-rx"                     ,_msuCostRx                ,msuCostRx                ,"msu_cost_rx"                 ,"optional")
-DOUBLE(o ,    0,UMMESSAGE_CODETAG_SMSCOST                   ,"sms-cost"                        ,_smsCost                  ,smsCost                  ,"sms_cost"                    ,"optional")
-DOUBLE(o ,    0,UMMESSAGE_CODETAG_INTERWORKINGCOST          ,"interworking-cost"               ,_interworkingCost         ,interworkingCost         ,"interworking_cost"           ,"optional")
+REAL(  o ,    0,UMMESSAGE_CODETAG_MSUCOSTTX                 ,"msu-cost-tx"                     ,_msuCostTx                ,msuCostTx                ,"msu_cost_tx"                 ,"optional")
+REAL(  o ,    0,UMMESSAGE_CODETAG_MSUCOSTRX                 ,"msu-cost-rx"                     ,_msuCostRx                ,msuCostRx                ,"msu_cost_rx"                 ,"optional")
+REAL(  o ,    0,UMMESSAGE_CODETAG_SMSCOST                   ,"sms-cost"                        ,_smsCost                  ,smsCost                  ,"sms_cost"                    ,"optional")
+REAL(  o ,    0,UMMESSAGE_CODETAG_INTERWORKINGCOST          ,"interworking-cost"               ,_interworkingCost         ,interworkingCost         ,"interworking_cost"           ,"optional")
 STRING(o ,   18,UMMESSAGE_CODETAG_INTERWORKINGTAPCODE       ,"interworking-tap-code"           ,_interworkingTapCode      ,interworkingTapCode      ,"interworking_tap_code"       ,"optional")
-DOUBLE(o ,    0,UMMESSAGE_CODETAG_TOTALCOST                 ,"total-cost"                      ,_totalCost                ,totalCost                ,"total_coost"                 ,"optional")
+REAL(  o ,    0,UMMESSAGE_CODETAG_TOTALCOST                 ,"total-cost"                      ,_totalCost                ,totalCost                ,"total_coost"                 ,"optional")
 STRING(o ,   18,UMMESSAGE_CODETAG_CHARGETABLE1              ,"charge-table1"                   ,_chargeTable1             ,chargeTable1             ,"charge_table1"               ,"optional")
-DOUBLE(o ,    0,UMMESSAGE_CODETAG_CHARGEPRICE1              ,"charge-price1"                   ,_chargePrice1             ,chargePrice1             ,"charge_price1"               ,"optional")
+REAL(  o ,    0,UMMESSAGE_CODETAG_CHARGEPRICE1              ,"charge-price1"                   ,_chargePrice1             ,chargePrice1             ,"charge_price1"               ,"optional")
 STRING(o ,    3,UMMESSAGE_CODETAG_CURRENCY1                 ,"currency1"                       ,_currency1                ,currency1               ,"currency1"                    ,"optional")
-DOUBLE(o ,    0,UMMESSAGE_CODETAG_PROFIT1                   ,"profit1"                         ,_profit1                  ,profit1                  ,"profit1"                     ,"optional")
+REAL(  o ,    0,UMMESSAGE_CODETAG_PROFIT1                   ,"profit1"                         ,_profit1                  ,profit1                  ,"profit1"                     ,"optional")
 STRING(o ,   18,UMMESSAGE_CODETAG_CHARGETABLE2              ,"charge-table2"                   ,_chargeTable2             ,chargeTable2             ,"charge_table2"               ,"optional")
-DOUBLE(o ,    0,UMMESSAGE_CODETAG_CHARGEPRICE2              ,"charge-price2"                   ,_chargePrice2             ,chargePrice2             ,"charge_price2"               ,"optional")
+REAL(  o ,    0,UMMESSAGE_CODETAG_CHARGEPRICE2              ,"charge-price2"                   ,_chargePrice2             ,chargePrice2             ,"charge_price2"               ,"optional")
 STRING(o ,    3,UMMESSAGE_CODETAG_CURRENCY2                 ,"currency2"                       ,_currency2                ,currency2               ,"currency2"                    ,"optional")
-DOUBLE(o ,    0,UMMESSAGE_CODETAG_PROFIT2                   ,"profit2"                         ,_profit2                  ,profit2                  ,"profit2"                     ,"optional")
+REAL(  o ,    0,UMMESSAGE_CODETAG_PROFIT2                   ,"profit2"                         ,_profit2                  ,profit2                  ,"profit2"                     ,"optional")
 STRING(o ,   18,UMMESSAGE_CODETAG_DESTINATIONQUOTATABLE     ,"destination-quota-table"         ,_destinationQuotaTable    ,destinationQuotaTable    ,"destination_quota_table"     ,"optional")
 
 /* various */
@@ -186,5 +186,3 @@ INTEGER(o ,   4,UMMESSAGE_CODETAG_AUTOROUTED                ,"auto-routed"      
 STRING(o ,   18,UMMESSAGE_CODETAG_ROUTEID                   ,"route-id"                        ,_routeId                  ,routeId                  ,"route_id"                    ,"optional")
 STRING(o ,   18,UMMESSAGE_CODETAG_SUBROUTEID                ,"subroute-id"                     ,_subrouteId               ,subrouteId               ,"subroute_id"                 ,"optional")
 STRING(o ,   18,UMMESSAGE_CODETAG_ROUTEDONPREFIX            ,"routed-on-prefix"                ,_routedOnPrefix           ,routedOnPrefix           ,"routed_on_prefix"            ,"optional")
-
-

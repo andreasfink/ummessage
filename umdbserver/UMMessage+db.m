@@ -37,7 +37,7 @@
 #define DATE(o,len,tag,dictname,field,accessor,dbname,options)       if(str) { o.accessor = [[UMDirtyDate alloc]initWithString:str]; }
 #define DATA(o,len,tag,dictname,field,accessor,dbname,options)       if(str) { o.accessor = [[UMDirtyData alloc]initWithString:str];  }
 #define TEXT(o,len,tag,dictname,field,accessor,dbname,options)       if(str) { o.accessor = [[UMDirtyString alloc]initWithString:str]; }
-#define DOUBLE(o,len,tag,dictname,field,accessor,dbname,options)     if(str) { o.accessor = [[UMDirtyDouble alloc]initWithString:str]; }
+#define REAL(o,len,tag,dictname,field,accessor,dbname,options)     if(str) { o.accessor = [[UMDirtyDouble alloc]initWithString:str]; }
 #include <um/UMMessage.def.h>
 #include <um/UMMessage_macroClear.h>
             continue;
@@ -50,7 +50,7 @@
 #define DATE(o,len,tag,dictname,field,accessor,dbname,options)       { ; }
 #define DATA(o,len,tag,dictname,field,accessor,dbname,options)       if(data) { o.accessor = [[UMDirtyData alloc]initWithData:data];  }
 #define TEXT(o,len,tag,dictname,field,accessor,dbname,options)       { ; }
-#define DOUBLE(o,len,tag,dictname,field,accessor,dbname,options)     { ; }
+#define REAL(o,len,tag,dictname,field,accessor,dbname,options)     { ; }
 #include <um/UMMessage.def.h>
 #include <um/UMMessage_macroClear.h>
             continue;

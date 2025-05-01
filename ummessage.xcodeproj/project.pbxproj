@@ -171,6 +171,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		A648510D2DC3560000184BAF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A674A8AC2D7CB73A0016B625 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -744,6 +754,7 @@
 				A60B32A22D76051E003A8DFA /* Sources */,
 				A60B32A32D76051E003A8DFA /* Frameworks */,
 				A60B32A42D76051E003A8DFA /* Resources */,
+				A648510D2DC3560000184BAF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
