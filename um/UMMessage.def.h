@@ -59,7 +59,7 @@ STRING(o ,   32,UMMESSAGE_CODETAG_DELIVERYREPORTIP          ,"delivery-report-ip
 
 INTEGER(o,    2,UMMESSAGE_CODETAG_DELIVERYREPORTMASK        ,"delivery-report-mask"            ,_deliveryReportMask       ,deliveryReportMask       ,"delivery_report_mask"        ,"optional")
 STRING(o ,   18,UMMESSAGE_CODETAG_ALERTINGADDRESS           ,"alerting-address"                ,_alertingAddress          ,alertingAddress          ,"alerting_address"            ,"optional")
-STRING(o ,   18,UMMESSAGE_CODETAG_DLR_TEXT                  ,"dlr-text"                        ,_dlrText                  ,dlrText                 ,"dlr_text"                    ,"optional")
+STRING(o ,   255,UMMESSAGE_CODETAG_DLR_TEXT                  ,"delivery-report-text"                        ,_deliveryReportText                  ,deliveryReportText                 ,"_delivery_report_text"                    ,"optional")
 INTEGER(o ,   1,UMMESSAGE_CODETAG_REPLACE_IF_PRESENT        ,"replace-if-present"              ,_replaceIfPresentFlag     ,replaceIfPresentFlag     ,"replace_if_present"          ,"optional")
 
 /* MTP3 */
@@ -139,7 +139,7 @@ DATA(o   ,    0,UMMESSAGE_CODETAG_UDH                       ,"udh"              
 DATA(o   ,    0,UMMESSAGE_CODETAG_CONTENT                   ,"content"                         ,_pduContent               ,pduContent               ,"content"                     ,"optional")
 TEXT(o   ,    0,UMMESSAGE_CODETAG_PLAINTEXTCONTENT          ,"plaintext-content"               ,_plaintextContent         ,plaintextContent         ,"plaintext_content"           ,"optional")
 INTEGER(o,    1,UMMESSAGE_CODETAG_MESSAGECLASS              ,"message-class"                   ,_messageClass             ,messageClass             ,"message_class"               ,"optional")
-INTEGER(o,    1,UMMESSAGE_CODETAG_CODING                    ,"coding"                          ,_pduCoding                ,pduCoding                ,"coding"                      ,"optional")
+STRING(o,    18,UMMESSAGE_CODETAG_CODING                    ,"coding"                          ,_pduCoding                ,pduCoding                ,"coding"                      ,"optional")
 TEXT(o,       0,UMMESSAGE_CODETAG_EXTENSIONDATA             ,"extension-data"                  ,_extensionData            ,extensionData            ,"extension_data"              ,"optional")
 INTEGER(o,    1,UMMESSAGE_CODETAG_ESMCLASS                  ,"esm-class"                       ,_esmClass                 ,esmClass                 ,"esm_class"                   ,"optional")
 
