@@ -5,7 +5,6 @@
 //  Created by Andreas Fink on 20.03.2025.
 //
 
-#import <Foundation/Foundation.h>
 #import <ulib/ulib.h>
 #import <um/um.h>
 #import <um/UMMessage.h>

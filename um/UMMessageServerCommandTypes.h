@@ -5,7 +5,7 @@
 //  Created by Andreas Fink on 09.03.2025.
 //
 
-#import <Foundation/Foundation.h>
+#import <ulib/ulib.h>
 
 typedef enum UMMessageServerCommandType
 {

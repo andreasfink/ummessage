@@ -5,7 +5,7 @@
 //  Created by Andreas Fink on 26.03.2025.
 //
 
-#import <Foundation/Foundation.h>
+#import <ulib/ulib.h>
 /*
  
     UMMessageStatusCode is used in a multitude of ways. Not all status code make sense in all use cases. For example inside a SMPP delivery report

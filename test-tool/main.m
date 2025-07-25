@@ -5,7 +5,7 @@
 //  Created by Andreas Fink on 11.03.2025.
 //
 
-#import <Foundation/Foundation.h>
+#import <ulib/ulib.h>
 #import <ulibasn1/ulibasn1.h>
 #import <um/um.h>
 
