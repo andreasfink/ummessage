@@ -2,9 +2,11 @@
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
-.DS_Store
+*.o
 *.d
 install
+libummessage.a
+libummessage.so
 Makefile
 Makefile.linux
 Makefile.osx
@@ -14,13 +16,14 @@ config.log
 config.status
 stamp-h1
 autom4te.cache
-ummessage/ummessage_config.h
+uummessage/ummessage_config.h
 BUILDNR
 make_buildnr.sh
 buildnumber.c
 buildnumber.h
 ummessage.pc
 version.h
+install_root
 
 
 #########################

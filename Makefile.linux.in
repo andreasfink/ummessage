@@ -30,8 +30,8 @@ UMDBSERVER_MFILES = $(wildcard umdbserver/*.m)
 UMDBSERVER_MOFILES  = $(UMDBSERVER_MFILES:.m=.m.o)
 UMDBSERVER_OFILES  = $(UMDBSERVER_MOFILES)
 
-MFILES = $(wildcard um/*.m)
-HFILES = version.h $(wildcard um/*.h)
+MFILES = $(wildcard ummessage/*.m)
+HFILES = version.h $(wildcard ummessage/*.h)
 MOFILES  = $(MFILES:.m=.m.o)
 OFILES = $(MOFILES)
 
