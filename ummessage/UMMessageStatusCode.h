@@ -1,5 +1,5 @@
 //
-//  UMMessageState.h
+//  UMMessageSatusCode.h
 //  ummessage
 //
 //  Created by Andreas Fink on 26.03.2025.

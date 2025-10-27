@@ -9,7 +9,7 @@
 #import <ummessage/UMMessageServerCommandError.h>
 
 @class UMMessageHandler;
-@class UMMessage;
+@class UMMessageObject;
 @class UMMessageSession;
 
 typedef void (^UMMesssageClientInsertCompletionHandler)(int status,NSString *error);
@@ -40,10 +40,10 @@ typedef void (^UMMesssageClientInsertCompletionHandler)(int status,NSString *err
 - (UMMessageClient *)initWithHost:(UMHost *)host port:(int)port;
 - (BOOL)connect; /* returns YES if connected */
 - (UMMessageServerCommandError)login; /* returns UMMessageServerCommandError_NO_ERROR if logged in */
-- (UMMessageServerCommandError)insertMessage:(UMMessage *)msg;
-- (UMMessage *) getMessage:(NSString *)messageId
-                  instance:(NSString *)instance
-                     error:(UMMessageServerCommandError *)err;
+- (UMMessageServerCommandError)insertMessage:(UMMessageObject *)msg;
+- (UMMessageObject *) getMessage:(NSString *)messageId
+                        instance:(NSString *)instance
+                           error:(UMMessageServerCommandError *)err;
 - (BOOL) awaitsResponses;
 - (void)close;
 

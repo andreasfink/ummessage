@@ -49,7 +49,7 @@
     return _isConnected;
 }
 
-- (UMMessageServerCommandError)insertMessage:(UMMessage *)msg
+- (UMMessageServerCommandError)insertMessage:(UMMessageObject *)msg
 {
     _callComplete = NO;
     UMMessageServerCommandError e = [_session insertMessage:msg
@@ -74,7 +74,7 @@
 
 
 
-- (UMMessage *) getMessage:(NSString *)messageId
+- (UMMessageObject *) getMessage:(NSString *)messageId
                   instance:(NSString *)instance
                      error:(UMMessageServerCommandError *)err
 {

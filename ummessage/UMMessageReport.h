@@ -20,7 +20,7 @@
     UMMessageStatusCode                      _reportType;
     int                                 _priority;
     int                                 _responseCode;
-    UMMessage                           *_reportToMsg;
+    UMMessageObject                      *_reportToMsg;
     NSDictionary                         *_tlvs; /* not stored in DB directly */
 
     
@@ -46,7 +46,7 @@
 @property(readwrite,assign,atomic)  UMMessageStatusCode      reportType;
 @property(readwrite,assign,atomic)  int                 priority;
 @property(readwrite,assign,atomic)  int                 responseCode;
-@property(readwrite,strong,atomic)  UMMessage           *reportToMsg;
+@property(readwrite,strong,atomic)  UMMessageObject     *reportToMsg;
 
 #define INTEGER(o,len,tag,dictname,var,accessor,dbname,options)          @property(readwrite,strong,atomic) NSNumber *accessor;
 #define STRING(o,len,tag,dictname,var,accessor,dbname,options)           @property(readwrite,strong,atomic) NSString *accessor;
