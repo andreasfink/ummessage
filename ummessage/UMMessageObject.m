@@ -6,7 +6,7 @@
 //  Copyright 2025 Andreas Fink, Paradies<um/UMMessagehofstrasse 101, 4054 Basel andreas@fink.org
 //
 
-#import "UMMessage.h"
+#import "UMMessageObject.h"
 #import <ulib/ulib.h>
 #import <ulibdb/ulibdb.h>
 #import <ummessage/UMMessageFields.h>
@@ -243,7 +243,7 @@ static      UMMutex      *g_messageIdLock = NULL;
 + (NSString *)asn1Def
 {
     NSMutableString *o = [[NSMutableString alloc]init];
-    [o appendFormat:@"UMMessage ::= SEQUENCE\n{\n"];
+    [o appendFormat:@"UMMessageObject ::= SEQUENCE\n{\n"];
     
 #define STRING(o,len1,tag1,dictname1,field1,accessor1,dbname1,options1) \
 [UMASN1Object asn1DefAppendString:o len:len1 \
@@ -299,9 +299,9 @@ type:"REAL"];
 
 
 
-+ (UMMessage *)messageFromDbResult:(UMDbResult *)dbResult
++ (UMMessageObject *)messageFromDbResult:(UMDbResult *)dbResult
 {
-    UMMessage *o = [[UMMessage alloc]init];
+    UMMessageObject *o = [[UMMessageObject alloc]init];
     [o loadFromDbResult:dbResult];
     return o;
 }
@@ -389,7 +389,7 @@ type:"REAL"];
 }
 
 
-- (UMMessage *) processAfterDecodeWithContext:(id)context
+- (UMMessageObject *) processAfterDecodeWithContext:(id)context
 {
     [super processAfterDecodeWithContext:context];
     int pos = 0;

@@ -25,7 +25,7 @@
 #import <ummessage/UMMessageServerCommandDeleteMessageRequest.h>
 #import <ummessage/UMMessageServerCommandDeleteMessageResponse.h>
 #import <ummessage/UMMessageSessionCompletionObject.h>
-#import <ummessage/UMMessage.h>
+#import <ummessage/UMMessageObject.h>
 
 @implementation UMMessageSession
 - (UMMessageSession *)init
@@ -238,7 +238,7 @@
     }
     else
     {
-        UMMessage *msg;
+        UMMessageObject *msg;
         UMMessageServerCommandError err = UMMessageServerCommandError_NO_ERROR;
         if(_server.getMessageDelegate)
         {
@@ -428,7 +428,7 @@
 }
 
 
-- (UMMessageServerCommandError) localInsertMessage:(UMMessage *)msg
+- (UMMessageServerCommandError) localInsertMessage:(UMMessageObject *)msg
 {
     if(!_authenticated)
     {
@@ -456,7 +456,7 @@
     return UMMessageServerCommandError_NO_ERROR;
 }
 
-- (UMMessageServerCommandError) localUpdateMessage:(UMMessage *)msg
+- (UMMessageServerCommandError) localUpdateMessage:(UMMessageObject *)msg
 {
     if(!_authenticated)
     {
@@ -528,7 +528,7 @@
     return UMMessageServerCommandError_NO_ERROR;
 }
 
-- (UMMessage *)localGetMessage:(NSString *)messageId instance:(NSString *)instance error:(UMMessageServerCommandError *)e
+- (UMMessageObject *)localGetMessage:(NSString *)messageId instance:(NSString *)instance error:(UMMessageServerCommandError *)e
 {
     if(!_authenticated)
     {
@@ -542,10 +542,10 @@
     NSData *data = [NSData dataWithContentsOfFile:filename];
     if(data)
     {
-        UMMessage *msg;
+        UMMessageObject *msg;
         @try
         {
-            msg = [[UMMessage alloc]initWithBerData:data];
+            msg = [[UMMessageObject alloc]initWithBerData:data];
         }
         @catch(NSException *ex)
         {
@@ -597,7 +597,7 @@
     return NULL;
 }
 
-- (UMMessageServerCommandError)insertMessage:(UMMessage *)msg
+- (UMMessageServerCommandError)insertMessage:(UMMessageObject *)msg
                       onCompletionCallObject:(id)obj
                                 withSelector:(SEL)sel
 {

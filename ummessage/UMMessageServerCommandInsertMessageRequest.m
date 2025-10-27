@@ -8,7 +8,7 @@
 
 #import <ummessage/UMMessageServerCommandInsertMessageRequest.h>
 #import <ummessage/UMMessageServerCommandTypes.h>
-#import <ummessage/UMMessage.h>
+#import <ummessage/UMMessageObject.h>
 
 @implementation UMMessageServerCommandInsertMessageRequest
 
@@ -60,7 +60,7 @@
             switch(o.asn1_tag.tagNumber)
             {
                 case 3:
-                    _message = [[UMMessage alloc]initWithASN1Object:o context:context];
+                    _message = [[UMMessageObject alloc]initWithASN1Object:o context:context];
                     NSLog(@"Message: %@",_message);
                     break;
             }

@@ -7,17 +7,17 @@
 
 #import <ummessage/UMMessageServerCommand.h>
 #import <ummessage/UMMessageServerCommandError.h>
-@class UMMessage;
+@class UMMessageObject;
 
 @interface UMMessageServerCommandGetMessageResponse : UMMessageServerCommand
 {
     UMMessageServerCommandError   _status;
     NSString    *_error;
-    UMMessage   *_message;
+    UMMessageObject *_message;
 }
 
 @property(readwrite,atomic,assign)  UMMessageServerCommandError   status;
 @property(readwrite,atomic,strong)  NSString    *error;
-@property(readwrite,strong,atomic)  UMMessage   *message;
+@property(readwrite,strong,atomic)  UMMessageObject   *message;
 
 @end

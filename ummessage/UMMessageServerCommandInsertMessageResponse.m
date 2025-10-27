@@ -7,7 +7,7 @@
 
 #import <ummessage/UMMessageServerCommandInsertMessageResponse.h>
 #import <ummessage/UMMessageServerCommandTypes.h>
-#import <ummessage/UMMessage.h>
+#import <ummessage/UMMessageObject.h>
 
 @implementation UMMessageServerCommandInsertMessageResponse
 

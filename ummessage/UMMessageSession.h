@@ -13,7 +13,7 @@
 @class UMMessageServer;
 @class UMMessageClient;
 @class UMMessageHandler;
-@class UMMessage;
+@class UMMessageObject;
 
 
 @interface UMMessageSession : UMObject<UMessageCommandHandlerProtocol>
@@ -61,7 +61,7 @@
 
 - (int)processCommand:(UMMessageServerCommand *)cmd; /* return error code*/
 
-- (UMMessageServerCommandError)insertMessage:(UMMessage *)msg
+- (UMMessageServerCommandError)insertMessage:(UMMessageObject *)msg
                       onCompletionCallObject:(id)obj
                                 withSelector:(SEL)sel;
 - (BOOL) awaitsResponses;

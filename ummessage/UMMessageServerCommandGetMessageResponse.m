@@ -6,7 +6,7 @@
 //
 
 #import <ummessage/UMMessageServerCommandGetMessageResponse.h>
-#import <ummessage/UMMessage.h>
+#import <ummessage/UMMessageObject.h>
 #import <ummessage/UMMessageServerCommandTypes.h>
 
 @implementation UMMessageServerCommandGetMessageResponse
@@ -93,7 +93,7 @@
                 }
                 case 5:
                 {
-                    UMMessage *msg = [[UMMessage alloc]initWithASN1Object:o context:context];
+                    UMMessageObject *msg = [[UMMessageObject alloc]initWithASN1Object:o context:context];
                     _message = msg;
                     break;
                 }

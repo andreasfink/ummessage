@@ -7,14 +7,14 @@
 
 #import <ummessage/UMMessageServerCommand.h>
 
-@class UMMessage;
+@class UMMessageObject;
 
 @interface UMMessageServerCommandInsertMessageRequest : UMMessageServerCommand
 {
-    UMMessage *_message;
+    UMMessageObject *_message;
 }
 
-@property(readwrite,strong,atomic)  UMMessage *message;
+@property(readwrite,strong,atomic)  UMMessageObject *message;
 
 @end
 

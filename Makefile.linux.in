@@ -37,7 +37,7 @@ OFILES = $(MOFILES)
 
 HEADERDIR=um
 
-INCLUDEDIRS = -I Classes
+INCLUDEDIRS = -I .
 DEBUG_RELEASE = -DCONFIGURATION_${CONFIGURATION}=1 -DCONFIGURATION=${CONFIGURATION}
 
 all:	${LIB} build/umcli build/umserver build/umdbserver

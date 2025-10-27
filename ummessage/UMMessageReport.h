@@ -6,7 +6,7 @@
 //
 
 #import <ulibasn1/ulibasn1.h>
-#import <ummessage/UMMessage.h>
+#import <ummessage/UMMessageObject.h>
 #import <ummessage/UMMessageStatusCode.h>
 
 @class UMDbResult;
