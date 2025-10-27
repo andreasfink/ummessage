@@ -5,7 +5,7 @@
 //  Created by Andreas Fink on 09.03.2025.
 //
 
-#import <um/UMMessageServerCommandTypes.h>
+#import <ummessage/UMMessageServerCommandTypes.h>
 
 NSString *UMMessageServerCommandTypeString(UMMessageServerCommandType t)
 {

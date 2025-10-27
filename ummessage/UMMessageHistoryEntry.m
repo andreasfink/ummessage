@@ -18,7 +18,7 @@
 #define STRING(o,len,tag,dictname,field,accessor,dbname,options)  field = @"";
 #define DATE(o,len,tag,dictname,field,accessor,dbname,options)    field = [NSDate date];
 #define REAL(o,len,tag,dictname,field,accessor,dbname,options)    field = 0.0;
-#include <um/UMMessageHistoryEntry.def.h>
+#include <ummessage/UMMessageHistoryEntry.def.h>
 #undef STRING
 #undef DATE
 #undef REAL
@@ -34,7 +34,7 @@
 #define STRING(o,len,tag,dictname,var,accessor,dbname,options)  addFieldDefString(o,len,dbname,options);
 #define DATE(o,len,tag,dictname,var,accessor,dbname,options)    addFieldDefDate(o,len,dbname,options);
 #define REAL(o,len,tag,dictname,var,accessor,dbname,options)    addFieldDefDouble(o,len,dbname,options);
-#include <um/UMMessageHistoryEntry.def.h>
+#include <ummessage/UMMessageHistoryEntry.def.h>
 #undef STRING
 #undef DATE
 #undef REAL
@@ -49,7 +49,7 @@
 #define STRING(o,len,tag,dictname,var,accessor,dbname,options)  [o addObject:@(dbname)];
 #define DATE(o,len,tag,dictname,var,accessor,dbname,options)    [o addObject:@(dbname)];
 #define REAL(o,len,tag,dictname,var,accessor,dbname,options)    [o addObject:@(dbname)];
-#include <um/UMMessageHistoryEntry.def.h>
+#include <ummessage/UMMessageHistoryEntry.def.h>
 #undef STRING
 #undef DATE
 #undef REAL
@@ -66,7 +66,7 @@
 #define STRING(o,len,tag,dictname,field,accessor,dbname,options)  if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"`%s`",dbname]; };
 #define DATE(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"`%s`",dbname]; };
 #define REAL(o,len,tag,dictname,field,accessor,dbname,options)    if(1)     { if(i++) { [o appendString:@","]; } [o appendFormat:@"`%s`",dbname]; };
-#include <um/UMMessageHistoryEntry.def.h>
+#include <ummessage/UMMessageHistoryEntry.def.h>
 #undef STRING
 #undef DATE
 #undef REAL
@@ -76,7 +76,7 @@
 #define STRING(o,len,tag,dictname,field,accessor,dbname,options)  if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",[session sqlEscapeString:field]];};
 #define DATE(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",[session sqlEscapeString:field.stringValue]]; };
 #define REAL(o,len,tag,dictname,field,accessor,dbname,options)    if(1)     { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%lf\"",field]; };
-#include <um/UMMessageHistoryEntry.def.h>
+#include <ummessage/UMMessageHistoryEntry.def.h>
 #undef STRING
 #undef DATE
 #undef REAL
@@ -97,7 +97,7 @@
 #define STRING(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { dict[@(dictname)] = field; }
 #define DATE(o,len,tag,dictname,field,accessor,dbname,options)      if(field) { dict[@(dictname)] = field; }
 #define REAL(o,len,tag,dictname,field,accessor,dbname,options)      if(1)     { dict[@(dictname)] = @(field); }
-#include <um/UMMessageHistoryEntry.def.h>
+#include <ummessage/UMMessageHistoryEntry.def.h>
 #undef STRING
 #undef DATE
 #undef REAL
@@ -136,7 +136,7 @@ if(1)                                                                           
     [_asn1_list addObject:r];                                                           \
 }
 
-#include <um/UMMessageHistoryEntry.def.h>
+#include <ummessage/UMMessageHistoryEntry.def.h>
 #undef STRING
 #undef DATE
 #undef REAL
@@ -178,7 +178,7 @@ case tag:                                                                       
 }\
 break;
 
-#include <um/UMMessageHistoryEntry.def.h>
+#include <ummessage/UMMessageHistoryEntry.def.h>
 #undef STRING
 #undef DATE
 #undef REAL

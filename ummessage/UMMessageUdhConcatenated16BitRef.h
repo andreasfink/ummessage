@@ -6,8 +6,8 @@
 //
 
 
-#import <um/um.h>
-#import <um/UMMessageUdh.h>
+#import <ummessage/ummessage.h>
+#import <ummessage/UMMessageUdh.h>
 
 
 @interface UMMessageUdhConcatenated16BitRef : UMMessageUdh

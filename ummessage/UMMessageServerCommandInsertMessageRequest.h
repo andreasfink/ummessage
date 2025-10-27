@@ -5,7 +5,7 @@
 //  Created by Andreas Fink on 09.03.2025.
 //
 
-#import <um/UMMessageServerCommand.h>
+#import <ummessage/UMMessageServerCommand.h>
 
 @class UMMessage;
 

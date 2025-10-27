@@ -6,8 +6,8 @@
 //
 
 #import <ulibasn1/ulibasn1.h>
-#import <um/UMMessage.h>
-#import <um/UMMessageStatusCode.h>
+#import <ummessage/UMMessage.h>
+#import <ummessage/UMMessageStatusCode.h>
 
 @class UMDbResult;
 
@@ -29,7 +29,7 @@
 #define TEXT(o,len,tag,dictname,var,accessor,dbname,options)              NSString *var;
 #define DATE(o,len,tag,dictname,var,accessor,dbname,options)              NSDate   *var;
     
-#include <um/UMMessageReport.def.h>
+#include <ummessage/UMMessageReport.def.h>
 
 #undef INTEGER
 #undef STRING
@@ -53,7 +53,7 @@
 #define TEXT(o,len,tag,dictname,var,accessor,dbname,options)             @property(readwrite,strong,atomic) NSString *accessor;
 #define DATE(o,len,tag,dictname,var,accessor,dbname,options)             @property(readwrite,strong,atomic) NSDate *accessor;
 
-#include <um/UMMessageReport.def.h>
+#include <ummessage/UMMessageReport.def.h>
 
 #undef INTEGER
 #undef STRING

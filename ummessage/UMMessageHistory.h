@@ -7,13 +7,13 @@
 
 #import <ulibasn1/ulibasn1.h>
 #import <ulibdb/ulibdb.h>
-#import <um/UMMessageHistoryFields.h>
+#import <ummessage/UMMessageHistoryFields.h>
 
 @interface UMMessageHistory : UMASN1Sequence
 {
 #define STRING(o,len,tag,dictname,field,accessor,dbname,options)  NSString *field;
 #define DATE(o,len,tag,dictname,field,accessor,dbname,options)    NSDate   *field;
-#include <um/UMMessageHistory.def.h>
+#include <ummessage/UMMessageHistory.def.h>
 #undef STRING
 #undef DATE
     UMSynchronizedArray *_entries;
@@ -21,7 +21,7 @@
 
 #define STRING(o,len,tag,dictname,field,accessor,dbname,options)  @property(readwrite,atomic,strong) NSString *accessor;
 #define DATE(o,len,tag,dictname,field,accessor,dbname,options)    @property(readwrite,atomic,strong) NSDate   *accessor;
-#include <um/UMMessageHistory.def.h>
+#include <ummessage/UMMessageHistory.def.h>
 #undef STRING
 #undef DATE
 

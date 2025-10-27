@@ -5,7 +5,7 @@
 //  Created by Andreas Fink on 26.03.2025.
 //
 
-#import <um/UMMessageUdh.h>
+#import <ummessage/UMMessageUdh.h>
 
 @interface UMMessageUdhConcatenated : UMMessageUdh
 {

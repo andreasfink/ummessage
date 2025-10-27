@@ -1,18 +1,18 @@
 //
-//  UMMessage.m
+//  UMMessageObject.m
 //  ummessage
 //
 //  Created by Andreas Fink on 03.03.2025.
-//  Copyright 2025 Andreas Fink, Paradieshofstrasse 101, 4054 Basel andreas@fink.org
+//  Copyright 2025 Andreas Fink, Paradies<um/UMMessagehofstrasse 101, 4054 Basel andreas@fink.org
 //
 
 #import "UMMessage.h"
 #import <ulib/ulib.h>
 #import <ulibdb/ulibdb.h>
-#import <um/UMMessageFields.h>
-#import <um/UMMessageUdh.h>
-#import <um/UMMessageUdhConcatenated.h>
-#import <um/UMMessageUdhConcatenated16BitRef.h>
+#import <ummessage/UMMessageFields.h>
+#import <ummessage/UMMessageUdh.h>
+#import <ummessage/UMMessageUdhConcatenated.h>
+#import <ummessage/UMMessageUdhConcatenated16BitRef.h>
 #import "UMMessage_macroHelper.h"
 
 #define     MAXADDRLEN      18
@@ -21,28 +21,28 @@ static      struct tm    last_msgid_time_trec;
 static      int          last_msgid_serial = 0;
 static      UMMutex      *g_messageIdLock = NULL;
 
-@implementation UMMessage
+@implementation UMMessageObject
 
-- (UMMessage *)init
+- (UMMessageObject *)init
 {
     self = [super init];
     if(self)
     {
-#include <um/UMMessage_macroInit.h>
-#include <um/UMMessage.def.h>
-#include <um/UMMessage_macroClear.h>
+#include <ummessage/UMMessage_macroInit.h>
+#include <ummessage/UMMessageObject.def.h>
+#include <ummessage/UMMessage_macroClear.h>
     }
     return self;
 }
 
 
-- (UMMessage *)initWithNewIdAndInstance:(NSString *)instance
+- (UMMessageObject *)initWithNewIdAndInstance:(NSString *)instance
 {
     self = [self init];
     if(self)
     {
         _instance.stringValue = instance;
-        _messageId.stringValue = [UMMessage uniqueMessageIdWithPrefix:@""];
+        _messageId.stringValue = [UMMessageObject uniqueMessageIdWithPrefix:@""];
         _messageHistory = [[UMMessageHistory alloc]init];
     }
     return self;
@@ -50,7 +50,7 @@ static      UMMutex      *g_messageIdLock = NULL;
 
 + (NSString *)uniqueMessageId
 {
-    return [UMMessage uniqueMessageIdWithPrefix:@""];
+    return [UMMessageObject uniqueMessageIdWithPrefix:@""];
 }
 
 + (NSString *)uniqueMessageIdWithPrefix:(NSString *)prefix
@@ -108,7 +108,7 @@ static      UMMutex      *g_messageIdLock = NULL;
     UMSynchronizedSortedDictionary *o = [[UMSynchronizedSortedDictionary alloc]init];
     
 #include "UMMessage_macroDbTableDef.h"
-#include "UMMessage.def.h"
+#include "UMMessageObject.def.h"
 #include "UMMessage_macroClear.h"
     return fieldDefsToSql(o,tableName);
 }
@@ -117,7 +117,7 @@ static      UMMutex      *g_messageIdLock = NULL;
 {
     NSMutableArray *o = [[NSMutableArray alloc]init];
 #include "UMMessage_macroDbFieldNames.h"
-#include "UMMessage.def.h"
+#include "UMMessageObject.def.h"
 #include "UMMessage_macroClear.h"
     return o;
 }
@@ -135,7 +135,7 @@ static      UMMutex      *g_messageIdLock = NULL;
 #define TEXT(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"`%s`",dbname]; };
 #define REAL(o,len,tag,dictname,field,accessor,dbname,options)  if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"`%s`",dbname]; };
     
-#include "UMMessage.def.h"
+#include "UMMessageObject.def.h"
 #include "UMMessage_macroClear.h"
     
     
@@ -148,7 +148,7 @@ static      UMMutex      *g_messageIdLock = NULL;
 #define TEXT(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",[session sqlEscapeString:field.stringValue]]; };
 #define REAL(o,len,tag,dictname,field,accessor,dbname,options)  if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",[session sqlEscapeString:field.stringValue]]; };
     
-#include "UMMessage.def.h"
+#include "UMMessageObject.def.h"
 #include "UMMessage_macroClear.h"
     
     [o appendString:@")"];
@@ -166,7 +166,7 @@ static      UMMutex      *g_messageIdLock = NULL;
 #define DATA(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; }[o appendFormat:@"`%s`=\"%@\"",dbname,[session sqlEscapeString:field.stringValue]]; };
 #define TEXT(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; }[o appendFormat:@"`%s`=\"%@\"",dbname,[session sqlEscapeString:field.stringValue]]; };
 #define REAL(o,len,tag,dictname,field,accessor,dbname,options)  if(field) { if(i++) { [o appendString:@","]; }[o appendFormat:@"`%s`=\"%@\"",dbname,[session sqlEscapeString:field.stringValue]]; };
-#include "UMMessage.def.h"
+#include "UMMessageObject.def.h"
 #include "UMMessage_macroClear.h"
     [o appendFormat:@"WHERE archive_id=`%@` ",[session sqlEscapeString:_archiveId.stringValue]];
     return o;
@@ -183,7 +183,7 @@ static      UMMutex      *g_messageIdLock = NULL;
 #define DATA(o,len,tag,dictname,field,accessor,dbname,options)    if(field.isDirty) { if(i++) { [o appendString:@","]; }[o appendFormat:@"`%s`=\"%@\"",dbname,[session sqlEscapeString:field.stringValue]]; };
 #define TEXT(o,len,tag,dictname,field,accessor,dbname,options)    if(field.isDirty) { if(i++) { [o appendString:@","]; }[o appendFormat:@"`%s`=\"%@\"",dbname,[session sqlEscapeString:field.stringValue]]; };
 #define REAL(o,len,tag,dictname,field,accessor,dbname,options)  if(field.isDirty) { if(i++) { [o appendString:@","]; }[o appendFormat:@"`%s`=\"%@\"",dbname,[session sqlEscapeString:field.stringValue]]; };
-#include "UMMessage.def.h"
+#include "UMMessageObject.def.h"
 #include "UMMessage_macroClear.h"
     [o appendFormat:@"WHERE archive_id=`%@` ",[session sqlEscapeString:_archiveId.stringValue]];
     return o;
@@ -209,7 +209,7 @@ static      UMMutex      *g_messageIdLock = NULL;
 #define TEXT(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"`%s`",dbname]; };
 #define REAL(o,len,tag,dictname,field,accessor,dbname,options)  if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"`%s`",dbname]; };
     
-#include "UMMessage.def.h"
+#include "UMMessageObject.def.h"
 #include "UMMessage_macroClear.h"
     
     
@@ -222,7 +222,7 @@ static      UMMutex      *g_messageIdLock = NULL;
 #define TEXT(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",[session sqlEscapeString:field.stringValue]]; };
 #define REAL(o,len,tag,dictname,field,accessor,dbname,options)  if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",[session sqlEscapeString:field.stringValue]]; };
     
-#include "UMMessage.def.h"
+#include "UMMessageObject.def.h"
 #include "UMMessage_macroClear.h"
     
     
@@ -234,7 +234,7 @@ static      UMMutex      *g_messageIdLock = NULL;
 #define DATA(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; }[o appendFormat:@"`%s`=\"%@\"",dbname,[session sqlEscapeString:field.stringValue]]; };
 #define TEXT(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; }[o appendFormat:@"`%s`=\"%@\"",dbname,[session sqlEscapeString:field.stringValue]]; };
 #define REAL(o,len,tag,dictname,field,accessor,dbname,options)  if(field) { if(i++) { [o appendString:@","]; }[o appendFormat:@"`%s`=\"%@\"",dbname,[session sqlEscapeString:field.stringValue]]; };
-#include "UMMessage.def.h"
+#include "UMMessageObject.def.h"
 #include "UMMessage_macroClear.h"
     return o;
 }
@@ -287,7 +287,7 @@ tag:tag1 \
 dictname:dictname1 \
 options:options1 \
 type:"REAL"];
-#include "UMMessage.def.h"
+#include "UMMessageObject.def.h"
 #include "UMMessage_macroClear.h"
     
     /* remove the last , before the \n */
@@ -335,7 +335,7 @@ type:"REAL"];
 #define BINARY(o,len,tag,dictname,field,accessor,dbname,options)     { ; }
 #define TEXT(o,len,tag,dictname,field,accessor,dbname,options)       if(str) { self.accessor = [[UMDirtyString alloc]initWithString:str];    }
 #define REAL(o,len,tag,dictname,field,accessor,dbname,options)     if(str) { self.accessor = [[UMDirtyDouble alloc]initWithString:str];    }
-#include "UMMessage.def.h"
+#include "UMMessageObject.def.h"
 #include "UMMessage_macroClear.h"
             continue;
         }
@@ -351,7 +351,7 @@ type:"REAL"];
 #define BINARY(o,len,tag,dictname,field,accessor,dbname,options)     if(data) { self.accessor  = [[UMDirtyData alloc]initWithData:data];      }
 #define TEXT(o,len,tag,dictname,field,accessor,dbname,options)       { ; }
 #define REAL(o,len,tag,dictname,field,accessor,dbname,options)     { ; }
-#include "UMMessage.def.h"
+#include "UMMessageObject.def.h"
 #include "UMMessage_macroClear.h"
             continue;
         }
@@ -375,7 +375,7 @@ type:"REAL"];
 #define BINARY(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { dict[@(dictname)] = field.stringValue; }
 #define TEXT(o,len,tag,dictname,field,accessor,dbname,options)      if(field) { dict[@(dictname)] = field.stringValue; }
 #define REAL(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { dict[@(dictname)] = field.number; }
-#include "UMMessage.def.h"
+#include "UMMessageObject.def.h"
 #include "UMMessage_macroClear.h"
     return dict;
 }
@@ -384,7 +384,7 @@ type:"REAL"];
 {
     [super processBeforeEncode];
 #include "UMMessage_macroProcessBeforeEncode.h"
-#include "UMMessage.def.h"
+#include "UMMessageObject.def.h"
 #include "UMMessage_macroClear.h"
 }
 
@@ -401,7 +401,7 @@ type:"REAL"];
             switch(o.asn1_tag.tagNumber)
             {
 #include "UMMessage_macroProcessAfterDecodeWithContext.h"
-#include "UMMessage.def.h"
+#include "UMMessageObject.def.h"
 #include "UMMessage_macroClear.h"
                     break;
             }
@@ -420,7 +420,7 @@ type:"REAL"];
 #define BINARY(o,len,tag,dictname,field,accessor,dbname,options)     if(field.isDirty) return YES;
 #define TEXT(o,len,tag,dictname,field,accessor,dbname,options)       if(field.isDirty) return YES;
 #define REAL(o,len,tag,dictname,field,accessor,dbname,options)     if(field.isDirty) return YES;
-#include "UMMessage.def.h"
+#include "UMMessageObject.def.h"
 #include "UMMessage_macroClear.h"
     return NO;
 }
@@ -433,7 +433,7 @@ type:"REAL"];
 #define DATE(o,len,tag,dictname,field,accessor,dbname,options)       field.isDirty=dirt;
 #define DATA(o,len,tag,dictname,field,accessor,dbname,options)       field.isDirty=dirt;
 #define BINARY(o,len,tag,dictname,field,accessor,dbname,options)     field.isDirty=dirt;
-#include "UMMessage.def.h"
+#include "UMMessageObject.def.h"
 #include "UMMessage_macroClear.h"
 }
 
@@ -446,7 +446,7 @@ type:"REAL"];
 #define DATE(o,len,tag,dictname,field,accessor,dbname,options)       [field clearDirty];
 #define DATA(o,len,tag,dictname,field,accessor,dbname,options)       [field clearDirty];
 #define BINARY(o,len,tag,dictname,field,accessor,dbname,options)     [field clearDirty];
-#include "UMMessage.def.h"
+#include "UMMessageObject.def.h"
 #include "UMMessage_macroClear.h"
 }
 

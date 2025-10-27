@@ -6,9 +6,9 @@
 //
 
 
-#import <um/UMMessageServerCommandInsertMessageRequest.h>
-#import <um/UMMessageServerCommandTypes.h>
-#import <um/UMMessage.h>
+#import <ummessage/UMMessageServerCommandInsertMessageRequest.h>
+#import <ummessage/UMMessageServerCommandTypes.h>
+#import <ummessage/UMMessage.h>
 
 @implementation UMMessageServerCommandInsertMessageRequest
 

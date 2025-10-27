@@ -8,7 +8,7 @@
 #import <ulib/ulib.h>
 #import <ulibdb/ulibdb.h>
 #import <ulibsmpp/ulibsmpp.h>
-#import <um/UMMessageSessionDelegates.h>
+#import <ummessage/UMMessageSessionDelegates.h>
 
 @class ConfigUser;
 @class UMMessage;

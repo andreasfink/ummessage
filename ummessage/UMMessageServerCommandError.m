@@ -5,7 +5,7 @@
 //  Created by Andreas Fink on 09.03.2025.
 //
 
-#import <um/UMMessageServerCommandError.h>
+#import <ummessage/UMMessageServerCommandError.h>
 
 NSString *UMMessageServerCommandErrrorString(UMMessageServerCommandError err)
 {

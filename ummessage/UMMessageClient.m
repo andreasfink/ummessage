@@ -5,14 +5,14 @@
 //  Created by Andreas Fink on 10.03.2025.
 //
 
-#import <um/UMMessageClient.h>
-#import <um/UMMessageHandler.h>
-#import <um/UMMessage.h>
-#import <um/UMMessageSession.h>
-#import <um/UMMessageServerCommandLoginResponse.h>
-#import <um/UMMessageServerCommandInsertMessageResponse.h>
-#import <um/UMMessageServerCommandGetMessageResponse.h>
-#import <um/UMMessageServerCommandError.h>
+#import <ummessage/UMMessageClient.h>
+#import <ummessage/UMMessageHandler.h>
+#import <ummessage/UMMessage.h>
+#import <ummessage/UMMessageSession.h>
+#import <ummessage/UMMessageServerCommandLoginResponse.h>
+#import <ummessage/UMMessageServerCommandInsertMessageResponse.h>
+#import <ummessage/UMMessageServerCommandGetMessageResponse.h>
+#import <ummessage/UMMessageServerCommandError.h>
 
 @implementation UMMessageClient
 

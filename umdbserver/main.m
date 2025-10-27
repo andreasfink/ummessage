@@ -7,7 +7,7 @@
 
 #import <ulib/ulib.h>
 #import <um/um.h>
-#import <um/UMMessage.h>
+#import <ummessage/UMMessage.h>
 #import "Database.h"
 #include <stdlib.h>
 #import "AppDelegate.h"

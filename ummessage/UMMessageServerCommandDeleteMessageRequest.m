@@ -5,8 +5,8 @@
 //  Created by Andreas Fink on 09.03.2025.
 //
 
-#import <um/UMMessageServerCommandDeleteMessageRequest.h>
-#import <um/UMMessageServerCommandTypes.h>
+#import <ummessage/UMMessageServerCommandDeleteMessageRequest.h>
+#import <ummessage/UMMessageServerCommandTypes.h>
 
 @implementation UMMessageServerCommandDeleteMessageRequest
 

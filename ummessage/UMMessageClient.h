@@ -6,7 +6,7 @@
 //
 
 #import <ulib/ulib.h>
-#import <um/UMMessageServerCommandError.h>
+#import <ummessage/UMMessageServerCommandError.h>
 
 @class UMMessageHandler;
 @class UMMessage;

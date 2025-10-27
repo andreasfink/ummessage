@@ -5,11 +5,11 @@
 //  Created by Andreas Fink on 09.03.2025.
 //
 
-#import <um/UMMessageHandler.h>
-#import <um/UMMessageSession.h>
-#import <um/UMMessageServer.h>
-#import <um/UMMessageClient.h>
-#import <um/UMMessageServerCommand.h>
+#import <ummessage/UMMessageHandler.h>
+#import <ummessage/UMMessageSession.h>
+#import <ummessage/UMMessageServer.h>
+#import <ummessage/UMMessageClient.h>
+#import <ummessage/UMMessageServerCommand.h>
 
 @implementation UMMessageHandler
 

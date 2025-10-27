@@ -18,7 +18,7 @@
     {
 #define STRING(o,len,tag,dictname,field,accessor,dbname,options)  field = @"";
 #define DATE(o,len,tag,dictname,field,accessor,dbname,options)    field = [NSDate date];
-#include <um/UMMessageHistory.def.h>
+#include <ummessage/UMMessageHistory.def.h>
 #undef STRING
 #undef DATE
         _entries = [[UMSynchronizedArray alloc]init];
@@ -32,7 +32,7 @@
     
 #define STRING(o,len,tag,dictname,var,accessor,dbname,options)  addFieldDefString(o,len,dbname,options);
 #define DATE(o,len,tag,dictname,var,accessor,dbname,options)    addFieldDefDate(o,len,dbname,options);
-#include <um/UMMessageHistory.def.h>
+#include <ummessage/UMMessageHistory.def.h>
 #undef STRING
 #undef DATE
     return fieldDefsToSql(o,tableName);
@@ -43,7 +43,7 @@
     NSMutableArray *o = [[NSMutableArray alloc]init];
 #define STRING(o,len,tag,dictname,var,accessor,dbname,options)  [o addObject:@(dbname)];
 #define DATE(o,len,tag,dictname,var,accessor,dbname,options)    [o addObject:@(dbname)];
-#include <um/UMMessageHistory.def.h>
+#include <ummessage/UMMessageHistory.def.h>
 #undef STRING
 #undef DATE
     return o;
@@ -57,7 +57,7 @@
     
 #define STRING(o,len,tag,dictname,field,accessor,dbname,options)  if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"`%s`",dbname]; };
 #define DATE(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"`%s`",dbname]; };
-#include <um/UMMessageHistory.def.h>
+#include <ummessage/UMMessageHistory.def.h>
 #undef STRING
 #undef DATE
     
@@ -65,7 +65,7 @@
     i=0;
 #define STRING(o,len,tag,dictname,field,accessor,dbname,options)  if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",[session sqlEscapeString:field]];};
 #define DATE(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { if(i++) { [o appendString:@","]; } [o appendFormat:@"\"%@\"",[session sqlEscapeString:field.stringValue]]; };
-#include <um/UMMessageHistory.def.h>
+#include <ummessage/UMMessageHistory.def.h>
 #undef STRING
 #undef DATE
     
@@ -84,7 +84,7 @@
     
 #define STRING(o,len,tag,dictname,field,accessor,dbname,options)    if(field) { dict[@(dictname)] = field; }
 #define DATE(o,len,tag,dictname,field,accessor,dbname,options)      if(field) { dict[@(dictname)] = field; }
-#include <um/UMMessageHistory.def.h>
+#include <ummessage/UMMessageHistory.def.h>
 #undef STRING
 #undef DATE
     if(_entries.count > 0)
@@ -115,7 +115,7 @@ if(field)                                                                       
     u.asn1_tag.tagClass = UMASN1Class_ContextSpecific;                                  \
     [_asn1_list addObject:u];                                                           \
 }
-#include <um/UMMessageHistory.def.h>
+#include <ummessage/UMMessageHistory.def.h>
 #undef STRING
 #undef DATE
     if(_entries.count > 0)
@@ -154,7 +154,7 @@ case tag:                                                                       
     field = s.stringValue.dateValue;                                                           \
 }\
 break;
-#include <um/UMMessageHistory.def.h>
+#include <ummessage/UMMessageHistory.def.h>
 #undef STRING
 #undef DATE
                 case UMMESSAGE_HISTORY_CODETAG_ENTRIES:

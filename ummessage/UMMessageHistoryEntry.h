@@ -8,7 +8,7 @@
 #import <ulib/ulib.h>
 #import <ulibdb/ulibdb.h>
 #import <ulibasn1/ulibasn1.h>
-#import <um/UMMessageHistoryEntryFields.h>
+#import <ummessage/UMMessageHistoryEntryFields.h>
 
 @interface UMMessageHistoryEntry : UMASN1Sequence
 {
@@ -16,7 +16,7 @@
 #define STRING(o,len,tag,dictname,field,accessor,dbname,options)  NSString *field;
 #define DATE(o,len,tag,dictname,field,accessor,dbname,options)    NSDate *field;
 #define REAL(o,len,tag,dictname,field,accessor,dbname,options)    double field;
-#include <um/UMMessageHistoryEntry.def.h>
+#include <ummessage/UMMessageHistoryEntry.def.h>
 #undef STRING
 #undef DATE
 #undef REAL
@@ -27,7 +27,7 @@
 #define STRING(o,len,tag,dictname,field,accessor,dbname,options)  @property(readwrite,atomic,strong) NSString *accessor;
 #define DATE(o,len,tag,dictname,field,accessor,dbname,options)    @property(readwrite,atomic,strong) NSDate *accessor;
 #define REAL(o,len,tag,dictname,field,accessor,dbname,options)    @property(readwrite,atomic,assign) double accessor;
-#include <um/UMMessageHistoryEntry.def.h>
+#include <ummessage/UMMessageHistoryEntry.def.h>
 #undef STRING
 #undef DATE
 #undef REAL

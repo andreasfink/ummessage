@@ -5,27 +5,27 @@
 //  Created by Andreas Fink on 09.03.2025.
 //
 
-#import <um/UMMessageSession.h>
-#import <um/UMMessageServer.h>
-#import <um/UMMessageHandler.h>
-#import <um/UMMessageServerCommandTypes.h>
-#import <um/UMMessageServerCommand.h>
-#import <um/UMMessageServerCommandError.h>
-#import <um/UMMessageServerCommandGenericError.h>
-#import <um/UMMessageServerCommandHeartbeatRequest.h>
-#import <um/UMMessageServerCommandHeartbeatResponse.h>
-#import <um/UMMessageServerCommandLoginRequest.h>
-#import <um/UMMessageServerCommandLoginResponse.h>
-#import <um/UMMessageServerCommandInsertMessageRequest.h>
-#import <um/UMMessageServerCommandInsertMessageResponse.h>
-#import <um/UMMessageServerCommandUpdateMessageRequest.h>
-#import <um/UMMessageServerCommandUpdateMessageResponse.h>
-#import <um/UMMessageServerCommandGetMessageRequest.h>
-#import <um/UMMessageServerCommandGetMessageResponse.h>
-#import <um/UMMessageServerCommandDeleteMessageRequest.h>
-#import <um/UMMessageServerCommandDeleteMessageResponse.h>
-#import <um/UMMessageSessionCompletionObject.h>
-#import <um/UMMessage.h>
+#import <ummessage/UMMessageSession.h>
+#import <ummessage/UMMessageServer.h>
+#import <ummessage/UMMessageHandler.h>
+#import <ummessage/UMMessageServerCommandTypes.h>
+#import <ummessage/UMMessageServerCommand.h>
+#import <ummessage/UMMessageServerCommandError.h>
+#import <ummessage/UMMessageServerCommandGenericError.h>
+#import <ummessage/UMMessageServerCommandHeartbeatRequest.h>
+#import <ummessage/UMMessageServerCommandHeartbeatResponse.h>
+#import <ummessage/UMMessageServerCommandLoginRequest.h>
+#import <ummessage/UMMessageServerCommandLoginResponse.h>
+#import <ummessage/UMMessageServerCommandInsertMessageRequest.h>
+#import <ummessage/UMMessageServerCommandInsertMessageResponse.h>
+#import <ummessage/UMMessageServerCommandUpdateMessageRequest.h>
+#import <ummessage/UMMessageServerCommandUpdateMessageResponse.h>
+#import <ummessage/UMMessageServerCommandGetMessageRequest.h>
+#import <ummessage/UMMessageServerCommandGetMessageResponse.h>
+#import <ummessage/UMMessageServerCommandDeleteMessageRequest.h>
+#import <ummessage/UMMessageServerCommandDeleteMessageResponse.h>
+#import <ummessage/UMMessageSessionCompletionObject.h>
+#import <ummessage/UMMessage.h>
 
 @implementation UMMessageSession
 - (UMMessageSession *)init

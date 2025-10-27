@@ -7,8 +7,8 @@
 
 #import <ulib/ulib.h>
 
-#import <um/UMessageCommandHandlerProtocol.h>
-#import <um/UMMessageSessionDelegates.h>
+#import <ummessage/UMessageCommandHandlerProtocol.h>
+#import <ummessage/UMMessageSessionDelegates.h>
 
 @class UMMessageServer;
 @class UMMessageClient;

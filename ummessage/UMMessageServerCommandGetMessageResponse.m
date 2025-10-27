@@ -5,9 +5,9 @@
 //  Created by Andreas Fink on 09.03.2025.
 //
 
-#import <um/UMMessageServerCommandGetMessageResponse.h>
-#import <um/UMMessage.h>
-#import <um/UMMessageServerCommandTypes.h>
+#import <ummessage/UMMessageServerCommandGetMessageResponse.h>
+#import <ummessage/UMMessage.h>
+#import <ummessage/UMMessageServerCommandTypes.h>
 
 @implementation UMMessageServerCommandGetMessageResponse
 

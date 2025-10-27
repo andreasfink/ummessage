@@ -5,8 +5,8 @@
 //  Created by Andreas Fink on 09.03.2025.
 //
 
-#import <um/UMMessageServerCommand.h>
-#import <um/UMMessageServerCommandError.h>
+#import <ummessage/UMMessageServerCommand.h>
+#import <ummessage/UMMessageServerCommandError.h>
 
 @interface UMMessageServerCommandInsertMessageResponse : UMMessageServerCommand
 {

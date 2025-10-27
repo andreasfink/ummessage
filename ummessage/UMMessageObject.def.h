@@ -1,5 +1,5 @@
 //
-//  UMMessage.def.h
+//  UMMessageObject.def.h
 //  ummessage
 //
 //  Created by Andreas Fink on 03.03.2025.

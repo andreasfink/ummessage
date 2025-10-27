@@ -6,7 +6,7 @@
 //
 
 #import "Database.h"
-#import <um/UMMessage.h>
+#import <ummessage/UMMessage.h>
 #import "DatabaseCacheEntry.h"
 #import "UMMessage+db.h"
 

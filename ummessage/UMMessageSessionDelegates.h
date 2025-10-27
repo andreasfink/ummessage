@@ -6,7 +6,7 @@
 //
 
 
-#import <um/UMMessageServerCommandError.h>
+#import <ummessage/UMMessageServerCommandError.h>
 @class UMMessage;
 
 @protocol UMMessageSessionAuthenticationDelegate

@@ -5,7 +5,7 @@
 //  Created by Andreas Fink on 21.03.2025.
 //
 
-#import <um/um.h>
+#import <ummessage/ummessage.h>
 #import <ulibdb/ulibdb.h>
 
 @implementation UMMessage(db)
@@ -38,8 +38,8 @@
 #define DATA(o,len,tag,dictname,field,accessor,dbname,options)       if(str) { o.accessor = [[UMDirtyData alloc]initWithString:str];  }
 #define TEXT(o,len,tag,dictname,field,accessor,dbname,options)       if(str) { o.accessor = [[UMDirtyString alloc]initWithString:str]; }
 #define REAL(o,len,tag,dictname,field,accessor,dbname,options)     if(str) { o.accessor = [[UMDirtyDouble alloc]initWithString:str]; }
-#include <um/UMMessage.def.h>
-#include <um/UMMessage_macroClear.h>
+#include <ummessage/UMMessageObject.def.h>
+#include <ummessage/UMMessage_macroClear.h>
             continue;
         }
         if([field1 isKindOfClass:[NSData class]])
@@ -51,8 +51,8 @@
 #define DATA(o,len,tag,dictname,field,accessor,dbname,options)       if(data) { o.accessor = [[UMDirtyData alloc]initWithData:data];  }
 #define TEXT(o,len,tag,dictname,field,accessor,dbname,options)       { ; }
 #define REAL(o,len,tag,dictname,field,accessor,dbname,options)     { ; }
-#include <um/UMMessage.def.h>
-#include <um/UMMessage_macroClear.h>
+#include <ummessage/UMMessageObject.def.h>
+#include <ummessage/UMMessage_macroClear.h>
             continue;
         }
     }
