@@ -17,21 +17,21 @@
 		A601EDB62DA3EAF20013F440 /* UMMessageHistoryEntryFields.h in Headers */ = {isa = PBXBuildFile; fileRef = A601EDB52DA3EAF20013F440 /* UMMessageHistoryEntryFields.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A601EDB82DA3EAFD0013F440 /* UMMessageHistoryEntry.asn1 in Resources */ = {isa = PBXBuildFile; fileRef = A601EDB72DA3EAFD0013F440 /* UMMessageHistoryEntry.asn1 */; };
 		A601EDBA2DA3ECE10013F440 /* UMMessageHistoryEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = A601EDB92DA3ECE10013F440 /* UMMessageHistoryEntry.m */; };
-		A60B32B12D76051E003A8DFA /* um.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60B32A62D76051E003A8DFA /* um.framework */; };
+		A60B32B12D76051E003A8DFA /* ummessage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60B32A62D76051E003A8DFA /* ummessage.framework */; };
 		A60B32EB2D7609B0003A8DFA /* ulib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60B32EA2D7609A3003A8DFA /* ulib.framework */; };
 		A60B32EC2D7609B0003A8DFA /* ulib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60B32EA2D7609A3003A8DFA /* ulib.framework */; };
 		A60B32EE2D7609CD003A8DFA /* ulibasn1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60B32ED2D7609CD003A8DFA /* ulibasn1.framework */; };
 		A60B32EF2D7609CD003A8DFA /* ulibasn1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60B32ED2D7609CD003A8DFA /* ulibasn1.framework */; };
-		A6111D6F2D8C00710000D5BA /* UMMessage.asn1 in Resources */ = {isa = PBXBuildFile; fileRef = A6111D6E2D8C006C0000D5BA /* UMMessage.asn1 */; };
+		A6111D6F2D8C00710000D5BA /* UMMessageObject.asn1 in Resources */ = {isa = PBXBuildFile; fileRef = A6111D6E2D8C006C0000D5BA /* UMMessageObject.asn1 */; };
 		A6111DAC2D8D5F540000D5BA /* ulibdb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6111DAB2D8D5F540000D5BA /* ulibdb.framework */; };
-		A6111DB42D8D65350000D5BA /* um.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60B32A62D76051E003A8DFA /* um.framework */; };
+		A6111DB42D8D65350000D5BA /* ummessage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60B32A62D76051E003A8DFA /* ummessage.framework */; };
 		A6111DBD2D8D74960000D5BA /* UMMessageSessionDelegates.h in Headers */ = {isa = PBXBuildFile; fileRef = A6111DBB2D8D74960000D5BA /* UMMessageSessionDelegates.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A647F9EF2D7EF9620095D8D8 /* UMMessageClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A647F9EE2D7EF9620095D8D8 /* UMMessageClient.m */; };
 		A647F9F02D7EF9620095D8D8 /* UMMessageClient.h in Headers */ = {isa = PBXBuildFile; fileRef = A647F9ED2D7EF9620095D8D8 /* UMMessageClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A66F7D9F2D7814B700A83193 /* UMMessage_macroDbInsertNames.h in Headers */ = {isa = PBXBuildFile; fileRef = A66F7D9D2D7814B700A83193 /* UMMessage_macroDbInsertNames.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A66F7DA32D7816AF00A83193 /* UMMessage_macroHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A66F7DA22D7816AF00A83193 /* UMMessage_macroHelper.m */; };
 		A66F7DA42D7816AF00A83193 /* UMMessage_macroHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = A66F7DA12D7816AF00A83193 /* UMMessage_macroHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A6705B862D7F4B1000F36A69 /* um.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60B32A62D76051E003A8DFA /* um.framework */; };
+		A6705B862D7F4B1000F36A69 /* ummessage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60B32A62D76051E003A8DFA /* ummessage.framework */; };
 		A6705B892D7F556A00F36A69 /* UMMessageSessionCompletionObject.h in Headers */ = {isa = PBXBuildFile; fileRef = A6705B872D7F556A00F36A69 /* UMMessageSessionCompletionObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6705B8A2D7F556A00F36A69 /* UMMessageSessionCompletionObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A6705B882D7F556A00F36A69 /* UMMessageSessionCompletionObject.m */; };
 		A674A8E32D7DAD6C0016B625 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A674A8D52D7DAD6C0016B625 /* main.m */; };
@@ -39,7 +39,7 @@
 		A674A8E92D7DAD6C0016B625 /* UMMessageServerCommandFlags.h in Headers */ = {isa = PBXBuildFile; fileRef = A674A8DE2D7DAD6C0016B625 /* UMMessageServerCommandFlags.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A674A8EA2D7DAD6C0016B625 /* UMMessageServerCommandTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = A674A8E12D7DAD6C0016B625 /* UMMessageServerCommandTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A68863B32D761E980079C9A5 /* ummessage.docc in Sources */ = {isa = PBXBuildFile; fileRef = A68863A92D761E980079C9A5 /* ummessage.docc */; };
-		A68863B42D761E980079C9A5 /* UMMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A68863AB2D761E980079C9A5 /* UMMessage.m */; };
+		A68863B42D761E980079C9A5 /* UMMessageObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A68863AB2D761E980079C9A5 /* UMMessageObject.m */; };
 		A68863B72D761E980079C9A5 /* UMMessage_macroClear.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863932D761E980079C9A5 /* UMMessage_macroClear.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A68863B82D761E980079C9A5 /* UMMessage_macroCopy.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863942D761E980079C9A5 /* UMMessage_macroCopy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A68863B92D761E980079C9A5 /* UMMessage_macroDbFieldNames.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863952D761E980079C9A5 /* UMMessage_macroDbFieldNames.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -50,10 +50,10 @@
 		A68863BF2D761E980079C9A5 /* UMMessage_macroProcessBeforeEncode.h in Headers */ = {isa = PBXBuildFile; fileRef = A688639B2D761E980079C9A5 /* UMMessage_macroProcessBeforeEncode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A68863C02D761E980079C9A5 /* UMMessage_macroProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = A688639C2D761E980079C9A5 /* UMMessage_macroProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A68863C42D761E980079C9A5 /* UMMessage_macroVariables.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863A02D761E980079C9A5 /* UMMessage_macroVariables.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A68863C92D761E980079C9A5 /* UMMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863AA2D761E980079C9A5 /* UMMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A68863CA2D761E980079C9A5 /* UMMessage.def.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863AC2D761E980079C9A5 /* UMMessage.def.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A68863CB2D761E980079C9A5 /* UMMessageFields.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863AD2D761E980079C9A5 /* UMMessageFields.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A69B2B902D80E2B4006EBCA1 /* um.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60B32A62D76051E003A8DFA /* um.framework */; };
+		A68863C92D761E980079C9A5 /* UMMessageObject.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863AA2D761E980079C9A5 /* UMMessageObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A68863CA2D761E980079C9A5 /* UMMessageObject.def.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863AC2D761E980079C9A5 /* UMMessageObject.def.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A68863CB2D761E980079C9A5 /* UMMessageObjectFields.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863AD2D761E980079C9A5 /* UMMessageObjectFields.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A69B2B902D80E2B4006EBCA1 /* ummessage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60B32A62D76051E003A8DFA /* ummessage.framework */; };
 		A6BFCA242D913BB2002F6796 /* UMMessage_macroInit.h in Headers */ = {isa = PBXBuildFile; fileRef = A6BFCA222D913BB2002F6796 /* UMMessage_macroInit.h */; };
 		A6DA32E92D93F0BF00B7027F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DA32E52D93F0BF00B7027F /* AppDelegate.m */; };
 		A6DA32EA2D93F0BF00B7027F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DA32E62D93F0BF00B7027F /* main.m */; };
@@ -89,8 +89,8 @@
 		A6E569272D7DB6960052E410 /* UMMessageServerCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = A674A8DD2D7DAD6C0016B625 /* UMMessageServerCommand.m */; };
 		A6E569282D7DB6960052E410 /* UMMessageServer.m in Sources */ = {isa = PBXBuildFile; fileRef = A674A8DA2D7DAD6C0016B625 /* UMMessageServer.m */; };
 		A6E569292D7DB6960052E410 /* UMMessageServerCommandHeartbeatResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E569102D7DB5FB0052E410 /* UMMessageServerCommandHeartbeatResponse.m */; };
-		A6E5692A2D7DB7BD0052E410 /* um.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60B32A62D76051E003A8DFA /* um.framework */; };
-		A6E5692B2D7DB7BD0052E410 /* um.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A60B32A62D76051E003A8DFA /* um.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A6E5692A2D7DB7BD0052E410 /* ummessage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60B32A62D76051E003A8DFA /* ummessage.framework */; };
+		A6E5692B2D7DB7BD0052E410 /* ummessage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A60B32A62D76051E003A8DFA /* ummessage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A6E5693D2D7DC2CF0052E410 /* UMMessageServerCommandHeartbeatRequest.asn1 in Resources */ = {isa = PBXBuildFile; fileRef = A6E5693C2D7DC2C40052E410 /* UMMessageServerCommandHeartbeatRequest.asn1 */; };
 		A6E5693F2D7DC4AE0052E410 /* UMMessageServerCommandHeartbeatResponse.asn1 in Resources */ = {isa = PBXBuildFile; fileRef = A6E5693E2D7DC4AE0052E410 /* UMMessageServerCommandHeartbeatResponse.asn1 */; };
 		A6E569422D7DC5C20052E410 /* UMMessageServerCommandLoginRequest.asn1 in Resources */ = {isa = PBXBuildFile; fileRef = A6E569402D7DC5C20052E410 /* UMMessageServerCommandLoginRequest.asn1 */; };
@@ -205,7 +205,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A6E5692B2D7DB7BD0052E410 /* um.framework in Embed Frameworks */,
+				A6E5692B2D7DB7BD0052E410 /* ummessage.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -232,11 +232,11 @@
 		A601EDB52DA3EAF20013F440 /* UMMessageHistoryEntryFields.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessageHistoryEntryFields.h; sourceTree = "<group>"; };
 		A601EDB72DA3EAFD0013F440 /* UMMessageHistoryEntry.asn1 */ = {isa = PBXFileReference; lastKnownFileType = text; path = UMMessageHistoryEntry.asn1; sourceTree = "<group>"; };
 		A601EDB92DA3ECE10013F440 /* UMMessageHistoryEntry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMMessageHistoryEntry.m; sourceTree = "<group>"; };
-		A60B32A62D76051E003A8DFA /* um.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = um.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A60B32A62D76051E003A8DFA /* ummessage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ummessage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A60B32B02D76051E003A8DFA /* umTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = umTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A60B32EA2D7609A3003A8DFA /* ulib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulib.framework; path = "/Library/Application Support/FinkTelecomServices/frameworks/ulib.framework"; sourceTree = "<absolute>"; };
 		A60B32ED2D7609CD003A8DFA /* ulibasn1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulibasn1.framework; path = "/Library/Application Support/FinkTelecomServices/frameworks/ulibasn1.framework"; sourceTree = "<absolute>"; };
-		A6111D6E2D8C006C0000D5BA /* UMMessage.asn1 */ = {isa = PBXFileReference; lastKnownFileType = text; path = UMMessage.asn1; sourceTree = "<group>"; };
+		A6111D6E2D8C006C0000D5BA /* UMMessageObject.asn1 */ = {isa = PBXFileReference; lastKnownFileType = text; path = UMMessageObject.asn1; sourceTree = "<group>"; };
 		A6111D742D8C3EA00000D5BA /* umdbserver */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = umdbserver; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6111DAB2D8D5F540000D5BA /* ulibdb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulibdb.framework; path = "/Library/Application Support/FinkTelecomServices/frameworks/ulibdb.framework"; sourceTree = "<absolute>"; };
 		A6111DBB2D8D74960000D5BA /* UMMessageSessionDelegates.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessageSessionDelegates.h; sourceTree = "<group>"; };
@@ -273,10 +273,10 @@
 		A688639C2D761E980079C9A5 /* UMMessage_macroProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessage_macroProperties.h; sourceTree = "<group>"; };
 		A68863A02D761E980079C9A5 /* UMMessage_macroVariables.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessage_macroVariables.h; sourceTree = "<group>"; };
 		A68863A92D761E980079C9A5 /* ummessage.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = ummessage.docc; sourceTree = "<group>"; };
-		A68863AA2D761E980079C9A5 /* UMMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessage.h; sourceTree = "<group>"; };
-		A68863AB2D761E980079C9A5 /* UMMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMMessage.m; sourceTree = "<group>"; };
-		A68863AC2D761E980079C9A5 /* UMMessage.def.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessage.def.h; sourceTree = "<group>"; };
-		A68863AD2D761E980079C9A5 /* UMMessageFields.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessageFields.h; sourceTree = "<group>"; };
+		A68863AA2D761E980079C9A5 /* UMMessageObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessageObject.h; sourceTree = "<group>"; };
+		A68863AB2D761E980079C9A5 /* UMMessageObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMMessageObject.m; sourceTree = "<group>"; };
+		A68863AC2D761E980079C9A5 /* UMMessageObject.def.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessageObject.def.h; sourceTree = "<group>"; };
+		A68863AD2D761E980079C9A5 /* UMMessageObjectFields.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessageObjectFields.h; sourceTree = "<group>"; };
 		A69B2B7A2D80DE2E006EBCA1 /* test-tool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "test-tool"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6BFCA222D913BB2002F6796 /* UMMessage_macroInit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMMessage_macroInit.h; sourceTree = "<group>"; };
 		A6DA32E42D93F0BF00B7027F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -403,7 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A60B32EC2D7609B0003A8DFA /* ulib.framework in Frameworks */,
-				A60B32B12D76051E003A8DFA /* um.framework in Frameworks */,
+				A60B32B12D76051E003A8DFA /* ummessage.framework in Frameworks */,
 				A60B32EF2D7609CD003A8DFA /* ulibasn1.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,7 +412,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6111DB42D8D65350000D5BA /* um.framework in Frameworks */,
+				A6111DB42D8D65350000D5BA /* ummessage.framework in Frameworks */,
 				A6111DAC2D8D5F540000D5BA /* ulibdb.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -421,7 +421,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6E5692A2D7DB7BD0052E410 /* um.framework in Frameworks */,
+				A6E5692A2D7DB7BD0052E410 /* ummessage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,7 +429,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A69B2B902D80E2B4006EBCA1 /* um.framework in Frameworks */,
+				A69B2B902D80E2B4006EBCA1 /* ummessage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,7 +437,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6705B862D7F4B1000F36A69 /* um.framework in Frameworks */,
+				A6705B862D7F4B1000F36A69 /* ummessage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,7 +447,7 @@
 		A60B329C2D76051E003A8DFA = {
 			isa = PBXGroup;
 			children = (
-				A68863AE2D761E980079C9A5 /* um */,
+				A68863AE2D761E980079C9A5 /* ummessage */,
 				A674A8E22D7DAD6C0016B625 /* umserver */,
 				A6F310652D8FFEB9003D0769 /* umdbserver */,
 				A6DA32E82D93F0BF00B7027F /* umcli */,
@@ -461,7 +461,7 @@
 		A60B32A72D76051E003A8DFA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A60B32A62D76051E003A8DFA /* um.framework */,
+				A60B32A62D76051E003A8DFA /* ummessage.framework */,
 				A60B32B02D76051E003A8DFA /* umTests.xctest */,
 				A674A8AE2D7CB73A0016B625 /* umserver */,
 				A6E569342D7DC1B70052E410 /* umcli */,
@@ -490,7 +490,7 @@
 			path = umserver;
 			sourceTree = "<group>";
 		};
-		A68863AE2D761E980079C9A5 /* um */ = {
+		A68863AE2D761E980079C9A5 /* ummessage */ = {
 			isa = PBXGroup;
 			children = (
 				A6F3B66F2D7F34C0004206CC /* um.h */,
@@ -572,11 +572,11 @@
 				A68863A92D761E980079C9A5 /* ummessage.docc */,
 				A6DA33022D93FAE000B7027F /* UMMessageStatusCode.h */,
 				A6DA33042D93FB1A00B7027F /* UMMessageStatusCode.m */,
-				A6111D6E2D8C006C0000D5BA /* UMMessage.asn1 */,
-				A68863AA2D761E980079C9A5 /* UMMessage.h */,
-				A68863AB2D761E980079C9A5 /* UMMessage.m */,
-				A68863AC2D761E980079C9A5 /* UMMessage.def.h */,
-				A68863AD2D761E980079C9A5 /* UMMessageFields.h */,
+				A6111D6E2D8C006C0000D5BA /* UMMessageObject.asn1 */,
+				A68863AA2D761E980079C9A5 /* UMMessageObject.h */,
+				A68863AB2D761E980079C9A5 /* UMMessageObject.m */,
+				A68863AC2D761E980079C9A5 /* UMMessageObject.def.h */,
+				A68863AD2D761E980079C9A5 /* UMMessageObjectFields.h */,
 				A601EDAB2DA3E8E70013F440 /* UMMessageHistory.asn1 */,
 				A601EDAF2DA3E9C30013F440 /* UMMessageHistoryFields.h */,
 				A601EDAD2DA3E8EE0013F440 /* UMMessageHistory.def.h */,
@@ -598,7 +598,7 @@
 				A6DA32FE2D93FA6600B7027F /* UMMessageReport.h */,
 				A6DA32FF2D93FA6600B7027F /* UMMessageReport.m */,
 			);
-			path = um;
+			path = ummessage;
 			sourceTree = "<group>";
 		};
 		A6DA32E82D93F0BF00B7027F /* umcli */ = {
@@ -730,14 +730,14 @@
 				A68863C42D761E980079C9A5 /* UMMessage_macroVariables.h in Headers */,
 				A6E569652D7DE6480052E410 /* UMMessageSession.h in Headers */,
 				A6DA32F62D93F20300B7027F /* UMMessageUdhConcatenated.h in Headers */,
-				A68863C92D761E980079C9A5 /* UMMessage.h in Headers */,
+				A68863C92D761E980079C9A5 /* UMMessageObject.h in Headers */,
 				A6DA33192D95382D00B7027F /* UMMessageReportMask.h in Headers */,
 				A6E569532D7DCBFA0052E410 /* UMMessageServerCommandGetMessageResponse.h in Headers */,
-				A68863CA2D761E980079C9A5 /* UMMessage.def.h in Headers */,
+				A68863CA2D761E980079C9A5 /* UMMessageObject.def.h in Headers */,
 				A6DA33012D93FA6600B7027F /* UMMessageReport.h in Headers */,
 				A6DA33112D943C8500B7027F /* UMMessageUser.h in Headers */,
 				A6DA33092D93FF1D00B7027F /* UMMessageReport.def.h in Headers */,
-				A68863CB2D761E980079C9A5 /* UMMessageFields.h in Headers */,
+				A68863CB2D761E980079C9A5 /* UMMessageObjectFields.h in Headers */,
 				A6E569572D7DCC010052E410 /* UMMessageServerCommandGetMessageRequest.h in Headers */,
 				A66F7DA42D7816AF00A83193 /* UMMessage_macroHelper.h in Headers */,
 			);
@@ -746,9 +746,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		A60B32A52D76051E003A8DFA /* um */ = {
+		A60B32A52D76051E003A8DFA /* ummessage */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A60B32B92D76051E003A8DFA /* Build configuration list for PBXNativeTarget "um" */;
+			buildConfigurationList = A60B32B92D76051E003A8DFA /* Build configuration list for PBXNativeTarget "ummessage" */;
 			buildPhases = (
 				A60B32A12D76051E003A8DFA /* Headers */,
 				A60B32A22D76051E003A8DFA /* Sources */,
@@ -760,11 +760,11 @@
 			);
 			dependencies = (
 			);
-			name = um;
+			name = ummessage;
 			packageProductDependencies = (
 			);
 			productName = ummessage;
-			productReference = A60B32A62D76051E003A8DFA /* um.framework */;
+			productReference = A60B32A62D76051E003A8DFA /* ummessage.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		A60B32AF2D76051E003A8DFA /* umTests */ = {
@@ -911,7 +911,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A60B32A52D76051E003A8DFA /* um */,
+				A60B32A52D76051E003A8DFA /* ummessage */,
 				A60B32AF2D76051E003A8DFA /* umTests */,
 				A674A8AD2D7CB73A0016B625 /* umserver */,
 				A6E569332D7DC1B70052E410 /* umcli */,
@@ -933,7 +933,7 @@
 				A601EDB82DA3EAFD0013F440 /* UMMessageHistoryEntry.asn1 in Resources */,
 				A6E5695A2D7DCC370052E410 /* UMMessageServerCommandGetMessageRequest.asn1 in Resources */,
 				A6E5695B2D7DCC370052E410 /* UMMessageServerCommandGetMessageResponse.asn1 in Resources */,
-				A6111D6F2D8C00710000D5BA /* UMMessage.asn1 in Resources */,
+				A6111D6F2D8C00710000D5BA /* UMMessageObject.asn1 in Resources */,
 				A6E569772D7E3ECE0052E410 /* UMMessageServerCommandUpdateMessageRequest.asn1 in Resources */,
 				A6E569422D7DC5C20052E410 /* UMMessageServerCommandLoginRequest.asn1 in Resources */,
 				A601EDAC2DA3E8E70013F440 /* UMMessageHistory.asn1 in Resources */,
@@ -964,7 +964,7 @@
 				A6E569642D7DE6480052E410 /* UMMessageSession.m in Sources */,
 				A6E5694E2D7DCB220052E410 /* UMMessageServerCommandInsertMessageResponse.m in Sources */,
 				A66F7DA32D7816AF00A83193 /* UMMessage_macroHelper.m in Sources */,
-				A68863B42D761E980079C9A5 /* UMMessage.m in Sources */,
+				A68863B42D761E980079C9A5 /* UMMessageObject.m in Sources */,
 				A6E569222D7DB6960052E410 /* UMMessageServerCommandGenericError.m in Sources */,
 				A6DA32FD2D93F27200B7027F /* UMMessageUdh.m in Sources */,
 				A6E569612D7DD6650052E410 /* UMMessageServerCommandTypes.m in Sources */,
@@ -1048,17 +1048,17 @@
 /* Begin PBXTargetDependency section */
 		A60B32B32D76051E003A8DFA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A60B32A52D76051E003A8DFA /* um */;
+			target = A60B32A52D76051E003A8DFA /* ummessage */;
 			targetProxy = A60B32B22D76051E003A8DFA /* PBXContainerItemProxy */;
 		};
 		A6111DB72D8D65350000D5BA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A60B32A52D76051E003A8DFA /* um */;
+			target = A60B32A52D76051E003A8DFA /* ummessage */;
 			targetProxy = A6111DB62D8D65350000D5BA /* PBXContainerItemProxy */;
 		};
 		A6E5692D2D7DB7BD0052E410 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A60B32A52D76051E003A8DFA /* um */;
+			target = A60B32A52D76051E003A8DFA /* ummessage */;
 			targetProxy = A6E5692C2D7DB7BD0052E410 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1461,7 +1461,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A60B32B92D76051E003A8DFA /* Build configuration list for PBXNativeTarget "um" */ = {
+		A60B32B92D76051E003A8DFA /* Build configuration list for PBXNativeTarget "ummessage" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A60B32BA2D76051E003A8DFA /* Debug */,

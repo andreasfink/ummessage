@@ -1,0 +1,41 @@
+//
+//  UMMessageServer.h
+//  ummessage-server
+//
+//  Created by Andreas Fink on 08.03.2025.
+//
+
+#import <ulib/ulib.h>
+
+#import <ummessage/UMessageCommandHandlerProtocol.h>
+#import <ummessage/UMMessageSessionDelegates.h>
+
+@interface UMMessageServer : UMBackgrounder
+{
+    NSInteger           _port;
+    UMSocket            *_listener;
+    UMSynchronizedArray *_incomingConnections; /* array of UMMessageHandler objects */
+    NSString            *_rootDirectory;
+    
+    id<UMMessageSessionAuthenticationDelegate> _authenticationDelegate;
+    id<UMMessageSessionDatabaseDelegate>       _insertOrUpdateMessageDelegate;
+    id<UMMessageSessionDatabaseDelegate>       _insertMessageDelegate;
+    id<UMMessageSessionDatabaseDelegate>       _updateMessageDelegate;
+    id<UMMessageSessionDatabaseDelegate>       _getMessageDelegate;
+    id<UMMessageSessionDatabaseDelegate>       _deleteMessageDelegate;
+}
+
+@property(readwrite,assign,atomic)  NSInteger           port;
+@property(readwrite,strong,atomic)  UMSocket            *listener;
+@property(readwrite,strong,atomic)  UMSynchronizedArray *incomingConnections;
+@property(readwrite,strong,atomic)  NSString            *rootDirectory;
+@property(readwrite,strong,atomic)  id<UMMessageSessionAuthenticationDelegate> authenticationDelegate;
+@property(readwrite,strong,atomic)  id<UMMessageSessionDatabaseDelegate>       insertOrUpdateMessageDelegate;
+@property(readwrite,strong,atomic)  id<UMMessageSessionDatabaseDelegate>       insertMessageDelegate;
+@property(readwrite,strong,atomic)  id<UMMessageSessionDatabaseDelegate>       updateMessageDelegate;
+@property(readwrite,strong,atomic)  id<UMMessageSessionDatabaseDelegate>       getMessageDelegate;
+@property(readwrite,strong,atomic)  id<UMMessageSessionDatabaseDelegate>       deleteMessageDelegate;
+
+- (UMMessageServer *)initWithPort:(NSInteger)port;
+@end
+

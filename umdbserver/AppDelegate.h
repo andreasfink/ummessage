@@ -7,7 +7,7 @@
 
 #import <ulibasn1/ulibasn1.h>
 #import <ulibdb/ulibdb.h>
-#import <um/um.h>
+#import <ummessage/ummessage.h>
 #import <ulibdb/ulibdb.h>
 
 @class ConfigStorage;

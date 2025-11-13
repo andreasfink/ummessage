@@ -166,14 +166,14 @@ static void signalHandler(int signum)
 
         if(params[@"asn1"])
         {
-            NSString *s = [UMMessage asn1Def];
+            NSString *s = [UMMessageObject asn1Def];
             fprintf(stdout,"%s\n",s.UTF8String);
             exit(0);
         }
         
         if(params[@"sql"])
         {
-            NSString *s = [UMMessage sqlTableDefForTableName:@"msg"];
+            NSString *s = [UMMessageObject sqlTableDefForTableName:@"msg"];
             fprintf(stdout,"%s\n",s.UTF8String);
             exit(0);
         }

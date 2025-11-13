@@ -8,10 +8,10 @@
 #import <ulib/ulib.h>
 #import <ulibdb/ulibdb.h>
 #import <ulibsmpp/ulibsmpp.h>
-#import <um/UMMessageSessionDelegates.h>
+#import <ummessage/UMMessageSessionDelegates.h>
 
 @class ConfigUser;
-@class UMMessage;
+@class UMMessageObject;
 
 @interface Database : UMObject<UMMessageSessionDatabaseDelegate>
 {
@@ -35,11 +35,11 @@
 
 - (BOOL)autocreateTables; /* returns YES on success */
 
-- (UMMessage *)getMessage:(NSString *)messageId instance:(NSString *)instance error:(UMMessageServerCommandError *)err;
+- (UMMessageObject *)getMessage:(NSString *)messageId instance:(NSString *)instance error:(UMMessageServerCommandError *)err;
 
-- (UMMessageServerCommandError)insertOrUpdateMessage:(UMMessage *)msg;
-- (UMMessageServerCommandError)insertMessage:(UMMessage *)msg;
-- (UMMessageServerCommandError)updateMessage:(UMMessage *)msg;
+- (UMMessageServerCommandError)insertOrUpdateMessage:(UMMessageObject *)msg;
+- (UMMessageServerCommandError)insertMessage:(UMMessageObject *)msg;
+- (UMMessageServerCommandError)updateMessage:(UMMessageObject *)msg;
 - (UMMessageServerCommandError)deleteMessage:(NSString *)messageId;
 
 

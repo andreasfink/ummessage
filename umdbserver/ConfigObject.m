@@ -167,7 +167,7 @@ else
 #define IGNORE_NAME_COLUM 1
 #include "Config_macroSetConfigFromDict.h"
 #include "ConfigObject.def.h"
-#include <um/UMMessage_macroClear.h>
+#include <ummessage/UMMessage_macroClear.h>
 
     id comments = o[@"comment"];
     if([comments isKindOfClass:[NSArray class]])
