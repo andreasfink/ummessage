@@ -5,7 +5,7 @@
 //  Created by Andreas Fink on 10.03.2025.
 //
 
-#include <ummessage/UMMessageObject.h>
+#import <ummessage/UMMessageObject.h>
 #import <ummessage/UMMessageFields.h>
 #import <ummessage/UMMessageSession.h>
 #import <ummessage/UMMessageHandler.h>
