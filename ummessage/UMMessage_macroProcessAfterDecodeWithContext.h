@@ -5,7 +5,6 @@
 //  Created by Andreas Fink on 05.03.2025.
 //
 
-
 #define STRING(o,len,tag,dictname,field,accessor,dbname,options)                                \
 case tag:                                                                                       \
 {                                                                                               \

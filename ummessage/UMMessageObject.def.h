@@ -5,7 +5,7 @@
 //  Created by Andreas Fink on 03.03.2025.
 //
 
-// we assume you have include UMMessageFields.h before */
+// we assume you have include UMMessageOjbectFields.h before */
 // macros
 //type (object,length,tag,dictionary-key,variable-name,accessor-name,database-name,options)
 

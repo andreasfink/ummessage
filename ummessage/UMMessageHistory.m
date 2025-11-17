@@ -29,13 +29,13 @@
 + (NSString *)sqlTableDefForTableName:(NSString *)tableName
 {
     UMSynchronizedSortedDictionary *o = [[UMSynchronizedSortedDictionary alloc]init];
-    
-#define STRING(o,len,tag,dictname,var,accessor,dbname,options)  addFieldDefString(o,len,dbname,options);
-#define DATE(o,len,tag,dictname,var,accessor,dbname,options)    addFieldDefDate(o,len,dbname,options);
+
+#define STRING(o,len,tag,dictname,var,accessor,dbname,options)  ummessage_addFieldDefString(o,len,dbname,options);
+#define DATE(o,len,tag,dictname,var,accessor,dbname,options)    ummessage_addFieldDefDate(o,len,dbname,options);
 #include <ummessage/UMMessageHistory.def.h>
 #undef STRING
 #undef DATE
-    return fieldDefsToSql(o,tableName);
+    return ummessage_fieldDefsToSql(o,tableName);
 }
 
 + (NSArray<NSString *>*) dbFieldNames

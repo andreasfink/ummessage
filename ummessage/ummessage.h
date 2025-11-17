@@ -6,7 +6,7 @@
 //
 
 #import <ummessage/UMMessageObject.h>
-#import <ummessage/UMMessageFields.h>
+#import <ummessage/UMMessageObjectFields.h>
 #import <ummessage/UMMessageSession.h>
 #import <ummessage/UMMessageHandler.h>
 #import <ummessage/UMMessageServer.h>

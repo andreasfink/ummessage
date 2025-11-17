@@ -16,7 +16,9 @@
 /// - Returns: a dictionary containing all the options by key 'name', 'type','len', 'indexed', 'unique','autoincrement'
 /// - Throws: doesnt throw
 
-UMSynchronizedSortedDictionary * dbFieldWithOptions( NSString *type,int len, const char *dbname,const char *options)
+static UMSynchronizedSortedDictionary * dbFieldWithOptions( NSString *type,int len, const char *dbname,const char *options);
+
+static UMSynchronizedSortedDictionary * dbFieldWithOptions( NSString *type,int len, const char *dbname,const char *options)
 {
     UMSynchronizedSortedDictionary *e = [[UMSynchronizedSortedDictionary alloc]init];
     e[@"name"]  = @(dbname);
@@ -42,7 +44,7 @@ UMSynchronizedSortedDictionary * dbFieldWithOptions( NSString *type,int len, con
     return e;
 }
 
-void addFieldDefBoolean(UMSynchronizedSortedDictionary *o,int len,const char *dbname,const char *options)
+void ummessage_addFieldDefBoolean(UMSynchronizedSortedDictionary *o,int len,const char *dbname,const char *options)
 {
     NSString *type;
     type = @"smallint";
@@ -50,14 +52,14 @@ void addFieldDefBoolean(UMSynchronizedSortedDictionary *o,int len,const char *db
     o[@(dbname)] = e;
 }
 
-void addFieldDefString(UMSynchronizedSortedDictionary *o,int len, const char *dbname,const char *options)
+void ummessage_addFieldDefString(UMSynchronizedSortedDictionary *o,int len, const char *dbname,const char *options)
 {
     NSString *type  = [NSString stringWithFormat:@"varchar(%d)",len];
     UMSynchronizedSortedDictionary *e = dbFieldWithOptions(type,len,dbname,options);
     o[@(dbname)] = e;
 }
 
-void addFieldDefInteger(UMSynchronizedSortedDictionary *o,int len, const char *dbname,const char *options)
+void ummessage_addFieldDefInteger(UMSynchronizedSortedDictionary *o,int len, const char *dbname,const char *options)
 {
     NSString *type;
     if((len==1) || (len==2))
@@ -72,7 +74,7 @@ void addFieldDefInteger(UMSynchronizedSortedDictionary *o,int len, const char *d
     o[@(dbname)] = e;
 }
 
-void addFieldDefDate(UMSynchronizedSortedDictionary *o,int len, const char *dbname,const char *options)
+void ummessage_addFieldDefDate(UMSynchronizedSortedDictionary *o,int len, const char *dbname,const char *options)
 {
     if(len < 14)
     {
@@ -83,39 +85,39 @@ void addFieldDefDate(UMSynchronizedSortedDictionary *o,int len, const char *dbna
     o[@(dbname)] = e;
 }
 
-void addFieldDefData(UMSynchronizedSortedDictionary *o,int len, const char *dbname,const char *options)
+void ummessage_addFieldDefData(UMSynchronizedSortedDictionary *o,int len, const char *dbname,const char *options)
 {
     UMSynchronizedSortedDictionary *e = dbFieldWithOptions(@"text",len,dbname,options);
     o[@(dbname)] = e;
 }
 
-void addFieldDefBinary(UMSynchronizedSortedDictionary *o,int len, const char *dbname,const char *options)
+void ummessage_addFieldDefBinary(UMSynchronizedSortedDictionary *o,int len, const char *dbname,const char *options)
 {
     UMSynchronizedSortedDictionary *e = dbFieldWithOptions(@"blob",len,dbname,options);
     o[@(dbname)] = e;
 }
 
 
-void addFieldDefText(UMSynchronizedSortedDictionary *o,int len, const char *dbname,const char *options)
+void ummessage_addFieldDefText(UMSynchronizedSortedDictionary *o,int len, const char *dbname,const char *options)
 {
     UMSynchronizedSortedDictionary *e = dbFieldWithOptions(@"text",len,dbname,options);
     o[@(dbname)] = e;
 }
 
-void addFieldDefArray(UMSynchronizedSortedDictionary *o,int len, const char *dbname,const char *options)
+void ummessage_addFieldDefArray(UMSynchronizedSortedDictionary *o,int len, const char *dbname,const char *options)
 {
     UMSynchronizedSortedDictionary *e = dbFieldWithOptions(@"text",len,dbname,options);
     o[@(dbname)] = e;
 }
 
 
-void addFieldDefDouble(UMSynchronizedSortedDictionary *o,int len, const char *dbname,const char *options)
+void ummessage_addFieldDefDouble(UMSynchronizedSortedDictionary *o,int len, const char *dbname,const char *options)
 {
     UMSynchronizedSortedDictionary *e = dbFieldWithOptions(@"real(16,8)",len,dbname,options);
     o[@(dbname)] = e;
 }
 
-NSString *fieldDefsToSql(UMSynchronizedSortedDictionary *o, NSString *dbTableName)
+NSString *ummessage_fieldDefsToSql(UMSynchronizedSortedDictionary *o, NSString *dbTableName)
 {
     NSMutableString *s = [[NSMutableString alloc]init];
     [s appendFormat:@"CREATE TABLE `%@`  (\n",dbTableName];

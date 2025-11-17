@@ -1,5 +1,5 @@
 //
-//  UMMessageFiUMMessageObjectFieldselds.h
+//  UMMessageObjectFields.h
 //  ummessage
 //
 //  Created by Andreas Fink on 03.03.2025

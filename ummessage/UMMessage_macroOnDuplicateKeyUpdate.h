@@ -1,5 +1,5 @@
 //
-//  UMMMessage_macroOnDuplicateKeyUpdate.h
+//  UMMessage_macroOnDuplicateKeyUpdate.h
 //  ummessage
 //
 //  Created by Andreas Fink on 17.11.2025.
