@@ -16,3 +16,12 @@ void ummessage_addFieldDefDate(UMSynchronizedSortedDictionary    *o,int len,cons
 void ummessage_addFieldDefData(UMSynchronizedSortedDictionary    *o,int len,const char *dbname,const char *options); /* bytes stored as hex text */
 void ummessage_addFieldDefBinary(UMSynchronizedSortedDictionary    *o,int len,const char *dbname,const char *options); /* bytes stored as blob */
 NSString *ummessage_fieldDefsToSql(UMSynchronizedSortedDictionary *o, NSString *dbTableName);
+
+void ummessage_addTableDefBoolean(NSMutableString *o,int len, const char *dbname, const char *options);
+void ummessage_addTableDefDouble(NSMutableString *o,int len, const char *dbname, const char *options);
+void ummessage_addTableDefInteger(NSMutableString *o,int len, const char *dbname, const char *options);
+void ummessage_addTableDefString(NSMutableString *o,int len, const char *dbname, const char *options);
+void ummessage_addTableDefText(NSMutableString *o,int len, const char *dbname, const char *options);
+void ummessage_addTableDefDate(NSMutableString *o,int len, const char *dbname, const char *options);
+void ummessage_addTableDefData(NSMutableString *o,int len, const char *dbname, const char *options);
+void ummessage_addTableDefArray(NSMutableString *o,int len, const char *dbname, const char *options);

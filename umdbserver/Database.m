@@ -294,51 +294,6 @@ static UMSynchronizedSortedDictionary * dbFieldWithOptions( NSString *type,int l
 
 
 
-void ummessage_addTableDefString(NSMutableString *o,int len, char *dbname)
-{
-    [o appendFormat:@"    `%s` varchar(%d),\n",dbname,len];
-}
-
-void ummessage_addTableDefInteger(NSMutableString *o,int len, char *dbname)
-{
-    if((len==1) || (len==2))
-    {
-        [o appendFormat:@"    `%s` smallint,\n",dbname];
-    }
-    else
-    {
-        [o appendFormat:@"    `%s` integer,\n",dbname];
-    }
-}
-
-void ummessage_addTableDefDate(NSMutableString *o,int len, char *dbname)
-{
-    [o appendFormat:@"    `%s` varchar(14),\n",dbname];
-}
-
-void ummessage_addTableDefData(NSMutableString *o,int len, char *dbname)
-{
-    [o appendFormat:@"    `%s` blob,\n",dbname];
-}
-
-
-void ummessage_addTableDefText(NSMutableString *o,int len, char *dbname)
-{
-    [o appendFormat:@"    `%s` text,\n",dbname];
-}
-
-void ummessage_addTableDefArray(NSMutableString *o,int len, char *dbname)
-{
-    [o appendFormat:@"    `%s` text,\n",dbname];
-}
-
-
-void ummessage_addTableDefDouble(NSMutableString *o,int len, char *dbname)
-{
-    [o appendFormat:@"    `%s` real(16,8),\n",dbname];
-}
-
-
 
 static UMSynchronizedSortedDictionary * dbFieldWithOptions( NSString *type,int len, char *dbname,char *options)
 {

@@ -187,3 +187,54 @@ NSString *ummessage_fieldDefsToSql(UMSynchronizedSortedDictionary *o, NSString *
     [s appendString:@") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;\n"];
     return s;
 }
+
+
+void ummessage_addTableDefString(NSMutableString *o,int len, const char *dbname, const char *options)
+{
+    [o appendFormat:@"    `%s` varchar(%d),\n",dbname,len];
+}
+
+void ummessage_addTableDefInteger(NSMutableString *o,int len, const char *dbname, const char *options)
+{
+    if((len==1) || (len==2))
+    {
+        [o appendFormat:@"    `%s` smallint,\n",dbname];
+    }
+    else
+    {
+        [o appendFormat:@"    `%s` integer,\n",dbname];
+    }
+}
+
+void ummessage_addTableDefBoolean(NSMutableString *o,int len, const char *dbname, const char *options)
+{
+    [o appendFormat:@"    `%s` smallint,\n",dbname];
+}
+
+void ummessage_addTableDefDate(NSMutableString *o,int len, const char *dbname, const char *options)
+{
+    [o appendFormat:@"    `%s` varchar(14),\n",dbname];
+}
+
+void ummessage_addTableDefData(NSMutableString *o,int len, const char *dbname, const char *options)
+{
+    [o appendFormat:@"    `%s` blob,\n",dbname];
+}
+
+
+void ummessage_addTableDefText(NSMutableString *o,int len,const char *dbname, const char *options)
+{
+    [o appendFormat:@"    `%s` text,\n",dbname];
+}
+
+void ummessage_addTableDefArray(NSMutableString *o,int len, const char *dbname, const char *options)
+{
+    [o appendFormat:@"    `%s` text,\n",dbname];
+}
+
+
+void ummessage_addTableDefDouble(NSMutableString *o,int len, const char *dbname, const char *options)
+{
+    [o appendFormat:@"    `%s` real(16,8),\n",dbname];
+}
+
