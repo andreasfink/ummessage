@@ -46,13 +46,13 @@
 @end
 
 
-void addTableDefString(NSMutableString *o,int len, char *dbname);
-void addTableDefInteger(NSMutableString *o,int len, char *dbname);
-void addTableDefDate(NSMutableString *o,int len, char *dbname);
-void addTableDefData(NSMutableString *o,int len, char *dbname);
-void addTableDefText(NSMutableString *o,int len, char *dbname);
-void addTableDefArray(NSMutableString *o,int len, char *dbname);
-void addTableDefDouble(NSMutableString *o,int len, char *dbname);
+void ummessage_addTableDefString(NSMutableString *o,int len, char *dbname);
+void ummessage_addTableDefInteger(NSMutableString *o,int len, char *dbname);
+void ummessage_addTableDefDate(NSMutableString *o,int len, char *dbname);
+void ummessage_addTableDefData(NSMutableString *o,int len, char *dbname);
+void ummessage_addTableDefText(NSMutableString *o,int len, char *dbname);
+void ummessage_addTableDefArray(NSMutableString *o,int len, char *dbname);
+void ummessage_addTableDefDouble(NSMutableString *o,int len, char *dbname);
 /*
 void addFieldDefString(UMSynchronizedSortedDictionary *o,int len, char *dbname,char *options);
 void addFieldDefInteger(UMSynchronizedSortedDictionary *o,int len, char *dbname,char *options);
