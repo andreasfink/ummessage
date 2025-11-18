@@ -67,7 +67,7 @@
 		A68863CA2D761E980079C9A5 /* UMMessageObject.def.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863AC2D761E980079C9A5 /* UMMessageObject.def.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A68863CB2D761E980079C9A5 /* UMMessageObjectFields.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863AD2D761E980079C9A5 /* UMMessageObjectFields.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A69B2B902D80E2B4006EBCA1 /* ummessage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60B32A62D76051E003A8DFA /* ummessage.framework */; };
-		A6BFCA242D913BB2002F6796 /* UMMessage_macroInit.h in Headers */ = {isa = PBXBuildFile; fileRef = A6BFCA222D913BB2002F6796 /* UMMessage_macroInit.h */; };
+		A6BFCA242D913BB2002F6796 /* UMMessage_macroInit.h in Headers */ = {isa = PBXBuildFile; fileRef = A6BFCA222D913BB2002F6796 /* UMMessage_macroInit.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		A6DA32E92D93F0BF00B7027F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DA32E52D93F0BF00B7027F /* AppDelegate.m */; };
 		A6DA32EA2D93F0BF00B7027F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DA32E62D93F0BF00B7027F /* main.m */; };
 		A6DA32EE2D93F0C300B7027F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DA32EB2D93F0C300B7027F /* main.m */; };
@@ -479,7 +479,6 @@
 				A6DA32E82D93F0BF00B7027F /* umcli */,
 				A6DA32ED2D93F0C300B7027F /* test-tool */,
 				A60B32E92D760986003A8DFA /* Frameworks */,
-				A6DA32F02D93F0C800B7027F /* ummessageTests */,
 				A60B32A72D76051E003A8DFA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -654,6 +653,7 @@
 		A6DA32ED2D93F0C300B7027F /* test-tool */ = {
 			isa = PBXGroup;
 			children = (
+				A6DA32F02D93F0C800B7027F /* ummessageTests */,
 				A6DA32EB2D93F0C300B7027F /* main.m */,
 				A6DA32EC2D93F0C300B7027F /* test-tool.entitlements */,
 			);
@@ -1125,7 +1125,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = NO;
-				DEVELOPMENT_TEAM = 38L827M334;
+				DEVELOPMENT_TEAM = HG8655K94F;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "$(DSTROOT)/$(INSTALL_PATH)";
@@ -1168,7 +1168,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = NO;
-				DEVELOPMENT_TEAM = 38L827M334;
+				DEVELOPMENT_TEAM = HG8655K94F;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "$(DSTROOT)/$(INSTALL_PATH)";

@@ -12,6 +12,7 @@
     NSString *_username;
     NSString *_password;
     NSString *_group;
+    NSString *_billin;
     NSString *_defaultRoute;
     double  _credits;
     BOOL    _prepaid;
