@@ -28,6 +28,7 @@
         _username        = config[@"name"];
         _password        = config[@"password"];
         _group           = config[@"usergroup"];
+        _billingAccount  = config[@"billing-account"];
         _defaultRoute    = config[@"defaultRoute"];
         _shortIdAsString = config[@"shortId"];
         NSString *s;

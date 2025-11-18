@@ -67,7 +67,11 @@
 		A68863CA2D761E980079C9A5 /* UMMessageObject.def.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863AC2D761E980079C9A5 /* UMMessageObject.def.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A68863CB2D761E980079C9A5 /* UMMessageObjectFields.h in Headers */ = {isa = PBXBuildFile; fileRef = A68863AD2D761E980079C9A5 /* UMMessageObjectFields.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A69B2B902D80E2B4006EBCA1 /* ummessage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60B32A62D76051E003A8DFA /* ummessage.framework */; };
+<<<<<<< HEAD
 		A6BFCA242D913BB2002F6796 /* UMMessage_macroInit.h in Headers */ = {isa = PBXBuildFile; fileRef = A6BFCA222D913BB2002F6796 /* UMMessage_macroInit.h */; settings = {ATTRIBUTES = (Private, ); }; };
+=======
+		A6BFCA242D913BB2002F6796 /* UMMessage_macroInit.h in Headers */ = {isa = PBXBuildFile; fileRef = A6BFCA222D913BB2002F6796 /* UMMessage_macroInit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+>>>>>>> f4c025e238ca721df1d366e0509ebdf9e78d07a8
 		A6DA32E92D93F0BF00B7027F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DA32E52D93F0BF00B7027F /* AppDelegate.m */; };
 		A6DA32EA2D93F0BF00B7027F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DA32E62D93F0BF00B7027F /* main.m */; };
 		A6DA32EE2D93F0C300B7027F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DA32EB2D93F0C300B7027F /* main.m */; };
