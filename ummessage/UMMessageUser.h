@@ -12,6 +12,7 @@
     NSString *_username;
     NSString *_password;
     NSString *_group;
+    NSString *_billingAccount;
     NSString *_defaultRoute;
     double  _credits;
     BOOL    _prepaid;
@@ -27,6 +28,7 @@
 @property(readwrite,strong,atomic)  NSString                *username;
 @property(readwrite,strong,atomic)  NSString                *password;
 @property(readwrite,strong,atomic)  NSString                *group;
+@property(readwrite,strong,atomic)  NSString                *billingAccount;
 @property(readwrite,strong,atomic)  NSString                *defaultRoute;
 @property(readwrite,strong,atomic)  NSString                *shortIdAsString;
 @property(readwrite,assign,atomic)  double                  credits;
