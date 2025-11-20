@@ -40,14 +40,12 @@
         _maxSpeed        =  s ? s.doubleValue : -1.0;
     }
     return self;
-
 }
 
 - (NSString *)alphaCoding
 {
     return @"latin1";
 }
-
 
 - (void)errorCounterIncrease
 {

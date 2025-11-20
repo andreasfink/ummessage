@@ -23,6 +23,7 @@
     NSInteger               _submitCounter;
     UMThroughputCounter     *_throughput;
     UMMutex                 *_lock;
+    id                      _userRoutingTable;
 }
 
 @property(readwrite,strong,atomic)  NSString                *username;
@@ -37,6 +38,7 @@
 @property(readwrite,assign,atomic)  NSInteger               errorCounter;
 @property(readwrite,assign,atomic)  NSInteger               submitCounter;
 @property(readwrite,strong,atomic)  UMThroughputCounter     *throughput;
+@property(readwrite,strong,atomic)  id                      userRoutingTable;
 
 - (UMMessageUser *)initWithConfigDictionary:(NSDictionary *)config;
 
