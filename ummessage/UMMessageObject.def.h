@@ -180,7 +180,7 @@ DATE(o   ,   14,UMMESSAGE_CODETAG_SUBMIT_TIMESTAMP          ,"submit-timestamp" 
 DATE(o   ,   14,UMMESSAGE_CODETAG_SUBMIT_ACK_TIMESTAMP      ,"submit-ack-timestamp"            ,_submitAckTimestamp       ,submitAckTimestamp       ,"submit_ack_ts"               ,"optional")
 DATE(o   ,   14,UMMESSAGE_CODETAG_SUBMIT_ERROR_TIMESTAMP    ,"submit-err-timestamp"            ,_submitErrorTimestamp     ,submitErrorTimestamp     ,"submit_error_ts"             ,"optional")
 STRING(o ,   18,UMMESSAGE_CODETAG_SUBMIT_STRING             ,"submit-string"                   ,_submitString             ,submitString             ,"submit_string"               ,"optional")
-INTEGER(o,    1,UMMESSAGE_CODETAG_SUBMIT_ERROR_CODE         ,"submit-error-code"               ,_submitErrorCode          ,submitErrorCode          ,"submit_error_code"           ,"optional")
+INTEGER(o,    4,UMMESSAGE_CODETAG_SUBMIT_ERROR_CODE         ,"submit-error-code"               ,_submitErrorCode          ,submitErrorCode          ,"submit_error_code"           ,"optional")
 /* routing fields */
 INTEGER(o ,   4,UMMESSAGE_CODETAG_AUTOROUTED                ,"auto-routed"                     ,_autoRouted               ,autoRouted               ,"auto_routed"                 ,"optional")
 STRING(o ,   18,UMMESSAGE_CODETAG_ROUTEID                   ,"route-id"                        ,_routeId                  ,routeId                  ,"route_id"                    ,"optional")

@@ -17,7 +17,7 @@
     BOOL                                _hasBeenInserted;
     id                                  _currentTransaction;
     id                                  _originalSendingObject;
-    UMMessageStatusCode                      _reportType;
+    UMMessageStatusCode                 _reportType;
     int                                 _priority;
     int                                 _responseCode;
     UMMessageObject                     *_reportToMsg;

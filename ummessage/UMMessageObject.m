@@ -340,7 +340,7 @@ static      UMMutex      *g_messageIdLock = NULL;
     /* position 0 is the length of the UDH data. */
     int pos = 1;
     _udhs = [[UMSynchronizedArray alloc]init];
-    NSData *d = _pduUdh.data;
+    NSData *d = _pduUdh.currentValue;
     UMMessageUdh *u = [[UMMessageUdh alloc] initWithData:d atPosition:&pos];
     while(u)
     {
@@ -368,16 +368,15 @@ static      UMMutex      *g_messageIdLock = NULL;
     if(d.length == 0)
     {
         _pduUdh=NULL;
-        _pduUdhIndicator=[[UMDirtyInteger alloc]initWithInteger:0];
+        [self setUdhIndicator:NO];
     }
     else
     {
         NSMutableData *udh = [[NSMutableData alloc]init];
         [udh appendByte:d.length];
         [udh appendData:d];
-        _pduUdh = [[UMDirtyData alloc]initWithData:udh];
-        _pduUdhIndicator=[[UMDirtyInteger alloc]initWithInteger:1];
-        
+        _pduUdh = UMDIRTY_DATA(udh);
+        [self setUdhIndicator:YES];
     }
 }
 
@@ -488,5 +487,48 @@ static      UMMutex      *g_messageIdLock = NULL;
 {
     
 }
+
+- (UMMessageObject *)copyWithZone:(NSZone *)zone
+{
+    UMMessageObject *o = [[UMMessageObject alloc]init];
+    #include "UMMessage_macroCopy.h"
+    #include <ummessage/UMMessageObject.def.h>
+    #include <ummessage/UMMessage_macroClear.h>
+    
+    o->_user          = _user;
+    o->_udhs          = [_udhs copy];
+    o->_lastReport    = _lastReport;
+    o->_hasBeenInserted = NO;
+    o->_hasBeenQueuedForInsert = NO;
+    o->_originalSendingObject = _originalSendingObject;
+    o->_routerTransaction = _routerTransaction;
+    o->_userTransaction = _userTransaction;
+    o->_finalDlrSent = NO;
+    o->_deliveryReportAddressHttp = _deliveryReportAddressHttp;
+    o->_messageHistory = [[UMMessageHistory alloc]init];
+    return o;
+}
+
+/* glue code */
+- (BOOL)udhIndicator
+{
+    NSNumber *n = _pduUdhIndicator.currentValue;
+    return (n.intValue ? YES : NO);
+}
+- (void)setUdhIndicator:(BOOL)val
+{
+    _pduUdhIndicator = UMDIRTY_INTEGER( val ? 1 : 0);
+}
+
+- (BOOL)replyPathIndicator
+{
+    NSNumber *n = _pduReplyPathIndicator.currentValue;
+    return (n.intValue ? YES : NO);
+}
+- (void)setReplyPathIndicator:(BOOL)val
+{
+    _pduReplyPathIndicator = UMDIRTY_INTEGER( val ? 1 : 0);
+}
+
 @end
 

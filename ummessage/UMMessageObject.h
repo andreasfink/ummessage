@@ -55,7 +55,7 @@
 @property(readwrite,atomic,assign)      BOOL hasBeenQueuedForInsert;
 @property(readwrite,atomic,assign)      BOOL isDirty;
 @property(readwrite,atomic,strong)      UMSynchronizedArray *udhs; /* Unpacked UDHs, not stored in DB directly */
-@property(readwrite,atomic,strong)      UMMessageReport            *lastReport; /* helper */
+@property(readwrite,atomic,strong)      UMMessageReport     *lastReport; /* helper */
 @property(readwrite,atomic,strong)      UMMessageUser       *user;
 @property(readwrite,atomic,strong)      id                  originalSendingObject;
 @property(readwrite,atomic,strong)      id                  routerTransaction;
@@ -79,6 +79,10 @@
 
 - (void) expandUdh;
 - (void) packUdh;
+- (BOOL)udhIndicator;
+- (void)setUdhIndicator:(BOOL)val;
+- (BOOL)replyPathIndicator;
+- (void)setReplyPathIndicator:(BOOL)val;
 
 + (UMMessageObject *)messageFromDbResult:(UMDbResult *)dbResult;
 
