@@ -5,12 +5,12 @@
 //  Created by Andreas Fink on 21.03.2025.
 //
 
-#import <ummessage/ummessage.h>
+#import <ummessage/UMMessageObject.h>
 #import <ulibdb/ulibdb.h>
 
-@implementation UMMessage(db)
+@implementation UMMessageObject(db)
 
-+ (UMMessage *)messageFromDbResult:(UMDbResult *)dbResult
++ (UMMessageObject *)messageFromDbResult:(UMDbResult *)dbResult
 {
     if(dbResult==NULL)
     {
@@ -21,7 +21,7 @@
         return NULL;
     }
     NSArray *values = dbResult.resultArray[0];
-    UMMessage *o = [[UMMessage alloc]init];
+    UMMessageObject *o = [[UMMessageObject alloc]init];
     for(NSInteger i=0;i<dbResult.columNames.count;i++)
     {
         id field1 = values[i];

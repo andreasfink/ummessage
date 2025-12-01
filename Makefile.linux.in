@@ -30,14 +30,14 @@ UMDBSERVER_MFILES = $(wildcard umdbserver/*.m)
 UMDBSERVER_MOFILES  = $(UMDBSERVER_MFILES:.m=.m.o)
 UMDBSERVER_OFILES  = $(UMDBSERVER_MOFILES)
 
-MFILES = $(wildcard ummessage/*.m)
-HFILES = version.h $(wildcard ummessage/*.h)
+MFILES = $(wildcard um/*.m)
+HFILES = version.h $(wildcard um/*.h)
 MOFILES  = $(MFILES:.m=.m.o)
 OFILES = $(MOFILES)
 
 HEADERDIR=um
 
-INCLUDEDIRS = -I .
+INCLUDEDIRS = -I Classes
 DEBUG_RELEASE = -DCONFIGURATION_${CONFIGURATION}=1 -DCONFIGURATION=${CONFIGURATION}
 
 all:	${LIB} build/umcli build/umserver build/umdbserver

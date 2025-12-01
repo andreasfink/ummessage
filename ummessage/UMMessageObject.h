@@ -1,5 +1,5 @@
 //
-//  UMMessageObject.h
+//  UMMessage.h
 //  ummessage
 //
 //  Created by Andreas Fink on 03.03.2025.
@@ -11,7 +11,7 @@
 #import <ulibasn1/ulibasn1.h>
 #import <ummessage/UMMessageStatusCode.h>
 #import <ummessage/UMMessageHistory.h>
-#import <ummessage/UMMessageFields.h>
+#import <ummessage/UMMessageObjectFields.h>
 
 /// An object to hold a short message for use in SMS. This can be a long (multipart), concaenated message or a individual message part.
 /// Can be used in SMPP or SS7
@@ -30,7 +30,7 @@
 #include <ummessage/UMMessage_macroVariables.h>
 #include <ummessage/UMMessageObject.def.h>
 #include <ummessage/UMMessage_macroClear.h>
-
+    
     UMSynchronizedArray *_udhs; /* Unpacked UDHs, not stored in DB */
     UMMessageReport     *_lastReport; /* helper */
     UMMessageUser       *_user;
@@ -55,7 +55,7 @@
 @property(readwrite,atomic,assign)      BOOL hasBeenQueuedForInsert;
 @property(readwrite,atomic,assign)      BOOL isDirty;
 @property(readwrite,atomic,strong)      UMSynchronizedArray *udhs; /* Unpacked UDHs, not stored in DB directly */
-@property(readwrite,atomic,strong)      UMMessageReport            *lastReport; /* helper */
+@property(readwrite,atomic,strong)      UMMessageReport     *lastReport; /* helper */
 @property(readwrite,atomic,strong)      UMMessageUser       *user;
 @property(readwrite,atomic,strong)      id                  originalSendingObject;
 @property(readwrite,atomic,strong)      id                  routerTransaction;
@@ -79,6 +79,10 @@
 
 - (void) expandUdh;
 - (void) packUdh;
+- (BOOL)udhIndicator;
+- (void)setUdhIndicator:(BOOL)val;
+- (BOOL)replyPathIndicator;
+- (void)setReplyPathIndicator:(BOOL)val;
 
 + (UMMessageObject *)messageFromDbResult:(UMDbResult *)dbResult;
 

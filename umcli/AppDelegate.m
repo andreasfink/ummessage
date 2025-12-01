@@ -122,12 +122,12 @@ static void signalHandler(int signum)
         @{
             @"name"  : @"asn1",
             @"long"  : @"--asn1",
-            @"help"  : @"prints out ASN1 specification of UMMessage and quits",
+            @"help"  : @"prints out ASN1 specification of UMMessageObject and quits",
         },
         @{
             @"name"  : @"sql",
             @"long"  : @"--sql",
-            @"help"  : @"prints out SQL creation statement for a DB table to hold UMMessage and quits",
+            @"help"  : @"prints out SQL creation statement for a DB table to hold UMMessageObject and quits",
         },
     ];
 }
@@ -171,14 +171,14 @@ static void signalHandler(int signum)
 
         if(params[@"asn1"])
         {
-            NSString *s = [UMMessage asn1Def];
+            NSString *s = [UMMessageObject asn1Def];
             fprintf(stdout,"%s\n",s.UTF8String);
             exit(0);
         }
         
         if(params[@"sql"])
         {
-            NSString *s = [UMMessage sqlTableDefForTableName:@"msg"];
+            NSString *s = [UMMessageObject sqlTableDefForTableName:@"msg"];
             fprintf(stdout,"%s\n",s.UTF8String);
             exit(0);
         }
@@ -252,8 +252,8 @@ static void signalHandler(int signum)
         fflush(stderr);
         exit(-1);
     }
-    NSString *msgid=[UMMessage uniqueMessageIdWithPrefix:@""];
-    UMMessage *msg = [[UMMessage alloc]initWithNewIdAndInstance:_instance];
+    NSString *msgid=[UMMessageObject uniqueMessageIdWithPrefix:@""];
+    UMMessageObject *msg = [[UMMessageObject alloc]initWithNewIdAndInstance:_instance];
     msg.messageId = [[UMDirtyString alloc]init];
     msg.messageId.stringValue = msgid;
     msg.archiveId = [[UMDirtyString alloc]init];
@@ -262,7 +262,7 @@ static void signalHandler(int signum)
     [_client insertMessage:msg];
     
     UMMessageServerCommandError err = UMMessageServerCommandError_UNDEFINED;
-    UMMessage *m = [_client getMessage:@"002503240915090001" instance:@"default" error:&err];
+    UMMessageObject *m = [_client getMessage:@"002503240915090001" instance:@"default" error:&err];
     NSLog(@"Message loaded: %@",m);
 }
 

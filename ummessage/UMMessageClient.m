@@ -7,7 +7,7 @@
 
 #import <ummessage/UMMessageClient.h>
 #import <ummessage/UMMessageHandler.h>
-#import <ummessage/UMMessageObject.h>
+#include <ummessage/UMMessageObject.h>
 #import <ummessage/UMMessageSession.h>
 #import <ummessage/UMMessageServerCommandLoginResponse.h>
 #import <ummessage/UMMessageServerCommandInsertMessageResponse.h>

@@ -6,7 +6,7 @@
 //
 
 #import <ulibasn1/ulibasn1.h>
-#import <ummessage/UMMessageObject.h>
+#include <ummessage/UMMessageObject.h>
 #import <ummessage/UMMessageStatusCode.h>
 
 @class UMDbResult;
@@ -17,11 +17,11 @@
     BOOL                                _hasBeenInserted;
     id                                  _currentTransaction;
     id                                  _originalSendingObject;
-    UMMessageStatusCode                      _reportType;
+    UMMessageStatusCode                 _reportType;
     int                                 _priority;
     int                                 _responseCode;
-    UMMessageObject                      *_reportToMsg;
-    NSDictionary                         *_tlvs; /* not stored in DB directly */
+    UMMessageObject                     *_reportToMsg;
+    NSDictionary                        *_tlvs; /* not stored in DB directly */
 
     
 #define INTEGER(o,len,tag,dictname,var,accessor,dbname,options)           NSNumber *var;

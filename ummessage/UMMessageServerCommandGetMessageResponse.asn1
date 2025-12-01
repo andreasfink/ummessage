@@ -7,5 +7,5 @@ UMMessageServerCommandGetMessageResponse ::= SEQUENCE
     sequenceNumber  [2] INTEGER,
     status          [3] INTEGER,
     error           [4] UTF8String OPTIONAL,
-    message         [5] UMMessage OPTIONAL,
+    message         [5] UMMessageObject OPTIONAL,
 }

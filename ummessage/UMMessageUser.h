@@ -12,6 +12,7 @@
     NSString *_username;
     NSString *_password;
     NSString *_group;
+    NSString *_billingAccount;
     NSString *_defaultRoute;
     double  _credits;
     BOOL    _prepaid;
@@ -22,11 +23,13 @@
     NSInteger               _submitCounter;
     UMThroughputCounter     *_throughput;
     UMMutex                 *_lock;
+    id                      _userRoutingTable;
 }
 
 @property(readwrite,strong,atomic)  NSString                *username;
 @property(readwrite,strong,atomic)  NSString                *password;
 @property(readwrite,strong,atomic)  NSString                *group;
+@property(readwrite,strong,atomic)  NSString                *billingAccount;
 @property(readwrite,strong,atomic)  NSString                *defaultRoute;
 @property(readwrite,strong,atomic)  NSString                *shortIdAsString;
 @property(readwrite,assign,atomic)  double                  credits;
@@ -35,6 +38,7 @@
 @property(readwrite,assign,atomic)  NSInteger               errorCounter;
 @property(readwrite,assign,atomic)  NSInteger               submitCounter;
 @property(readwrite,strong,atomic)  UMThroughputCounter     *throughput;
+@property(readwrite,strong,atomic)  id                      userRoutingTable;
 
 - (UMMessageUser *)initWithConfigDictionary:(NSDictionary *)config;
 

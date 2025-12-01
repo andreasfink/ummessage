@@ -7,12 +7,21 @@
 
 #import <ulib/ulib.h>
 
-void addFieldDefBoolean(UMSynchronizedSortedDictionary *o,int len,const char *dbname,const char *options);
-void addFieldDefDouble(UMSynchronizedSortedDictionary  *o,int len,const char *dbname,const char *options);
-void addFieldDefInteger(UMSynchronizedSortedDictionary *o,int len,const char *dbname,const char *options);
-void addFieldDefString(UMSynchronizedSortedDictionary  *o,int len,const char *dbname,const char *options);
-void addFieldDefText(UMSynchronizedSortedDictionary    *o,int len,const char *dbname,const char *options); /* string stored as text field in db*/
-void addFieldDefDate(UMSynchronizedSortedDictionary    *o,int len,const char *dbname,const char *options); /* date stored as string */
-void addFieldDefData(UMSynchronizedSortedDictionary    *o,int len,const char *dbname,const char *options); /* bytes stored as hex text */
-void addFieldDefBinary(UMSynchronizedSortedDictionary    *o,int len,const char *dbname,const char *options); /* bytes stored as blob */
-NSString *fieldDefsToSql(UMSynchronizedSortedDictionary *o, NSString *dbTableName);
+void ummessage_addFieldDefBoolean(UMSynchronizedSortedDictionary *o,int len,const char *dbname,const char *options);
+void ummessage_addFieldDefDouble(UMSynchronizedSortedDictionary  *o,int len,const char *dbname,const char *options);
+void ummessage_addFieldDefInteger(UMSynchronizedSortedDictionary *o,int len,const char *dbname,const char *options);
+void ummessage_addFieldDefString(UMSynchronizedSortedDictionary  *o,int len,const char *dbname,const char *options);
+void ummessage_addFieldDefText(UMSynchronizedSortedDictionary    *o,int len,const char *dbname,const char *options); /* string stored as text field in db*/
+void ummessage_addFieldDefDate(UMSynchronizedSortedDictionary    *o,int len,const char *dbname,const char *options); /* date stored as string */
+void ummessage_addFieldDefData(UMSynchronizedSortedDictionary    *o,int len,const char *dbname,const char *options); /* bytes stored as hex text */
+void ummessage_addFieldDefBinary(UMSynchronizedSortedDictionary    *o,int len,const char *dbname,const char *options); /* bytes stored as blob */
+NSString *ummessage_fieldDefsToSql(UMSynchronizedSortedDictionary *o, NSString *dbTableName);
+
+void ummessage_addTableDefBoolean(NSMutableString *o,int len, const char *dbname, const char *options);
+void ummessage_addTableDefDouble(NSMutableString *o,int len, const char *dbname, const char *options);
+void ummessage_addTableDefInteger(NSMutableString *o,int len, const char *dbname, const char *options);
+void ummessage_addTableDefString(NSMutableString *o,int len, const char *dbname, const char *options);
+void ummessage_addTableDefText(NSMutableString *o,int len, const char *dbname, const char *options);
+void ummessage_addTableDefDate(NSMutableString *o,int len, const char *dbname, const char *options);
+void ummessage_addTableDefData(NSMutableString *o,int len, const char *dbname, const char *options);
+void ummessage_addTableDefArray(NSMutableString *o,int len, const char *dbname, const char *options);

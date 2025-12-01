@@ -13,7 +13,7 @@
 {
     UMMessageServerCommandError   _status;
     NSString    *_error;
-    UMMessageObject *_message;
+    UMMessageObject   *_message;
 }
 
 @property(readwrite,atomic,assign)  UMMessageServerCommandError   status;

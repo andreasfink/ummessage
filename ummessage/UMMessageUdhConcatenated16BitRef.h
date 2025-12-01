@@ -6,7 +6,7 @@
 //
 
 
-#import <ummessage/ummessage.h>
+#import <ummessage/UMMessageObject.h>
 #import <ummessage/UMMessageUdh.h>
 
 
