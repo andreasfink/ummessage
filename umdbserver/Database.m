@@ -382,7 +382,6 @@ void addFieldDefDouble(UMSynchronizedSortedDictionary *o,int len, char *dbname,c
     UMSynchronizedSortedDictionary *e = dbFieldWithOptions(@"real(16,8)",len,dbname,options);
     o[@(dbname)] = e;
 }
-#endif
 
 NSString *fieldDefsToSql(UMSynchronizedSortedDictionary *o, NSString *dbTableName)
 {
@@ -454,3 +453,4 @@ NSString *fieldDefsToSql(UMSynchronizedSortedDictionary *o, NSString *dbTableNam
     [s appendString:@") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;\n"];
     return s;
 }
+#endif
