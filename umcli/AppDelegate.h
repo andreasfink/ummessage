@@ -7,7 +7,7 @@
 
 
 #import <ulibasn1/ulibasn1.h>
-#import <um/um.h>
+#import <ummessage/ummessage.h>
 
 @interface AppDelegate : UMObject
 {
