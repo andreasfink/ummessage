@@ -7,7 +7,7 @@
 
 
 #undef BOOLEAN
-#undef DOUBLE
+#undef REAL
 #undef INTEGER
 #undef STRING
 #undef FILTERED_STRING
@@ -19,4 +19,6 @@
 #undef TEXT
 #undef INCLUDE_OBJECT_GROUP_COLUM
 #undef IGNORE_NAME_COLUM
+
+
 

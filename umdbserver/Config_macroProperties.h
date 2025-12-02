@@ -6,7 +6,7 @@
 //
 
 #define BOOLEAN(o,len,tag,dictname,var,accessor,dbname,options)          @property(readwrite,strong,atomic) NSNumber *accessor;
-#define REAL(o,len,tag,dictname,var,accessor,dbname,options)           @property(readwrite,strong,atomic) NSNumber *accessor;
+#define REAL(o,len,tag,dictname,var,accessor,dbname,options)             @property(readwrite,strong,atomic) NSNumber *accessor;
 #define INTEGER(o,len,tag,dictname,var,accessor,dbname,options)          @property(readwrite,strong,atomic) NSNumber *accessor;
 #define STRING(o,len,tag,dictname,var,accessor,dbname,options)           @property(readwrite,strong,atomic) NSString *accessor;
 #define TEXT(o,len,tag,dictname,var,accessor,dbname,options)             @property(readwrite,strong,atomic) NSString *accessor;

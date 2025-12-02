@@ -6,7 +6,7 @@
 //
 
 #define BOOLEAN(o,len,tag,dictname,var,accessor,dbname,options)          appendConfig_BOOLEAN(o,dictname,var,dbname,tag,options);
-#define REAL(o,len,tag,dictname,var,accessor,dbname,options)             appendConfig_DOUBLE(o,dictname,var,dbname,tag,options);
+#define REAL(o,len,tag,dictname,var,accessor,dbname,options)             appendConfig_REAL(o,dictname,var,dbname,tag,options);
 #define INTEGER(o,len,tag,dictname,var,accessor,dbname,options)          appendConfig_INTEGER(o,dictname,var,dbname,tag,options);
 #define STRING(o,len,tag,dictname,var,accessor,dbname,options)           appendConfig_STRING(o,dictname,var,dbname,tag,options);
 #define TEXT(o,len,tag,dictname,var,accessor,dbname,options)             appendConfig_TEXT(o,dictname,var,dbname,tag,options);
