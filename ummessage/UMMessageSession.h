@@ -18,15 +18,15 @@
 
 @interface UMMessageSession : UMObject<UMessageCommandHandlerProtocol>
 {
-    UMSocket         *_socket;
-    UMMessageServer  *_server;
-    UMMessageClient  *_client;
-    UMMessageHandler *_handler;
-    NSString         *_rootDirectory;
-    NSString         *_instance;
-    BOOL             _authenticated;
-    NSString         *_username;
-    NSString         *_password;
+    UMSocket            *_socket;
+    UMMessageServer     *_server;
+    UMMessageClient     *_client;
+    UMMessageHandler    *_handler;
+    NSString            *_rootDirectory;
+    NSString            *_instance;
+    BOOL                _authenticated;
+    NSString            *_username;
+    NSString            *_password;
     NSDate              *_lastHandshakeRequested;
     NSDate              *_lastHandshakeResponse;
     NSDate              *_lastHandshakeReceived;

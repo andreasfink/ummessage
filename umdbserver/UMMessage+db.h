@@ -7,7 +7,7 @@
 
 @class UMDbResult;
 
-@interface UMMessage(db)
-+ (UMMessage *)messageFromDbResult:(UMDbResult *)dbResult;
+@interface UMMessageObject(db)
++ (UMMessageObject *)messageFromDbResult:(UMDbResult *)dbResult;
 @end
 

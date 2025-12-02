@@ -1,4 +1,4 @@
-UMMessage ::= SEQUENCE
+UMMessageObject ::= SEQUENCE
 {
     archive-id                    [1] UTF8String,
     archive-status                [2] INTEGER,

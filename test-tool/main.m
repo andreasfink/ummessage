@@ -7,7 +7,7 @@
 
 #import <ulib/ulib.h>
 #import <ulibasn1/ulibasn1.h>
-#import <um/um.h>
+#import <ummessage/ummessage.h>
 
 int main(int argc, const char * argv[])
 {
@@ -26,11 +26,11 @@ int main(int argc, const char * argv[])
         NSLog(@"r2=%@",r2);
         NSLog(@"r2.value=%lf",r2.value);
 
-        UMMessage *msg = [[UMMessage alloc]initWithNewIdAndInstance:@"default"];
+        UMMessageObject *msg = [[UMMessageObject alloc]initWithNewIdAndInstance:@"default"];
         UMSynchronizedSortedDictionary *dict = msg.objectValue;
         NSLog(@"Message1: %@",dict.jsonString);
         NSData *data =[msg berEncoded];
-        UMMessage *msg2 = [[UMMessage alloc]initWithBerData:data];
+        UMMessageObject *msg2 = [[UMMessageObject alloc]initWithBerData:data];
         UMSynchronizedSortedDictionary *dict2 = msg2.objectValue;
         NSLog(@"Message2: %@",dict2.jsonString);
 

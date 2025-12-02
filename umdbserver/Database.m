@@ -6,7 +6,7 @@
 //
 
 #import "Database.h"
-#import <ummessage/UMMessage.h>
+#include <ummessage/UMMessageObject.h>
 #import "DatabaseCacheEntry.h"
 #import "UMMessage+db.h"
 
@@ -48,7 +48,7 @@ static UMSynchronizedSortedDictionary * dbFieldWithOptions( NSString *type,int l
     if(session)
     {
         NSArray *sqlCommands = @[
-            [UMMessage sqlTableDefForTableName:_msgTableName],
+            [UMMessageObject sqlTableDefForTableName:_msgTableName],
         ];
         success = [session queriesWithNoResult:sqlCommands allowFail:YES];
         [session.pool returnSession:session file:FLF];
@@ -57,7 +57,7 @@ static UMSynchronizedSortedDictionary * dbFieldWithOptions( NSString *type,int l
 }
 
 
-- (UMMessageServerCommandError)insertOrUpdateMessage:(UMMessage *)msg
+- (UMMessageServerCommandError)insertOrUpdateMessage:(UMMessageObject *)msg
 {
     UMMessageServerCommandError err=UMMessageServerCommandError_NO_ERROR;
     if(msg!=NULL)
@@ -89,7 +89,7 @@ static UMSynchronizedSortedDictionary * dbFieldWithOptions( NSString *type,int l
     return err;
 }
 
-- (UMMessageServerCommandError)insertMessage:(UMMessage *)msg
+- (UMMessageServerCommandError)insertMessage:(UMMessageObject *)msg
 {
     UMMessageServerCommandError err=UMMessageServerCommandError_NO_ERROR;
     if(msg!=NULL)
@@ -121,7 +121,7 @@ static UMSynchronizedSortedDictionary * dbFieldWithOptions( NSString *type,int l
     return err;
 }
 
-- (UMMessageServerCommandError)updateMessage:(UMMessage *)msg
+- (UMMessageServerCommandError)updateMessage:(UMMessageObject *)msg
 {
     UMMessageServerCommandError err=UMMessageServerCommandError_NO_ERROR;
     if(msg!=NULL)
@@ -177,9 +177,9 @@ static UMSynchronizedSortedDictionary * dbFieldWithOptions( NSString *type,int l
 }
 
 
-- (UMMessage *)getMessage:(NSString *)messageId instance:(NSString *)instance error:(UMMessageServerCommandError *)err
+- (UMMessageObject *)getMessage:(NSString *)messageId instance:(NSString *)instance error:(UMMessageServerCommandError *)err
 {
-    UMMessage *m = [self getObjectFromCache:_msgCache forKey:messageId];
+    UMMessageObject *m = [self getObjectFromCache:_msgCache forKey:messageId];
     if(m==NULL)
     {
         UMDbSession *session = [_dbPool grabSession:FLF];
@@ -218,7 +218,7 @@ static UMSynchronizedSortedDictionary * dbFieldWithOptions( NSString *type,int l
             }
             else
             {
-                m = [UMMessage messageFromDbResult:result];
+                m = [UMMessageObject messageFromDbResult:result];
             }
             [session.pool returnSession:session file:FLF];
         }
@@ -292,51 +292,6 @@ static UMSynchronizedSortedDictionary * dbFieldWithOptions( NSString *type,int l
 
 @end
 
-
-
-void addTableDefString(NSMutableString *o,int len, char *dbname)
-{
-    [o appendFormat:@"    `%s` varchar(%d),\n",dbname,len];
-}
-
-void addTableDefInteger(NSMutableString *o,int len, char *dbname)
-{
-    if((len==1) || (len==2))
-    {
-        [o appendFormat:@"    `%s` smallint,\n",dbname];
-    }
-    else
-    {
-        [o appendFormat:@"    `%s` integer,\n",dbname];
-    }
-}
-
-void addTableDefDate(NSMutableString *o,int len, char *dbname)
-{
-    [o appendFormat:@"    `%s` varchar(14),\n",dbname];
-}
-
-void addTableDefData(NSMutableString *o,int len, char *dbname)
-{
-    [o appendFormat:@"    `%s` blob,\n",dbname];
-}
-
-
-void addTableDefText(NSMutableString *o,int len, char *dbname)
-{
-    [o appendFormat:@"    `%s` text,\n",dbname];
-}
-
-void addTableDefArray(NSMutableString *o,int len, char *dbname)
-{
-    [o appendFormat:@"    `%s` text,\n",dbname];
-}
-
-
-void addTableDefDouble(NSMutableString *o,int len, char *dbname)
-{
-    [o appendFormat:@"    `%s` real(16,8),\n",dbname];
-}
 
 
 

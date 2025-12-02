@@ -1,5 +1,5 @@
 //
-//  UMMessageState.m
+//  UMMessageStatusCode.m
 //  um
 //
 //  Created by Andreas Fink on 26.03.2025.

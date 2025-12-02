@@ -7,7 +7,7 @@
 
 #import "UMMessageServerCommandLoginResponse.h"
 #import "UMMessageServerCommandTypes.h"
-#import "UMMessageServerCommandError.h"
+#import <ummessage/UMMessageServerCommandError.h>
 
 @implementation UMMessageServerCommandLoginResponse
 
