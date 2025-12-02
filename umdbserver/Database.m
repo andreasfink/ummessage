@@ -321,6 +321,9 @@ static UMSynchronizedSortedDictionary * dbFieldWithOptions( NSString *type,int l
     return e;
 }
 
+#if 0
+/* replaced with ummessage_adFieldDef.... calls
+ */
 void addFieldDefString(UMSynchronizedSortedDictionary *o,int len, char *dbname,char *options)
 {
     NSString *type  = [NSString stringWithFormat:@"varchar(%d)",len];
@@ -379,7 +382,7 @@ void addFieldDefDouble(UMSynchronizedSortedDictionary *o,int len, char *dbname,c
     UMSynchronizedSortedDictionary *e = dbFieldWithOptions(@"real(16,8)",len,dbname,options);
     o[@(dbname)] = e;
 }
-
+#endif
 
 NSString *fieldDefsToSql(UMSynchronizedSortedDictionary *o, NSString *dbTableName)
 {

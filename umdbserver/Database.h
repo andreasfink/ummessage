@@ -44,7 +44,7 @@
 
 @end
 
-/*
+/* now using ummessage_addField...
 void addFieldDefString(UMSynchronizedSortedDictionary *o,int len, char *dbname,char *options);
 void addFieldDefInteger(UMSynchronizedSortedDictionary *o,int len, char *dbname,char *options);
 void addFieldDefDate(UMSynchronizedSortedDictionary *o,int len, char *dbname,char *options);
