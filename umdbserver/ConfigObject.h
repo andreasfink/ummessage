@@ -7,7 +7,7 @@
 
 
 #import <ulib/ulib.h>
-
+#import <ummessage/ummessage.h>
 
 @interface ConfigObject : UMObject
 {
