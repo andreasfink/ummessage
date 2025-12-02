@@ -1,15 +1,15 @@
-#ulibasn1 pkg-config source file
+#ummessage pkg-config source file
 
 prefix=/usr/local
 exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include
 
-Name: ulibasn1
+Name: ummessage
 Cflags: -I${includedir}
-Libs: -L${libdir} -l:libulibasn1.@SHARED_LIBRARY_EXTENSION@.@MAJORVER@.@MINORVER@ -lm
+Libs: -L${libdir} -l:libummessage.@SHARED_LIBRARY_EXTENSION@.@MAJORVER@.@MINORVER@ 
 
-Description: universal ASN1 library
+Description: ummessage
 Version: @VERSION@
 Requires: ulib 
 
