@@ -117,7 +117,7 @@
 #include "ConfigObject.def.h"
 #include "ConfigUser.def.h"
 #include "Config_macroClear.h"
-        return fieldDefsToSql(o,tableName);
+        return ummessage_fieldDefsToSql(o,tableName);
 }
    
 +(NSArray<NSString *>*)dbFieldNames
