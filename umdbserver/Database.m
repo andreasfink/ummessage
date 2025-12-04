@@ -8,7 +8,6 @@
 #import "Database.h"
 #include <ummessage/UMMessageObject.h>
 #import "DatabaseCacheEntry.h"
-#import "UMMessage+db.h"
 
 
 @implementation Database
