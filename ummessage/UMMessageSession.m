@@ -513,7 +513,7 @@
     UMMessageSessionCompletionObject *co = [[UMMessageSessionCompletionObject alloc]init];
     co.objectToCall = obj;
     co.selectorToCall = sel;
-    
+
     UMMessageServerCommandGetMessageRequest *req = [[UMMessageServerCommandGetMessageRequest alloc]init];
     req.sequenceNumber = seq;
     req.messageId = messageId;

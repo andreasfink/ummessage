@@ -208,6 +208,7 @@ static void signalHandler(int signum)
 {
     _server =  [[UMMessageServer alloc]initWithPort:_port];
     _server.authenticationDelegate = self;
+    
     self.logFeed = [[UMLogFeed alloc]initWithHandler:_logHandler section:@"umdbserver"];
     self.logFeed.name = @"umdbserver";
     for(NSString *key in _config.database_pool_dict)
