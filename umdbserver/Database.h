@@ -43,15 +43,3 @@
 
 
 @end
-
-/* now using ummessage_addField...
-void addFieldDefString(UMSynchronizedSortedDictionary *o,int len, char *dbname,char *options);
-void addFieldDefInteger(UMSynchronizedSortedDictionary *o,int len, char *dbname,char *options);
-void addFieldDefDate(UMSynchronizedSortedDictionary *o,int len, char *dbname,char *options);
-void addFieldDefData(UMSynchronizedSortedDictionary *o,int len, char *dbname,char *options);
-void addFieldDefText(UMSynchronizedSortedDictionary *o,int len, char *dbname,char *options);
-void addFieldDefArray(UMSynchronizedSortedDictionary *o,int len, char *dbname,char *options);
-void addFieldDefDouble(UMSynchronizedSortedDictionary *o,int len, char *dbname,char *options);
-NSString *fieldDefsToSql(UMSynchronizedSortedDictionary *o, NSString *dbTableName);
-*/
-
