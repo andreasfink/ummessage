@@ -17,7 +17,6 @@ typedef void (^UMMesssageClientInsertCompletionHandler)(int status,NSString *err
 @interface UMMessageClient : UMObject
 {
     UMSocket            *_socket;
-    BOOL                _isConnected;
     UMMessageSession    *_session;
     UMMessageHandler    *_handler;
     NSString            *_username;
@@ -36,7 +35,8 @@ typedef void (^UMMesssageClientInsertCompletionHandler)(int status,NSString *err
 @property(readwrite,strong,atomic)  NSString *instance;
 @property(readwrite,assign,atomic)  BOOL loginComplete;
 @property(readwrite,assign,atomic)  UMMessageServerCommandError loginStatus;
-
+- (BOOL)isConnected;
+- (BOOL)isLoggedIn;
 - (UMMessageClient *)initWithHost:(UMHost *)host port:(int)port;
 - (BOOL)connect; /* returns YES if connected */
 - (UMMessageServerCommandError)login; /* returns UMMessageServerCommandError_NO_ERROR if logged in */

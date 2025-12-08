@@ -29,14 +29,30 @@
     return self;
 }
 
+- (BOOL)isConnected
+{
+    return _socket.isConnected;
+}
+
+-(BOOL)isLoggedIn
+{
+    if (_loginComplete)
+    {
+        if(_loginStatus == UMMessageServerCommandError_NO_ERROR)
+        {
+            return YES;
+        }
+    }
+    return NO;
+}
+
 - (BOOL)connect
 {
-    if(_isConnected==NO)
+    if(self.isConnected==NO)
     {
         UMSocketError err = [_socket connect];
         if(err==UMSocketError_no_error)
         {
-            _isConnected = YES;
             _handler  = [[UMMessageHandler alloc]initWithSocket:_socket client:self];
             _session = _handler.session;
             [_handler startBackgroundTask];
@@ -46,7 +62,7 @@
             NSLog(@"connect failed with error %d (%@)",err,[UMSocket getSocketErrorString:err]);
         }
     }
-    return _isConnected;
+    return self.isConnected;
 }
 
 - (UMMessageServerCommandError)insertMessage:(UMMessageObject *)msg

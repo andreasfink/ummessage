@@ -33,7 +33,7 @@
         _shortIdAsString = config[@"shortId"];
         NSString *s;
         s = config[@"credits"];
-        _credits         = s.doubleValue;
+        _credit         = s.doubleValue;
         s = config[@"prepaid"];
         _prepaid         = s.boolValue;
         s = config[@"maxSpeed"];
@@ -64,9 +64,9 @@
 }
 
 
-- (void)removeCredits:(NSInteger)count
+- (void)removeCredits:(double)count
 {
-    _credits -= count;
+    _credit -= count;
 }
 
 
