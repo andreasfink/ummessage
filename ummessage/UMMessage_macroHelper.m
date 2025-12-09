@@ -137,26 +137,30 @@ NSString *ummessage_fieldDefsToSql(UMSynchronizedSortedDictionary *o, NSString *
             [indexedFields addObject:e[@"name"]];
         }
         [s appendFormat:@"  `%@` %@",e[@"name"],e[@"type"]];
-        if(e[@"notnull"])
+        
+        if(e[@"unique"])
         {
-            
+            [s appendFormat:@" NOT NULL"];
+            if(e[@"autoincrement"])
+            {
+                [s appendFormat:@" AUTO_INCREMENT"];
+            }
         }
         else
         {
-            if(e[@"unique"])
+            if(e[@"notnull"])
             {
                 [s appendFormat:@" NOT NULL"];
-
                 if( ([e[@"type"]isEqualToStringCaseInsensitive:@"VARCHAR"]) ||
-                    ([e[@"type"]isEqualToStringCaseInsensitive:@"CHAR"])    ||
-                    ([e[@"type"]isEqualToStringCaseInsensitive:@"TEXT"]))
+                   ([e[@"type"]isEqualToStringCaseInsensitive:@"CHAR"])    ||
+                   ([e[@"type"]isEqualToStringCaseInsensitive:@"TEXT"]))
                 {
                     [s appendFormat:@" DEFAULT ''"];
                 }
                 if( ([e[@"type"]isEqualToStringCaseInsensitive:@"INTEGER"])  ||
-                    ([e[@"type"]isEqualToStringCaseInsensitive:@"SMALLINT"]) ||
-                    ([e[@"type"]isEqualToStringCaseInsensitive:@"TINYINT"])  ||
-                    ([e[@"type"]isEqualToStringCaseInsensitive:@"INT"]))
+                   ([e[@"type"]isEqualToStringCaseInsensitive:@"SMALLINT"]) ||
+                   ([e[@"type"]isEqualToStringCaseInsensitive:@"TINYINT"])  ||
+                   ([e[@"type"]isEqualToStringCaseInsensitive:@"INT"]))
                 {
                     [s appendFormat:@" DEFAULT '0'"];
                 }
@@ -165,10 +169,6 @@ NSString *ummessage_fieldDefsToSql(UMSynchronizedSortedDictionary *o, NSString *
             {
                 [s appendFormat:@" NULL"];
             }
-        }
-        if(e[@"autoincrement"])
-        {
-            [s appendFormat:@" AUTO_INCREMENT"];
         }
         [s appendString:@",\n"];
     }
@@ -237,4 +237,3 @@ void ummessage_addTableDefDouble(NSMutableString *o,int len, const char *dbname,
 {
     [o appendFormat:@"    `%s` real(16,8),\n",dbname];
 }
-
