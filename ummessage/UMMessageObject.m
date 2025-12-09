@@ -245,6 +245,7 @@ static      UMMutex      *g_messageIdLock = NULL;
         if([field1 isKindOfClass:[NSString class]])
         {
             NSString *o = (NSString *)field1;
+            NSString *fieldName = dbResult.columNames[i];
 #include <ummessage/UMMessage_macroLoadFromDbString.h>
 #include <ummessage/UMMessageObject.def.h>
 #include <ummessage/UMMessage_macroClear.h>
