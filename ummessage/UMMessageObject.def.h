@@ -9,9 +9,9 @@
 // macros
 //type (object,length,tag,dictionary-key,variable-name,accessor-name,database-name,options)
 
-STRING(o ,   37,UMMESSAGE_CODETAG_ARCHIVEID                 ,"archive-id"                      ,_archiveId                ,archiveId                ,"archive_id"                  ,"indexed,unique,mandatory")
+STRING(o ,   255,UMMESSAGE_CODETAG_ARCHIVEID                ,"archive-id"                      ,_archiveId                ,archiveId                ,"archive_id"                  ,"indexed,unique,mandatory")
 INTEGER(o,    2,UMMESSAGE_CODETAG_ARCHIVESTATUS             ,"archive-status"                  ,_archiveStatus            ,archiveStatus            ,"archive_status"              ,"indexed,mandatory")
-STRING(o ,   18,UMMESSAGE_CODETAG_INSTANCENAME              ,"instance"                        ,_instance                 ,instance                 ,"instance"                    ,"indexed,mandatory")
+STRING(o ,   63,UMMESSAGE_CODETAG_INSTANCENAME              ,"instance"                        ,_instance                 ,instance                 ,"instance"                    ,"indexed,mandatory")
 STRING(o ,   18,UMMESSAGE_CODETAG_MESSAGEID                 ,"message-id"                      ,_messageId                ,messageId                ,"message_id"                  ,"indexed,mandatory")
 STRING(o ,   18,UMMESSAGE_CODETAG_USERID                    ,"username"                        ,_userName                 ,userName                 ,"user_name"                   ,"indexed,optional")
 STRING(o ,   18,UMMESSAGE_CODETAG_GROUPID                   ,"groupname"                       ,_groupName                ,groupName                ,"group_name"                  ,"indexed,optional")

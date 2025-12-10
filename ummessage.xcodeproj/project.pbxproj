@@ -146,7 +146,6 @@
 		A6F3106D2D8FFEB9003D0769 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F3105E2D8FFEB9003D0769 /* Database.m */; };
 		A6F3106E2D8FFEB9003D0769 /* DatabaseCacheEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F310602D8FFEB9003D0769 /* DatabaseCacheEntry.m */; };
 		A6F3106F2D8FFEB9003D0769 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F310612D8FFEB9003D0769 /* main.m */; };
-		A6F310702D8FFEB9003D0769 /* UMMessage+db.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F310642D8FFEB9003D0769 /* UMMessage+db.m */; };
 		A6F3B6702D7F34C2004206CC /* ummessage.h in Headers */ = {isa = PBXBuildFile; fileRef = A6F3B66F2D7F34C0004206CC /* ummessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -409,8 +408,6 @@
 		A6F310602D8FFEB9003D0769 /* DatabaseCacheEntry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DatabaseCacheEntry.m; sourceTree = "<group>"; };
 		A6F310612D8FFEB9003D0769 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A6F310622D8FFEB9003D0769 /* umdbserver.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = umdbserver.entitlements; sourceTree = "<group>"; };
-		A6F310632D8FFEB9003D0769 /* UMMessage+db.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UMMessage+db.h"; sourceTree = "<group>"; };
-		A6F310642D8FFEB9003D0769 /* UMMessage+db.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UMMessage+db.m"; sourceTree = "<group>"; };
 		A6F3B66F2D7F34C0004206CC /* ummessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ummessage.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -711,8 +708,6 @@
 				A6F310602D8FFEB9003D0769 /* DatabaseCacheEntry.m */,
 				A6F310612D8FFEB9003D0769 /* main.m */,
 				A6F310622D8FFEB9003D0769 /* umdbserver.entitlements */,
-				A6F310632D8FFEB9003D0769 /* UMMessage+db.h */,
-				A6F310642D8FFEB9003D0769 /* UMMessage+db.m */,
 			);
 			path = umdbserver;
 			sourceTree = "<group>";
@@ -1066,7 +1061,6 @@
 				A6F3106D2D8FFEB9003D0769 /* Database.m in Sources */,
 				A6F3106E2D8FFEB9003D0769 /* DatabaseCacheEntry.m in Sources */,
 				A6F3106F2D8FFEB9003D0769 /* main.m in Sources */,
-				A6F310702D8FFEB9003D0769 /* UMMessage+db.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
