@@ -26,8 +26,8 @@
     UMThroughputCounter         *_throughput;
     UMMutex                     *_lock;
     id                          _userRoutingTable;
+    id                          _billingRateTable;
     NSString                    *_session;
-    
 }
 
 @property(readwrite,strong,atomic)  NSString                *username;
@@ -44,6 +44,7 @@
 @property(readwrite,assign,atomic)  NSInteger               submitCounter;
 @property(readwrite,strong,atomic)  UMThroughputCounter     *throughput;
 @property(readwrite,strong,atomic)  id                      userRoutingTable;
+@property(readwrite,strong,atomic)  id                      billingRateTable;
 @property(readwrite,assign,atomic)  BOOL                    loadedFromBillingServer;
 @property(readwrite,assign,atomic)  int                     loadError;
 @property(readwrite,strong,atomic)  NSString                *session;
