@@ -6,8 +6,6 @@
 //
 
 #import <ulib/ulib.h>
-#import <ulibdb/ulibdb.h>
-#import <ulibasn1/ulibasn1.h>
 #import <ummessage/UMMessageHistoryEntryFields.h>
 
 @interface UMMessageHistoryEntry : UMASN1Sequence

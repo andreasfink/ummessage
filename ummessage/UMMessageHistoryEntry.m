@@ -6,7 +6,7 @@
 //
 #import "UMMessageHistoryEntry.h"
 #import "UMMessage_macroHelper.h"
-#import <ulibdb/ulibdb.h>
+#import <ulib/ulib.h>
 
 @implementation UMMessageHistoryEntry
 

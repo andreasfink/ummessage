@@ -5,8 +5,7 @@
 //  Created by Andreas Fink on 07.04.2025.
 //
 
-#import <ulibasn1/ulibasn1.h>
-#import <ulibdb/ulibdb.h>
+#import <ulib/ulib.h>
 #import <ummessage/UMMessageHistoryFields.h>
 
 @interface UMMessageHistory : UMASN1Sequence

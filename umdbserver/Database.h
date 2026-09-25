@@ -6,7 +6,6 @@
 //
 
 #import <ulib/ulib.h>
-#import <ulibdb/ulibdb.h>
 #import <ummessage/UMMessageSessionDelegates.h>
 
 @class ConfigUser;

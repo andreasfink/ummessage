@@ -8,7 +8,6 @@
 
 #import "UMMessageObject.h"
 #import <ulib/ulib.h>
-#import <ulibdb/ulibdb.h>
 #import <ummessage/UMMessageObjectFields.h>
 #import <ummessage/UMMessageUdh.h>
 #import <ummessage/UMMessageUdhConcatenated.h>
@@ -78,7 +77,7 @@ static      UMMutex      *g_messageIdLock = NULL;
         last_msgid_serial = last_msgid_serial + 1;
         if(last_msgid_serial > 9990)
         {
-            usleep(1.1);
+            usleep(1100000);
         }
         this_msgid_serial = last_msgid_serial;
     }

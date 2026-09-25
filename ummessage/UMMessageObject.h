@@ -8,7 +8,7 @@
 
 
 #import <ulib/ulib.h>
-#import <ulibasn1/ulibasn1.h>
+#import <ulib/ulib.h>
 #import <ummessage/UMMessageStatusCode.h>
 #import <ummessage/UMMessageHistory.h>
 #import <ummessage/UMMessageObjectFields.h>

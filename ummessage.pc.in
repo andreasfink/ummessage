@@ -7,7 +7,7 @@ includedir=${prefix}/include
 
 Name: ummessage
 Cflags: -I${includedir}
-Libs: -L${libdir} -l:libummessage.@SHARED_LIBRARY_EXTENSION@.@MAJORVER@.@MINORVER@ 
+Libs: -L${libdir} -lummessage
 
 Description: ummessage
 Version: @VERSION@
