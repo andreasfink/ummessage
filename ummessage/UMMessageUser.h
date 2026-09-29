@@ -5,7 +5,7 @@
 //  Created by Andreas Fink on 26.03.2025.
 //
 
-#import <ulibasn1/ulibasn1.h>
+#import <ulib/ulib.h>
 
 @interface UMMessageUser : UMObject
 {

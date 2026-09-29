@@ -6,7 +6,7 @@
 //
 
 #import "UMMessageReport.h"
-#import <ulibdb/ulibdb.h>
+#import <ulib/ulib.h>
 
 @implementation UMMessageReport
 

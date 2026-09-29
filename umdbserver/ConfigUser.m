@@ -7,7 +7,7 @@
 
 #import "ConfigUser.h"
 #import "ConfigMacroHelper.h"
-#import <ulibdb/ulibdb.h>
+#import <ulib/ulib.h>
 #import "Database.h"
 
 @implementation ConfigUser

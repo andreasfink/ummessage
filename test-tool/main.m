@@ -6,7 +6,7 @@
 //
 
 #import <ulib/ulib.h>
-#import <ulibasn1/ulibasn1.h>
+#import <ulib/ulib.h>
 #import <ummessage/ummessage.h>
 
 int main(int argc, const char * argv[])
